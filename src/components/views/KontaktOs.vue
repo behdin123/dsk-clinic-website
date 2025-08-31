@@ -9,24 +9,27 @@
                 <p>Har du spørgsmål til vores behandlinger eller ønsker du at booke en gratis konsultation?</p>
             </div>
 
-            <div class="KontaktInformation">
-                <div class="Mail Informations">
-                    <img src="../../assets/icons/mailIcon.webp" alt="">
-                    <p>dr_arash_bagheri@yahoo.com</p>
+            <div class="flex_info">
+                <div class="KontaktInformation">
+                    <div class="Mail Informations">
+                        <img src="../../assets/icons/mailIcon.webp" alt="">
+                        <p>dr_arash_bagheri@yahoo.com</p>
+                    </div>
+                    <div class="Adresse Informations">
+                        <img src="../../assets/icons/mapIcon.webp" alt="">
+                        <p>Vejle & Esbjerg</p>
+                    </div>
+                    <div class="Telefon Informations">
+                        <img src="../../assets/icons/phoneIcon.webp" alt="">
+                        <p>53 50 37 50</p>
+                    </div>
+                    <div class="Email"></div>
                 </div>
-                <div class="Adresse Informations">
-                    <img src="../../assets/icons/mapIcon.webp" alt="">
-                    <p>Vejle & Esbjerg</p>
+                <div class="klinikken">
+                    <img src="../../assets/OmOsBannerW.webp" alt="">
                 </div>
-                <div class="Telefon Informations">
-                    <img src="../../assets/icons/phoneIcon.webp" alt="">
-                    <p>53 50 37 50</p>
-                </div>
-                <div class="Email"></div>
             </div>
-            <div class="klinikken">
-                <img src="../../assets/OmOsBannerW.webp" alt="">
-            </div>
+
 
         </div>
 
@@ -76,7 +79,6 @@ export default {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100vh;
     max-height: 100vh;
     background-image: url('@/assets/BannerBehandling.webp') !important;
@@ -107,7 +109,25 @@ main {
 .flex {
     display: flex;
     flex-direction: column;
-    padding: 0 22%;
+    margin-top: 30vh;
+    padding: 0 18%;
+}
+
+.flex_info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    position: absolute;
+    width: 60vw;
+    bottom: 0;
+}
+
+.KontaktInformation {
+    margin-top: 0 !important;
+}
+
+.Mail {
+    padding-top: 0 !important;
 }
 
 @media only screen and (max-width: 1020px) {
@@ -128,12 +148,16 @@ main {
     .KontaktInformation {
         align-items: start !important;
         margin-top: 50px !important;
-        padding-bottom: 230px;
+        padding-bottom: 20px;
     }
 
     .KontaktOsHeader p {
         font-size: 24px;
         width: 90% !important;
+    }
+
+    .flex_info {
+        flex-direction: column;
     }
 }
 
@@ -198,9 +222,7 @@ main {
 
 .klinikken {
     width: 35vw;
-    position: absolute;
     display: flex;
-    bottom: 0;
     z-index: 3;
 
     img {
@@ -251,7 +273,6 @@ main {
         display: flex;
         flex-direction: column;
         padding: 0 13%;
-        margin-top: 100px;
     }
 
     .KontaktOsHeader {
@@ -316,6 +337,11 @@ main {
             width: 65vw;
         }
     }
+
+
+    .flex {
+        margin-top: 20vh !important
+    }
 }
 
 @media only screen and (max-width: 890px) {
@@ -323,12 +349,14 @@ main {
         width: 45vw !important;
         right: 95px !important;
     }
+
     .flex {
-        margin-top: 80px;
         padding: 0 7%;
+        margin-top: 19vh !important;
     }
+
     .Informations {
-    padding: 12px 0;
+        padding: 12px 0;
     }
 }
 
@@ -341,9 +369,11 @@ main {
             width: auto !important;
         }
     }
+
     .location-div {
         padding: 40px 0;
-        h1{
+
+        h1 {
             margin-bottom: 20px !important;
         }
     }
@@ -352,7 +382,6 @@ main {
 @media only screen and (max-width: 700px) {
     .flex {
         padding: 0 5%;
-        margin-top: 70px !important;
     }
 
     .KontaktOsHeader {
@@ -393,12 +422,12 @@ main {
     }
 
     .KontaktInformation {
-    img {
-        width: 30px;
-        height: 30px;
-        margin-right: 20px;
+        img {
+            width: 30px;
+            height: 30px;
+            margin-right: 20px;
+        }
     }
-}
 
 }
 
@@ -410,6 +439,7 @@ main {
             font-size: 30px !important;
         }
     }
+
     .KontaktOsHeader h1 {
         padding: 0 !important;
         font-size: 35px !important;
@@ -418,7 +448,7 @@ main {
 
 @media only screen and (max-width: 430px) {
     .KontaktOsHeader h1 {
-        font-size: 35px !important;
+        font-size: 42px !important;
     }
 
     .KontaktOsHeader h2 {
@@ -426,7 +456,8 @@ main {
     }
 
     .KontaktOsHeader p {
-        font-size: 18px !important;
+        font-size: 20px !important;
+        line-height: 27px;
     }
 
     .KontaktInformation {
