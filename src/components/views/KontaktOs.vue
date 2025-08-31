@@ -448,7 +448,7 @@ main {
 
 @media only screen and (max-width: 430px) {
     .KontaktOsHeader h1 {
-        font-size: 42px !important;
+        font-size: 37px !important;
     }
 
     .KontaktOsHeader h2 {
@@ -468,6 +468,6 @@ main {
         width: 80vw !important;
         right: unset !important;
     }
-
 }
+
 </style>
