@@ -24,12 +24,12 @@ import { defineProps, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import AppBehandling from '../AppBehandling.vue';
 
-import BotoxImage from '@/assets/Carts/Botox.jpg';
-import FillerImage from '@/assets/Carts/Filler.jpg';
-import SkinboosterImage from '@/assets/Carts/Skinbooster.jpg';
-import PRPImage from '@/assets/Carts/PRP.jpg';
-import MesotherapyImage from '@/assets/Carts/Mesotherapy.jpg';
-import MicroneedlingImage from '@/assets/Carts/Microneedling.jpg';
+import BotoxImage from '@/assets/Carts/Botox.webp';
+import FillerImage from '@/assets/Carts/Filler.webp';
+import SkinboosterImage from '@/assets/Carts/Skinbooster.webp';
+import PRPImage from '@/assets/Carts/PRP.webp';
+import MesotherapyImage from '@/assets/Carts/Mesotherapy.webp';
+import MicroneedlingImage from '@/assets/Carts/Microneedling.webp';
 
 defineProps({
   dark: Boolean

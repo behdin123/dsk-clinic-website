@@ -7,7 +7,7 @@ module.exports = defineConfig({
   chainWebpack: (config) => {
     config.module
       .rule('images')
-      .test(/\.(png|jpe?g|gif|svg)$/i)
+      .test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
       .type('asset/resource')
       .set('generator', {
         filename: 'assets/images/[name].[hash:8][ext]',

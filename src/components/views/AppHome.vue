@@ -113,11 +113,11 @@
       <div class="informations h1">
 
         <div class="Arash_Bagheri_Portrait">
-          <img src="../../assets/Arash_Bagheri2.png" alt="">
+          <img src="../../assets/Arash_Bagheri2.webp" alt="">
         </div>
 
         <div data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300" class="info" id="Info-div">
-          <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.png" width="50px" height="auto">
+          <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.webp" width="50px" height="auto">
           </div>
           <div>
             <h2>Arash Bagheri</h2>
@@ -161,7 +161,7 @@
 
       <div class="VIKING-image">
         <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
-          src="../../assets/OmOsBannerW.jpg" width="100%" height="auto">
+          src="../../assets/OmOsBannerW.webp" width="100%" height="auto">
       </div>
     </div>
 
@@ -175,7 +175,7 @@
         <!-- Slide 1 -->
         <div class="slide">
           <div class="slide-content">
-            <img src="../../assets/Instagram/Mesotherapy_Arash.png" alt="Botox">
+            <img src="../../assets/Instagram/Mesotherapy_Arash.webp" alt="Botox">
             <!-- <div class="text-overlay">
               <h2>Mest populære</h2>
               <h1>Botox</h1>
@@ -189,7 +189,7 @@
         <!-- Slide 2 -->
         <div class="slide">
           <div class="slide-content">
-            <img src="../../assets/Instagram/Filler1.png" alt="Filler, Ansigts volumen filler">
+            <img src="../../assets/Instagram/Filler1.webp" alt="Filler, Ansigts volumen filler">
            <!--  <div class="text-overlay">
               <h2>Ansigts volumen filler</h2>
               <h1>Filler</h1>
@@ -203,7 +203,7 @@
         <!-- Slide 3 -->
         <div class="slide">
           <div class="slide-content">
-            <img src="../../assets/Instagram/Skinbooster_Arash.png" alt="PRP">
+            <img src="../../assets/Instagram/Skinbooster_Arash.webp" alt="PRP">
             <!-- <div class="text-overlay">
               <h2>NY BEHANDLING</h2>
               <h1>PRP</h1>
@@ -217,7 +217,7 @@
         <!-- Slide 4 -->
         <div class="slide">
           <div class="slide-content">
-            <img src="../../assets/Instagram/Skinbooster_Arash12.png" alt="PRP">
+            <img src="../../assets/Instagram/Skinbooster_Arash12.webp" alt="PRP">
             <!-- <div class="text-overlay">
               <h2>NY BEHANDLING</h2>
               <h1>PRP</h1>
@@ -241,7 +241,7 @@
     <div class="container Multimediedesigner VIKING OmKlinik">
       <div class="VIKING-image">
         <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
-          src="../../assets/Clinic_consultation_1.jpg " width="100%" height="auto">
+          src="../../assets/Clinic_consultation_1.webp " width="100%" height="auto">
       </div>
       <div class="txt h1 h2 first-txt margin-left">
         <h3 data-aos="fade-up" data-aos-duration="1000">Om vores klinikker</h3>
@@ -774,7 +774,7 @@ defineProps({
 /* 4K Monitor */
 @media only screen and (min-width: 1640px) {
   .img {
-    background-image: url('@/assets/BannerFrontPage2.jpg');
+    background-image: url('@/assets/BannerFrontPage2.webp');
 
     h1 {
       font-size: 70px !important;
@@ -806,7 +806,7 @@ defineProps({
 }
 
 .dark-mode-cover-home {
-  background-image: url('@/assets/BannerFrontPage2.jpg') !important;
+  background-image: url('@/assets/BannerFrontPage2.webp') !important;
 
   h1 {
     z-index: 4;
@@ -829,7 +829,7 @@ defineProps({
 }
 
 .img {
-  background-image: url('@/assets/BannerFrontPage2.jpg');
+  background-image: url('@/assets/BannerFrontPage2.webp');
 
   h1 {
     padding: 17vw 0 0 8%;
@@ -1339,7 +1339,7 @@ defineProps({
 
 @media only screen and (max-width: 840px) {
   .img {
-    background-image: url('@/assets/BannerFrontPageMobile2.png') !important;
+    background-image: url('@/assets/BannerFrontPageMobile2.webp') !important;
   }
 
    #app .bg-img {
@@ -1771,27 +1771,27 @@ defineProps({
 /* تصاویر برای کارت‌ها */
 
 .card.botox::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Botox.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Botox.webp');
 }
 
 .card.filler::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Filler.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Filler.webp');
 }
 
 .card.skinbooster::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Skinbooster.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Skinbooster.webp');
 }
 
 .card.prp::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/PRP.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/PRP.webp');
 }
 
 .card.mesotherapy::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Mesotherapy.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Mesotherapy.webp');
 }
 
 .card.microneedling::before {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Microneedling.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%), url('@/assets/Carts/Microneedling.webp');
 }
 
 @media (max-width: 768px) {

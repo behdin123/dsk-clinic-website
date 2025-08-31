@@ -16,8 +16,8 @@
             <div class="social-medier">
               <b>Find os på de sociale medier:</b>
               <div class="footer-icon">
-                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"><img class="icon facebook" src="../assets/icons/Facebook_Logo_Primary.png" width="23px" height="23px" /></a>
-                <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"><img id="first-icon" class="icon" src="../assets/icons/Instagram_Glyph_Gradient.png" width="23px" height="23px"></a>
+                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"><img class="icon facebook" src="../assets/icons/Facebook_Logo_Primary.webp" width="23px" height="23px" /></a>
+                <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"><img id="first-icon" class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="23px" height="23px"></a>
               </div>
             </div>
           </div>

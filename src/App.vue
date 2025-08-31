@@ -9,7 +9,7 @@
       <router-view :dark="darkMode" :toggle-dark-mode="toggleDarkMode" :showModal="showModal" />
 
       <button class="scroll-to-top" :class="{ show: isButtonVisible }" @click="scrollToTop">
-        <img src="./assets/icons/arrowup.png" alt="">
+        <img src="./assets/icons/arrowup.webp" alt="">
       </button>
     </div>
 

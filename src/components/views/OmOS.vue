@@ -27,7 +27,7 @@
                 <div class="BannerPng">
                     <p>Klinikkens ansvarlige læge</p>
                     <p>Arash Bagheri</p>
-                    <img src="../../assets/OmOsArash.jpg" alt="">
+                    <img src="../../assets/OmOsArash.webp" alt="">
                 </div>
             </div>
             <!-- <div class="scroll-indicator">
@@ -40,7 +40,7 @@
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
                 <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
-                    src="../../assets/Clinic_consultation_2.jpg " width="100%" height="auto">
+                    src="../../assets/Clinic_consultation_2.webp " width="100%" height="auto">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
                 <h3 data-aos="fade-up" data-aos-duration="1000">Vores klinikker</h3>
@@ -507,7 +507,7 @@ defineProps({
 .img {
     position: relative;
     /* Gør det muligt for ::before at positionere sig relativt til .img */
-    background-image: url('@/assets/BannerBehandling.jpg') !important;
+    background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
     background-position: center !important;
     overflow: hidden;

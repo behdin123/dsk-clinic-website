@@ -11,21 +11,21 @@
 
             <div class="KontaktInformation">
                 <div class="Mail Informations">
-                    <img src="../../assets/icons/mailIcon.png" alt="">
+                    <img src="../../assets/icons/mailIcon.webp" alt="">
                     <p>dr_arash_bagheri@yahoo.com</p>
                 </div>
                 <div class="Adresse Informations">
-                    <img src="../../assets/icons/mapIcon.png" alt="">
+                    <img src="../../assets/icons/mapIcon.webp" alt="">
                     <p>Vejle & Esbjerg</p>
                 </div>
                 <div class="Telefon Informations">
-                    <img src="../../assets/icons/phoneIcon.png" alt="">
+                    <img src="../../assets/icons/phoneIcon.webp" alt="">
                     <p>53 50 37 50</p>
                 </div>
                 <div class="Email"></div>
             </div>
             <div class="klinikken">
-                <img src="../../assets/OmOsBannerW.jpg" alt="">
+                <img src="../../assets/OmOsBannerW.webp" alt="">
             </div>
 
         </div>
@@ -79,7 +79,7 @@ main {
     justify-content: center;
     height: 100vh;
     max-height: 100vh;
-    background-image: url('@/assets/BannerBehandling.jpg') !important;
+    background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
     background-position: center;
     overflow: hidden;

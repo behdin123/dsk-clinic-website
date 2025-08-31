@@ -22,19 +22,19 @@
             <div class="options_prices">
               <ul class="options">
                 <div>
-                  <li class="heart_rate"><span class="label"> <img src="../assets/Behandlingstid.png" alt="">
+                  <li class="heart_rate"><span class="label"> <img src="../assets/Behandlingstid.webp" alt="">
                       Behandlingstid<span>:</span></span> {{ duration }}</li>
-                  <li class="person_dolly"><span class="label"> <img src="../assets/Resultat.png"
+                  <li class="person_dolly"><span class="label"> <img src="../assets/Resultat.webp"
                         alt="">Resultat<span>:</span></span> {{ result }}</li>
-                  <li class="syringe"><span class="label"> <img src="../assets/Bedøvelse.png" alt="">
+                  <li class="syringe"><span class="label"> <img src="../assets/Bedøvelse.webp" alt="">
                       Bedøvelse<span>:</span></span> {{ anesthesia }}</li>
                 </div>
                 <div>
-                  <li class="clipboard_list_check"><span class="label"> <img src="../assets/Holdbarhed.png"
+                  <li class="clipboard_list_check"><span class="label"> <img src="../assets/Holdbarhed.webp"
                         alt="">Holdbarhed<span>: </span> </span> {{ durability }}</li>
-                  <li class="alarm_clock"><span class="label"> <img src="../assets/Nedetid.png" alt=""> Nedetid /
+                  <li class="alarm_clock"><span class="label"> <img src="../assets/Nedetid.webp" alt=""> Nedetid /
                       Opheling<span>:</span> </span> {{ downtime }}</li>
-                  <li class="people_arrows"><span class="label"> <img src="../assets/Konsultation.png" alt="">
+                  <li class="people_arrows"><span class="label"> <img src="../assets/Konsultation.webp" alt="">
                       Konsultation<span>:</span></span> {{ consultation }}</li>
                 </div>
               </ul>
@@ -531,7 +531,7 @@ button[type="submit"],
 .img {
   position: relative;
   /* Gør det muligt for ::before at positionere sig relativt til .img */
-  background-image: url('@/assets/BannerBehandling.jpg') !important;
+  background-image: url('@/assets/BannerBehandling.webp') !important;
   background-size: cover;
   background-position: top;
   overflow: hidden;

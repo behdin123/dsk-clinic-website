@@ -49,7 +49,7 @@
             </div>
             <div class="img-box">
                 <div class="gyldne-trekant">
-                    <img data-aos="fade-up" data-aos-duration="1000" src="../../assets/Arash_Bagheri.png"
+                    <img data-aos="fade-up" data-aos-duration="1000" src="../../assets/Arash_Bagheri.webp"
                         width="100%" height="auto">
                 </div>
             </div>
