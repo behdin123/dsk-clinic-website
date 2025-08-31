@@ -532,7 +532,9 @@ defineProps({
   cursor: pointer;
 }
 
-
+.dots span.active {
+  background-color: #2d58a1;
+}
 
 .Arash_Bagheri_Portrait {
   max-width: 400px;
@@ -1597,7 +1599,7 @@ defineProps({
 }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 430px) {
   .bg-img {
     height: 600px !important;
   }
@@ -1611,10 +1613,13 @@ defineProps({
   }
   .bg-img h1 {
     padding-top: 30vw !important;
-    font-size: 28px !important;
+    font-size: 33px !important;
   }
   .bg-img h2 {
-    font-size: 18px !important;
+    width: 55vw;
+    font-size: 22px !important;
+    margin-top: 15px !important;
+    line-height: 40px;
   }
 
   .default-bg::after {
@@ -1623,22 +1628,22 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 250px;
+    margin-top: 180px;
   }
 }
 
-@media only screen and (max-width: 378px) {
+@media only screen and (max-width: 390px) {
   .bg-img {
     h1 {
       padding: 34vw 0 0 0 !important;
     }
     h2{
-      width: 90%;
+      width: 68%;
     }
   }
 
   .mobile-show {
-    margin-top: 220px !important;
+    margin-top: 170px !important;
     p{
       width: 90% !important;
     }
