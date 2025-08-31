@@ -94,7 +94,6 @@ defineProps({
 
 
 <style lang="scss" scoped>
-@import '../css/lightbox.min.css';
 @import '../css/style.scss';
 
 

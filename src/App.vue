@@ -24,7 +24,6 @@
 <script setup>
 import AppNavigation from '@/components/AppNavigation.vue';
 import AppFooter from '@/components/AppFooter.vue';
-import './js/lightbox-plus-jquery.min.js';
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const modalOpen = ref(false)
