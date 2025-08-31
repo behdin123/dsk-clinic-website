@@ -532,9 +532,7 @@ defineProps({
   cursor: pointer;
 }
 
-.dots span.active {
-  background-color: #2d58a1;
-}
+
 
 .Arash_Bagheri_Portrait {
   max-width: 400px;
