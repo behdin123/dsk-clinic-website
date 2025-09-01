@@ -103,7 +103,7 @@ const toggleDarkMode = () => {
 
 :root {
   /* Generelle fontstørrelser for forskellige skærmstørrelser */
-  --h1-font-size-iphone: 26px;
+  --h1-font-size-iphone: 32px;
   --h1-font-size-ipad: 30px;
   --h1-font-size-laptop: 32px;
   --h1-font-size-4k: 34px;
@@ -265,7 +265,6 @@ body {
   }
 
   h2 {
-    font-weight: 600;
     position: relative;
     pointer-events: none;
   }

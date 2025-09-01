@@ -1,0 +1,10 @@
+[
+  { "path": "/", "priority": 1.0, "changefreq": "weekly" },
+
+  { "path": "/behandlinger/botox", "priority": 0.8, "changefreq": "monthly" },
+  { "path": "/behandlinger/filler", "priority": 0.8, "changefreq": "monthly" },
+  { "path": "/behandlinger/skinbooster", "priority": 0.8, "changefreq": "monthly" },
+  { "path": "/behandlinger/prp", "priority": 0.7, "changefreq": "monthly" },
+  { "path": "/behandlinger/mesotherapy", "priority": 0.7, "changefreq": "monthly" },
+  { "path": "/behandlinger/microneedling", "priority": 0.7, "changefreq": "monthly" }
+]

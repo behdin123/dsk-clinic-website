@@ -20,11 +20,12 @@
     .h2{
       h2{
         margin: 10px 0 10px 0;
-        color: var(--title-color);
+        font-weight: bolder;
         letter-spacing: 0.3px;
+        color: var(--quaternary-color) !important;
       }
       h3{
-        color: var(--quaternary-color) !important;
+        color: var(--title-color);
         font-size: 16px;
         line-height: 26.6px;
         margin-top: 0;
@@ -145,7 +146,7 @@
 }
 @media only screen and (max-width: 940px){
     .bg-img{
-        height: 82vw !important;
+        height: 81vh !important;
         h1{
             font-size: 45px !important;
           }
@@ -164,7 +165,6 @@
 }
 @media only screen and (max-width: 780px){
     .bg-img{
-        height: 600px !important;
         h1{
         font-size: 40px !important;
       }
@@ -186,7 +186,6 @@
 }
 @media only screen and (max-width: 420px){
     .bg-img{
-        height: 600px !important;
         h1{
             font-size: 30px !important;
         }
@@ -194,7 +193,6 @@
 }
 @media only screen and (max-width: 378px){
     .bg-img{
-        height: 550px !important;
         h1{
             font-size: 25px;
         }
