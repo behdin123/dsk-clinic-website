@@ -1629,7 +1629,7 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 220px;
+    margin-top: 320px;
   }
 }
 
@@ -1713,7 +1713,7 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 250px;
+    margin-top: 230px;
   }
 }
 
@@ -1729,7 +1729,7 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 170px !important;
+    margin-top: 250px !important;
 
     p {
       width: 90% !important;
