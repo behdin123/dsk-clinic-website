@@ -60,4 +60,23 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+// بالاتر از afterEach تعریف کن
+let isFirstNavigation = true
+
+router.afterEach((to) => {
+  // از اولین ناوبری عبور کن تا اگر EM یک page_load زد، دوبل نشود
+  if (isFirstNavigation) {
+    isFirstNavigation = false
+    return
+  }
+
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    const page_location = window.location.origin + to.fullPath
+    window.gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location,
+      page_path: to.fullPath
+    })
+  }
+})
 export default router;
