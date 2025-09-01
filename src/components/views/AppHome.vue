@@ -1729,8 +1729,6 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 250px !important;
-
     p {
       width: 90% !important;
     }
