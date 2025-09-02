@@ -47,7 +47,7 @@ watch(showModal, (value) => {
 
 .general_button {
   width: 250px !important;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   background-color: #2d58a1;
   color: white;

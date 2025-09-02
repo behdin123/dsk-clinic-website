@@ -1685,8 +1685,6 @@ defineProps({
 }
 
 @media only screen and (max-width: 430px) {
-
-
   .min-concept .btn {
     margin-top: 20px !important;
   }
@@ -1713,7 +1711,7 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 230px;
+    margin-top: 26vh;
   }
 }
 
