@@ -254,7 +254,7 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@vueuse/head'
-import AppBooking from '../../components/AppBooking.vue'; // Importer komponenten
+import AppBooking from '../../components/AppBooking.vue';
 
 useHead({
   title: 'DK Skønhedsklinik | Botox & Filler i Esbjerg og Vejle (lægebehandlet)',
@@ -263,8 +263,11 @@ useHead({
     { property: 'og:title', content: 'DK Skønhedsklinik – lægebehandlede skønhedsbehandlinger' },
     { property: 'og:description', content: 'Naturlige og harmoniske resultater. Book gratis forundersøgelse i dag.' },
     { property: 'og:type', content: 'website' },
-    // اگر کاور عمومی داری، آدرس مطلق بده:
-    // { property: 'og:image', content: 'https://dk-skonhedsklinik.dk/og-cover.jpg' },
+    { property: 'og:url', content: 'https://dsklinik.dk/' },
+    { property: 'og:image', content: 'https://dsklinik.dk/og/home.webp' },
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' }, 
+    { property: 'og:site_name', content: 'DK Skønhedsklinik' },
+    { property: 'og:locale', content: 'da_DK' },                       
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'robots', content: 'index, follow' }
   ],

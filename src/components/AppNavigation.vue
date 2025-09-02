@@ -16,18 +16,18 @@
         </div>
         <!-- منوی کشویی -->
         <div class="dropdown-menu" :class="{ 'show': isDropdownOpen }">
-          <router-link to="/behandlinger/Botox">Botox</router-link>
-          <router-link to="/behandlinger/Behandlinger">Filler</router-link>
-          <router-link to="/behandlinger/Skinbooster">Skinbooster</router-link>
-          <router-link to="/behandlinger/PRP">PRP</router-link>
-          <router-link to="/behandlinger/Mesotherapy">Mesotherapy</router-link>
-          <router-link to="/behandlinger/Microneedling">Microneedling</router-link>
+          <router-link to="/behandlinger/botox">Botox</router-link>
+          <router-link to="/behandlinger/filler">Filler</router-link>
+          <router-link to="/behandlinger/skinbooster">Skinbooster</router-link>
+          <router-link to="/behandlinger/prp">PRP</router-link>
+          <router-link to="/behandlinger/mesotherapy">Mesotherapy</router-link>
+          <router-link to="/behandlinger/microneedling">Microneedling</router-link>
         </div>
       </div>
 
       <!-- <router-link to="/VIDEO">Før/Efter</router-link> -->
-      <router-link to="/OmOs">Om os</router-link>
-      <router-link to="/KontaktOs">Kontakt</router-link>
+      <router-link to="/omos">Om os</router-link>
+      <router-link to="/kontaktos">Kontakt</router-link>
     </div>
   </div>
 

@@ -33,10 +33,18 @@ function handleBookingClick() {
   if (fbq) {
     fbq('track', 'Lead')
   }
+  // GA4
+  window.gtagEvent('booking_click', {
+    placement: 'home_hero',   // اگر جای دیگری هم داری، مقدارش را متناسب بفرست
+    component: 'AppBooking'
+  })
 }
 
-watch(showModal, (value) => {
-  window.dispatchEvent(new CustomEvent('toggle-nav', { detail: value }))
+watch(showModal, (open) => {
+  window.dispatchEvent(new CustomEvent('toggle-nav', { detail: open }))
+  window.gtagEvent(open ? 'booking_modal_open' : 'booking_modal_close', {
+    component: 'AppBooking'
+  })
 })
 </script>
 

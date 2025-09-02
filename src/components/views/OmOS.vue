@@ -81,8 +81,47 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useHead } from '@unhead/vue'
 
 
+useHead({
+  title: 'Om os – DK Skønhedsklinik (lægebehandlede behandlinger)',
+  meta: [
+    { name: 'description', content: 'Lær klinikken og vores ansvarlige læge at kende. Naturlige, harmoniske resultater i Vejle og Esbjerg.' },
+    { property: 'og:title', content: 'Om DK Skønhedsklinik' },
+    { property: 'og:description', content: 'Ekspertise, tryghed og kvalitet i hver behandling.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: 'https://dsklinik.dk/og/about.jpg' },
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/about.jpg' },
+    { property: 'og:url', content: 'https://dsklinik.dk/omos' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'robots', content: 'index, follow' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://dsklinik.dk/omos' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Om DK Skønhedsklinik",
+        "url": "https://dsklinik.dk/omos",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Arash Bagheri",
+          "jobTitle": "Læge",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "DK Skønhedsklinik",
+            "url": "https://dsklinik.dk/"
+          }
+        }
+      })
+    }
+  ]
+})
 
 
 

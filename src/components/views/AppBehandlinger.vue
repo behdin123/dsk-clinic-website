@@ -1,22 +1,10 @@
 <template>
-  <AppBehandling
-    :dark="dark"
-    :title="behandlingData.title"
-    :imageSrc="behandlingData.imageSrc"
-    :description="behandlingData.description"
-    :duration="behandlingData.duration"
-    :result="behandlingData.result"
-    :anesthesia="behandlingData.anesthesia"
-    :durability="behandlingData.durability"
-    :downtime="behandlingData.downtime"
-    :consultation="behandlingData.consultation"
-    :price="behandlingData.price"
-    :priceText="behandlingData.priceText"
-    :price2="behandlingData.price2"
-    :priceText2="behandlingData.priceText2"
-    :price3="behandlingData.price3"
-    :priceText3="behandlingData.priceText3"
-  />
+  <AppBehandling :dark="dark" :title="behandlingData.title" :imageSrc="behandlingData.imageSrc"
+    :description="behandlingData.description" :duration="behandlingData.duration" :result="behandlingData.result"
+    :anesthesia="behandlingData.anesthesia" :durability="behandlingData.durability" :downtime="behandlingData.downtime"
+    :consultation="behandlingData.consultation" :price="behandlingData.price" :priceText="behandlingData.priceText"
+    :price2="behandlingData.price2" :priceText2="behandlingData.priceText2" :price3="behandlingData.price3"
+    :priceText3="behandlingData.priceText3" />
 </template>
 
 <script setup>
@@ -131,6 +119,20 @@ const behandlinger = {
   }
 }
 
+
+// URL مطلق برای OG images
+const OG_IMAGES = {
+  botox: `${SITE_URL}/og/Botox.webp`,
+  filler: `${SITE_URL}/og/Filler.webp`,
+  skinbooster: `${SITE_URL}/og/Skinbooster.webp`,
+  prp: `${SITE_URL}/og/PRP.webp`,
+  mesotherapy: `${SITE_URL}/og/Mesotherapy.webp`,
+  microneedling: `${SITE_URL}/og/Microneedling.webp`,
+  // fallback
+  _default: `${SITE_URL}/og/home.webp`
+}
+const ogImage = computed(() => OG_IMAGES[currentType.value] || OG_IMAGES._default)
+
 const behandlingData = computed(() => behandlinger[currentType.value] || behandlinger[FALLBACK])
 
 // متاهای اختصاصی هر درمان
@@ -162,14 +164,14 @@ const META = {
 }
 
 const pageTitle = computed(() => (META[currentType.value] || META[FALLBACK]).title)
-const pageDesc  = computed(() => (META[currentType.value] || META[FALLBACK]).desc)
+const pageDesc = computed(() => (META[currentType.value] || META[FALLBACK]).desc)
 const canonical = computed(() => `${SITE_URL}/behandlinger/${currentType.value || FALLBACK}`)
 
 // FAQهای نمونه (می‌توانی برای همه تکمیل کنی)
 const FAQ_BANK = {
   botox: [
     { q: 'Hvor længe holder botox?', a: 'Typisk 3–6 måneder afhængigt af område og metabolisme.' },
-    { q: 'Hvornår ses effekten?', a: 'Den fulde effekt ses efter ca. 10–14 dage.' }
+    { q: 'Hvornår ses effekten?', a: 'Den fulde effekt ses efter ca. 14 dage.' }
   ],
   filler: [
     { q: 'Hvor længe holder filler?', a: 'Ca. 6–12 måneder afhængigt af produkt og område.' },
@@ -178,22 +180,28 @@ const FAQ_BANK = {
 }
 const faqs = computed(() => FAQ_BANK[currentType.value] || FAQ_BANK[FALLBACK])
 
+
+
 // JSON-LD ها
-const procedureLd = computed(() => {
-  const d = behandlingData.value
-  const ld = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
-    name: d.title,
-    description: d.description,
-    url: canonical.value,
-    provider: { '@type': 'MedicalBusiness', name: 'DK Skønhedsklinik', url: SITE_URL },
-    areaServed: 'Esbjerg, Vejle, Danmark'
-  }
-  const priceNumeric = (d.price || '').replace(/[^\d]/g, '')
-  if (priceNumeric) ld.offers = { '@type': 'Offer', priceCurrency: 'DKK', price: priceNumeric }
-  return ld
-})
+const BOOKING_URL = 'https://dksknhedsklinik.app4.geckobooking.dk/site/index.php?icCode=64c857a01938e8ee26f9d9f8fca49125b10711&dTpl=1'
+ const procedureLd = computed(() => {
+   const d = behandlingData.value
+   return {
+     '@context': 'https://schema.org',
+     '@type': 'MedicalProcedure',
+     name: d.title,
+     description: d.description,
+     url: canonical.value,
+     provider: { '@type': 'MedicalBusiness', name: 'DK Skønhedsklinik', url: SITE_URL },
+     areaServed: 'Esbjerg, Vejle, Danmark',
+     potentialAction: {
+       '@type': 'ReserveAction',
+       target: BOOKING_URL
+     }
+   }
+ })
+
+
 
 const faqLd = computed(() => ({
   '@context': 'https://schema.org',
@@ -205,42 +213,67 @@ const faqLd = computed(() => ({
   }))
 }))
 
+const hasFaq = computed(() => !!FAQ_BANK[currentType.value])
+
+
+
 const breadcrumbLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Behandlinger', item: `${SITE_URL}/behandlinger` },
+    { '@type': 'ListItem', position: 1, name: 'Forside', item: SITE_URL },
     { '@type': 'ListItem', position: 2, name: behandlingData.value.title, item: canonical.value }
   ]
 }))
 
 // head داینامیک (تابع می‌دهیم تا با تغییر route آپدیت شود)
-useHead(() => ({
-  title: pageTitle.value,
-  meta: [
-    { name: 'description', content: pageDesc.value },
+useHead(() => {
+  const title = pageTitle.value
+  const desc = pageDesc.value
+  const url = canonical.value
+  const img = ogImage.value
+
+  const meta = [
+    { name: 'description', content: desc },
+    { name: 'robots', content: 'index, follow' },
+
+    // Open Graph
     { property: 'og:type', content: 'article' },
-    { property: 'og:title', content: pageTitle.value },
-    { property: 'og:description', content: pageDesc.value },
-    { property: 'og:url', content: canonical.value },
+    { property: 'og:locale', content: 'da_DK' },
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: desc },
+    { property: 'og:url', content: url },
+    { property: 'og:image', content: img },
+    { property: 'og:site_name', content: 'DK Skønhedsklinik' },
+    { property: 'og:image:alt', content: behandlingData.value.title },
+
+    // Twitter
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'robots', content: 'index, follow' }
-  ],
-  link: [{ rel: 'canonical', href: canonical.value }],
-  script: [
-    { type: 'application/ld+json', children: JSON.stringify(procedureLd.value) },
-    { type: 'application/ld+json', children: JSON.stringify(breadcrumbLd.value) },
-    { type: 'application/ld+json', children: JSON.stringify(faqLd.value) }
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: desc },
+    { name: 'twitter:image', content: img }
   ]
-}))
+
+  const scripts = [
+    { type: 'application/ld+json', children: JSON.stringify(procedureLd.value) },
+    { type: 'application/ld+json', children: JSON.stringify(breadcrumbLd.value) }
+  ]
+  if (hasFaq.value) {
+    scripts.push({ type: 'application/ld+json', children: JSON.stringify(faqLd.value) })
+  }
+
+  return {
+    title,
+    meta,
+    link: [{ rel: 'canonical', href: url }],
+    script: scripts
+  }
+})
 </script>
 
 
 
- 
 
 
-<style lang="scss" scoped>
 
-</style>
-
+<style lang="scss" scoped></style>

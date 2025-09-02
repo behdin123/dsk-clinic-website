@@ -61,8 +61,17 @@
 
       // چون SPA هستیم، page_view خودکار را غیرفعال کن
       gtag("config", "G-J67ED74YZ9", { send_page_view: false });
+      window.gtagEvent = function (name, params = {}) {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", name, {
+            page_title: document.title,
+            page_location: location.href,
+            page_path: location.pathname + location.search + location.hash,
+            ...params,
+          });
+        }
+      };
     </script>
-
   </head>
   <body>
     <noscript>
