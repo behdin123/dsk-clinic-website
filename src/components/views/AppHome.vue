@@ -1711,7 +1711,7 @@ defineProps({
   }
 
   .mobile-show {
-    margin-top: 26vh;
+    margin-top: 24vh;
   }
 }
 
