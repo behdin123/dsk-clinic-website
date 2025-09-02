@@ -60,8 +60,11 @@ watch(showModal, (value) => {
 
 
 .hide-nav {
-  position: fixed !important;
-  z-index: 3 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  /* هر z-index قبلی را بی‌اثر می‌کند */
+  z-index: 0 !important;
 }
 
 .general_button:hover {

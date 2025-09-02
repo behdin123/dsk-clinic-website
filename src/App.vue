@@ -24,23 +24,29 @@
 <script setup>
 import AppNavigation from '@/components/AppNavigation.vue';
 import AppFooter from '@/components/AppFooter.vue';
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
 
+const darkMode = ref(false)
+const isSticky = ref(false)
+const isTransparent = ref(true)
+
+// وقتی true باشه ناوبری رو مخفی می‌کنیم
 const modalOpen = ref(false)
 
+// لیسنر رویداد سفارشی‌ای که از AppBooking می‌فرستیم
+const handleToggleNav = (e) => {
+  modalOpen.value = !!e.detail
+  // قفل/آزاد کردن اسکرول صفحه
+  document.body.style.overflow = modalOpen.value ? 'hidden' : ''
+}
+
 onMounted(() => {
-  window.addEventListener('toggle-nav', (event) => {
-    modalOpen.value = event.detail
-  })
+  window.addEventListener('toggle-nav', handleToggleNav)
 })
 
-onUnmounted(() => {
-  window.removeEventListener('toggle-nav', () => {})
+onBeforeUnmount(() => {
+  window.removeEventListener('toggle-nav', handleToggleNav)
 })
-
-const isSticky = ref(false);
-const isTransparent = ref(true);
-const darkMode = ref(JSON.parse(localStorage.getItem('darkMode')) || false);
 
 
 const scrollToTop = () => {
