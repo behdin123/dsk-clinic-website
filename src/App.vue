@@ -14,7 +14,7 @@
     </div>
 
     <!-- خود کامپوننت رزرو -->
-    <AppBooking />
+    <AppBooking :show-button="false" />
 
     <div :class="[{ 'hide-nav': modalOpen }]">
       <AppFooter />
@@ -86,15 +86,11 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 
-
-
 // Function to toggle dark mode
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
   localStorage.setItem('darkMode', JSON.stringify(darkMode.value));
 };
-
-
 
 </script>
 

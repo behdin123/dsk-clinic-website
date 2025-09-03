@@ -1,6 +1,6 @@
 <template>
   <!-- Book-knap -->
-  <button class="general_button" @click="handleBookingClick">
+  <button v-if="props.showButton" class="general_button" @click="handleBookingClick">
     Book nu
   </button>
 
@@ -22,6 +22,10 @@ const fbq = window.fbq;
 
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
+const props = defineProps({
+  showButton: { type: Boolean, default: true }
+})
+
 const showModal = ref(false)
 
 function handleBookingClick() {
@@ -38,7 +42,7 @@ function handleBookingClick() {
 
 // 🔔 لیسنر برای باز کردن مودال از هرجای سایت (مثلاً CTA منوی موبایل)
 const openFromEvent = () => {
-  if (showModal.value) return  
+  if (showModal.value) return
   showModal.value = true
   window.gtagEvent?.('booking_modal_open', { component: 'AppBooking', source: 'nav_cta' })
 }

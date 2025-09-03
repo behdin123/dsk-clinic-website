@@ -102,11 +102,11 @@
           <li class="socials-row">
             <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank" rel="noopener noreferrer"
               aria-label="Facebook">
-              <img class="icon" src="../assets/icons/Facebook_Logo_Primary.webp" width="26" height="26" alt="" />
+              <img class="icon" src="../assets/icons/Facebook_Logo_Primary.webp" width="35" height="35" alt="" />
             </a>
             <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank" rel="noopener noreferrer"
               aria-label="Instagram">
-              <img class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="26" height="26" alt="" />
+              <img class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="35" height="35" alt="" />
             </a>
           </li>
         </ul>
