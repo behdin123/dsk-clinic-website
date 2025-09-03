@@ -47,21 +47,26 @@
                 <h1 data-aos="fade-up" data-aos-duration="1000">Om DK Skønhedsklinik</h1>
 
                 <p data-aos="fade-up" data-aos-duration="1000">
-                    <b>DK Skønhedsklinik</b> har klinikker i både <b>Vejle</b> og <b>Esbjerg</b>, hvor vi tilbyder professionelle kosmetiske behandlinger i trygge og moderne omgivelser.
-                    Vores klinikker er indrettet med fokus på komfort og kvalitet, så du kan føle dig godt tilpas fra det øjeblik, du træder ind. Vi arbejder altid 
+                    <b>DK Skønhedsklinik</b> har klinikker i både <b>Vejle</b> og <b>Esbjerg</b>, hvor vi tilbyder
+                    professionelle kosmetiske behandlinger i trygge og moderne omgivelser.
+                    Vores klinikker er indrettet med fokus på komfort og kvalitet, så du kan føle dig godt tilpas fra
+                    det øjeblik, du træder ind. Vi arbejder altid
                     med højeste faglighed for at sikre de bedste resultater for vores kunder.
-                    
+
                 </p>
 
 
                 <p>
-                    Uanset om du ønsker en <b>Botox-behandling</b>, <b>filler</b>, <b>skinbooster</b> eller andre æstetiske forbedringer, er du i kyndige hænder hos vores specialuddannede behandlere.
-                    Hos DK Skønhedsklinik er vores mission at hjælpe dig med at fremhæve din naturlige skønhed på en sikker og professionel måde. 
+                    Uanset om du ønsker en <b>Botox-behandling</b>, <b>filler</b>, <b>skinbooster</b> eller andre
+                    æstetiske forbedringer, er du i kyndige hænder hos vores specialuddannede behandlere.
+                    Hos DK Skønhedsklinik er vores mission at hjælpe dig med at fremhæve din naturlige skønhed på en
+                    sikker og professionel måde.
                 </p>
 
                 <p>
                     Vi tror på, at skønhed ikke handler om forandring, men om at fremhæve de træk, der gør dig unik.
-                    Vores behandlinger er skræddersyet til den enkelte kunde, og vi lægger stor vægt på at skabe et <b>harmonisk</b> 
+                    Vores behandlinger er skræddersyet til den enkelte kunde, og vi lægger stor vægt på at skabe et
+                    <b>harmonisk</b>
                     og <b>naturligt</b> udseende, der passer til din ansigtsform og dine ønsker.
                 </p>
 
@@ -85,42 +90,53 @@ import { useHead } from '@unhead/vue'
 
 
 useHead({
-  title: 'Om os – DK Skønhedsklinik (lægebehandlede behandlinger)',
-  meta: [
-    { name: 'description', content: 'Lær klinikken og vores ansvarlige læge at kende. Naturlige, harmoniske resultater i Vejle og Esbjerg.' },
-    { property: 'og:title', content: 'Om DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Ekspertise, tryghed og kvalitet i hver behandling.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: 'https://dsklinik.dk/og/about.jpg' },
-    { name: 'twitter:image', content: 'https://dsklinik.dk/og/about.jpg' },
-    { property: 'og:url', content: 'https://dsklinik.dk/omos' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'robots', content: 'index, follow' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://dsklinik.dk/omos' }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "Om DK Skønhedsklinik",
-        "url": "https://dsklinik.dk/omos",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "Arash Bagheri",
-          "jobTitle": "Læge",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "DK Skønhedsklinik",
-            "url": "https://dsklinik.dk/"
-          }
+    title: 'Om os – DK Skønhedsklinik (lægebehandlede behandlinger)',
+    meta: [
+        { name: 'description', content: 'Lær klinikken og vores ansvarlige læge at kende. Naturlige, harmoniske resultater i Vejle og Esbjerg.' },
+        { property: 'og:title', content: 'Om DK Skønhedsklinik' },
+        { property: 'og:description', content: 'Ekspertise, tryghed og kvalitet i hver behandling.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image', content: 'https://dsklinik.dk/og/about.jpg' },
+        { name: 'twitter:image', content: 'https://dsklinik.dk/og/about.jpg' },
+        { property: 'og:url', content: 'https://dsklinik.dk/omos' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'robots', content: 'index, follow' }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://dsklinik.dk/omos' }
+    ],
+    script: [
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "AboutPage",
+                "name": "Om DK Skønhedsklinik",
+                "url": "https://dsklinik.dk/omos",
+                "mainEntity": {
+                    "@type": "Person",
+                    "name": "Arash Bagheri",
+                    "jobTitle": "Læge",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "DK Skønhedsklinik",
+                        "url": "https://dsklinik.dk/"
+                    }
+                }
+            })
+        },
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://dsklinik.dk/" },
+                    { "@type": "ListItem", "position": 2, "name": "Om os", "item": "https://dsklinik.dk/omos" }
+                ]
+            })
         }
-      })
-    }
-  ]
+    ]
 })
 
 
@@ -137,19 +153,19 @@ defineProps({
 
 
 .txt {
-    h1{
+    h1 {
         color: var(--quaternary-color) !important;
     }
 }
 
- .bg-img {
+.bg-img {
     padding-left: 0 !important;
-  }
+}
 
 @media only screen and (max-width: 620px) {
-  #app .bg-img .BannerPng p {
-    color: #000000 !important;
-  }
+    #app .bg-img .BannerPng p {
+        color: #000000 !important;
+    }
 }
 
 
@@ -158,6 +174,7 @@ defineProps({
     justify-content: space-between;
     width: 100%;
     padding: 80px 15% 0 15%;
+
     div {
         width: 50%;
 
@@ -177,7 +194,7 @@ defineProps({
         }
     }
 
-    .Bannertxt{
+    .Bannertxt {
         padding-left: 5%;
     }
 
@@ -212,18 +229,20 @@ defineProps({
 }
 
 .Multimediedesigner {
-  max-height: 763px;
-  .txt{
-    width: 45% !important;
-  }
+    max-height: 763px;
+
+    .txt {
+        width: 45% !important;
+    }
 }
 
-.VIKING-image{
+.VIKING-image {
     position: relative;
     overflow: hidden;
     width: 50vw !important;
     border-radius: 10px;
-    img{
+
+    img {
         min-height: 100%;
         height: 100%;
         max-width: none;
@@ -249,11 +268,11 @@ defineProps({
 }
 
 @media only screen and (max-width: 2000px) {
-    .VIKING-image{
-    img{
-        left: -150px;
+    .VIKING-image {
+        img {
+            left: -150px;
+        }
     }
-}
 }
 
 @media only screen and (max-width: 1950px) {
@@ -337,13 +356,16 @@ defineProps({
     .bg-img {
         height: 90vh !important;
     }
+
     .Multimediedesigner {
         max-height: unset !important;
     }
-    .VIKING-image{
+
+    .VIKING-image {
         overflow: unset;
         width: 70vw !important;
-        img{
+
+        img {
             left: 0 !important;
             width: 100% !important;
             height: auto !important;
@@ -387,15 +409,17 @@ defineProps({
 }
 
 @media only screen and (max-width: 1120px) {
-  .Multimediedesigner .txt {
-    width: 90vw !important;
-  }
-  .VIKING-image {
-    width: 85vw !important;
-  }
-  .OmKlinik {
-    padding: 40px 5% 40px 5% !important;
-  }
+    .Multimediedesigner .txt {
+        width: 90vw !important;
+    }
+
+    .VIKING-image {
+        width: 85vw !important;
+    }
+
+    .OmKlinik {
+        padding: 40px 5% 40px 5% !important;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -452,13 +476,14 @@ defineProps({
         }
     }
 
-    .VIKING-image{
-    position: relative;
-    overflow: hidden;
-    width: 85vw !important;
-    max-height: 700px;
-    height: 700px;
-        img{
+    .VIKING-image {
+        position: relative;
+        overflow: hidden;
+        width: 85vw !important;
+        max-height: 700px;
+        height: 700px;
+
+        img {
             min-height: 100%;
             height: 100% !important;
             max-height: 100% !important;
@@ -470,8 +495,8 @@ defineProps({
 }
 
 @media only screen and (max-width: 740px) {
-    .VIKING-image{
-        img{
+    .VIKING-image {
+        img {
             left: -150px !important;
         }
     }
@@ -497,9 +522,10 @@ defineProps({
         }
     }
 
-    .VIKING-image{
+    .VIKING-image {
         width: 90vw !important;
-        img{
+
+        img {
             left: -250px !important;
         }
     }
@@ -518,8 +544,8 @@ defineProps({
         }
     }
 
-    .VIKING-image{
-        img{
+    .VIKING-image {
+        img {
             left: -350px !important;
         }
     }
@@ -598,11 +624,9 @@ defineProps({
     }
 }
 
-.OmOsBannerDiv{
+.OmOsBannerDiv {
     h1 {
         color: #fff !important;
     }
 }
-
-
 </style>

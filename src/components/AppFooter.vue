@@ -1,193 +1,156 @@
 <template>
-    <footer>
-        <div class="footer">
-          <div>
-            <h1>Friskhed og skønhed – din naturlige vej til selvtillid</h1>
-            <div class="line"></div>
-            <div class="kontakt">
-                <h2>Kontakt os</h2>
-                <b>Skriv direkte på Facebook-Insgragram eller send en SMS</b>
-            </div>
-          </div>
-          <div class="footer-info">
-            <div class="mail">
-              <b>© 2025. Designet af Behdin Bagheri - Alle rettigheder forbeholdes</b>
-            </div>
-            <div class="social-medier">
-              <b>Find os på de sociale medier:</b>
-              <div class="footer-icon">
-                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"><img class="icon facebook" src="../assets/icons/Facebook_Logo_Primary.webp" width="23px" height="23px" /></a>
-                <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"><img id="first-icon" class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="23px" height="23px"></a>
-              </div>
-            </div>
-          </div>
+  <footer class="site-footer">
+    <div class="footer">
+      <!-- تیتر کوتاه و خط جداکننده -->
+      <div class="footer-top">
+        <h2 class="footer-heading">Friskhed og skønhed – din naturlige vej til selvtillid</h2>
+        <div class="line"></div>
       </div>
-    </footer>
+
+      <!-- شبکه‌ی چهاربخشی -->
+      <div class="footer-grid" role="navigation" aria-label="Footer navigation">
+
+        <!-- Kontakt -->
+        <section class="footer-section">
+          <h3 class="footer-title">Kontakt os</h3>
+          <ul class="footer-list">
+            <li><a href="sms:+4553503750" aria-label="Send en SMS">SMS: +45 53 50 37 50</a></li>
+            <li><a href="mailto:dr_arash_bagheri@yahoo.com" aria-label="Send en e-mail">Email:
+                dr_arash_bagheri@yahoo.com</a></li>
+            <li class="footer-socials" aria-label="Sociale medier">
+              <p>Skriv til os dirkete på vores sociale medier</p>
+              <div class="footer-socials-links">
+                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook">
+                  <img class="icon" src="../assets/icons/Facebook_Logo_Primary.webp" width="24" height="24"
+                    alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram">
+                  <img class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="24" height="24"
+                    alt="Instagram">
+                </a>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Åbningstider -->
+        <section class="footer-section">
+          <h3 class="footer-title">Åbningstider</h3>
+          <ul class="footer-list">
+            <li>Man–Fre: 17:00 – 20:00</li>
+            <li>Lør–Søn: 11:00 – 18:00</li>
+          </ul>
+        </section>
+
+        <!-- Behandlinger -->
+        <section class="footer-section">
+          <h3 class="footer-title">Behandlinger</h3>
+          <ul class="footer-list">
+            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li>
+            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">Filler</router-link></li>
+            <li><router-link
+                :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">Skinbooster</router-link></li>
+            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'prp' } }">PRP</router-link></li>
+            <li><router-link
+                :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">Mesotherapy</router-link></li>
+            <li><router-link
+                :to="{ name: 'behandling-dynamic', params: { type: 'microneedling' } }">Microneedling</router-link></li>
+          </ul>
+        </section>
+
+        <!-- Adresser -->
+        <section class="footer-section">
+          <h3 class="footer-title">Adresser</h3>
+
+          <address class="footer-list" itemscope itemtype="https://schema.org/PostalAddress">
+            <a class="addr-link" href="https://maps.google.com/?q=Havnegade 6, 6700 Esbjerg" target="_blank"
+              rel="noopener noreferrer" aria-label="Åbn på Google Maps: Havnegade 6, 6700 Esbjerg">
+              <span itemprop="addressLocality">Esbjerg</span>
+              <span class="postal" itemprop="postalCode">&nbsp;6700</span>
+              &nbsp;—&nbsp;
+              <span itemprop="streetAddress">Havnegade 6</span>
+            </a>
+            <meta itemprop="addressCountry" content="DK">
+          </address>
+
+          <address class="footer-list" itemscope itemtype="https://schema.org/PostalAddress">
+            <a class="addr-link" href="https://maps.google.com/?q=Søndergade 50, 7100 Vejle" target="_blank"
+              rel="noopener noreferrer" aria-label="Åbn på Google Maps: Søndergade 50, 7100 Vejle">
+              <span itemprop="addressLocality">Vejle</span>
+              <span class="postal" itemprop="postalCode">&nbsp;7100</span>
+              &nbsp;—&nbsp;
+              <span itemprop="streetAddress">Søndergade 50</span>
+            </a>
+            <meta itemprop="addressCountry" content="DK">
+          </address>
+        </section>
+
+      </div>
+
+      <!-- ردیف انتهایی -->
+      <div class="footer-bottom">
+        <p>© 2025 DK Skønhedsklinik — Designet af Behdin Bagheri. Alle rettigheder forbeholdes.</p>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <style lang="scss" scoped>
-    
+.site-footer .footer {
+  background: #153655 !important;
+  color: #fff;
+  padding: 50px 8% 40px 8%;
+}
 
-    footer{
-      h1, h2{
-        font-size: 35px !important;
-      }
-    }
+/* Heading + divider */
+.footer-top { margin-bottom: 24px; }
+.footer-heading { margin: 0 0 16px; font-size: 28px; line-height: 1.3; }
+.line { border: 0; height: 1px; background: rgba(255,255,255,.2); max-width: 720px; margin: 40px 0; }
 
-    .footer{
-    background: #153655 !important;
-    height: auto;
-    padding: 50px 8% 40px 8%;
-    color: #fff;
-    .line{
-        content: "";
-        background: var(--titleBanner-color);
-        height: 1px;
-        margin-left: 0 !important;
-    }
-    .kontakt{
-      h2{
-        margin: 0 0 10px 0;
-      }
-      b{
-        font-size: 13px;
-      }
-    }
-    .footer-info{
-      display: flex;
-      margin-top: 50px;
-      justify-content: space-between;
-      .mail{
-        b{
-          font-size: 12px;
-        }
-      }
-      .social-medier{
-        display: flex;
-        align-items: flex-end;
-        a{
-          display: flex;
-          height: 33px;
-          width: auto;
-          img{
-            width: 100%;
-            max-width: 33px !important;
-            max-height: 33px !important;
-            height: auto;
-          }
-        }
-        .footer-icon{
-          display: flex;
-          align-items: flex-end;
-          height: 16px;
-          margin-left: 20px;
-          img{ padding: 0 8px;
-          }
-        }
-      }
-    }
-    .icon:hover{
-      opacity: 0.5;
-    }
-    .icon:visited{
-    opacity: 0.5;
-    }
-    .icon:active{
-    opacity: 0.5;
-    }
-  }
+/* Grid (4 cols → responsive) */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
 
+/* Section titles */
+.footer-title { font-size: 18px; margin: 0 0 12px; }
 
-  @media only screen and (max-width: 1120px){
-    .footer{
-      h1{
-        font-size: 30px;
-        margin-bottom: 15px !important;
-      }
-    }
-    .line{
-        width: 90% !important;
-    }
-    .footer-info{
-      flex-direction: column;
-      height: 120px;
-    }
+/* Lists & links (shared) */
+.footer-list { list-style: none; padding: 0; margin: 0; }
+.footer-list li { margin: 10px 0; }
+.footer-list a { color: #fff; text-decoration: none; opacity: .95; }
+.footer-list a:hover { opacity: .7; text-decoration: underline; }
 
-    footer{
-      h1, h2 {
-      padding-left: 0 !important;
-      }
-      .line{
-        margin-left: 0 !important;
-      }
-    }
-  }
+/* Socials */
+.footer-socials { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.footer-socials .icon { display: block; width: 30px; height: 30px; transition: opacity .2s; }
+.footer-socials .icon:hover { opacity: .7; }
+.footer-socials p { margin: 0 !important; }
+.footer-socials-links { display: flex; gap: 20px; }
 
-  @media only screen and (max-width: 700px){
-    .footer-info{
-      .mail{
-        b:first-child{
-          padding-bottom: 10px;
-        }
-      }
-      .social-medier{
-        display: flex;
-        align-items: flex-start !important;
-      }
-    }
-  }
+/* Addresses */
+.footer-section address.footer-list {
+  display: block;
+  margin: 10px 0;
+  font-style: normal; /* neutralize <address> italic */
+}
+.footer-section address.footer-list + address.footer-list { margin-top: 12px; }
+.footer-section .addr-link { display: inline-block; } /* whole line clickable */
 
-  @media only screen and (max-width: 660px){
-    .footer{
-       h1{
-        font-size: 25px;
-        margin-bottom: 15px !important;
-        padding: 0 0 0 0 !important;
-      }
-      h2{
-        font-size: 20px;
-      }
-      b{
-        font-size: 14px !important;
-      }
-      .kontakt[data-v-fdb56dc8] {
-        margin-top: 30px;
-      }
-    }
+/* Bottom row */
+.footer-bottom { margin-top: 36px; font-size: 12px; opacity: .9; }
 
-    footer{
-      h1, h2{
-        font-size: 24px !important;
-      }
-    }
-
-    .line {
-      margin:
-        20px auto;
-      }
-    
-
-    .footer .footer-info .social-medier .footer-icon[data-v-fdb56dc8] {
-      height: auto;
-    }
-    .social-medier{
-      flex-direction: column;
-      justify-content: space-between;
-      margin-top: 30px;
-      .footer-icon{
-        margin-left: 0 !important;
-        margin-top: 20px;
-      }
-      #first-icon{
-        padding-left: 0;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 378px){
-    .footer{
-      padding: 50px 10% !important;
-      width: 80vw;
-    }
-  }
+/* Responsive */
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .footer-heading { font-size: 26px !important; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+}
 </style>

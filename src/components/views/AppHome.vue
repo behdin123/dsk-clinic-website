@@ -257,17 +257,17 @@ import { useHead } from '@vueuse/head'
 import AppBooking from '../../components/AppBooking.vue';
 
 useHead({
-  title: 'DK Skønhedsklinik | Botox & Filler i Esbjerg og Vejle (lægebehandlet)',
+  title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
   meta: [
-    { name: 'description', content: 'Botox, filler, PRP, Skinbooster og mere – udført af erfaren læge. Naturlige resultater og tryghed. Book gratis forundersøgelse i Esbjerg og Vejle.' },
+    { name: 'description', content: 'rynkebehandling, filler, PRP, Skinbooster og mere – udført af erfaren læge. Naturlige resultater og tryghed. Book gratis forundersøgelse i Esbjerg og Vejle.' },
     { property: 'og:title', content: 'DK Skønhedsklinik – lægebehandlede skønhedsbehandlinger' },
     { property: 'og:description', content: 'Naturlige og harmoniske resultater. Book gratis forundersøgelse i dag.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://dsklinik.dk/' },
     { property: 'og:image', content: 'https://dsklinik.dk/og/home.webp' },
-    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' }, 
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
-    { property: 'og:locale', content: 'da_DK' },                       
+    { property: 'og:locale', content: 'da_DK' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'robots', content: 'index, follow' }
   ],
@@ -277,12 +277,20 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      // اسکیما Local/MedicalBusiness مخصوص Home
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "MedicalBusiness",
+        "@id": "https://dsklinik.dk/#org",
         "name": "DK Skønhedsklinik",
         "url": "https://dsklinik.dk/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dsklinik.dk/assets/images/logo_blue.aacd9554.svg"
+        },
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=100054595142567",
+          "https://www.instagram.com/dk_skonhedsklinik/"
+        ],
         "telephone": "+45 53 50 37 50",
         "email": "eskonhed@gmail.com",
         "address": {
@@ -292,13 +300,13 @@ useHead({
           "postalCode": "6700",
           "addressCountry": "DK"
         },
-        "areaServed": ["Esbjerg","Vejle","Danmark"],
+        "areaServed": ["Esbjerg", "Vejle", "Danmark"],
         "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens":"10:00", "closes":"18:00" }
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "18:00" }
         ],
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=100054595142567",
-          "https://www.instagram.com/dk_skonhedsklinik/"
+        "hasMap": [
+          "https://maps.google.com/?q=Havnegade 6, 6700 Esbjerg",
+          "https://maps.google.com/?q=Søndergade 50, 7100 Vejle"
         ]
       })
     }
@@ -607,27 +615,32 @@ defineProps({
 
 
 /* تصویر هیرو به‌صورت المان واقعی */
-.hero-picture { 
+.hero-picture {
   position: absolute;
-  inset: 0;           /* top:0 right:0 bottom:0 left:0 */
-  z-index: 0;         /* پشت همه */
+  inset: 0;
+  /* top:0 right:0 bottom:0 left:0 */
+  z-index: 0;
+  /* پشت همه */
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;     /* CLS کمتر */
+  display: block;
+  /* CLS کمتر */
 }
 
 /* مطمئن شو کانتینر زمینه نسبی دارد */
 .bg-img {
-  position: relative; /* اگر نبود، اضافه کن */
+  position: relative;
+  /* اگر نبود، اضافه کن */
 }
 
 /* Overlay قبلی بمانَد ولی z-index منطقی باشد */
 .bg-img::before {
-  z-index: 1;         /* بالای تصویر، زیر متن */
+  z-index: 1;
+  /* بالای تصویر، زیر متن */
 }
 
 /* متن‌ها بالاتر از اورلی */
@@ -1125,8 +1138,8 @@ defineProps({
     padding: 40px 0 0 0 !important;
   }
 
-  h2{
-      margin: 0 !important
+  h2 {
+    margin: 0 !important
   }
 
   .info {
@@ -1612,6 +1625,7 @@ defineProps({
 
 @media only screen and (max-width: 620px) {
   #app .bg-img {
+
     h1,
     h2,
     p {
@@ -1731,6 +1745,7 @@ defineProps({
 
   .mobile-show {
     margin-top: 170px !important;
+
     p {
       width: 90% !important;
     }
@@ -1902,7 +1917,7 @@ defineProps({
   text-align: center;
   font-size: 40px;
   padding: 50px 0 0 0;
-  margin-top: 0!important;
+  margin-top: 0 !important;
   color: var(--titleBanner-color) !important;
 }
 </style>

@@ -205,7 +205,7 @@ document.addEventListener("click", (event) => {
   flex-direction: column;
   padding-left: 25px;
   margin-left: 70px;
-  margin-top: 5px;
+  padding-top: 5px;
 }
 
 

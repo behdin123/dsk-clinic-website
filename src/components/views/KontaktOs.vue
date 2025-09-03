@@ -68,56 +68,70 @@
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Kontakt – DK Skønhedsklinik (Vejle & Esbjerg)',
-  meta: [
-    { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Ring på +45 53 50 37 50 eller skriv til dr_arash_bagheri@yahoo.com for gratis forundersøgelse.' },
-    { property: 'og:title', content: 'Kontakt DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Har du spørgsmål? Kontakt os for rådgivning og gratis forundersøgelse.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: 'https://dsklinik.dk/og/contact.jpg' },
-    { name: 'twitter:image', content: 'https://dsklinik.dk/og/contact.jpg' },
-    { property: 'og:url', content: 'https://dsklinik.dk/kontaktos' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'robots', content: 'index, follow' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://dsklinik.dk/kontaktos' }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Kontakt DK Skønhedsklinik",
-        "url": "https://dsklinik.dk/kontaktos",
-        "about": {
-          "@type": "Organization",
-          "name": "DK Skønhedsklinik",
-          "url": "https://dsklinik.dk/",
-          "contactPoint": [{
-            "@type": "ContactPoint",
-            "telephone": "+45 53 50 37 50",
-            "contactType": "customer service",
-            "areaServed": "DK",
-            "availableLanguage": ["da","en"]
-          }],
-          "email": "dr_arash_bagheri@yahoo.com",
-          "address": [{
-            "@type": "PostalAddress",
-            "addressLocality": "Vejle",
-            "addressCountry": "DK"
-          },{
-            "@type": "PostalAddress",
-            "streetAddress": "Havnegade 6",
-            "addressLocality": "Esbjerg",
-            "postalCode": "6700",
-            "addressCountry": "DK"
-          }]
+    title: 'Kontakt – DK Skønhedsklinik (Vejle & Esbjerg)',
+    meta: [
+        { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Skriv en sms til os +45 53 50 37 50 eller direkte på vore sociale medier for en gratis forundersøgelse.' },
+        { property: 'og:title', content: 'Kontakt DK Skønhedsklinik' },
+        { property: 'og:description', content: 'Har du spørgsmål? Kontakt os for rådgivning og gratis forundersøgelse.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image', content: 'https://dsklinik.dk/og/contact.jpg' },
+        { name: 'twitter:image', content: 'https://dsklinik.dk/og/contact.jpg' },
+        { property: 'og:site_name', content: 'DK Skønhedsklinik' },
+        { property: 'og:locale', content: 'da_DK' },
+        { property: 'og:url', content: 'https://dsklinik.dk/kontaktos' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'robots', content: 'index, follow' }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://dsklinik.dk/kontaktos' }
+    ],
+    script: [
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "name": "Kontakt DK Skønhedsklinik",
+                "url": "https://dsklinik.dk/kontaktos",
+                "about": {
+                    "@type": "Organization",
+                    "name": "DK Skønhedsklinik",
+                    "url": "https://dsklinik.dk/",
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+45 53 50 37 50",
+                        "contactType": "customer service",
+                        "areaServed": "DK",
+                        "availableLanguage": ["da", "en"]
+                    }],
+                    "email": "dr_arash_bagheri@yahoo.com",
+                    "address": [{
+                        "@type": "PostalAddress",
+                        "addressLocality": "Vejle",
+                        "addressCountry": "DK"
+                    }, {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Havnegade 6",
+                        "addressLocality": "Esbjerg",
+                        "postalCode": "6700",
+                        "addressCountry": "DK"
+                    }]
+                }
+            })
+        },
+        // 👇 این را اضافه کن
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://dsklinik.dk/" },
+                    { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://dsklinik.dk/kontaktos" }
+                ]
+            })
         }
-      })
-    }
-  ]
+    ]
 })
 
 
@@ -525,5 +539,4 @@ main {
         right: unset !important;
     }
 }
-
 </style>
