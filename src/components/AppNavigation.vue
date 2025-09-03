@@ -570,5 +570,11 @@ input:checked+.slider:before {
   .kontakt-link {
     margin: 45px 0 !important;
   }
+
+  .sticky {
+  a {
+    color: #fff !important;
+  }
+}
 }
 </style>
