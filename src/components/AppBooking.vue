@@ -5,17 +5,13 @@
   </button>
 
   <!-- Modal med iframe -->
-  <div v-if="showModal" class="custom-modal" @click.self="showModal = false">
+  <div v-if="showModal" class="custom-modal" role="dialog" aria-modal="true" aria-label="Booking"
+    @click.self="showModal = false">
     <div class="custom-modal-content">
-      <span class="close-btn" @click="showModal = false">&times;</span>
+      <span type="button" class="close-btn" aria-label="Luk" @click="showModal = false">&times;</span>
       <iframe
         src="https://dksknhedsklinik.app4.geckobooking.dk/site/index.php?icCode=64c857a01938e8ee26f9d9f8fca49125b10711&dTpl=1"
-        width="100%"
-        height="300"
-        frameborder="0"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
+        width="100%" height="300" frameborder="0" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 </template>
@@ -24,7 +20,7 @@
 // eslint-disable-next-line no-undef
 const fbq = window.fbq;
 
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
 const showModal = ref(false)
 
@@ -40,6 +36,30 @@ function handleBookingClick() {
   })
 }
 
+// 🔔 لیسنر برای باز کردن مودال از هرجای سایت (مثلاً CTA منوی موبایل)
+const openFromEvent = () => {
+  if (showModal.value) return  
+  showModal.value = true
+  window.gtagEvent?.('booking_modal_open', { component: 'AppBooking', source: 'nav_cta' })
+}
+
+// (اختیاری) اگر جایی خواستی مودال را با ایونت ببندی
+const closeFromEvent = () => { showModal.value = false }
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('open-booking', openFromEvent)
+    window.addEventListener('close-booking', closeFromEvent)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('open-booking', openFromEvent)
+    window.removeEventListener('close-booking', closeFromEvent)
+  }
+})
+
 watch(showModal, (open) => {
   window.dispatchEvent(new CustomEvent('toggle-nav', { detail: open }))
   window.gtagEvent(open ? 'booking_modal_open' : 'booking_modal_close', {
@@ -51,8 +71,6 @@ watch(showModal, (open) => {
 
 
 <style>
-
-
 .general_button {
   width: 250px !important;
   font-size: 16px;
@@ -117,5 +135,3 @@ iframe {
   border: none;
 }
 </style>
-
-

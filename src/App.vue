@@ -13,6 +13,9 @@
       </button>
     </div>
 
+    <!-- خود کامپوننت رزرو -->
+    <AppBooking />
+
     <div :class="[{ 'hide-nav': modalOpen }]">
       <AppFooter />
     </div>
@@ -24,6 +27,7 @@
 <script setup>
 import AppNavigation from '@/components/AppNavigation.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import AppBooking from '@/components/AppBooking.vue'
 import { ref, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
 
 const darkMode = ref(false)
@@ -99,6 +103,8 @@ const toggleDarkMode = () => {
 
 
 <style lang="scss">
+
+
 :root {
   /* Generelle fontstørrelser for forskellige skærmstørrelser */
   --p-font-size-iphone: 15px;

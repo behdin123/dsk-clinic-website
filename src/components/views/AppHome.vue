@@ -27,7 +27,7 @@
 
       <div class="mobile-show">
         <p data-aos="fade-right" data-aos-duration="3000">
-          💉 Ekspert i Botox og filler
+          💉 Ekspert i rynkebehandling og filler
         </p>
         <p data-aos="fade-right" data-aos-duration="3000">
           💙 Naturlige og harmoniske resultater
@@ -38,7 +38,10 @@
       </div>
 
       <div class="booking-button">
-        <AppBooking />
+        <button class="general_button" type="button" @click="openBookingFromHero"
+          aria-label="Book gratis forundersøgelse">
+          Book nu
+        </button>
       </div>
 
 
@@ -254,7 +257,6 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@vueuse/head'
-import AppBooking from '../../components/AppBooking.vue';
 
 useHead({
   title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
@@ -312,6 +314,12 @@ useHead({
     }
   ]
 })
+
+const openBookingFromHero = () => {
+  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: 'home_hero' } }))
+  // (اختیاری) آنالیتیکس:
+  window.gtagEvent?.('booking_click', { placement: 'home_hero', component: 'AppHome' })
+}
 
 const currentIndex = ref(0); // ایندکس فعلی اسلاید
 let slides = null;
@@ -408,31 +416,6 @@ onMounted(() => {
   autoPlaySlides();
 });
 
-
-
-
-
-
-
-const showMoreText = ref(false);
-const showMoreTextSecond = ref(false); // Ny tilstand for den anden tekst
-const isScreenLarge = ref(window.innerWidth >= 1800);
-
-const handleResize = () => {
-  isScreenLarge.value = window.innerWidth >= 1800;
-  if (isScreenLarge.value) {
-    showMoreText.value = true;
-    showMoreTextSecond.value = true; // Sikre begge tekster vises på store skærme
-  } else {
-    showMoreText.value = false;
-    showMoreTextSecond.value = false;
-  }
-};
-
-onMounted(() => {
-  window.addEventListener('resize', handleResize);
-  handleResize(); // Initial check
-});
 
 defineProps({
   dark: {},
