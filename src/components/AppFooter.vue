@@ -105,7 +105,20 @@
 }
 
 /* Heading + divider */
-.footer-top { margin-bottom: 24px; }
+.footer-top { 
+  margin-bottom: 24px; 
+  h2{
+    padding-left: 0 !important;
+  }
+}
+
+.footer-section{
+  .footer-title{
+    padding-left: 0 !important;
+  }
+}
+
+
 .footer-heading { margin: 0 0 16px; font-size: 28px; line-height: 1.3; }
 .line { border: 0; height: 1px; background: rgba(255,255,255,.2); max-width: 720px; margin: 40px 0; }
 

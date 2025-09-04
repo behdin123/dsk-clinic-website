@@ -10,9 +10,9 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://dsklinik.dk/$1 [R=301,L]
 
 # 2) ریدایرکت مسیرهای ناسازگار به lowercase
-RedirectMatch 301 (?i)^/OmOs/?$ /omos
-RedirectMatch 301 (?i)^/KontaktOs/?$ /kontaktos
-RedirectMatch 301 (?i)^/Behandlinger/(.*)$ /behandlinger/$1
+RewriteRule ^OmOs/?$                 /omos [R=301,L]
+RewriteRule ^KontaktOs/?$            /kontaktos [R=301,L]
+RewriteRule ^Behandlinger/(.*)$      /behandlinger/$1 [R=301,L]
 
 # 3) (SPA history mode) بازنویسی به index.html بعد از ریدایرکت‌ها
 RewriteCond %{REQUEST_FILENAME} !-f

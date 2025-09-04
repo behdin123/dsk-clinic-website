@@ -289,6 +289,13 @@ watch(
   display: block;
 }
 
+@media (max-width:1500px) {
+  .logo-img {
+    width: 140px !important;
+    height: auto;
+  }
+}
+
 /* ------- Mobile only ------- */
 @media (max-width:1000px) {
   .links-desktop {

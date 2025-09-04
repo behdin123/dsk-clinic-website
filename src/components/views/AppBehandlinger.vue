@@ -4,7 +4,7 @@
     :anesthesia="behandlingData.anesthesia" :durability="behandlingData.durability" :downtime="behandlingData.downtime"
     :consultation="behandlingData.consultation" :price="behandlingData.price" :priceText="behandlingData.priceText"
     :price2="behandlingData.price2" :priceText2="behandlingData.priceText2" :price3="behandlingData.price3"
-    :priceText3="behandlingData.priceText3" />
+    :priceText3="behandlingData.priceText3" :faqs="faqs" />
 </template>
 
 <script setup>
@@ -170,12 +170,60 @@ const canonical = computed(() => `${SITE_URL}/behandlinger/${currentType.value |
 // FAQهای نمونه (می‌توانی برای همه تکمیل کنی)
 const FAQ_BANK = {
   botox: [
-    { q: 'Hvor længe holder botox?', a: 'Typisk 3–6 måneder afhængigt af område og metabolisme.' },
-    { q: 'Hvornår ses effekten?', a: 'Den fulde effekt ses efter ca. 14 dage.' }
+    { q: 'Hvor længe holder botox?', a: 'Typisk <b>3–4 måneder</b> (nogle gange op til 6). Varighed afhænger af område, muskelstyrke og metabolisme.' },
+    { q: 'Hvornår ses effekten af botox?', a: 'De første ændringer ses ofte efter <b>3–5 dage</b>, og <b>fuld effekt</b> ses typisk efter <b>10–14 dage</b>.' },
+    { q: 'Gør botox ondt, og bruges bedøvelse?', a: 'De fleste oplever kun let stik. Hos os er der <b>ingen bedøvelse</b> nødvendig ved standardområder.' },
+    { q: 'Er der nedetid efter botox?', a: 'Som udgangspunkt <b>ingen reel nedetid</b>. Lette røde prikker kan ses i <b>få timer</b>.' },
+    { q: 'Hvad bør jeg undgå efter behandlingen?', a: 'Undgå at gnide området, <b>ingen hård træning i ~24 timer</b> og undgå sauna samme dag.' },
+    { q: 'Kan botox bruges forebyggende?', a: 'Ja, regelmæssige behandlinger kan <b>forebygge dybere linjer</b> ved at dæmpe muskelaktiviteten.' },
+    { q: 'Hvem bør ikke få botox?', a: 'Gravide/ammande og personer med visse neuromuskulære sygdomme bør <b>undgå</b> behandlingen (aftales med lægen).' },
+    { q: 'Hvornår skal jeg til opfølgning?', a: 'Vi vurderer effekten efter <b>~14 dage</b> og kan justere dosen ved behov.' }
   ],
+
   filler: [
-    { q: 'Hvor længe holder filler?', a: 'Ca. 6–12 måneder afhængigt af produkt og område.' },
-    { q: 'Gør det ondt?', a: 'Vi bruger bedøvende creme for øget komfort.' }
+    { q: 'Hvor længe holder hyaluronsyre-filler?', a: 'Typisk <b>6–12 måneder</b> afhængigt af produkt og område; læber kortere, kinder længere.' },
+    { q: 'Ses resultatet med det samme?', a: 'Ja, resultatet er <b>øjeblikkeligt</b>, men den endelige form ses efter at hævelsen har lagt sig (få dage).' },
+    { q: 'Gør en fillerbehandling ondt?', a: 'Vi anvender <b>bedøvende creme</b> for øget komfort; mange produkter indeholder også lidokain.' },
+    { q: 'Kan filler opløses, hvis jeg fortryder?', a: 'Ja, hyaluronsyre-filler kan <b>opløses med hyaluronidase</b> af en læge/erfaren behandler.' },
+    { q: 'Nedetid og bivirkninger?', a: 'Let hævelse og blå mærker i <b>1–3 dage</b> er almindeligt. Undgå hård træning og sauna det første døgn.' },
+    { q: 'Er filler sikker?', a: 'Udført af erfaren læge er risikoen lav. Sjældne komplikationer (fx karpåvirkning) håndteres akut efter protokol.' },
+    { q: 'Hvem bør undgå filler?', a: 'Graviditet/amning, aktiv infektion i området eller kendt allergi over for indholdsstoffer.' }
+  ],
+
+  skinbooster: [
+    { q: 'Hvad er en skinbooster?', a: 'En tynd <b>hyaluronsyre</b>, der injiceres for at <b>fugte, udglatte og øge elasticiteten</b>—ikke for volumen.' },
+    { q: 'Hvor mange behandlinger anbefales?', a: 'Ofte et forløb på <b>2–3 sessioner</b> med 2–4 ugers mellemrum, derefter vedligehold.' },
+    { q: 'Hvornår ses resultatet?', a: 'Forbedringer i glød og fugt ses typisk efter <b>1–2 uger</b> og tiltager over nogle uger.' },
+    { q: 'Hvor længe holder effekten?', a: 'Som regel <b>6–12 måneder</b>, afhængigt af hudtilstand og produkt.' },
+    { q: 'Nedetid og ubehag?', a: 'Små papler/rødme i <b>1–2 dage</b> er normalt. <b>Ingen bedøvelse</b> nødvendig for de fleste.' },
+    { q: 'Passer skinbooster til alle hudtyper?', a: 'Ja, særligt ved <b>tør/mat hud</b> eller fine linjer. Vi tilpasser produktvalg til hudtype.' }
+  ],
+
+  prp: [
+    { q: 'Hvad er PRP?', a: 'PRP (platelet-rich plasma) er <b>dit eget blodplasma</b> koncentreret og injiceret for at stimulere <b>kollagen og heling</b>.' },
+    { q: 'Hvor mange PRP-behandlinger skal jeg have?', a: 'Et typisk forløb er <b>3–4 sessioner</b> med 4–6 uger imellem, herefter årlig vedligehold.' },
+    { q: 'Hvornår ses resultater?', a: 'Ofte efter <b>1–2 uger</b> for hudglød; gradvise forbedringer over uger-måneder.' },
+    { q: 'Hvor længe holder PRP?', a: 'Resultater kan vare <b>6–12 måneder</b> afhængigt af område og livsstil.' },
+    { q: 'Er der nedetid?', a: 'Let rødme/hævelse i <b>1–2 dage</b> er normalt. Ingen bedøvelse nødvendig for de fleste.' },
+    { q: 'Er PRP sikkert?', a: 'Da det er <b>autologt</b> (dit eget blod), er allergirisikoen meget lav. Blå mærker kan forekomme kortvarigt.' }
+  ],
+
+  mesotherapy: [
+    { q: 'Hvad er mesotherapy?', a: 'Mikroinjektioner af <b>vitaminer/antioxidanter</b> til overfladisk hudlag for glød og hydrering.' },
+    { q: 'Hvor mange sessioner anbefales?', a: 'Ofte <b>3–6 behandlinger</b> med 1–2 ugers mellemrum, derefter vedligehold hver 2.–3. måned.' },
+    { q: 'Hvornår ser jeg effekt?', a: 'Let forbedring i glød kan ses hurtigt, <b>1–2 uger</b> giver mere synlig forandring.' },
+    { q: 'Hvor længe holder det?', a: 'Typisk <b>3–12 måneder</b> afhængigt af protokol og hudtilstand.' },
+    { q: 'Nedetid og bivirkninger?', a: 'Små prikmærker/rødme og eventuelle blå mærker i <b>2–3 dage</b>. Evt. lokalbedøvelse ved behov.' },
+    { q: 'Hvem egner sig?', a: 'Velegnet ved <b>mat/tør hud</b> og fine linjer. Ikke ved aktiv infektion i området.' }
+  ],
+
+  microneedling: [
+    { q: 'Hvad hjælper microneedling på?', a: '<b>Akne-ar</b>, fine linjer, porer og ujævn tekstur via kontrollerede mikrokanaler og kollagenstimulering.' },
+    { q: 'Hvor mange behandlinger behøver jeg?', a: 'Ofte <b>3–6 sessioner</b> med 4–6 uger imellem afhængigt af mål og hudtilstand.' },
+    { q: 'Hvornår ses resultater?', a: 'Hudkvaliteten bedres gradvist; tydelig effekt ses ofte efter <b>4–6 uger</b> og forbedres videre måneder frem.' },
+    { q: 'Er der nedetid?', a: 'Rødme som solskoldning i <b>1–2 dage</b>, let afskalning kan forekomme. Brug <b>solbeskyttelse</b>.' },
+    { q: 'Gør microneedling ondt?', a: 'Vi anvender <b>lokalbedøvende creme</b>, så ubehaget er som regel mildt til moderat.' },
+    { q: 'Hvad skal jeg undgå efter behandlingen?', a: 'Undgå makeup, sauna og hård træning det første døgn. Brug skånsom rens og <b>SPF 30+</b> i dagene efter.' }
   ]
 }
 const faqs = computed(() => FAQ_BANK[currentType.value] || FAQ_BANK[FALLBACK])
@@ -183,7 +231,7 @@ const faqs = computed(() => FAQ_BANK[currentType.value] || FAQ_BANK[FALLBACK])
 
 
 // JSON-LD ها
-const BOOKING_URL = 'https://dksknhedsklinik.app4.geckobooking.dk/site/index.php?icCode=64c857a01938e8ee26f9d9f8fca49125b10711&dTpl=1'
+const BOOKING_URL = 'https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6'
  const procedureLd = computed(() => {
    const d = behandlingData.value
    return {
@@ -209,7 +257,10 @@ const faqLd = computed(() => ({
   mainEntity: faqs.value.map(item => ({
     '@type': 'Question',
     name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a }
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: Array.isArray(item.a) ? item.a.join('\n\n') : item.a
+    }
   }))
 }))
 

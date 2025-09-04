@@ -39,7 +39,8 @@
                 </div>
               </ul>
               <div class="prices">
-                <div class="from_price" :style="{ width: (priceTextWordCount > 3 || priceTextWordCount === 0) ? '70%' : '33%' }">
+                <div class="from_price"
+                  :style="{ width: (priceTextWordCount > 3 || priceTextWordCount === 0) ? '70%' : '33%' }">
                   <h6>{{ priceText }}</h6>
                   <div class="price"><span data-price="2500">{{ price }}</span> kr.</div>
                 </div>
@@ -61,6 +62,19 @@
       </div>
     </div>
   </div>
+
+  <section v-if="faqs.length" class="faq">
+    <h2 class="section-title">Ofte stillede spørgsmål om {{ title }}</h2>
+
+    <div class="faq-list">
+      <details v-for="(item, i) in faqs" :key="i" class="faq-item">
+        <summary class="faq-q">{{ item.q }}</summary>
+        <div class="faq-a">
+          <p v-for="(p, j) in (Array.isArray(item.a) ? item.a : [item.a])" :key="j" v-html="p"></p>
+        </div>
+      </details>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -87,11 +101,12 @@ const props = defineProps({
   price2: String,
   priceText2: String,
   price3: String,
-  priceText3: String
+  priceText3: String,
+  faqs: {
+     type: Array,
+     default: () => []
+   }
 })
-
-
-
 
 const priceTextWordCount = computed(() => {
   const text = props.priceText?.trim()
@@ -101,14 +116,6 @@ const priceTextWordCount = computed(() => {
 
 
 </script>
-
-
-
-
-
-
-
-
 
 
 <style lang="scss" scoped>
@@ -159,6 +166,7 @@ body {
 @media only screen and (max-width: 1650px) {
   #Main .bg-img {
     align-items: end !important;
+    padding-bottom: 66px !important;
   }
 }
 
@@ -604,6 +612,24 @@ button[type="submit"],
   padding-top: 20px !important;
 }
 
+/* FAQ styling*/
+.faq { padding: 150px 20px; background: #0f2740; color: #fff;}
+.faq .section-title { color: #fff !important; margin-top: 0; margin-bottom: 30px !important; }
+.faq-list { max-width: 900px; margin: 0 auto; }
+.faq-item { background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+.faq-q { cursor: pointer; padding: 14px 18px; font-weight: 700; }
+.faq-a { padding: 0 18px 14px; line-height: 1.6; }
+.faq-a a { color: #9ec5ff; text-decoration: underline; }
+.faq-item[open] .faq-q { background: rgba(255,255,255,0.07); }
+/* FAQ styling*/
+
+
+@media only screen and (max-width: 1550px) {
+  .faq { padding: 100px 20px !important; }
+}
+
+
+
 @media only screen and (max-width: 1120px) {
   .container {
     margin-top: 50px;
@@ -625,10 +651,6 @@ button[type="submit"],
   }
 
 }
-
-
-
-
 
 @media only screen and (max-width: 940px) {
   .bg-img {
