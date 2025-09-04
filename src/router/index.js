@@ -7,25 +7,17 @@ const CANONICAL_TYPES = [
 
 const routes = [
   { path: '/', name: 'home', component: AppHome },
-
-  // صفحهٔ لیست درمان‌ها (اگر نداری حذفش کن)
-  // { path: '/behandlinger', name: 'behandlinger', component: () => import('@/components/views/Behandlinger.vue') },
-
-  // یک Route داینامیک ولی canonical و کوچک
   {
-    // محدود کردن type به گزینه‌های مجاز با Regex:
     path: '/behandlinger/:type(botox|filler|skinbooster|prp|mesotherapy|microneedling)',
     name: 'behandling-dynamic',
     component: () => import('@/components/views/AppBehandlinger.vue'),
     // نرمال‌سازی prop
     props: route => ({ type: String(route.params.type || '').toLowerCase() }),
-    // سازگاری با لینک‌های قدیمیِ بزرگ‌حرف:
-    alias: ['/Behandlinger/:type']
   },
 
-  { path: '/omos', name: 'omos', component: () => import('@/components/views/OmOS.vue'), alias: ['/OmOS'] },
+  { path: '/omos', name: 'omos', component: () => import('@/components/views/OmOS.vue') },
 
-  { path: '/kontaktos', name: 'kontaktos', component: () => import('@/components/views/KontaktOs.vue'), alias: ['/KontaktOs'] }
+  { path: '/kontaktos', name: 'kontaktos', component: () => import('@/components/views/KontaktOs.vue') }
 ]
 
 const router = createRouter({
@@ -34,14 +26,12 @@ const router = createRouter({
   scrollBehavior(){ return { top: 0 } }
 })
 
-// گارد: مسیر را و پارامتر type را lowercase می‌کند و نامعتبرها را به /behandlinger می‌فرستد
+// همه مسیرها را lowercase کن
 router.beforeEach((to, from, next) => {
-  // ۱) کل مسیر را lowercase کن
   const lower = to.path.toLowerCase()
   if (to.path !== lower) {
     return next({ path: lower, query: to.query, hash: to.hash, replace: true })
   }
-
   // ۲) اگر در مسیر درمان‌ها هستیم، type را چک کن
   if (to.name === 'behandling-dynamic') {
     const type = String(to.params.type || '').toLowerCase()
@@ -70,13 +60,17 @@ router.afterEach((to) => {
     return
   }
 
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-    const page_location = window.location.origin + to.fullPath
-    window.gtag('event', 'page_view', {
-      page_title: document.title,
-      page_location,
-      page_path: to.fullPath
-    })
+  if (typeof window !== 'undefined') {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.origin + to.fullPath,
+        page_path: to.fullPath
+      })
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView')
+    }
   }
 })
 export default router;

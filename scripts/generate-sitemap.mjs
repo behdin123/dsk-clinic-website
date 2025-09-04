@@ -11,21 +11,35 @@ const routesJson = path.resolve(__dirname, '../src/seo/routes.public.json')
 const publicOut  = path.resolve(__dirname, '../public/sitemap.xml')
 const distOut    = path.resolve(__dirname, '../dist/sitemap.xml')
 
+const normalizePath = (p) => {
+  let s = (p || '/').trim()
+  if (!s.startsWith('/')) s = '/' + s
+  s = s.replace(/\/+$/, '') || '/'   // remove trailing slash (except root)
+  return s.toLowerCase()
+}
+
 const routes = JSON.parse(fs.readFileSync(routesJson, 'utf8'))
+
 const now = new Date().toISOString()
 
-const urls = routes.map(r => {
-  const loc = new URL((r.path || '/').replace(/\/+$/, '') || '/', SITE_URL).toString()
-  const changefreq = r.changefreq || 'monthly'
-  const priority = typeof r.priority === 'number' ? r.priority.toFixed(1) : '0.7'
-  return `
+const urls = routes
+  .map(r => ({
+    path: normalizePath(r.path),
+    changefreq: r.changefreq || 'monthly',
+    priority: typeof r.priority === 'number' ? r.priority : 0.7
+  }))
+  // dedupe by path
+  .filter((r, i, arr) => arr.findIndex(x => x.path === r.path) === i)
+  .map(r => {
+    const loc = new URL(r.path === '/' ? '/' : r.path, SITE_URL).toString()
+    return `
   <url>
     <loc>${loc}</loc>
     <lastmod>${now}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <changefreq>${r.changefreq}</changefreq>
+    <priority>${r.priority.toFixed(1)}</priority>
   </url>`
-}).join('')
+  }).join('')
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

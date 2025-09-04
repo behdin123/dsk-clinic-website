@@ -9,7 +9,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useHead } from '@vueuse/head'
+import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
@@ -122,12 +122,12 @@ const behandlinger = {
 
 // URL مطلق برای OG images
 const OG_IMAGES = {
-  botox: `${SITE_URL}/og/Botox.webp`,
-  filler: `${SITE_URL}/og/Filler.webp`,
-  skinbooster: `${SITE_URL}/og/Skinbooster.webp`,
-  prp: `${SITE_URL}/og/PRP.webp`,
-  mesotherapy: `${SITE_URL}/og/Mesotherapy.webp`,
-  microneedling: `${SITE_URL}/og/Microneedling.webp`,
+  botox: `${SITE_URL}/og/botox.webp`,
+  filler: `${SITE_URL}/og/filler.webp`,
+  skinbooster: `${SITE_URL}/og/skinbooster.webp`,
+  prp: `${SITE_URL}/og/prp.webp`,
+  mesotherapy: `${SITE_URL}/og/mesotherapy.webp`,
+  microneedling: `${SITE_URL}/og/microneedling.webp`,
   // fallback
   _default: `${SITE_URL}/og/home.webp`
 }
@@ -192,7 +192,7 @@ const BOOKING_URL = 'https://dksknhedsklinik.app4.geckobooking.dk/site/index.php
      name: d.title,
      description: d.description,
      url: canonical.value,
-     provider: { '@type': 'MedicalBusiness', name: 'DK Skønhedsklinik', url: SITE_URL },
+     provider: { '@type': 'MedicalClinic', name: 'DK Skønhedsklinik', url: SITE_URL },
      areaServed: 'Esbjerg, Vejle, Danmark',
      potentialAction: {
        '@type': 'ReserveAction',

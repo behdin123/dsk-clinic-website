@@ -256,23 +256,23 @@
 <script setup>
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
-import { useHead } from '@vueuse/head'
+import { useHead } from '@unhead/vue'
 import imgOmOs from '@/assets/OmOsBannerW.webp'
 import imgClinic from '@/assets/Clinic_consultation.webp'
 
 useHead({
   title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
   meta: [
-    { name: 'description', content: 'rynkebehandling, filler, PRP, Skinbooster og mere – udført af erfaren læge. Naturlige resultater og tryghed. Book gratis forundersøgelse i Esbjerg og Vejle.' },
+    { name: 'description', content: 'Rynkebehandling, filler, PRP og Skinbooster udført af erfaren læge. Naturlige resultater med fokus på tryghed. Book gratis forundersøgelse i Esbjerg og Vejle.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'da_DK' },
+    { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:title', content: 'DK Skønhedsklinik – lægebehandlede skønhedsbehandlinger' },
     { property: 'og:description', content: 'Naturlige og harmoniske resultater. Book gratis forundersøgelse i dag.' },
-    { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://dsklinik.dk/' },
     { property: 'og:image', content: 'https://dsklinik.dk/og/home.webp' },
-    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' },
-    { property: 'og:site_name', content: 'DK Skønhedsklinik' },
-    { property: 'og:locale', content: 'da_DK' },
     { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' },
     { name: 'robots', content: 'index, follow' }
   ],
   link: [
@@ -283,20 +283,13 @@ useHead({
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "@id": "https://dsklinik.dk/#org",
+        "@type": "MedicalClinic",
+        "@id": "https://dsklinik.dk/#clinic",
         "name": "DK Skønhedsklinik",
         "url": "https://dsklinik.dk/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://dsklinik.dk/assets/images/logo_blue.aacd9554.svg"
-        },
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=100054595142567",
-          "https://www.instagram.com/dk_skonhedsklinik/"
-        ],
         "telephone": "+45 53 50 37 50",
         "email": "eskonhed@gmail.com",
+        "logo": "https://dsklinik.dk/og/logo_blue.svg",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Havnegade 6",
@@ -305,12 +298,9 @@ useHead({
           "addressCountry": "DK"
         },
         "areaServed": ["Esbjerg", "Vejle", "Danmark"],
-        "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "18:00" }
-        ],
-        "hasMap": [
-          "https://maps.google.com/?q=Havnegade 6, 6700 Esbjerg",
-          "https://maps.google.com/?q=Søndergade 50, 7100 Vejle"
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=100054595142567",
+          "https://www.instagram.com/dk_skonhedsklinik/"
         ]
       })
     }

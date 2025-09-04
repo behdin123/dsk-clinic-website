@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createHead } from '@vueuse/head'   // ← اینجا تغییر
+import { createHead } from '@unhead/vue'
 import App from './App.vue'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
