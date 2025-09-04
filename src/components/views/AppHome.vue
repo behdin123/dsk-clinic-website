@@ -164,8 +164,8 @@
       </div>
 
       <div class="VIKING-image">
-        <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
-          src="../../assets/OmOsBannerW.webp" width="100%" height="auto"
+        <img class="first-img"
+          :src="imgOmOs" width="100%" height="auto"
           alt="Konsultation hos DK Skønhedsklinik i Esbjerg og Vejle" loading="lazy" decoding="async">
       </div>
     </div>
@@ -221,8 +221,8 @@
 
     <div class="container Multimediedesigner VIKING OmKlinik">
       <div class="VIKING-image">
-        <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
-          src="../../assets/Clinic_consultation_1.webp " width="100%" height="auto"
+        <img class="first-img"
+          :src="imgClinic" width="100%" height="auto"
           alt="Klinik-konsultation med erfaren læge" loading="lazy" decoding="async">
       </div>
       <div class="txt h1 h2 first-txt margin-left">
@@ -257,6 +257,8 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@vueuse/head'
+import imgOmOs from '@/assets/OmOsBannerW.webp'
+import imgClinic from '@/assets/Clinic_consultation.webp'
 
 useHead({
   title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
