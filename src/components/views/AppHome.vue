@@ -257,8 +257,8 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@unhead/vue'
-import imgOmOs from '@/assets/omosbanner.webp'
-import imgClinic from '@/assets/clinic_consultation.webp'
+import imgOmOs from '@/assets/OmOsBanner.webp'
+import imgClinic from '@/assets/Clinic_Consultation.webp'
 
 useHead({
   title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
