@@ -39,7 +39,7 @@
 
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
-                <img data-aos="fade-right" data-aos-duration="1000" data-aos-offset="400" class="first-img"
+                <img data-aos="fade-right" class="first-img"
                     src="../../assets/Clinic_consultation_2.webp " width="100%" height="auto">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
@@ -362,13 +362,19 @@ defineProps({
     }
 
     .VIKING-image {
-        overflow: unset;
-        width: 70vw !important;
+        position: relative;
+        overflow: hidden;
+        width: 85vw !important;
+        max-height: 700px;
+        height: 700px;
 
         img {
-            left: 0 !important;
-            width: 100% !important;
-            height: auto !important;
+            min-height: 100%;
+            height: 100% !important;
+            max-height: 100% !important;
+            max-width: none;
+            width: auto !important;
+            position: relative;
         }
     }
 }
@@ -476,22 +482,6 @@ defineProps({
         }
     }
 
-    .VIKING-image {
-        position: relative;
-        overflow: hidden;
-        width: 85vw !important;
-        max-height: 700px;
-        height: 700px;
-
-        img {
-            min-height: 100%;
-            height: 100% !important;
-            max-height: 100% !important;
-            max-width: none;
-            width: auto !important;
-            position: relative;
-        }
-    }
 }
 
 @media only screen and (max-width: 740px) {

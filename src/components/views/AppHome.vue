@@ -127,7 +127,7 @@
           <img src="../../assets/Arash_Bagheri2.webp" alt="Arash Bagheri – erfaren læge hos DK Skønhedsklinik">
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300" class="info" id="Info-div">
+        <div data-aos="fade-up" class="info" id="Info-div">
           <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.webp" width="50px" height="auto"
               alt="Arash Bagheri, erfaren læge hos DK Skønhedsklinik" loading="lazy" decoding="async">
           </div>
@@ -166,7 +166,7 @@
       <div class="VIKING-image">
         <img class="first-img"
           :src="imgOmOs" width="100%" height="auto"
-          alt="Konsultation hos DK Skønhedsklinik i Esbjerg og Vejle" loading="lazy" decoding="async">
+          alt="Konsultation hos DK Skønhedsklinik i Esbjerg og Vejle">
       </div>
     </div>
 
@@ -223,7 +223,7 @@
       <div class="VIKING-image">
         <img class="first-img"
           :src="imgClinic" width="100%" height="auto"
-          alt="Klinik-konsultation med erfaren læge" loading="lazy" decoding="async">
+          alt="Klinik-konsultation med erfaren læge">
       </div>
       <div class="txt h1 h2 first-txt margin-left">
         <h3 data-aos="fade-up" data-aos-duration="1000">Om vores klinikker</h3>
@@ -257,8 +257,8 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@unhead/vue'
-import imgOmOs from '@/assets/OmOsBannerW.webp'
-import imgClinic from '@/assets/Clinic_consultation.webp'
+import imgOmOs from '@/assets/omosbanner.webp'
+import imgClinic from '@/assets/clinic_consultation.webp'
 
 useHead({
   title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
