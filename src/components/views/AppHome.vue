@@ -257,7 +257,7 @@
 import { defineProps } from 'vue';
 import { ref, onMounted } from 'vue';
 import { useHead } from '@unhead/vue'
-import imgOmOs from '@/assets/OmOsBanner.webp'
+import imgOmOs from '@/assets/OmOs.webp'
 import imgClinic from '@/assets/Clinic_consultation.webp'
 
 useHead({
