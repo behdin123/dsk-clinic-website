@@ -26,7 +26,7 @@
                     <div class="Email"></div>
                 </div>
                 <div class="klinikken">
-                    <img src="../../assets/omosbanner.webp" alt="">
+                    <img src="../../assets/OmOsBanner.webp" alt="">
                 </div>
             </div>
 
