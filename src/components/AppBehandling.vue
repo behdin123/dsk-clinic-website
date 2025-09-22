@@ -479,6 +479,28 @@ $bd-muted: rgba(255, 255, 255, .12);
   font-size: 16px;
 }
 
+// ===== Misc media (image heights) =====
+@media (max-width: 1650px) {
+  #Main .bg-img {
+    align-items: end !important;
+  }
+}
+
+// ===== Media image ratios =====
+.audience-media img {
+  aspect-ratio: 16/14 ;
+}
+
+.expectations-media img {
+  aspect-ratio: 16/14 ;
+  object-position: left;
+}
+
+.safety-media img {
+  object-position: bottom;
+  aspect-ratio: 16/14;
+}
+
 @media (max-width: 980px) {
   .slice-inner {
     flex-direction: column-reverse;
@@ -1721,25 +1743,5 @@ button[type="submit"],
 }
 
 
-// ===== Misc media (image heights) =====
-@media (max-width: 1650px) {
-  #Main .bg-img {
-    align-items: end !important;
-  }
-}
 
-// ===== Media image ratios =====
-.audience-media img {
-  aspect-ratio: 16/14 ;
-}
-
-.expectations-media img {
-  aspect-ratio: 16/14 ;
-  object-position: left;
-}
-
-.safety-media img {
-  object-position: bottom;
-  aspect-ratio: 16/14;
-}
 </style>
