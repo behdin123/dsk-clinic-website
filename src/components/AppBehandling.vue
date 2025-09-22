@@ -1019,7 +1019,7 @@ $bd-muted: rgba(255, 255, 255, .12);
   }
 
   .slice-media img {
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1 !important;
   }
 }
 
