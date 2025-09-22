@@ -3,33 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "vite",
+    "build": "vite-ssg build",
+    "preview": "vite preview",
     "sitemap": "node ./scripts/generate-sitemap.mjs",
-    "postbuild": "npm run sitemap",
-    "lint": "vue-cli-service lint"
+    "postbuild": "npm run sitemap"
   },
   "dependencies": {
-    "@vueuse/head": "^2.0.0",
+    "@unhead/vue": "^1.11.20",
     "core-js": "^3.8.3",
     "minimist": "^1.2.8",
     "swiper": "^11.2.1",
-    "vue": "^3.2.13",
+    "vue": "^3.4.0",
     "vue-lazyload": "^3.0.0",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@types/minimist": "^1.2.5",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "prettier": "^3.3.3",
     "sass": "^1.80.4",
-    "sass-loader": "^16.0.2",
-    "webpack": "^5.97.1"
+    "vite": "^5.4.0",
+    "vite-ssg": "^28.1.0"
   },
   "eslintConfig": {
     "root": true,

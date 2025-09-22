@@ -1,23 +1,26 @@
-# 1) Force HTTPS و non-www
+# .htaccess
 RewriteEngine On
 
-# www -> non-www
+
+RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.dsklinik\.dk$ [NC]
-RewriteRule ^(.*)$ https://dsklinik.dk/$1 [R=301,L]
+RewriteRule ^ https://dsklinik.dk%{REQUEST_URI} [R=301,L]
 
-# HTTP -> HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://dsklinik.dk/$1 [R=301,L]
 
-# 2) ریدایرکت مسیرهای ناسازگار به lowercase
-RewriteRule ^OmOs/?$                 /omos [R=301,L]
-RewriteRule ^KontaktOs/?$            /kontaktos [R=301,L]
-RewriteRule ^Behandlinger/(.*)$      /behandlinger/$1 [R=301,L]
 
-# 3) (SPA history mode) بازنویسی به index.html بعد از ریدایرکت‌ها
+RewriteCond %{THE_REQUEST} \s/+OmOs(?:[?\s]|/|$) [NC]
+RewriteRule ^OmOs/?$ https://dsklinik.dk/omos [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+KontaktOs(?:[?\s]|/|$) [NC]
+RewriteRule ^KontaktOs/?$ https://dsklinik.dk/kontaktos [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
+RewriteRule ^Behandlinger/(.*)$ https://dsklinik.dk/behandlinger/$1 [R=301,L]
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+RewriteRule ^ index.html [L]
 
-# 4) صفحه 404 واقعی (اختیاری، قدم بعدی کامل‌تر می‌کنیم)
+# 4) صفحه 404
 ErrorDocument 404 /404.html

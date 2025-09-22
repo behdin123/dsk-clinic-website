@@ -1,52 +1,69 @@
 <template>
   <div class="home">
-
     <div id="image-dark-version-home" :class="['bg-img', 'img', { 'dark-mode-cover-home': dark }]">
-
       <picture class="hero-picture" aria-hidden="true">
         <!-- نسخه موبایل -->
         <source srcset="@/assets/BannerFrontPageMobile2.webp" type="image/webp" media="(max-width: 940px)" />
         <!-- نسخه دسکتاپ -->
-        <img src="@/assets/BannerFrontPage2.webp" alt="" class="hero-img" width="1920" height="1080"
+        <img src="@/assets/BannerFrontPage3.webp" alt="" class="hero-img" width="1920" height="1080"
           fetchpriority="high" />
       </picture>
 
-      <h1 data-aos="fade-right" data-aos-duration="3000">DK Skønhedsklinik</h1>
-      <h2 data-aos="fade-right" data-aos-duration="3000">Fremkald din huds glød og friskhed</h2>
+      <div class="hero-title">
+        <p class="hero-eyebrow">DK Skønhedsklinik</p>
+        <h1 data-aos="fade-right" data-aos-duration="3000">Lægebehandlede
+          Botox & Filler i
+          <span class="locs">Esbjerg &amp; Vejle</span>
+        </h1>
+        <!--         <h2 data-aos="fade-right" data-aos-duration="3000">Velkommen til DK Skønhedsklinik</h2> -->
+      </div>
       <p class="mobile_hide" data-aos="fade-right" data-aos-duration="3000">
-        Velkommen til DK Skønhedsklinik i Vejle og Esbjerg – din ekspert i Botox og fillerbehandlinger af højeste
-        kvalitet.
-        Vi fokuserer på at skabe naturlige og harmoniske resultater, der fremhæver dine unikke ansigtstræk.
-        Vores behandlinger er skræddersyet til dine behov og designet til at give dig et mere frisk udseende.
+        Hos DK Skønhedsklinik får du sikre, lægebehandlede kosmetiske behandlinger med fokus på naturlige resultater.
+        Vi tilbyder
+        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }" class="inline-link"
+          aria-label="Botox-behandling – læs mere" data-tooltip="Går til: Botox-behandling">
+          <strong>Botox-behandling</strong>
+        </router-link>,
+        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }" class="inline-link"
+          aria-label="Filler – læs mere" data-tooltip="Går til: Filler">
+          <strong>Filler</strong>
+        </router-link>,
+        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }" class="inline-link"
+          aria-label="Mesotherapy – læs mere" data-tooltip="Går til: Mesotherapy">
+          <strong>Mesotherapy</strong>
+        </router-link>
+        og
+        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }" class="inline-link"
+          aria-label="Skinbooster – læs mere" data-tooltip="Går til: Skinbooster">
+          <strong>Skinbooster</strong>
+        </router-link>
+        – skræddersyet til dine behov i både Esbjerg og Vejle.
       </p>
 
       <p class="mobile_hide">
-        Book en gratis og uforpligtende konsultation, hvor vi sammen finder den bedste behandling til dine ønsker og
-        behov
+        Book en gratis forundersøgelse og få ærlig rådgivning hele vejen til opfølgning.
       </p>
 
-      <div class="mobile-show">
-        <p data-aos="fade-right" data-aos-duration="3000">
-          💉 Ekspert i rynkebehandling og filler
-        </p>
-        <p data-aos="fade-right" data-aos-duration="3000">
-          💙 Naturlige og harmoniske resultater
-        </p>
-        <p data-aos="fade-right" data-aos-duration="3000">
-          ✔️ Udføres af erfaren læge
-        </p>
+      <div>
+        <div class="mobile-show">
+          <p data-aos="fade-right" data-aos-duration="3000">
+            💉 Ekspert i rynkebehandling og filler
+          </p>
+          <p data-aos="fade-right" data-aos-duration="3000">
+            💙 Naturlige og harmoniske resultater
+          </p>
+          <p data-aos="fade-right" data-aos-duration="3000">
+            ✅ Udføres af erfaren læge
+          </p>
+        </div>
+
+        <div class="booking-button">
+          <button class="general_button" type="button" @click="openBookingFromHero"
+            aria-label="Book gratis forundersøgelse">
+            Book nu
+          </button>
+        </div>
       </div>
-
-      <div class="booking-button">
-        <button class="general_button" type="button" @click="openBookingFromHero"
-          aria-label="Book gratis forundersøgelse">
-          Book nu
-        </button>
-      </div>
-
-
-
-
     </div>
 
     <div class="primary-color">
@@ -148,7 +165,7 @@
 
       <div class="txt h1 h2 first-txt">
         <h3 data-aos="fade-up" data-aos-duration="1000">DK skønhedsklinik</h3>
-        <h2 data-aos="fade-up" data-aos-duration="1000">Gratis online forundersørgelse</h2>
+        <h2 data-aos="fade-up" data-aos-duration="1000">Gratis online forundersøgelse</h2>
 
         <p data-aos="fade-up" data-aos-duration="1000">
           Hos DK Skønhedsklinik tilbyder vi en gratis online konsultation, hvor du sammen med vores specialuddannede
@@ -164,8 +181,7 @@
       </div>
 
       <div class="VIKING-image">
-        <img class="first-img"
-          :src="imgOmOs" width="100%" height="auto"
+        <img class="first-img" :src="imgOmOs" width="100%" height="auto"
           alt="Konsultation hos DK Skønhedsklinik i Esbjerg og Vejle">
       </div>
     </div>
@@ -221,9 +237,7 @@
 
     <div class="container Multimediedesigner VIKING OmKlinik">
       <div class="VIKING-image">
-        <img class="first-img"
-          :src="imgClinic" width="100%" height="auto"
-          alt="Klinik-konsultation med erfaren læge">
+        <img class="first-img" :src="imgClinic" width="100%" height="auto" alt="Klinik-konsultation med erfaren læge">
       </div>
       <div class="txt h1 h2 first-txt margin-left">
         <h3 data-aos="fade-up" data-aos-duration="1000">Om vores klinikker</h3>
@@ -261,9 +275,9 @@ import imgOmOs from '@/assets/OmOs.webp'
 import imgClinic from '@/assets/Clinic_consultation.webp'
 
 useHead({
-  title: 'DK Skønhedsklinik | Behandling af rynker & filler i Esbjerg og Vejle (lægebehandlet)',
+  title: 'DK Skønhedsklinik – Lægebehandlet Botox & Filler i Esbjerg & Vejle',
   meta: [
-    { name: 'description', content: 'Rynkebehandling, filler, PRP og Skinbooster udført af erfaren læge. Naturlige resultater med fokus på tryghed. Book gratis forundersøgelse i Esbjerg og Vejle.' },
+    { name: 'description', content: 'Rynkebehandling med botox, filler, Mesotherapy og Skinbooster udført af erfaren læge. Book gratis forundersøgelse i Esbjerg/Vejle i dag.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'da_DK' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
@@ -283,13 +297,15 @@ useHead({
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "MedicalClinic",
+        "@type": ["MedicalClinic", "LocalBusiness", "Organization"],
         "@id": "https://dsklinik.dk/#clinic",
         "name": "DK Skønhedsklinik",
         "url": "https://dsklinik.dk/",
         "telephone": "+45 53 50 37 50",
         "email": "eskonhed@gmail.com",
-        "logo": "https://dsklinik.dk/og/logo_blue.svg",
+        "logo": "https://dsklinik.dk/assets/images/logo_blue.aacd9554.svg",
+
+        /* Hovedlokation (Esbjerg) */
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Havnegade 6",
@@ -297,6 +313,56 @@ useHead({
           "postalCode": "6700",
           "addressCountry": "DK"
         },
+        "hasMap": "https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "17:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday","Sunday"],
+            "opens": "11:00",
+            "closes": "18:00"
+          }
+        ],
+
+        /* Vejle som department (sekundær lokation) */
+        "department": [
+          {
+            "@type": "MedicalClinic",
+            "@id": "https://dsklinik.dk/#vejle",
+            "name": "DK Skønhedsklinik – Vejle",
+            "url": "https://dsklinik.dk/",
+            "telephone": "+45 53 50 37 50",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Søndergade 50",
+              "addressLocality": "Vejle",
+              "postalCode": "7100",
+              "addressCountry": "DK"
+            },
+            "hasMap": "https://maps.google.com/?q=S%C3%B8ndergade+50,+7100+Vejle",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "17:00",
+                "closes": "20:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday","Sunday"],
+                "opens": "11:00",
+                "closes": "18:00"
+              }
+            ],
+            "parentOrganization": { "@id": "https://dsklinik.dk/#clinic" }
+          }
+        ],
+
         "areaServed": ["Esbjerg", "Vejle", "Danmark"],
         "sameAs": [
           "https://www.facebook.com/profile.php?id=100054595142567",
@@ -421,16 +487,111 @@ defineProps({
 <style lang="scss">
 @import '../css/style.scss';
 
-.img h2 {
-  padding-left: 8% !important;
+/*  A. Link ser ud som tekst – men med tydelig hover/focus affordance */
+.inline-link {
+  color: inherit;
+  /* samme farve som brødtekst */
+  text-decoration: none;
+  /* fjern standard-underline */
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  /* “animation” af underline */
+  background-position: 0 100%;
+  transition: background-size .2s ease;
+}
+
+.inline-link:hover,
+.inline-link:focus {
+  background-size: 100% 1px;
+  /* subtil underline ved hover/focus  */
+}
+
+.inline-link:focus-visible {
+  outline: 2px solid currentColor;
+  /* tydelig tastaturfokus */
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/*  B. Tooltip (på hover OG tastaturfokus) */
+.inline-link[data-tooltip] {
+  position: relative;
+}
+
+.inline-link[data-tooltip]:hover::after,
+.inline-link[data-tooltip]:focus::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  padding: 6px 8px;
+  font-size: .75rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, .85);
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.inline-link[data-tooltip]:hover::before,
+.inline-link[data-tooltip]:focus::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: calc(100% + 2px);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, .85);
+  /* lille “pil” */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .inline-link[data-tooltip]:hover::after,
+  .inline-link[data-tooltip]:focus::after {
+    animation: tooltip-in .15s ease-out;
+  }
+
+  @keyframes tooltip-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.hero-eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  width: 100% !important;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  max-width: 25vw;
+  text-wrap: balance;
+}
+
+.hero-title .locs {
+  white-space: nowrap;
 }
 
 .booking-button {
   position: relative;
   z-index: 4;
-  border-radius: 5px !important;
-  width: 210px !important;
-  padding-left: 8% !important;
+  border-radius: 5px;
+  width: 210px;
 }
 
 .mobile-show {
@@ -438,13 +599,13 @@ defineProps({
 }
 
 .sliderContainer {
-  background: #153655 !important;
+  background: #153655;
   padding: 50px 12%;
 
   h2 {
     color: #fff;
-    margin-bottom: 30px !important;
-    font-size: 30px !important;
+    margin-bottom: 30px;
+    font-size: 30px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -474,6 +635,8 @@ defineProps({
 .slide img {
   width: 30vw;
   border-radius: 10px;
+  aspect-ratio: 1 / 1;
+  height: auto;
 }
 
 .text-overlay {
@@ -632,12 +795,11 @@ defineProps({
 .bg-img {
 
   h1 {
-    font-size: 55px !important;
     position: relative;
   }
 
   h2 {
-    font-size: 30px !important;
+    font-size: 30px;
     font-weight: bold !important;
   }
 
@@ -675,6 +837,21 @@ defineProps({
 
 .home {
   .bg-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* ستون عمودی مرتب */
+    align-content: start;
+    justify-content: center;
+    /* دسکتاپ پایین‌تر center میکنیم */
+    /* row-gap: clamp(8px, 2.5vw, 20px); */
+    padding: 160px 8% 40px 8%;
+    /* top / sides / bottom */
+    min-height: clamp(560px, 100svh - var(--nav-h, 72px), 860px);
+    /* بنابر نیاز */
+    box-sizing: border-box;
+    isolation: isolate;
+    /* z-index ها داخل خودش بمانند */
     background-position: right;
   }
 }
@@ -743,6 +920,7 @@ defineProps({
 
 .primary-color {
   background: var(--primary-color) !important;
+  padding: 100px 0;
 }
 
 .Multimediedesigner {
@@ -786,19 +964,6 @@ defineProps({
       position: relative;
     }
   }
-
-  .img {
-    h1 {
-      padding: 14vw 0 0 8% !important;
-    }
-
-    h2 {
-      padding-left: 8% !important;
-    }
-
-  }
-
-
 }
 
 @media only screen and (max-width: 1680px) {
@@ -809,22 +974,32 @@ defineProps({
   }
 }
 
-@media only screen and (max-width: 1530px) {
+@media only screen and (max-width: 1550px) {
   .VIKING-image {
     .first-img {
       left: -200px;
     }
+  }
+
+  .hero-title {
+    max-width: 35vw;
+  }
+
+  .img p {
+    color: var(--titleBanner-color) !important;
+    font-size: 22px;
+    width: 43%;
   }
 }
 
 
 @media only screen and (max-width: 1640px) {
   .Undersøgelse {
-    padding: 70px 5% 40px 8% !important;
+    padding: 70px 5% 70px 8% !important;
   }
 
   .OmKlinik {
-    padding: 70px 8% 40px 5% !important;
+    padding: 70px 8% 70px 5% !important;
   }
 
   .Arash_Bagheri_Portrait {
@@ -864,12 +1039,10 @@ defineProps({
 
   .bg-img p {
     font-size: 24px !important;
-    width: 30% !important;
+    width: 30%;
     line-height: 1.4;
     position: relative;
   }
-
-
 
   .container {
     h1 {
@@ -881,6 +1054,8 @@ defineProps({
     padding: 40px 10% 70px 10% !important;
   }
 }
+
+
 
 .dark-mode-cover-home {
   h1 {
@@ -905,23 +1080,21 @@ defineProps({
 
 .img {
   h1 {
-    padding: 17vw 0 0 8%;
     margin: 0;
-    font-size: 55px;
+    font-size: 50px;
     text-align: left;
     color: var(--titleBanner-color) !important;
   }
 
   h2 {
     margin-top: 0 !important;
-    font-size: 45px;
+    font-size: 26px;
     color: var(--titleBanner-color) !important;
   }
 
   p {
     color: var(--titleBanner-color) !important;
     font-size: 22px;
-    padding: 5px 0 0 8%;
   }
 }
 
@@ -933,7 +1106,7 @@ defineProps({
   position: relative;
   background: var(--primary-color) !important;
   padding-top: 110px;
-  padding: 100px 8% 70px 8%;
+  padding: 100px 8%;
 
 
   .ui {
@@ -1100,17 +1273,12 @@ defineProps({
 @media only screen and (max-width: 1380px) {
   .bg-img {
     h1 {
-      padding-top: 19vw;
       font-size: 45px !important;
     }
 
     p {
       font-size: 20px !important;
     }
-  }
-
-  .section-title {
-    padding: 40px 0 0 0 !important;
   }
 
   h2 {
@@ -1158,67 +1326,24 @@ defineProps({
 
   .Undersøgelse,
   .OmKlinik {
-    padding: 70px 10% 40px 12% !important;
+    padding: 70px 10% 70px 12% !important;
   }
 
   .Multimediedesigner {
     max-height: unset;
   }
-
-  /* .VIKING-image{
-        overflow: unset;
-        width: 70vw !important;
-        .first-img{
-            left: 0 !important;
-            width: 100% !important;
-            height: auto !important;
-            border-radius: 10px;
-        }
-    } */
-
-}
-
-@media only screen and (max-width: 1200px) {
-  .bg-img {
-    h1 {
-      padding-top: 22vw;
-    }
-  }
-
-  .img h1 {
-    padding: 20vw 0 0 8% !important;
-  }
-
 }
 
 @media only screen and (max-width: 1120px) {
   .bg-img {
     h1 {
-      font-size: 35px !important;
-    }
-
-    h2 {
-      padding-left: 5% !important;
-      font-size: 18px !important;
+      font-size: 35px;
     }
 
     p {
-      padding-left: 5%;
       font-size: 18px !important;
     }
   }
-
-  .img {
-    h1 {
-      padding: 20vw 0 0 5% !important;
-    }
-
-    .booking-button {
-      margin-left: 5% !important;
-      padding-left: 0 !important;
-    }
-  }
-
 
   .Multimediedesigner {
     .txt {
@@ -1361,31 +1486,18 @@ defineProps({
 }
 
 @media only screen and (max-width: 1020px) {
-  h1 {
-    padding-left: 5% !important;
-  }
-
-  h2 {
-    padding-left: 5% !important;
-  }
-
-  h3 {
-    padding-left: 5% !important;
-  }
 
   .VIKING-image {
     width: 78vw !important;
+  }
+
+  .sliderContainer {
+    padding: 50px 5%;
   }
 }
 
 
 @media only screen and (max-width: 940px) {
-  .bg-img {
-    h1 {
-      padding-top: 42vw;
-    }
-  }
-
   .bg-img p {
     width: 50%;
   }
@@ -1412,25 +1524,44 @@ defineProps({
 @media only screen and (max-width: 840px) {
 
   .bg-img {
-    padding-left: 5% !important;
-
     h1 {
-      padding-top: 41vw;
-      padding-left: 0 !important;
+      font-size: 40px;
     }
 
     h2 {
-      padding-left: 0 !important;
+      font-size: 22px;
     }
 
     p {
       width: 65%;
-      padding-left: 0 !important;
     }
   }
 
-  .img h1 {
-    padding: 30vw 0 0 0 !important;
+  .home {
+    .bg-img {
+      justify-content: space-between !important;
+    }
+  }
+
+  .hero-title {
+    max-width: 65vw;
+  }
+
+  .bg-img {
+
+    h1,
+    h2,
+    p {
+      color: #fff !important;
+    }
+  }
+
+  .bg-img::after {
+    display: none !important;
+  }
+
+  .bg-img::before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
   }
 
   .mobile_hide {
@@ -1439,7 +1570,6 @@ defineProps({
 
   .mobile-show {
     display: block !important;
-    margin-top: 120px;
   }
 
   .img .booking-button {
@@ -1449,22 +1579,16 @@ defineProps({
 }
 
 @media only screen and (max-width: 800px) {
-  .bg-img {
-    h1 {
-      padding-top: 42vw;
-    }
-  }
-
   .bg-img p {
     width: 80%;
+  }
+
+  .primary-color {
+    padding: 50px 0;
   }
 }
 
 @media only screen and (max-width: 780px) {
-  .img h1 {
-    padding: 25vw 0 0 0 !important;
-  }
-
   #facts-btn {
     justify-content: center !important;
   }
@@ -1502,12 +1626,6 @@ defineProps({
 }
 
 @media only screen and (max-width: 660px) {
-  .bg-img {
-    h1 {
-      padding-top: 43vw;
-    }
-  }
-
   .contain .informations .info {
     width: 76vw;
   }
@@ -1596,59 +1714,45 @@ defineProps({
       margin: 20px auto !important;
     }
   }
-}
 
-@media only screen and (max-width: 620px) {
-  #app .bg-img {
-
-    h1,
-    h2,
-    p {
-      color: #fff !important;
-    }
+  .bg-img h1 {
+    font-size: 30px !important;
   }
 
-  .bg-img::after {
-    display: none !important;
+  .bg-img h2 {
+    width: 55vw;
+    font-size: 22px !important;
+    margin-top: 15px !important;
+    line-height: 40px;
   }
 
-  .bg-img::before {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+  .booking-button {
+    margin-top: 35px;
   }
 
-  .img h1 {
-    padding: 25vw 0 0 0 !important;
-  }
-
-  .mobile-show {
-    margin-top: 320px;
+  .general_button {
+    width: 200px !important;
   }
 }
 
 @media only screen and (max-width: 500px) {
+  .home {
+    .bg-img {
+      padding: 160px 5% 40px 5%;
 
-  .bg-img p {
-    width: 100% !important;
+      p {
+        width: 100% !important;
+      }
+    }
   }
 
-  .img h1 {
-    padding: 30vw 0 0 0 !important;
+  .section-title {
+    font-size: 32px !important;
   }
 
-  h1 {
-    padding: 40vw 0 0 0 !important;
-  }
-
-  h2 {
-    padding-left: 0 !important;
-  }
-
-  h3 {
-    padding-left: 0 !important;
-  }
-
-  p {
-    padding-left: 0 !important;
+  .sliderContainer h2 {
+    margin-bottom: 30px !important;
+    font-size: 24px;
   }
 
   #uix {
@@ -1674,6 +1778,7 @@ defineProps({
       padding: 0 !important;
     }
   }
+
 }
 
 @media only screen and (max-width: 430px) {
@@ -1685,42 +1790,36 @@ defineProps({
     align-items: flex-start !important;
   }
 
-  .bg-img h1 {
-    padding-top: 30vw !important;
-    font-size: 33px !important;
-  }
-
-  .bg-img h2 {
-    width: 55vw;
-    font-size: 22px !important;
-    margin-top: 15px !important;
-    line-height: 40px;
+  .home .bg-img {
+    padding: 105px 5% 40px 5%;
   }
 
   .default-bg::after {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
     height: 80px;
   }
-
-  .mobile-show {
-    margin-top: 24vh;
-  }
 }
 
 @media only screen and (max-width: 390px) {
   .bg-img {
-    h1 {
-      padding: 34vw 0 0 0 !important;
-    }
-
     h2 {
       width: 68%;
     }
   }
 
-  .mobile-show {
-    margin-top: 170px !important;
+  .hero-title {
+    line-height: 1.2;
+  }
 
+  .bg-img h1 {
+    font-size: 26px !important;
+  }
+
+  .home .bg-img {
+    padding: 105px 5% 40px 5%;
+  }
+
+  .mobile-show {
     p {
       width: 90% !important;
     }
@@ -1798,7 +1897,7 @@ defineProps({
 
 .card {
   position: relative;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   overflow: hidden;
@@ -1891,7 +1990,6 @@ defineProps({
 .section-title {
   text-align: center;
   font-size: 40px;
-  padding: 50px 0 0 0;
   margin-top: 0 !important;
   color: var(--titleBanner-color) !important;
 }

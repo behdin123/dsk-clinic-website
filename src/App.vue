@@ -166,43 +166,6 @@ const toggleDarkMode = () => {
 }
 
 
-
-
-
-/* iPhone */
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: var(--h1-font-size-iphone) !important;
-  }
-}
-
-/* iPad */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-  h1 {
-    font-size: var(--h1-font-size-ipad) !important;
-  }
-}
-
-
-/* iPhone */
-@media only screen and (max-width: 600px) {
-  h2 {
-    font-size: var(--h1-font-size-iphone) !important;
-  }
-  .scroll-to-top {
-  right: 13px !important;
-  }
- }
-
-
-/* iPad */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-  h2 {
-    font-size: var(--h1-font-size-ipad) !important;
-  }
-}
-
-
 #navDiv{
   position: relative;
 }

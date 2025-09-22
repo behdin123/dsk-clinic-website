@@ -11,22 +11,27 @@
 
             <div class="flex_info">
                 <div class="KontaktInformation">
-                    <div class="Mail Informations">
-                        <img src="../../assets/icons/mailIcon.webp" alt="">
-                        <p>dr_arash_bagheri@yahoo.com</p>
+                    <div class="Informations">
+                        <img src="../../assets/icons/mailIcon.webp" alt="" aria-hidden="true">
+                        <p><a href="mailto:dr_arash_bagheri@yahoo.com">dr_arash_bagheri@yahoo.com</a></p>
                     </div>
-                    <div class="Adresse Informations">
-                        <img src="../../assets/icons/mapIcon.webp" alt="">
-                        <p>Vejle & Esbjerg</p>
+
+                    <div class="Informations">
+                        <img src="../../assets/icons/phoneIcon.webp" alt="" aria-hidden="true">
+                        <p><a href="tel:+4553503750">+45 53 50 37 50</a></p>
                     </div>
-                    <div class="Telefon Informations">
-                        <img src="../../assets/icons/phoneIcon.webp" alt="">
-                        <p>53 50 37 50</p>
+
+                    <div class="Informations">
+                        <img src="../../assets/icons/mapIcon.webp" alt="" aria-hidden="true">
+                        <p>
+                            <a href="https://maps.google.com/?q=Søndergade+50,+7100+Vejle">Søndergade 50, 7100 Vejle</a>
+
+                            <a href="https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg">Havnegade 6, 6700 Esbjerg</a>
+                        </p>
                     </div>
-                    <div class="Email"></div>
                 </div>
                 <div class="klinikken">
-                    <img src="../../assets/OmOs.webp" alt="">
+                    <img src="../../assets/OmOs.webp" alt="klinik miljø">
                 </div>
             </div>
 
@@ -34,10 +39,10 @@
 
     </main>
 
-    <div class="location-div">
+    <div class="location-div" id="vejle">
         <h1>Vores Klinik i Vejle</h1>
         <div class="map-container">
-            <iframe
+            <iframe title="Kort over DK Skønhedsklinik – Vejle"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1001.3672712397921!2d9.53026749213341!3d55.70648552777441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c82512ffcc1e5%3A0xaf67018cb8d0de85!2sS%C3%B8ndergade%2050%2C%207100%20Vejle!5e0!3m2!1sda!2sdk!4v1738930115456!5m2!1sda!2sdk"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
@@ -46,10 +51,10 @@
     </div>
 
 
-    <div class="location-div secondaryColor">
+    <div class="location-div secondaryColor" id="esbjerg">
         <h1>Vores Klinik i Esbjerg</h1>
         <div class="map-container LessPadding">
-            <iframe
+            <iframe title="Kort over DK Skønhedsklinik – Esbjerg"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1007.5736945444714!2d8.454311073821758!3d55.46394968471335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464b26d3658a9d7f%3A0xcd1359f470799971!2sHavnegade%206%2C%206700%20Esbjerg!5e0!3m2!1sda!2sdk!4v1738931329213!5m2!1sda!2sdk"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
@@ -65,9 +70,11 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+const ORG_ID = 'https://dsklinik.dk/#org'
+const BOOKING_URL = 'https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6'
 
 useHead({
-    title: 'Kontakt – DK Skønhedsklinik (Vejle & Esbjerg)',
+    title: 'Kontakt DK Skønhedsklinik – Vejle & Esbjerg | Gratis konsultation',
     meta: [
         { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Skriv en sms til os +45 53 50 37 50 eller direkte på vore sociale medier for en gratis forundersøgelse.' },
         { property: 'og:title', content: 'Kontakt DK Skønhedsklinik' },
@@ -89,34 +96,104 @@ useHead({
             type: 'application/ld+json',
             children: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "ContactPage",
-                "name": "Kontakt DK Skønhedsklinik",
-                "url": "https://dsklinik.dk/kontaktos",
-                "about": {
-                    "@type": "Organization",
-                    "name": "DK Skønhedsklinik",
-                    "url": "https://dsklinik.dk/",
-                    "contactPoint": [{
-                        "@type": "ContactPoint",
-                        "telephone": "+45 53 50 37 50",
-                        "contactType": "customer service",
-                        "areaServed": "DK",
-                        "availableLanguage": ["da", "en"]
-                    }],
-                    "email": "dr_arash_bagheri@yahoo.com",
-                    "address": [{
-                        "@type": "PostalAddress",
-                        "addressLocality": "Vejle",
-                        "addressCountry": "DK"
-                    }, {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Havnegade 6",
-                        "addressLocality": "Esbjerg",
-                        "postalCode": "6700",
-                        "addressCountry": "DK"
-                    }]
-                }
+                "@type": "Organization",
+                "@id": ORG_ID,
+                "name": "DK Skønhedsklinik",
+                "url": "https://dsklinik.dk/",
+                "logo": "https://dsklinik.dk/og/home.webp",
+                "sameAs": [
+                    "https://www.facebook.com/people/DK-Sk%C3%B8nhedsklinik/100054595142567/",
+                    "https://www.instagram.com/dk_skonhedsklinik/"
+                ]
             })
+        },
+
+        // شعبه‌ی Vejle
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "MedicalClinic",
+                "@id": "https://dsklinik.dk/#clinic-vejle",
+                "name": "DK Skønhedsklinik – Vejle",
+                "url": "https://dsklinik.dk/kontaktos#vejle",
+                "image": "https://dsklinik.dk/og/logo.webp",
+                "parentOrganization": { "@id": ORG_ID },
+                "telephone": "+4553503750",
+                "email": "dr_arash_bagheri@yahoo.com",
+                "priceRange": "kr",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Søndergade 50",
+                    "postalCode": "7100",
+                    "addressLocality": "Vejle",
+                    "addressCountry": "DK"
+                },
+                "geo": { "@type": "GeoCoordinates", "latitude": 55.7064855, "longitude": 9.5302675 },
+                "hasMap": "https://maps.google.com/?q=Søndergade+50,+7100+Vejle",
+                "areaServed": "Vejle",
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "17:00", "closes": "20:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Saturday", "Sunday"],
+                        "opens": "11:00", "closes": "18:00"
+                    }
+                ],
+                "potentialAction": { "@type": "ReserveAction", "target": BOOKING_URL }
+            })
+        },
+
+        // شعبه‌ی Esbjerg
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "MedicalClinic",
+                "@id": "https://dsklinik.dk/#clinic-esbjerg",
+                "name": "DK Skønhedsklinik – Esbjerg",
+                "url": "https://dsklinik.dk/kontaktos#esbjerg",
+                "image": "https://dsklinik.dk/og/logo.webp",
+                "parentOrganization": { "@id": ORG_ID },
+                "telephone": "+4553503750",
+                "email": "dr_arash_bagheri@yahoo.com",
+                "priceRange": "DKK",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Havnegade 6",
+                    "postalCode": "6700",
+                    "addressLocality": "Esbjerg",
+                    "addressCountry": "DK"
+                },
+                "geo": { "@type": "GeoCoordinates", "latitude": 55.4639497, "longitude": 8.4543111 },
+                "hasMap": "https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg",
+                "areaServed": "Esbjerg",
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "17:00", "closes": "20:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Saturday", "Sunday"],
+                        "opens": "11:00", "closes": "18:00"
+                    }
+                ],
+                "potentialAction": { "@type": "ReserveAction", "target": BOOKING_URL }
+            })
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": "https://dsklinik.dk/#contact",
+            "name": "Kontakt DK Skønhedsklinik",
+            "url": "https://dsklinik.dk/kontaktos",
+            "mainEntityOfPage": { "@id": "https://dsklinik.dk/#org" }
         },
         // 👇 این را اضافه کن
         {
@@ -261,8 +338,24 @@ main {
     z-index: 3;
     display: flex;
     width: 12vw;
-    min-width: 350px;
+    min-width: 440px;
     padding: 20px 0;
+
+    p {
+        a:link {
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #fff;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+    }
 }
 
 .KontaktInformation {
@@ -386,6 +479,19 @@ main {
     }
 }
 
+
+@media only screen and (max-width: 1500px) {
+    .flex {
+        margin-top: 25vh;
+    }
+
+    .KontaktOsHeader p {
+        font-size: 22px;
+        width: 50%;
+        line-height: 30px;
+    }
+}
+
 .dark-mode-cover-home {
     &::before {
         background-color: rgba(0, 0, 0, 0.5) !important;
@@ -475,6 +581,8 @@ main {
 
         p {
             font-size: 18px !important;
+            flex-direction: column;
+            align-items: flex-start;
         }
     }
 
@@ -534,7 +642,7 @@ main {
     }
 
     .klinikken {
-        width: 80vw !important;
+        width: 82vw !important;
         right: unset !important;
     }
 }
