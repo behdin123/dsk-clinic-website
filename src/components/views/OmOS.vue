@@ -149,7 +149,7 @@ defineProps({
 
 
 <style lang="scss" scoped>
-@import '../css/style.scss';
+@use '../css/style.scss';
 
 
 .txt {

@@ -485,7 +485,7 @@ defineProps({
 
 
 <style lang="scss">
-@import '../css/style.scss';
+@use '../css/style.scss';
 
 /*  A. Link ser ud som tekst – men med tydelig hover/focus affordance */
 .inline-link {

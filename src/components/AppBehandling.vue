@@ -379,7 +379,7 @@ const normalizedCombinations = computed(() => {
 
 
 <style lang="scss" scoped>
-@import './css/style.scss';
+@use './css/style.scss';
 
 // ===== Theme vars =====
 $c-dark: #153655;
