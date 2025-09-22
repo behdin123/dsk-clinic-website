@@ -6,7 +6,8 @@
             <div class="KontaktOsHeader">
                 <h1>Kontakt DK Skønhedsklinik </h1>
                 <h2>– Vi står klar til at hjælpe dig!</h2>
-                <p>Har du spørgsmål til vores behandlinger eller ønsker du at booke en gratis konsultation?</p>
+                <p class="mobile-hide">Har du spørgsmål til vores behandlinger eller ønsker du at booke en gratis
+                    konsultation?</p>
             </div>
 
             <div class="flex_info">
@@ -559,6 +560,10 @@ main {
         padding: 0 5%;
     }
 
+    .mobile-hide {
+        display: none !important;
+    }
+
     .KontaktOsHeader {
         width: auto !important;
     }
@@ -592,6 +597,12 @@ main {
     }
 }
 
+@media only screen and (max-width: 660px) {
+    .informations {
+        flex-direction: row !important;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .klinikken {
         width: 60vw !important;
@@ -605,7 +616,6 @@ main {
             margin-right: 20px;
         }
     }
-
 }
 
 @media only screen and (max-width: 500px) {

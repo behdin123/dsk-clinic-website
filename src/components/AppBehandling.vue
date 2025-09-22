@@ -204,7 +204,7 @@
             <template v-else>
               <template v-if="item.ref">
                 <RouterLink :to="`/behandlinger/${item.ref}`" class="inline-link"><b>{{ item.label || titleFor(item.ref)
-                    }}</b></RouterLink>
+                }}</b></RouterLink>
                 <span v-if="item.text">&nbsp;{{ item.text }}</span>
               </template>
 
@@ -675,7 +675,7 @@ $bd-muted: rgba(255, 255, 255, .12);
   border-bottom-color: $bd-dark;
 }
 
-.section-safety-intro{
+.section-safety-intro {
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -1202,6 +1202,10 @@ body {
   .media_and_content {
     top: 0 !important;
   }
+
+  .slice-media {
+    width: 80vw !important;
+  }
 }
 
 @media (max-width: 639px) {
@@ -1553,7 +1557,7 @@ button[type="submit"],
   }
 
   .audience-media {
-    width: 30vw !important;
+    width: 30vw;
   }
 
   .slice-media {
@@ -1652,11 +1656,22 @@ button[type="submit"],
       margin: 0 !important;
     }
   }
+
+  .ac-grid {
+    flex-wrap: wrap;
+    .ac-card{
+      min-width: 82vw;
+    }
+  }
 }
 
 @media (max-width: 666px) {
   .bg-img h1 {
     padding-top: 40vw !important;
+  }
+
+  .slice-media {
+    width: 90vw !important;
   }
 }
 
