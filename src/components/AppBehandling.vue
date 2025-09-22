@@ -204,7 +204,7 @@
             <template v-else>
               <template v-if="item.ref">
                 <RouterLink :to="`/behandlinger/${item.ref}`" class="inline-link"><b>{{ item.label || titleFor(item.ref)
-                }}</b></RouterLink>
+                    }}</b></RouterLink>
                 <span v-if="item.text">&nbsp;{{ item.text }}</span>
               </template>
 
@@ -1659,7 +1659,8 @@ button[type="submit"],
 
   .ac-grid {
     flex-wrap: wrap;
-    .ac-card{
+
+    .ac-card {
       min-width: 82vw;
     }
   }
@@ -1682,6 +1683,10 @@ button[type="submit"],
     h1 {
       padding-top: 50vw !important;
     }
+  }
+
+  .expectations-media, .safety-media, .slice-media img {
+    aspect-ratio: 1/1 !important;
   }
 
   .media_and_content .img_wrap img {
@@ -1725,16 +1730,16 @@ button[type="submit"],
 
 // ===== Media image ratios =====
 .audience-media img {
-  aspect-ratio: 16/14 !important;
+  aspect-ratio: 16/14 ;
 }
 
 .expectations-media img {
-  aspect-ratio: 16/14 !important;
-  object-position: center;
+  aspect-ratio: 16/14 ;
+  object-position: left;
 }
 
 .safety-media img {
   object-position: bottom;
-  aspect-ratio: 16/14 !important;
+  aspect-ratio: 16/14;
 }
 </style>
