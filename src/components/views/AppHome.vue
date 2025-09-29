@@ -64,6 +64,10 @@
           </button>
         </div>
       </div>
+      <div class="scroll-indicator">
+        <span>scroll ned</span>
+        <div class="line"></div>
+      </div>
     </div>
 
     <div class="primary-color">
@@ -317,13 +321,13 @@ useHead({
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "17:00",
             "closes": "20:00"
           },
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday","Sunday"],
+            "dayOfWeek": ["Saturday", "Sunday"],
             "opens": "11:00",
             "closes": "18:00"
           }
@@ -348,13 +352,13 @@ useHead({
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                 "opens": "17:00",
                 "closes": "20:00"
               },
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Saturday","Sunday"],
+                "dayOfWeek": ["Saturday", "Sunday"],
                 "opens": "11:00",
                 "closes": "18:00"
               }
@@ -486,6 +490,46 @@ defineProps({
 
 <style lang="scss">
 @use '../css/style.scss';
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  z-index: 4;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+
+  .line {
+    margin: 15px auto 10px auto;
+    width: 2px !important;
+    height: 80px;
+    background-color: #fff;
+    animation: bounce 2s infinite;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
 
 /*  A. Link ser ud som tekst – men med tydelig hover/focus affordance */
 .inline-link {
@@ -1585,6 +1629,10 @@ defineProps({
 
   .primary-color {
     padding: 50px 0;
+  }
+  
+  .scroll-indicator{
+    display: none !important;
   }
 }
 

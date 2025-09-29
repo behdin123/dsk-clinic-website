@@ -36,6 +36,11 @@
                 </div>
             </div>
 
+            <div class="scroll-indicator">
+                <span>scroll ned</span>
+                <div class="line"></div>
+            </div>
+
         </div>
 
     </main>
@@ -384,7 +389,7 @@ main {
 }
 
 .klinikken {
-    width: 35vw;
+    width: 30vw;
     display: flex;
     z-index: 3;
 
@@ -471,6 +476,10 @@ main {
     .Mail {
         padding-top: 0 !important;
     }
+
+    .flex_info {
+        width: 75vw;
+    }
 }
 
 
@@ -478,10 +487,11 @@ main {
     .klinikken {
         width: 30vw;
     }
+
 }
 
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1550px) {
     .flex {
         margin-top: 25vh;
     }
@@ -491,6 +501,8 @@ main {
         width: 50%;
         line-height: 30px;
     }
+
+
 }
 
 .dark-mode-cover-home {
@@ -524,6 +536,13 @@ main {
     .klinikken {
         width: 45vw !important;
         right: 95px !important;
+    }
+
+    .KontaktOsHeader {
+        width: auto !important;
+        p{
+            width: auto !important;
+        }
     }
 
     .flex {

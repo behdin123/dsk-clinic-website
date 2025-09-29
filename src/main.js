@@ -16,8 +16,10 @@ const CANONICAL_TYPES = [
 const normalize = (p) => {
   let s = String(p || '/').trim()
   if (!s.startsWith('/')) s = '/' + s
-  // حذف اسلش انتهایی (به‌جز /)
+  // fjern ekstra slashes (men behold root)
   s = s.replace(/\/+$/, '') || '/'
+  // tilføj trailing slash for alle ikke-root paths
+  if (s !== '/' && !s.endsWith('/')) s += '/'
   return s.toLowerCase()
 }
 

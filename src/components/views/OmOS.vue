@@ -34,13 +34,17 @@
                 <span>Scroll ned</span>
                 <div class="line"></div>
             </div> -->
+            <div class="scroll-indicator">
+                <span>scroll ned</span>
+                <div class="line"></div>
+            </div>
         </div>
 
 
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
-                <img data-aos="fade-right" class="first-img"
-                    src="../../assets/Clinic_consultation_2.webp " width="100%" height="auto">
+                <img data-aos="fade-right" class="first-img" src="../../assets/Clinic_consultation_2.webp " width="100%"
+                    height="auto">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
                 <h3 data-aos="fade-up" data-aos-duration="1000">Vores klinikker</h3>

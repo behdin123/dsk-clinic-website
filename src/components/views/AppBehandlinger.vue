@@ -502,7 +502,7 @@ const META = {
 
 const pageTitle = computed(() => (META[currentType.value] || META[FALLBACK]).title)
 const pageDesc = computed(() => (META[currentType.value] || META[FALLBACK]).desc)
-const canonical = computed(() => `${SITE_URL}/behandlinger/${currentType.value || FALLBACK}`)
+const canonical = computed(() => `${SITE_URL}/behandlinger/${currentType.value || FALLBACK}/`)
 
 // FAQهای نمونه (می‌توانی برای همه تکمیل کنی)
 const FAQ_BANK = {
@@ -696,7 +696,6 @@ useHead(() => {
     link: [
       { rel: 'canonical', href: url },
       { rel: 'alternate', href: url, hreflang: 'da' },
-      { rel: 'alternate', href: url, hreflang: 'x-default' },
       { rel: 'preload', as: 'image', href: behandlingData.value.imageSrc }
     ],
     script: scripts

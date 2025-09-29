@@ -1,26 +1,30 @@
-# .htaccess
 RewriteEngine On
 
-
+# 1) HTTPS + non-www
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.dsklinik\.dk$ [NC]
 RewriteRule ^ https://dsklinik.dk%{REQUEST_URI} [R=301,L]
 
-
-
+# 2) Legacy case/sti → korrekt sti + trailing slash
 RewriteCond %{THE_REQUEST} \s/+OmOs(?:[?\s]|/|$) [NC]
-RewriteRule ^OmOs/?$ https://dsklinik.dk/omos [R=301,L]
+RewriteRule ^OmOs/?$ https://dsklinik.dk/omos/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+KontaktOs(?:[?\s]|/|$) [NC]
-RewriteRule ^KontaktOs/?$ https://dsklinik.dk/kontaktos [R=301,L]
+RewriteRule ^KontaktOs/?$ https://dsklinik.dk/kontaktos/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
-RewriteRule ^Behandlinger/(.*)$ https://dsklinik.dk/behandlinger/$1 [R=301,L]
+RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
+RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301,L]
 
+# 3) Tilføj trailing slash, hvis der findes en rigtig mappe
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+)$ https://dsklinik.dk/$1/ [R=301,L]
 
+# 4) SPA/SSG fallback (beholdt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]
 
-# 4) صفحه 404
 ErrorDocument 404 /404.html

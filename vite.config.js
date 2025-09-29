@@ -9,6 +9,7 @@ const normalize = (p='/', root='/') => {
   let s = String(p || root).trim()
   if (!s.startsWith('/')) s = '/' + s
   s = s.replace(/\/+$/, '') || '/'
+  if (s !== '/' && !s.endsWith('/')) s += '/'
   return s.toLowerCase()
 }
 

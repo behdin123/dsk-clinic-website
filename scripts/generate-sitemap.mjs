@@ -14,7 +14,8 @@ const distOut    = path.resolve(__dirname, '../dist/sitemap.xml')
 const normalizePath = (p) => {
   let s = (p || '/').trim()
   if (!s.startsWith('/')) s = '/' + s
-  s = s.replace(/\/+$/, '') || '/'   // remove trailing slash (except root)
+  s = s.replace(/\/+$/, '') || '/'
+  if (s !== '/' && !s.endsWith('/')) s += '/'
   return s.toLowerCase()
 }
 
