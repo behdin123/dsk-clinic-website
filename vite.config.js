@@ -42,14 +42,4 @@ export default defineConfig({
       },
     },
   },
-
-  // === نکته‌ی مهم برای vite-ssg ===
-  ssgOptions: {
-    // رندر فولدری:
-    dirStyle: 'nested',            // => kontaktos/index.html و behandlinger/botox/index.html
-    // به‌صورت صریح بگو چه مسیرهایی بسازد:
-    includedRoutes: () => INCLUDED_ROUTES,
-    // تمیزتر شدن HTML خروجی (اختیاری)
-    formatting: 'minify',
-  },
 })

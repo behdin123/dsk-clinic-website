@@ -30,7 +30,7 @@ const INCLUDED_ROUTES = (() => {
     : ['/','/omos','/kontaktos']
 
   // اطمینان از وجود همه درمان‌ها
-  const behandlings = CANONICAL_TYPES.map(t => `/behandlinger/${t}`)
+  const behandlings = CANONICAL_TYPES.map(t => normalize(`/behandlinger/${t}`))
 
   // یکتا + مرتب
   return Array.from(new Set([...fromJson, ...behandlings])).sort()
