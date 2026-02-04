@@ -3,9 +3,8 @@
     <!-- Logo -->
     <div class="logo">
       <router-link to="/" aria-label="Gå til forsiden">
-        <img v-if="!dark || isSticky" class="logo-img" src="../assets/logo_blue.svg" width="90" height="90"
-          alt="DK Skønhedsklinik" />
-        <img v-else class="logo-img" src="../assets/logo_white.svg" width="90" height="90" alt="DK Skønhedsklinik" />
+        <!-- Hvis vi er på en artikel-side: brug hvidt logo -->
+        <img class="logo-img" src="../assets/logo_white.svg" width="90" height="90" alt="DK Skønhedsklinik" />
       </router-link>
     </div>
 
@@ -16,26 +15,32 @@
           Behandlinger
         </button>
         <div class="dropdown-menu">
-          <router-link to="/behandlinger/botox">Botox</router-link>
+          <!-- <router-link to="/behandlinger/botox">Botox</router-link> -->
           <router-link to="/behandlinger/filler">Filler</router-link>
           <router-link to="/behandlinger/skinbooster">Skinbooster</router-link>
-          <router-link to="/behandlinger/prp">PRP</router-link>
           <router-link to="/behandlinger/mesotherapy">Mesotherapy</router-link>
           <router-link to="/behandlinger/microneedling">Microneedling</router-link>
         </div>
       </div>
       <router-link to="/omos">Om os</router-link>
       <router-link to="/kontaktos">Kontakt</router-link>
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+          Klinikker
+        </button>
+        <div class="dropdown-menu">
+          <router-link :to="{ name: 'clinic-vejle' }">Vejle</router-link>
+          <router-link :to="{ name: 'clinic-esbjerg' }">Esbjerg</router-link>
+        </div>
+      </div>
+      <!-- DISABLED: Viden universe link -->
+      <!-- <router-link to="/viden/">Vidensunivers</router-link> -->
     </div>
+
+
 
     <!-- Right side -->
     <div class="navbar-others">
-      <label class="switch">
-        <input @click="toggleDarkMode" type="checkbox" :checked="darkMode" />
-        <span class="slider round"></span>
-      </label>
-
-      <div class="line" aria-hidden="true"></div>
 
       <a class="soc NavFacebook" href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"
         rel="noopener noreferrer" aria-label="Facebook">
@@ -50,10 +55,7 @@
       <!-- Burger -->
       <button class="burger" type="button" :aria-expanded="isMenuOpen ? 'true' : 'false'" aria-controls="mobile-drawer"
         @click="toggleMenu">
-        <img v-if="!dark || isSticky" class="icon toggle-menu" src="../assets/toggel-menu.svg" width="23" height="23"
-          alt="Menu" />
-        <img v-else class="icon toggle-menu" src="../assets/toggel-menu dark-version.svg" width="23" height="23"
-          alt="Menu" />
+        <img class="icon toggle-menu" src="../assets/toggel-menu.svg" width="23" height="23" alt="Menu" />
       </button>
     </div>
 
@@ -76,10 +78,9 @@
             </button>
             <transition name="expand">
               <ul v-show="isTreatmentsOpen" id="treatments-sub" class="sub">
-                <li><router-link @click="closeMenu" to="/behandlinger/botox">Botox</router-link></li>
+                <!-- <li><router-link @click="closeMenu" to="/behandlinger/botox">Botox</router-link></li> -->
                 <li><router-link @click="closeMenu" to="/behandlinger/filler">Filler</router-link></li>
                 <li><router-link @click="closeMenu" to="/behandlinger/skinbooster">Skinbooster</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/prp">PRP</router-link></li>
                 <li><router-link @click="closeMenu" to="/behandlinger/mesotherapy">Mesotherapy</router-link></li>
                 <li><router-link @click="closeMenu" to="/behandlinger/microneedling">Microneedling</router-link></li>
               </ul>
@@ -88,6 +89,34 @@
 
           <li class="omos-link"><router-link @click="closeMenu" to="/omos">Om os</router-link></li>
           <li class="kontakt-link"><router-link @click="closeMenu" to="/kontaktos">Kontakt</router-link></li>
+
+          <li class="group-title">Klinikker</li>
+
+          <li>
+            <button class="accordion" type="button" @click="isClinicOpen = !isClinicOpen"
+              :aria-expanded="isClinicOpen ? 'true' : 'false'" aria-controls="clinics-sub">
+              Vælg klinik
+              <span class="chev" :class="{ open: isClinicOpen }">▾</span>
+            </button>
+
+            <transition name="expand">
+              <!-- نکته: یک ریشهٔ واحد داخل transition -->
+              <ul v-show="isClinicOpen" id="clinics-sub" class="sub">
+                <li>
+                  <router-link @click="closeMenu" :to="{ name: 'clinic-vejle' }">Vejle</router-link>
+                </li>
+                <li>
+                  <router-link @click="closeMenu" :to="{ name: 'clinic-esbjerg' }">Esbjerg</router-link>
+                </li>
+              </ul>
+            </transition>
+          </li>
+
+
+
+          <!-- DISABLED: Viden universe mobile link -->
+          <!-- <li class="vidensunivers-link"><router-link @click="closeMenu" to="/viden/">Vidensunivers</router-link></li> -->
+
 
           <li class="divider" aria-hidden="true"></li>
 
@@ -120,9 +149,8 @@ import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 
 defineProps({
-  dark: Boolean,
-  toggleDarkMode: Function,
   isSticky: Boolean,
+  pageClass: String
 })
 
 const openBooking = () => {
@@ -130,11 +158,12 @@ const openBooking = () => {
   window.dispatchEvent(new CustomEvent('open-booking')); // به روت خبر بده مودال را باز کند
 };
 
-const darkMode = ref(false)
+
 const router = useRouter()
 
 const isMenuOpen = ref(false)
 const isTreatmentsOpen = ref(false)
+const isClinicOpen = ref(false)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -144,6 +173,7 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false
   isTreatmentsOpen.value = false
+  isClinicOpen.value = false
   document.body.style.overflow = ''
 }
 
@@ -199,22 +229,21 @@ watch(
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin: 0 auto;
+  max-width: 1500px;
 }
 
 .logo {
-  margin-left: 5%;
-
   .logo-img {
-    width: 200px;
+    width: 150px;
     height: auto;
   }
 }
 
 .navbar-others {
-  margin-right: 5%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 25px;
 
   .line {
     width: 1px;
@@ -233,33 +262,31 @@ watch(
 
 .links-desktop {
   display: flex;
-  gap: 4vw;
+  gap: 5vw;
 
   a {
     text-decoration: none;
-    color: var(--tertiary-color);
+    color: #fff;
     font-weight: 700;
-    padding: 0 3vw;
   }
 
   a:hover {
-    color: var(--titleBanner-color);
+    opacity: .8;
   }
 }
 
 /* ------- Desktop dropdown ------- */
 .dropdown {
   position: relative;
-  padding: 0 3vw;
 }
 
 .dropdown-toggle {
   background: none;
   border: 0;
-  font-weight: 700;
-  font-size: 18px !important;
+  font-weight: bold;
+  font-size: 16px !important;
   cursor: pointer;
-  color: var(--tertiary-color);
+  color: #fff;
 }
 
 .dropdown-menu {
@@ -289,15 +316,28 @@ watch(
   display: block;
 }
 
-@media (max-width:1500px) {
+@media (max-width:1550px) {
+  .navbar {
+    max-width: 1200px;
+  }
+
   .logo-img {
     width: 140px !important;
     height: auto;
   }
 }
 
+@media (max-width:1250px) {
+  .navbar {
+    max-width: 1000px;
+  }
+}
+
 /* ------- Mobile only ------- */
-@media (max-width:1000px) {
+@media (max-width:1050px) {
+  .navbar {
+    padding: 0 5%;
+  }
   .links-desktop {
     display: none;
   }
@@ -365,7 +405,9 @@ watch(
   align-items: center;
 }
 
-.cta-row { margin: 6px 0 10px; }
+.cta-row {
+  margin: 6px 0 10px;
+}
 
 .cta-secondary {
   display: inline-flex;
@@ -373,7 +415,7 @@ watch(
   gap: 10px;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.25);
+  border: 1px solid rgba(255, 255, 255, .25);
   background: transparent;
   color: #EAEAEA;
   text-decoration: none;
@@ -382,24 +424,19 @@ watch(
   cursor: pointer;
 }
 
-.cta-secondary:active { transform: translateY(1px); }
-.cta-secondary:hover  { background: rgba(255,255,255,.06); }
-
-/* فلش رو به راست */
-.cta-secondary.arrow::before{
-  content: "➔";
-  display: inline-block;
-  transition: transform .18s ease;
-  transform: translateX(0);
-  font-size: 18px;
-  line-height: 1;
+.cta-secondary:active {
+  transform: translateY(1px);
 }
 
-.cta-secondary.arrow:hover::before{
-  transform: translateX(3px);
+.cta-secondary:hover {
+  background: rgba(255, 255, 255, .06);
 }
 
-.cta-hint { margin: 8px 0 0; font-size: 14px; opacity: .9; }
+.cta-hint {
+  margin: 8px 0 0;
+  font-size: 14px;
+  opacity: .9;
+}
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -578,10 +615,5 @@ input:checked+.slider:before {
     margin: 45px 0 !important;
   }
 
-  .sticky {
-  a {
-    color: #fff !important;
-  }
-}
 }
 </style>

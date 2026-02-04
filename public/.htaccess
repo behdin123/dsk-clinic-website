@@ -12,8 +12,10 @@ RewriteRule ^OmOs/?$ https://dsklinik.dk/omos/ [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+KontaktOs(?:[?\s]|/|$) [NC]
 RewriteRule ^KontaktOs/?$ https://dsklinik.dk/kontaktos/ [R=301,L]
 
-RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
-RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+# DISABLED: Legacy botox treatment redirect (botox treatment is disabled)
+# RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
+# RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+
 RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
 RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301,L]
 

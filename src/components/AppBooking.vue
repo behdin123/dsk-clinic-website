@@ -76,15 +76,19 @@ watch(showModal, (open) => {
 
 <style>
 .general_button {
-  width: 250px !important;
+  width: auto !important;
   font-size: 16px;
   font-weight: bold;
   background-color: #2d58a1;
-  color: white;
+  color: white !important;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
   transition: opacity 0.3s ease;
 }
 
@@ -116,19 +120,19 @@ watch(showModal, (open) => {
 
 .custom-modal-content {
   background: white;
-  padding: 20px;
+  padding: 25px;
   width: 90%;
   max-width: 900px;
   height: 90%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 15px;
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 0px;
+  right: 10px;
   font-size: 30px;
   cursor: pointer;
 }

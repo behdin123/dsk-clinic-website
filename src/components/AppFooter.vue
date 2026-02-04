@@ -20,8 +20,8 @@
             <li class="footer-socials" aria-label="Sociale medier">
               <p>Skriv til os dirkete på vores sociale medier</p>
               <div class="footer-socials-links">
-                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank" rel="noopener noreferrer"
-                  aria-label="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"
+                  rel="noopener noreferrer" aria-label="Facebook">
                   <img class="icon" src="../assets/icons/Facebook_Logo_Primary.webp" width="24" height="24"
                     alt="Facebook">
                 </a>
@@ -48,11 +48,11 @@
         <section class="footer-section">
           <h3 class="footer-title">Behandlinger</h3>
           <ul class="footer-list">
-            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li>
+            <!-- <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li> -->
             <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">Filler</router-link></li>
             <li><router-link
                 :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">Skinbooster</router-link></li>
-            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'prp' } }">PRP</router-link></li>
+            <!-- <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'prp' } }">PRP</router-link></li> -->
             <li><router-link
                 :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">Mesotherapy</router-link></li>
             <li><router-link
@@ -98,72 +98,184 @@
 </template>
 
 <style lang="scss" scoped>
-.site-footer .footer {
+.site-footer {
   background: #153655 !important;
-  color: #fff;
-  padding: 50px 8% 40px 8%;
+
+  .footer {
+    color: #fff !important;
+    padding: 50px 0;
+    margin: 0 auto;
+    max-width: 1500px;
+  }
 }
+
+
 
 /* Heading + divider */
-.footer-top { 
-  margin-bottom: 24px; 
-  h2{
+.footer-top {
+  margin-bottom: 24px;
+
+  h2 {
     padding-left: 0 !important;
   }
 }
 
-.footer-section{
-  .footer-title{
+.footer-section {
+  .footer-title {
     padding-left: 0 !important;
   }
 }
 
+h3,
+h2 {
+  color: #fff !important;
+}
 
-.footer-heading { margin: 0 0 16px; font-size: 28px; line-height: 1.3; }
-.line { border: 0; height: 1px; background: rgba(255,255,255,.2); max-width: 720px; margin: 40px 0; }
+
+.footer-heading {
+  margin: 0 0 16px;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.line {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, .2);
+  max-width: 720px;
+  margin: 40px 0;
+}
 
 /* Grid (4 cols → responsive) */
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px;
   margin-top: 32px;
 }
 
 /* Section titles */
-.footer-title { font-size: 18px; margin: 0 0 12px; }
+.footer-title {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
 
 /* Lists & links (shared) */
-.footer-list { list-style: none; padding: 0; margin: 0; }
-.footer-list li { margin: 10px 0; }
-.footer-list a { color: #fff; text-decoration: none; opacity: .95; }
-.footer-list a:hover { opacity: .7; text-decoration: underline; }
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin: 10px 0;
+}
+
+.footer-list a {
+  color: #fff;
+  text-decoration: none;
+  opacity: .95;
+}
+
+.footer-list a:hover {
+  opacity: .7;
+  text-decoration: underline;
+}
 
 /* Socials */
-.footer-socials { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
-.footer-socials .icon { display: block; width: 30px; height: 30px; transition: opacity .2s; }
-.footer-socials .icon:hover { opacity: .7; }
-.footer-socials p { margin: 0 !important; }
-.footer-socials-links { display: flex; gap: 20px; }
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.footer-socials .icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  transition: opacity .2s;
+}
+
+.footer-socials .icon:hover {
+  opacity: .7;
+}
+
+.footer-socials p {
+  margin: 0 !important;
+}
+
+.footer-socials-links {
+  display: flex;
+  gap: 20px;
+}
 
 /* Addresses */
 .footer-section address.footer-list {
   display: block;
   margin: 10px 0;
-  font-style: normal; /* neutralize <address> italic */
+  font-style: normal;
+  /* neutralize <address> italic */
 }
-.footer-section address.footer-list + address.footer-list { margin-top: 12px; }
-.footer-section .addr-link { display: inline-block; } /* whole line clickable */
+
+.footer-section address.footer-list+address.footer-list {
+  margin-top: 12px;
+}
+
+.footer-section .addr-link {
+  display: inline-block;
+}
+
+/* whole line clickable */
 
 /* Bottom row */
-.footer-bottom { margin-top: 36px; font-size: 12px; opacity: .9; }
+.footer-bottom {
+  margin-top: 36px;
+  font-size: 12px;
+  opacity: .9;
+}
 
 /* Responsive */
-@media (max-width: 1100px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+@media (max-width: 1550px) {
+  .site-footer {
+    .footer {
+      max-width: 1200px;
+    }
+  }
 }
+
+@media (max-width:1250px) {
+  .site-footer {
+    .footer {
+      max-width: 1000px;
+    }
+  }
+}
+
+/* ------- Mobile only ------- */
+@media (max-width:1050px) {
+  .site-footer {
+    .footer {
+      padding: 50px 5%;
+    }
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
-  .footer-heading { font-size: 26px !important; }
-  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+  .footer-heading {
+    font-size: 26px !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
 
   <!-- Main behandling section -->
   <div id="Main">
-    <div id="Art-works-dark-version-image" class="bg-img img" :class="{ 'dark-mode-cover-home': dark }">
+    <div id="Art-works-dark-version-image" class="bg-img img">
       <div class="media_and_content">
         <div>
           <div class="media_wrap">
@@ -12,61 +12,64 @@
                 decoding="async" fetchpriority="high">
             </div>
           </div>
-          <article class="content">
-            <header>
-              <h1>{{ title }}</h1>
-            </header>
-            <div class="entry_content_wrap">
-              <div class="entry_content clear">
-                <p>{{ description }}</p>
-              </div>
-            </div>
-            <div class="options_prices">
-              <ul class="options">
-                <div>
-                  <li class="heart_rate"><span class="label"> <img src="../assets/Behandlingstid.webp" alt=""
-                        aria-hidden="true">
-                      Behandlingstid<span>:</span></span> {{ duration }}</li>
-                  <li class="person_dolly"><span class="label"> <img src="../assets/Resultat.webp" alt=""
-                        aria-hidden="true">Resultat<span>:</span></span> {{ result }}</li>
-                  <li class="syringe"><span class="label"> <img src="../assets/Bedøvelse.webp" alt=""
-                        aria-hidden="true">
-                      Bedøvelse<span>:</span></span> {{ anesthesia }}</li>
-                </div>
-                <div>
-                  <li class="clipboard_list_check"><span class="label"> <img src="../assets/Holdbarhed.webp" alt=""
-                        aria-hidden="true">Holdbarhed<span>: </span> </span> {{ durability }}</li>
-                  <li class="alarm_clock"><span class="label"> <img src="../assets/Nedetid.webp" alt=""
-                        aria-hidden="true"> Nedetid /
-                      Opheling<span>:</span> </span> {{ downtime }}</li>
-                  <li class="people_arrows"><span class="label"> <img src="../assets/Konsultation.webp" alt=""
-                        aria-hidden="true">
-                      Konsultation<span>:</span></span> {{ consultation }}</li>
-                </div>
-              </ul>
-              <div class="prices">
-                <div class="from_price"
-                  :style="{ width: (priceTextWordCount > 3 || priceTextWordCount === 0) ? '70%' : '33%' }">
-                  <h6>{{ priceText }}</h6>
-                  <div class="price"><span data-price="2500">{{ price }}</span> kr.</div>
-                </div>
-                <div class="from_price">
-                  <h6>{{ priceText2 }}</h6>
-                  <div class="price"><span data-price="2500">{{ price2 }}</span> {{ priceText2 ? 'kr.' : '' }}</div>
-                </div>
-                <div class="from_price">
-                  <h6>{{ priceText3 }}</h6>
-                  <div class="price"><span data-price="2500">{{ price3 }}</span> {{ priceText3 ? 'kr.' : '' }}</div>
+          <section class="article_wrapper">
+            <article class="content">
+              <header>
+                <h1>{{ title }}</h1>
+              </header>
+              <div class="entry_content_wrap">
+                <div class="entry_content clear">
+                  <p>{{ description }}</p>
                 </div>
               </div>
-            </div>
-            <div class="buttons">
-              <AppBooking />
-            </div>
-          </article>
+              <div class="options_prices">
+                <ul class="options">
+                  <div>
+                    <li class="heart_rate"><span class="label"> <img src="../assets/Behandlingstid.webp" alt=""
+                          aria-hidden="true">
+                        Behandlingstid<span>:</span></span> {{ duration }}</li>
+                    <li class="person_dolly"><span class="label"> <img src="../assets/Resultat.webp" alt=""
+                          aria-hidden="true">Resultat<span>:</span></span> {{ result }}</li>
+                    <li class="syringe"><span class="label"> <img src="../assets/Bedøvelse.webp" alt=""
+                          aria-hidden="true">
+                        Bedøvelse<span>:</span></span> {{ anesthesia }}</li>
+                  </div>
+                  <div>
+                    <li class="clipboard_list_check"><span class="label"> <img src="../assets/Holdbarhed.webp" alt=""
+                          aria-hidden="true">Holdbarhed<span>: </span> </span> {{ durability }}</li>
+                    <li class="alarm_clock"><span class="label"> <img src="../assets/Nedetid.webp" alt=""
+                          aria-hidden="true"> Nedetid /
+                        Opheling<span>:</span> </span> {{ downtime }}</li>
+                    <li class="people_arrows"><span class="label"> <img src="../assets/Konsultation.webp" alt=""
+                          aria-hidden="true">
+                        Konsultation<span>:</span></span> {{ consultation }}</li>
+                  </div>
+                </ul>
+                <div class="prices">
+                  <div class="from_price"
+                    :style="{ width: (priceTextWordCount > 3 || priceTextWordCount === 0) ? '70%' : '33%' }">
+                    <h6>{{ priceText }}</h6>
+                    <div class="price"><span data-price="2500">{{ price }}</span> kr.</div>
+                  </div>
+                  <div class="from_price">
+                    <h6>{{ priceText2 }}</h6>
+                    <div class="price"><span data-price="2500">{{ price2 }}</span> {{ priceText2 ? 'kr.' : '' }}</div>
+                  </div>
+                  <div class="from_price">
+                    <h6>{{ priceText3 }}</h6>
+                    <div class="price"><span data-price="2500">{{ price3 }}</span> {{ priceText3 ? 'kr.' : '' }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons">
+                <AppBooking />
+              </div>
+            </article>
+          </section>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- 1) Audience -->
@@ -106,7 +109,11 @@
           <li v-if="sections.expectations.durability"><b>Holdbarhed:</b> {{ sections.expectations.durability }}</li>
           <li v-if="sections.expectations.sessions"><b>Antal sessioner:</b> {{ sections.expectations.sessions }}</li>
         </ul>
+        <div class="buttons">
+          <AppBooking />
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -259,7 +266,6 @@ import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
 
 
 const props = defineProps({
-  dark: Boolean,
   title: String,
   imageSrc: String,
   description: String,
@@ -348,10 +354,9 @@ const sectionAlt = (key) => {
 }
 
 const shortTitles = {
-  botox: 'Botox',
+  /* botox: 'Botox', */
   filler: 'Filler',
   skinbooster: 'Skinbooster',
-  prp: 'PRP',
   mesotherapy: 'Mesotherapy',
   microneedling: 'Microneedling'
 }
@@ -389,6 +394,11 @@ $bd-dark: rgba(255, 255, 255, .18);
 $bd-light: rgba(0, 0, 0, .14);
 $bd-muted: rgba(255, 255, 255, .12);
 
+
+.faq-q {
+  font-weight: 700;
+}
+
 // ===== Inline link =====
 .inline-link {
   color: inherit;
@@ -412,29 +422,22 @@ $bd-muted: rgba(255, 255, 255, .12);
 .slice {
   background: $c-dark;
   color: $c-white;
-  padding: 100px 16px;
+  padding: 70px 16px;
   scroll-margin-top: 90px;
   border-top: 1px solid rgba(255, 255, 255, .06);
 }
 
 .slice.alt {
-  background: #fff;
+  background: var(--primary-color) !important;
   color: $c-black;
 
   h2 {
-    color: $c-dark;
+    color: $c-dark !important;
   }
 }
 
-.slice-inner {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 10%;
-  gap: 100px;
-}
-
 .slice-media {
-  width: 30vw;
+  width: 45%;
 }
 
 .slice-media img {
@@ -451,21 +454,17 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 .slice-body {
-  width: 35vw;
+  width: 45%;
 }
 
 .resultater-body {
-  width: 31vw !important;
+  width: 45% !important;
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     margin-bottom: 50px !important;
   }
-}
-
-.audience-body h2 {
-  margin-bottom: 30px !important;
 }
 
 .fuld-width {
@@ -479,20 +478,20 @@ $bd-muted: rgba(255, 255, 255, .12);
   font-size: 16px;
 }
 
-// ===== Misc media (image heights) =====
-@media (max-width: 1650px) {
-  #Main .bg-img {
-    align-items: end !important;
+#expectations {
+  .buttons {
+    margin-top: 30px;
   }
 }
 
+
 // ===== Media image ratios =====
 .audience-media img {
-  aspect-ratio: 16/14 ;
+  aspect-ratio: 1/1;
 }
 
 .expectations-media img {
-  aspect-ratio: 16/14 ;
+  aspect-ratio: 1/1;
   object-position: left;
 }
 
@@ -505,20 +504,9 @@ $bd-muted: rgba(255, 255, 255, .12);
   .slice-inner {
     flex-direction: column-reverse;
   }
-
-  .slice-media,
-  .slice-body {
-    width: 100%;
-  }
 }
 
 // ===== Titles & helpers =====
-.slice-title {
-  font-size: 55px;
-  font-weight: bolder;
-  margin: 0 0 25px;
-  letter-spacing: .2px;
-}
 
 .section-safety {
   margin: 0 0 10px !important;
@@ -581,6 +569,46 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 
 // ===== Audience (ruled rows with arrow) =====
+
+#audience {
+  background: #f3f3f3 !important;
+  color: $c-black;
+
+  .slice-title {
+    color: $c-dark !important;
+  }
+}
+
+.slice-title {
+  text-align: left !important;
+}
+
+.ac-head {
+  .slice-title {
+    color: #fff !important;
+  }
+}
+
+.is-steps {
+  .slice-title {
+    color: #fff !important;
+    text-align: center !important;
+  }
+
+  .step-title {
+    font-size: 24px;
+    font-weight: 400 !important;
+  }
+}
+
+.step-card {
+  text-align: left !important;
+}
+
+.step-card::before {
+  left: 13% !important;
+}
+
 #audience .bullet {
   padding: 0;
   margin: 0;
@@ -597,12 +625,12 @@ $bd-muted: rgba(255, 255, 255, .12);
   margin: 0 0 10px;
   line-height: 1.8;
   opacity: .95;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* در حالت ruled-rows این بخش بولت نیست، ولی فاصله‌ها هماهنگ باشد */
 #audience .audience-intro {
-  padding: 6px 0 30px;
+  padding: 6px 0 0 0;
   border-bottom: 1px solid rgba(255, 255, 255, .16);
 }
 
@@ -619,7 +647,7 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 #audience .bullet li::before {
   content: "➟";
-  color: #fff;
+  color: #153655;
   font-size: 35px;
   margin-right: 15px;
   flex: 0 0 auto;
@@ -747,7 +775,6 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 .slice.is-aftercare .slice-inner.narrow {
-  margin: 0 17%;
   flex-direction: column;
   gap: 20px;
 }
@@ -774,9 +801,26 @@ $bd-muted: rgba(255, 255, 255, .12);
   gap: 16px;
 }
 
-@media (max-width: 1200px) {
+
+
+@media (max-width: 1250px) {
   .ac-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step-card::before {
+    display: none;
+  }
+
+  .slice-inner {
+    max-width: 1000px !important;
+  }
+}
+
+
+@media (max-width:1050px) {
+  .slice-inner {
+    padding: 0 5%;
   }
 }
 
@@ -784,6 +828,12 @@ $bd-muted: rgba(255, 255, 255, .12);
   #audience .bullet {
     grid-template-columns: 1fr;
     column-gap: 0;
+  }
+
+
+
+  .steps-flow {
+    margin-top: 30px;
   }
 
   .ac-grid {
@@ -867,159 +917,22 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 // ===== Steps flow =====
 .slice.is-steps .slice-inner {
-  margin: 0 10%;
-  justify-content: center;
+  justify-content: center !important;
+}
+
+.slice-inner {
+  justify-content: space-between;
 }
 
 .slice.is-steps .slice-body {
   width: auto;
 }
 
-.steps-flow {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 100px;
-  margin-top: 80px;
-}
-
-.steps-rail {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 22px;
-  height: 2px;
-  z-index: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, .08), rgba(255, 255, 255, .28), rgba(255, 255, 255, .08));
-}
-
-.step-card {
-  position: relative;
-  z-index: 1;
-  flex: 1 1 0;
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .09);
-  border-radius: 14px;
-  padding: 26px 18px 18px;
-  min-height: 170px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-.step-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, .26);
-  border-color: rgba(255, 255, 255, .16);
-}
-
-.step-badge {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 16px;
-  color: #0b1e35;
-  background: #fff;
-  border: 6px solid rgba(255, 255, 255, .18);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .22);
-}
-
-.step-card::before {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 20px;
-  background: rgba(255, 255, 255, .22);
-  border-radius: 1px;
-}
-
-.step-card::after {
-  content: none;
-}
-
-.step-title {
-  margin: 50px 0 8px;
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: .2px;
-}
-
-.step-text {
-  margin: 0;
-  line-height: 1.7;
-  opacity: .95;
-}
-
 /* vertical timeline on mobile */
 @media (max-width: 900px) {
-  .steps-flow {
-    flex-direction: column;
-    gap: 40px;
-    padding-left: 25px;
-    margin-top: 60px;
-  }
-
-  .steps-rail {
-    top: 0;
-    bottom: 0;
-    left: 5px;
-    right: auto;
-    width: 2px;
-    height: auto;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, .08), rgba(255, 255, 255, .28), rgba(255, 255, 255, .08));
-  }
-
-  .step-badge {
-    top: 10px;
-    left: 18px;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    font-size: 15px;
-    border-width: 5px;
-  }
-
-  .step-card {
-    text-align: left;
-    padding: 22px 16px 16px 20px;
-    min-height: unset;
-  }
-
-  .step-card::before {
-    top: 20px;
-    left: 18px;
-    transform: translateX(-50%);
-    height: 24px;
-  }
-
-  .step-title {
-    margin: 10px 0 6px 30px;
-  }
-
-  .step-text {
-    margin-left: 30px;
-  }
-
-  .slice-inner {
-    margin: 0 auto !important;
-  }
-
   .slice-media img {
     aspect-ratio: 1/1 !important;
+    height: auto !important;
   }
 }
 
@@ -1045,10 +958,17 @@ body {
   text-align: left;
 }
 
+.article_wrapper {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 50%;
+}
+
 .media_and_content {
-  position: absolute;
+  position: relative;
   width: 100%;
-  margin-bottom: 100px;
+  height: 100%;
   z-index: 3;
   background: #1d1d1daa;
 }
@@ -1056,35 +976,30 @@ body {
 .media_and_content>div {
   display: flex;
   position: relative;
-  max-width: 1783px;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .media_and_content>div>.media_wrap {
-  width: 1105px;
+  width: 50%;
   position: relative;
 }
 
 .media_and_content .img_wrap {
   height: 100%;
-  width: 44vw;
+  width: 100%;
   overflow: hidden;
 }
 
 .media_and_content .img_wrap img {
-  min-height: 100%;
-  max-width: none;
-  width: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: relative;
-  left: 60%;
-  transform: translateX(-50%);
 }
 
 @media (max-width: 1699px) {
   .media_and_content .content {
-    width: 45%;
-    padding-left: 50px;
-    padding-right: 70px;
+    padding: 0px 95px !important;
   }
 
   .media_and_content {
@@ -1094,19 +1009,12 @@ body {
   .media_and_content>div>.media_wrap {
     width: 55%;
   }
-
-  .media_and_content .img_wrap {
-    width: 50vw;
-  }
 }
 
 @media (max-width: 1299px) {
-  .media_and_content>div {
-    flex-direction: column;
-  }
 
   .media_and_content>div>.media_wrap {
-    width: auto;
+    width: 80%;
   }
 
   .media_and_content {
@@ -1117,14 +1025,10 @@ body {
     z-index: 2;
 
     /* بالای overlay بمونه */
-    .img_wrap {
-      height: auto !important;
-      width: 100vw;
-    }
+    
   }
 
   #Main .bg-img {
-    display: block !important;
     /* به‌جای flex، لازم نیست ولی خیال‌راحت‌کن */
     height: auto !important;
     /* kill 113/145/160vh */
@@ -1133,12 +1037,6 @@ body {
     /* اگر flex موند */
     overflow: visible;
     /* اگر چیزی سایه انداخت، قطع نشه */
-  }
-
-  /* 3) تصویر هیرو در موبایل: تمام‌عرض و با ارتفاع اتومات */
-  .media_and_content .img_wrap {
-    width: 100% !important;
-    height: auto !important;
   }
 
   .media_and_content .img_wrap img {
@@ -1160,8 +1058,13 @@ body {
     position: relative;
   }
 
+  .article_wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
   .media_and_content .content {
-    padding: 40px 40px 50px !important;
+    padding: 55px !important;
     width: auto !important;
   }
 
@@ -1205,20 +1108,19 @@ body {
   }
 }
 
-@media (max-width: 940px) {
+@media (max-width: 980px) {
   .bg-img::before {
     background: none;
   }
 
   .media_and_content .img_wrap {
     height: 100%;
+    width: 100vw;
   }
 
   .media_and_content .img_wrap img {
     min-height: 100%;
     max-width: none;
-    width: auto;
-    height: 615px;
   }
 
   .media_and_content {
@@ -1291,10 +1193,6 @@ body {
     gap: 30px;
   }
 
-  .faq {
-    padding: 60px 20px !important;
-  }
-
   .section-title {
     padding: 0 !important;
   }
@@ -1304,7 +1202,6 @@ body {
 // ===== Text & list layout in hero =====
 .media_and_content .content {
   padding: 40px 100px 50px;
-  width: 678px;
   align-self: center;
 }
 
@@ -1324,7 +1221,7 @@ body {
 }
 
 .media_and_content .entry_content_wrap {
-  margin-top: 28px;
+  margin-top: 10px;
   color: $c-white !important;
   font-size: 14px !important;
   font-weight: 100;
@@ -1370,9 +1267,9 @@ ul {
 
 .content .prices {
   border-top: 2px solid rgba(70, 70, 70, .5);
-  margin-top: 22px;
-  padding-top: 37px;
-  font-size: 24px;
+  margin-top: 15px;
+  padding-top: 20px;
+  font-size: 20px;
   font-weight: 700;
   color: #edf2f7;
   overflow: hidden;
@@ -1401,7 +1298,7 @@ ul {
 }
 
 .content .buttons {
-  margin-top: 35px;
+  margin-top: 25px;
 }
 
 .content .buttons a {
@@ -1483,75 +1380,16 @@ button[type="submit"],
   }
 }
 
-.dark-mode-cover-home {
-  &::before {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-  }
-
-  h1 {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  }
-}
-
-
-// ===== FAQ =====
-.faq {
-  padding: 150px 20px;
-  background: #ffffff;
-  color: #000;
-}
-
-.faq .section-title {
-  color: #153655 !important;
-  margin-top: 0;
-  margin-bottom: 30px !important;
-}
-
-.faq-list {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.faq-q {
-  cursor: pointer;
-  padding: 20px 18px;
-  font-weight: 700;
-}
-
-.faq-a {
-  padding: 0 18px 14px;
-  line-height: 1.6;
-}
-
-.faq-a a {
-  color: #9ec5ff;
-  text-decoration: underline;
-}
-
-.faq-item[open] .faq-q {
-  background: rgba(255, 255, 255, 0.07);
-}
-
 
 // ===== Responsive tweaks =====
 @media (max-width: 1550px) {
-  .faq {
-    padding: 100px 15%;
-
-    h2 {
-      font-size: 40px !important;
-    }
+  .slice-inner {
+    max-width: 1200px;
   }
 
-  .slice.is-aftercare .slice-inner.narrow {
-    margin: 0 10% !important;
+  .slice {
+    padding: 70px 0;
+    margin: 0 auto;
   }
 
   .steps-flow {
@@ -1559,7 +1397,11 @@ button[type="submit"],
   }
 
   h2 {
-    font-size: 40px !important;
+    font-size: 36px !important;
+  }
+
+  .bg-img {
+    padding: 0 !important;
   }
 
   .fuld-width {
@@ -1572,22 +1414,6 @@ button[type="submit"],
 
   .audience-media img {
     object-position: right;
-  }
-
-  .audience-body {
-    width: 50vw;
-  }
-
-  .audience-media {
-    width: 30vw;
-  }
-
-  .slice-media {
-    width: 31vw;
-  }
-
-  .section-safety-body {
-    width: 45vw;
   }
 
   #safety .bullet li {
@@ -1614,9 +1440,11 @@ button[type="submit"],
     font-size: 14px;
   }
 
-  .resultater-body {
-    width: 42vw !important;
+  .step-text {
+    margin: 22px 0 0 0;
+  }
 
+  .resultater-body {
     .kv li {
       font-size: 14px;
     }
@@ -1650,9 +1478,13 @@ button[type="submit"],
   }
 }
 
-@media (max-width: 940px) {
+@media (max-width: 980px) {
   .bg-img h1 {
     padding-top: 30vw !important;
+  }
+
+  .media_and_content>div {
+    flex-direction: column;
   }
 
   .line {
@@ -1660,11 +1492,45 @@ button[type="submit"],
   }
 
   .slice-body {
-    width: auto !important;
+    width: 80% !important;
+    margin: 0 auto;
+  }
+
+  .slice-inner {
+    align-items: center;
+  }
+
+  .slice.is-steps .slice-body {
+    width: 90% !important;
+    margin: 0 auto;
+  }
+
+  .section-safety-intro {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px !important;
+
+    .muted {
+      margin-left: 0px;
+    }
+  }
+
+  h2 {
+    font-size: 30px !important;
   }
 
   .slice-title {
-    font-size: 36px !important;
+    font-size: 32px !important;
+  }
+
+  #pricing {
+    .slice-title {
+      margin-bottom: 5px !important;
+    }
+
+    .price-list {
+      margin: 20px 0 !important;
+    }
   }
 
   .resultater-body p {
@@ -1696,6 +1562,30 @@ button[type="submit"],
   .slice-media {
     width: 90vw !important;
   }
+
+  .slice-body {
+    width: 100% !important;
+  }
+
+   .slice.is-steps .slice-body {
+    width: 100% !important;
+  }
+
+  .article_wrapper {
+    height: auto;
+  }
+
+  .media_and_content .content {
+    padding: 40px !important;
+  }
+
+  .media_and_content .content {
+    padding: 30px !important;
+  }
+
+  .slice {
+    padding: 50px 0;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1705,15 +1595,6 @@ button[type="submit"],
     h1 {
       padding-top: 50vw !important;
     }
-  }
-
-  .expectations-media, .safety-media, .slice-media img {
-    aspect-ratio: 1/1 !important;
-  }
-
-  .media_and_content .img_wrap img {
-    left: 60%;
-    transform: translateX(-50%);
   }
 
   .entry_content p {
@@ -1741,7 +1622,4 @@ button[type="submit"],
     width: 100%;
   }
 }
-
-
-
 </style>

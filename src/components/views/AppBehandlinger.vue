@@ -1,5 +1,5 @@
 <template>
-  <AppBehandling :dark="dark" :title="behandlingData.title" :imageSrc="behandlingData.imageSrc"
+  <AppBehandling :title="behandlingData.title" :imageSrc="behandlingData.imageSrc"
     :description="behandlingData.description" :duration="behandlingData.duration" :result="behandlingData.result"
     :anesthesia="behandlingData.anesthesia" :durability="behandlingData.durability" :downtime="behandlingData.downtime"
     :consultation="behandlingData.consultation" :price="behandlingData.price" :priceText="behandlingData.priceText"
@@ -12,15 +12,14 @@ import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 
-import BotoxImage from '@/assets/Carts/Botox.webp'
+// DISABLED: Botox treatment
+// import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
 import SkinboosterImage from '@/assets/Carts/Skinbooster.webp'
-import PRPImage from '@/assets/Carts/PRP.webp'
 import MesotherapyImage from '@/assets/Carts/Mesotherapy.webp'
 import MicroneedlingImage from '@/assets/Carts/Microneedling.webp'
 
 const props = defineProps({
-  dark: { type: Boolean, required: false },
   type: { type: String, required: false }
 })
 
@@ -35,6 +34,8 @@ const currentType = computed(() => (props.type || '').toLowerCase())
 
 // داده‌ها با کلید lowercase تا با روتر هم‌خوان باشد
 const behandlinger = {
+  /*
+  DISABLED: Botox treatment object (preserved for future use)
   botox: {
     title: 'Botox behandling',
     imageSrc: BotoxImage,
@@ -75,8 +76,8 @@ const behandlinger = {
       },
       steps: [
         { title: 'Konsultation & plan', text: 'Gennemgang af ønsker/kontraindikationer, fotodokumentation og individuel dosisplan. Vi gennemgår realistiske forventninger og sikkerhed.' },
-        { title: 'Selve behandlingen (injektion)', text: 'Små, præcise stik i målte muskler – typisk 10–15 min. Målet er et naturligt, afslappet udtryk uden at “fryse” mimikken.' },
-        { title: 'Efterbehandling & kontrol (14 dage)', text: 'Effekt kan vurderes efter 14 dage, efter behov, hvor der kan laves finjustering for optimalt resultat.' }
+        { title: 'Selve behandlingen', text: 'Små, præcise stik i målte muskler – typisk 10–15 min. Målet er et naturligt, afslappet udtryk uden at “fryse” mimikken.' },
+        { title: 'Efterbehandling & kontrol', text: 'Effekt kan vurderes efter 14 dage, efter behov, hvor der kan laves finjustering for optimalt resultat.' }
       ],
       safety: {
         note: 'Udføres af erfaren læge. Resultater og behov er individuelle.',
@@ -102,7 +103,7 @@ const behandlinger = {
         { ref: 'filler', label: 'Filler', text: 'til volumetab eller kontur.' },
         { ref: 'skinbooster', label: 'Skinbooster', text: 'til glød og fugt.' },
         {
-          refs: [{ ref: 'microneedling', label: 'Microneedling' }, { ref: 'prp', label: 'PRP' }],
+          refs: [{ ref: 'microneedling', label: 'Microneedling' }],
           text: 'til hudkvalitet.'
         }
       ],
@@ -121,6 +122,7 @@ const behandlinger = {
       safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
     }
   },
+  */
   filler: {
     title: 'Filler behandling',
     imageSrc: FillerImage,
@@ -151,7 +153,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & design', text: 'Ansigtsanalyse, fotodokumentation og produktvalg efter område/hudtype. Vi planlægger en naturlig harmonisering.' },
         { title: 'Injektion & formgivning', text: 'Hyaluronsyre-filler placeres lagvist med nål/kanyle for bløde overgange, symmetri og kontur. Varighed ca. 15–30 min.' },
-        { title: 'Efterbehandling & kontrol (14 dage)', text: 'Hævelse falder typisk inden for få dage; endeligt look kan ses efter 14 dage. Vi kan vurdere resultatet efter behov, efter 2 uger og kan ved behov lave finpudsning/rettelser.' }
+        { title: 'Efterbehandling & kontrol', text: 'Hævelse falder typisk inden for få dage; endeligt look kan ses efter 14 dage. Vi kan vurdere resultatet efter behov, efter 2 uger og kan ved behov lave finpudsning/rettelser.' }
       ],
       safety: {
         note: 'Udføres af læge; brug af <b>hyaluronidase</b> ved behov.',
@@ -172,10 +174,11 @@ const behandlinger = {
         'Makeup efter <b>første døgn</b>.'
       ],
       combinations: [
-        { ref: 'botox', label: 'Botox', text: 'til mimiske linjer.' },
+        // DISABLED: Botox reference
+        // { ref: 'botox', label: 'Botox', text: 'til mimiske linjer.' },
         { ref: 'skinbooster', label: 'Skinbooster', text: 'for hudens kvalitet og fugt.' },
         {
-          refs: [{ ref: 'microneedling', label: 'Microneedling' }, { ref: 'prp', label: 'PRP' }],
+          refs: [{ ref: 'microneedling', label: 'Microneedling' }],
           text: 'til tekstur/arr.'
         }
       ],
@@ -222,7 +225,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation', text: 'Hudvurdering, mål og valg af skinbooster-type. Plan for antal sessioner og intervaller.' },
         { title: 'Mikroinjektioner af skinbooster', text: 'Præcise mængder af blød hyaluronsyre lægges i huden for at forbedre fugtbalance og tekstur. Små “papler” er normale i 1 - 2 dage.' },
-        { title: 'Næste session & kontrol (2 måneder)', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn. Vurdering foretages før næste behandling efter minimum 2 måneder' }
+        { title: 'Næste session & kontrol', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn. Vurdering foretages før næste behandling efter minimum 2 måneder' }
       ],
       safety: {
         note: 'Mild og biokompatibel behandling.',
@@ -240,10 +243,11 @@ const behandlinger = {
         'Undgå sauna/hård træning <b>24 timer</b>.'
       ],
       combinations: [
-        { ref: 'botox', label: 'Botox', text: '(linjer)' },
+        // DISABLED: Botox reference
+        // { ref: 'botox', label: 'Botox', text: '(linjer)' },
         { ref: 'filler', label: 'Filler', text: '(volumen)' },
         {
-          refs: [{ ref: 'microneedling', label: 'Microneedling' }, { ref: 'prp', label: 'PRP' }],
+          refs: [{ ref: 'microneedling', label: 'Microneedling' }],
           text: 'for tekstur og glød.'
         }
       ],
@@ -257,69 +261,6 @@ const behandlinger = {
     sectionsAssets: {
       audience: new URL('@/assets/behandlinger/konsultation.webp', import.meta.url).href,
       expectations: new URL('@/assets/behandlinger/skinbooster.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
-    }
-  },
-  prp: {
-    title: 'PRP behandling',
-    imageSrc: PRPImage,
-    description: 'PRP hjælper med at stimulere kollagen produktionen for en sundere og yngre hud.',
-    duration: '45-60 min',
-    result: 'Efter 1 uge',
-    anesthesia: 'Ingen',
-    durability: '6-12 måneder',
-    downtime: '1-2 dage',
-    consultation: 'Gratis',
-    price: 'Fra 1.850',
-    priceText: '',
-    sections: {
-      audience: [
-        'Ønsker <b>egenkroppens</b> regenerative metode til <b>hudforyngelse</b> og glød.',
-        'Forbedring af <b>akne-ar</b>, fine linjer eller generel hudkvalitet.',
-        'Tidlige stadier af <b>hårtynding</b> (kvinder/mænd) efter lægelig vurdering.',
-        'God til dig, der vil undgå syntetiske fyldstoffer.'
-      ],
-      expectations: {
-        summary:
-          'Dit blod centrifugeres og det <b>trombocyt-rige plasma</b> (PRP) injiceres/needles for at stimulere <b>kollagen, heling og vækstfaktorer</b>.',
-        visibleAfter: 'Hud: <b>1–4 uger</b> for glød/tekstur. Hår: gradvis fortætning over måneder.',
-        durability: 'Effekt vedligeholdes typisk i <b>6–12 måneder</b> efter en kur.',
-        sessions: 'Kur på <b>3–4 behandlinger</b> med 4–6 ugers mellemrum; herefter vedligehold.'
-      },
-      steps: [
-        { title: 'Konsultation & blodprøve', text: 'Kort helbredsgennemgang, fotodokumentation og udtagning af en lille blodprøve, som centrifugeres til trombocyt-rigt plasma (PRP).' },
-        { title: 'PRP-injektion/needling', text: 'Det koncentrerede plasma fordeles i målområdet med injektion eller needling for at stimulere kollagen, heling og vækstfaktorer.' },
-        { title: 'Efterbehandling & planlagt opfølgning (4–6 uger)', text: 'Undgå NSAID første 24–48 t. og hård træning første døgn. Effekten vurderes, og næste session planlægges efter 4–6 uger som led i en kur på 3–4 behandlinger.' }
-      ],
-      safety: {
-        note: 'Autolog behandling (fra egen krop).',
-        contraindications: [
-          'Graviditet/amning.',
-          'Blodsygdomme/koagulationsforstyrrelser (lægelig vurdering).',
-          'Aktiv infektion i området.'
-        ],
-        sideEffects: [
-          'Forbigående hævelse/ømhed, blå mærker.'
-        ]
-      },
-      aftercare: [
-        'Undgå <b>NSAID</b> første 24–48 timer (medmindre lægen siger andet).',
-        'Undgå hård træning/varme det første døgn.',
-        'Ved hår: undgå hårvask første <b>24 timer</b>.'
-      ],
-      combinations: [
-        { ref: 'microneedling', label: 'Microneedling', text: 'for ar/tekstur.' },
-        { ref: 'skinbooster', label: 'Skinbooster', text: 'for fugt/elasticitet.' }
-      ],
-      pricing: {
-        items: [
-          { label: 'PRP (per session)', price: 'Fra 1.850 kr.' }
-        ],
-        notes: 'Bedst effekt som <b>serie</b>; vedligehold anbefales.'
-      }
-    },
-    sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/consultation.webp', import.meta.url).href,
       safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
     }
   },
@@ -353,7 +294,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & cocktailvalg', text: 'Valg af vitamin/antioxidant-cocktail efter hudtype og mål. Vi sætter realistiske forventninger og forklarer forløbet.' },
         { title: 'Mikroinjektioner', text: 'Overfladiske mikroinjektioner fordeles jævnt i området for at forbedre fugt, glød og ensartethed. Let rødme/blå mærker kan opstå kortvarigt.' },
-        { title: 'Næste session & kontrol (4 uger)', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn og brug SPF. Vurdering og gentagelse planlægges efter 4 uger som del af en kur på 3–6 sessioner.' }
+        { title: 'Næste session & kontrol', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn og brug SPF. Vurdering og gentagelse planlægges efter 4 uger som del af en kur på 3–6 sessioner.' }
       ],
       safety: {
         note: 'Udføres af læge – ingredienser tilpasses hudens behov.',
@@ -416,7 +357,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & bedøvende creme', text: 'Vi afklarer mål, kontraindikationer og påfører lokalbedøvende creme for komfort. Områder og intensitet planlægges.' },
         { title: 'Steril microneedling-procedure', text: 'Kontrollerede mikrokanaler stimulerer kollagen/elastin og øger optag af aktive stoffer. Behandlingen tilpasses zone for jævn og sikker dækning.' },
-        { title: 'Efterbehandling & vurdering (4–6 uger)', text: 'SPF 50 dagligt, undgå AHA/BHA/retinol i 3–5 dage og ingen sauna/hård træning første 24–48 t. Vurdering/plan for næste session efter 4–6 uger.' }
+        { title: 'Efterbehandling & vurdering', text: 'SPF 50 dagligt, undgå AHA/BHA/retinol i 3–5 dage og ingen sauna/hård træning første 24–48 t. Vurdering/plan for næste session efter 4–6 uger.' }
       ],
       safety: {
         note: 'Sterile engangshoveder – medicinsk hygiejne.',
@@ -436,9 +377,9 @@ const behandlinger = {
         'Skånsom rens + fugt.'
       ],
       combinations: [
-        { ref: 'prp', label: 'PRP', text: 'for heling og glød.' },
-        { ref: 'skinbooster', label: 'Skinbooster', text: 'for fugt/elasticitet.' },
-        { ref: 'botox', label: 'Botox', text: 'senere for mimiske linjer.' }
+        { ref: 'skinbooster', label: 'Skinbooster', text: 'for fugt/elasticitet.' }
+        // DISABLED: Botox reference
+        // { ref: 'botox', label: 'Botox', text: 'senere for mimiske linjer.' }
       ],
       pricing: {
         items: [
@@ -457,10 +398,10 @@ const behandlinger = {
 
 // URL مطلق برای OG images
 const OG_IMAGES = {
-  botox: `${SITE_URL}/og/botox.webp`,
+  // DISABLED: Botox OG image
+  // botox: `${SITE_URL}/og/botox.webp`,
   filler: `${SITE_URL}/og/filler.webp`,
   skinbooster: `${SITE_URL}/og/skinbooster.webp`,
-  prp: `${SITE_URL}/og/prp.webp`,
   mesotherapy: `${SITE_URL}/og/mesotherapy.webp`,
   microneedling: `${SITE_URL}/og/microneedling.webp`,
   // fallback
@@ -474,10 +415,11 @@ const sectionAssets = computed(() => behandlingData.value.sectionsAssets || {})
 
 // متاهای اختصاصی هر درمان
 const META = {
-  botox: {
-    title: 'Botox i Esbjerg & Vejle | DK Skønhedsklinik (lægebehandlet)',
-    desc: 'Reducer rynker med botox udført af erfaren læge. Naturlige resultater. Book gratis forundersøgelse.'
-  },
+  // DISABLED: Botox metadata
+  // botox: {
+  //   title: 'Botox i Esbjerg & Vejle | DK Skønhedsklinik (lægebehandlet)',
+  //   desc: 'Reducer rynker med botox udført af erfaren læge. Naturlige resultater. Book gratis forundersøgelse.'
+  // },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
     desc: 'Læbe/kind-filler med naturlige resultater. Udført af erfaren læge. Book gratis forundersøgelse.'
@@ -485,10 +427,6 @@ const META = {
   skinbooster: {
     title: 'Skinbooster i Esbjerg & Vejle | DK Skønhedsklinik',
     desc: 'Forbedrer fugt og elasticitet i huden. Book gratis forundersøgelse.'
-  },
-  prp: {
-    title: 'PRP i Esbjerg & Vejle | DK Skønhedsklinik',
-    desc: 'Hudforyngelse og hårvækst med PRP. Book gratis forundersøgelse.'
   },
   mesotherapy: {
     title: 'Mesotherapy i Esbjerg & Vejle | DK Skønhedsklinik',
@@ -534,15 +472,6 @@ const FAQ_BANK = {
     { q: 'Hvor længe holder effekten?', a: 'Som regel <b>6–12 måneder</b>, afhængigt af hudtilstand og produkt.' },
     { q: 'Nedetid og ubehag?', a: 'Små papler/rødme i <b>1–2 dage</b> er normalt. <b>Ingen bedøvelse</b> nødvendig for de fleste.' },
     { q: 'Passer skinbooster til alle hudtyper?', a: 'Ja, særligt ved <b>tør/mat hud</b> eller fine linjer. Vi tilpasser produktvalg til hudtype.' }
-  ],
-
-  prp: [
-    { q: 'Hvad er PRP?', a: 'PRP (platelet-rich plasma) er <b>dit eget blodplasma</b> koncentreret og injiceret for at stimulere <b>kollagen og heling</b>.' },
-    { q: 'Hvor mange PRP-behandlinger skal jeg have?', a: 'Et typisk forløb er <b>3–4 sessioner</b> med 4–6 uger imellem, herefter årlig vedligehold.' },
-    { q: 'Hvornår ses resultater?', a: 'Ofte efter <b>1–2 uger</b> for hudglød; gradvise forbedringer over uger-måneder.' },
-    { q: 'Hvor længe holder PRP?', a: 'Resultater kan vare <b>6–12 måneder</b> afhængigt af område og livsstil.' },
-    { q: 'Er der nedetid?', a: 'Let rødme/hævelse i <b>1–2 dage</b> er normalt. Ingen bedøvelse nødvendig for de fleste.' },
-    { q: 'Er PRP sikkert?', a: 'Da det er <b>autologt</b> (dit eget blod), er allergirisikoen meget lav. Blå mærker kan forekomme kortvarigt.' }
   ],
 
   mesotherapy: [
@@ -657,6 +586,10 @@ useHead(() => {
 
   const meta = [
     { name: 'description', content: desc },
+    { name: 'keywords', content: `${behandlingData.value.title}, Esbjerg, Vejle, hudbehandling, læge, anti-aging` },
+    { name: 'author', content: 'DK Skønhedsklinik' },
+    { name: 'geo:region', content: 'DK-86,DK-82' },
+    { name: 'geo:placename', content: 'Esbjerg, Vejle, Danmark' },
     { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
     { name: 'googlebot', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
 
@@ -668,7 +601,6 @@ useHead(() => {
     { property: 'og:url', content: url },
     { property: 'og:image', content: img },
     { property: 'og:image:alt', content: behandlingData.value.title },
-    // پیشنهاد: اگر همه OGها 1200x630 هستند، این دو خط کمک می‌کند
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:image:type', content: 'image/webp' },
@@ -695,7 +627,7 @@ useHead(() => {
     meta,
     link: [
       { rel: 'canonical', href: url },
-      { rel: 'alternate', href: url, hreflang: 'da' },
+      { rel: 'alternate', href: url, hreflang: 'da-DK' },
       { rel: 'preload', as: 'image', href: behandlingData.value.imageSrc }
     ],
     script: scripts
