@@ -214,7 +214,8 @@
         <div class="container callout-cta" data-aos="fade-up" data-aos-duration="800">
             <div>
                 <h3 class="cta-note">De fleste behandlinger kræver forundersøgelse og betænkningstid</h3>
-                <a href="/booking" @click.prevent="openBooking" class="inline-link arrow læs-mere" aria-label="Book en forundersøgelse">Book
+                <a href="/booking" @click.prevent="openBooking" class="inline-link arrow læs-mere"
+                    aria-label="Book en forundersøgelse">Book
                     forundersøgelse</a>
             </div>
         </div>
@@ -691,6 +692,18 @@ h2 {
     .bg-img p {
         font-size: 18px !important;
     }
+
+    .callout-cta {
+        justify-content: center;
+
+        div {
+            max-width: 1000px !important;
+
+            h3 {
+                font-size: 20px !important;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 1120px) {
@@ -704,6 +717,22 @@ h2 {
 
     .OmKlinik {
         padding: 40px 8% 40px 8% !important;
+    }
+
+    .callout-cta {
+        .læs-mere {
+            width: 150px;
+        }
+
+        div {
+            max-width: 1000px !important;
+            width: 90% !important;
+            gap: 30px;
+
+            h3 {
+                font-size: 18px !important;
+            }
+        }
     }
 }
 
@@ -790,6 +819,22 @@ h2 {
 
     .VIKING-image {
         width: 100% !important;
+    }
+
+    .callout-cta {
+        height: auto !important;
+        .læs-mere {
+            font-weight: bold;
+        }
+    }
+
+    .callout-cta div {
+        flex-direction: column;
+        align-items: start !important;
+        padding: 20px 0;
+        h3 {
+            font-size: 18px !important;
+        }
     }
 }
 
@@ -1134,7 +1179,7 @@ h2 {
 
 
 .callout-cta {
-    height: 120px !important;
+    height: 120px;
     max-width: unset;
     padding: 0;
     background: #15365595;

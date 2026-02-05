@@ -431,6 +431,7 @@ useHead({
 main {
     display: flex;
     height: 65vh;
+    min-height: 800px;
     align-content: center;
     background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
@@ -450,6 +451,7 @@ main {
         left: 0;
         width: 100%;
         height: 65vh;
+        min-height: 800px;
         background-color: rgba(0, 0, 0, 0.3);
         /* Sort overlay med 50% gennemsigtighed */
         z-index: 1;

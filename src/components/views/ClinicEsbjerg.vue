@@ -15,7 +15,7 @@
         <meta itemprop="name" content="DK Skønhedsklinik – Esbjerg" />
         <meta itemprop="telephone" content="+45 53 50 37 50" />
         <meta itemprop="url" content="https://dsklinik.dk/klinik/esbjerg/" />
-        
+
         <div>
           <h2>Adresse & kontakt</h2>
           <address>
@@ -31,8 +31,10 @@
         </div>
 
         <p class="clinic-actions">
-          <button class="general_button" type="button" @click="openBooking" aria-label="Book gratis forundersøgelse">Book forundersøgelse</button>
-          <a class="general_button" :href="directionsLink" target="_blank" rel="noopener" aria-label="Få rutevejledning til DK Skønhedsklinik Esbjerg">Få rutevejledning</a>
+          <button class="general_button" type="button" @click="openBooking"
+            aria-label="Book gratis forundersøgelse">Book forundersøgelse</button>
+          <a class="general_button" :href="directionsLink" target="_blank" rel="noopener"
+            aria-label="Få rutevejledning til DK Skønhedsklinik Esbjerg">Få rutevejledning</a>
         </p>
       </article>
 
@@ -43,19 +45,29 @@
     </div>
 
     <section class="clinic-about">
-      <h2>Om klinikken i Esbjerg</h2>
-      <p>
-        Vores Esbjerg-afdeling er indrettet lyst og roligt med fokus på diskretion, hygiejne og komfort. Behandlingerne
-        udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
-        slut.
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Om klinikken i Esbjerg</h2>
+          <p>
+            Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og komfort. Behandlingerne
+            udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
+            slut.
 
-        Adgang
-        Lokalet har nem adgang fra gaden/indgangen og gode forhold for alle besøgende. Der er elevator/adgang uden
-        større niveauforskelle, så du kommer bekvemt til og fra din tid.
 
-        Parkering
-        Der findes parkeringsmuligheder i nærområdet i kort gåafstand. Kom i god tid, hvis du ankommer i myldretiden.
-      </p>
+            Lokalet har nem adgang fra gaden/indgangen og gode forhold for alle besøgende.
+            <br><br>
+            <strong>Parkering</strong>
+            <br>
+            Der findes parkeringsmuligheder i nærområdet i kort gåafstand.
+          </p>
+        </div>
+        <div class="about-video">
+          <video autoplay loop muted playsinline preload="none" width="100%" height="auto" loading="lazy">
+            <source :src="videoReel" type="video/mp4">
+            Din browser understøtter ikke video-element.
+          </video>
+        </div>
+      </div>
     </section>
   </section>
 </template>
@@ -63,6 +75,7 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
+import videoReel from '@/assets/video/Instagram_Reel_4.mp4'
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
@@ -163,8 +176,12 @@ const openBooking = () => {
   }
 }
 
+strong {
+  color: #2d58a1;
+}
 
-a{
+
+a {
   padding: 0 !important;
   height: 59px;
   text-decoration: none;
@@ -202,8 +219,43 @@ a{
 
 .clinic-about {
   margin-top: 12px;
-  max-width: 1000px;
+  max-width: 1500px;
   line-height: 1.6;
+}
+
+.about-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.about-text {
+  width: 45%;
+  min-width: 0;
+}
+
+.about-text h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-video {
+  width: 40%;
+  min-width: 0;
+}
+
+.about-video video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .clinic-map iframe {
@@ -233,6 +285,7 @@ a{
     max-width: 800px;
     padding: 0 !important;
   }
+
   .container {
     align-items: center !important;
   }
@@ -243,6 +296,19 @@ a{
     width: 90% !important;
     padding: 50px 0;
   }
+
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-text {
+    width: 90%;
+  }
+
+  .about-video {
+    width: 60%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -252,6 +318,14 @@ a{
 
   .clinic-actions {
     align-items: flex-start;
+  }
+
+  .about-text {
+    width: 100%;
+  }
+
+  .about-video {
+    width: 100%;
   }
 }
 

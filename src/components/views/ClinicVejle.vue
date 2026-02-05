@@ -43,17 +43,28 @@
     </div>
 
     <section class="clinic-about">
-      <h2>Om klinikken i Vejle</h2>
-      <p>
-        Vores Vejle-afdeling er tænkt som en rolig, diskret “by appointment”-klinik med nordisk, lys indretning. Her
-        møder du vores læge i et professionelt miljø med tryghed, faglighed og komfort i centrum – fra første samtale
-        til opfølgning.
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Om klinikken i Vejle</h2>
+          <p>
+            Vores <strong>Vejle-afdeling</strong> er tænkt som en rolig, diskret "by appointment"-klinik med nordisk, lys indretning. Her
+            møder du vores læge i et professionelt miljø med tryghed, faglighed og komfort i centrum – fra første samtale
+            til opfølgning.
 
-        Nemmelig ankomst og overskuelig modtagelse uden store venteområder. Tidsbookede besøg sikrer ro og privatliv.
-        <br><br>
-        Parkering
-        Flere parkeringsmuligheder i nærområdet (kort gåafstand). Kom gerne et par minutter før i myldretiden.
-      </p>
+            Nemmelig ankomst og overskuelig modtagelse uden store venteområder. Tidsbookede besøg sikrer ro og privatliv.
+            <br><br>
+            <strong>Parkering</strong>
+            <br>
+            Flere parkeringsmuligheder i nærområdet (kort gåafstand). Kom gerne et par minutter før i myldretiden.
+          </p>
+        </div>
+        <div class="about-video">
+          <video autoplay loop muted playsinline preload="none" width="100%" height="auto" loading="lazy">
+            <source :src="videoReel" type="video/mp4">
+            Din browser understøtter ikke video-element.
+          </video>
+        </div>
+      </div>
     </section>
   </section>
 </template>
@@ -61,6 +72,7 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import imgVejle from '@/assets/klinik/vejle.webp'
+import videoReel from '@/assets/video/Instagram_Reel_4.mp4'
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
@@ -161,6 +173,10 @@ const openBooking = () => {
   }
 }
 
+strong {
+  color: #2d58a1;
+}
+
 a{
   padding: 0 !important;
   height: 59px;
@@ -197,8 +213,43 @@ a{
 
 .clinic-about {
   margin-top: 12px;
-  max-width: 1000px;
+  max-width: 1500px;
   line-height: 1.6;
+}
+
+.about-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.about-text {
+  width: 45%;
+  min-width: 0;
+}
+
+.about-text h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-video {
+  width: 40%;
+  min-width: 0;
+}
+
+.about-video video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .clinic-map iframe {
@@ -239,6 +290,18 @@ a{
     width: 90% !important;
     padding: 50px 0;
   }
+
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-text{
+    width: 90%;
+  }
+  .about-video{
+    width: 60%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -248,6 +311,12 @@ a{
 
   .clinic-actions {
     align-items: flex-start;
+  }
+  .about-text{
+    width: 100%;
+  }
+  .about-video{
+    width: 100%;
   }
 }
 

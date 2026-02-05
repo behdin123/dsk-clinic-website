@@ -28,3 +28,8 @@ pnpm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Large video files
+*.mp4
+*.webm
+*.mov

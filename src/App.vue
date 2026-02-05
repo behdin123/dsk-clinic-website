@@ -352,6 +352,7 @@ body {
 
   .bg-img {
     height: 65vh;
+    min-height: 800px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
