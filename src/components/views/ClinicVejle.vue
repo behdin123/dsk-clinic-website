@@ -73,7 +73,7 @@
 import { useHead } from '@unhead/vue'
 import imgVejle from '@/assets/klinik/vejle.webp'
 
-const videoReel = new URL('/src/assets/video/Instagram_Reel_4.mp4', import.meta.url).href
+const videoReel = new URL('/assets/video/Instagram_Reel_4.mp4', import.meta.url).href
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
