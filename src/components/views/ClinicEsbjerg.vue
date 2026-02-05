@@ -49,7 +49,8 @@
         <div class="about-text">
           <h2>Om klinikken i Esbjerg</h2>
           <p>
-            Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og komfort. Behandlingerne
+            Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og
+            komfort. Behandlingerne
             udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
             slut.
 
@@ -62,7 +63,7 @@
           </p>
         </div>
         <div class="about-video">
-          <video autoplay loop muted playsinline preload="none" width="100%" height="auto" loading="lazy" v-if="videoReel">
+          <video autoplay loop muted playsinline preload="auto" width="100%" height="auto" v-if="videoReel">
             <source :src="videoReel" type="video/mp4">
             Din browser understøtter ikke video-element.
           </video>
@@ -76,7 +77,7 @@
 import { useHead } from '@unhead/vue'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
 
-const videoReel = new URL('/assets/video/Instagram_Reel_4.mp4', import.meta.url).href
+const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
@@ -201,7 +202,6 @@ a {
 .clinic-info {
   display: flex;
   justify-content: space-between;
-  max-width: 900px;
 }
 
 .clinic-info h2,
@@ -212,10 +212,18 @@ a {
 
 .clinic-actions {
   display: flex;
-  flex-direction: column;
   gap: 12px;
   align-items: center;
+  align-items: flex-end;
   margin-top: 18px;
+}
+
+.general_button {
+  min-width: 150px;
+  width: 50% !important;
+  font-size: 14px;
+  padding: 10px;
+  height: 60px;
 }
 
 .clinic-about {
@@ -325,8 +333,22 @@ a {
     width: 100%;
   }
 
+  .general_button {
+    min-width: 150px;
+    width: 50% !important;
+    font-size: 14px;
+    padding: 10px;
+    height: 60px;
+  }
+
   .about-video {
     width: 100%;
+  }
+
+  .clinic-grid,
+  .clinic-hero,
+  .clinic-about {
+    padding: 25px 0;
   }
 }
 
