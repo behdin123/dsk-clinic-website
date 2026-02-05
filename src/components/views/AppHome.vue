@@ -1845,6 +1845,10 @@ onMounted(() => {
   .scroll-indicator {
     display: none !important;
   }
+
+  #app .bg-img {
+    min-height: auto;
+  }
 }
 
 

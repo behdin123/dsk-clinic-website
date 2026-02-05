@@ -921,6 +921,7 @@ h2 {
 
 @media only screen and (max-width: 780px) {
     main {
+        min-height: auto;
         p {
             width: auto !important;
         }

@@ -63,7 +63,7 @@
           </p>
         </div>
         <div class="about-video">
-          <video autoplay loop muted playsinline preload="auto" width="100%" height="auto" v-if="videoReel">
+          <video autoplay loop muted playsinline width="100%" height="auto" v-if="videoReel">
             <source :src="videoReel" type="video/mp4">
             Din browser understøtter ikke video-element.
           </video>
