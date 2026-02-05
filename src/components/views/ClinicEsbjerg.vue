@@ -62,7 +62,7 @@
           </p>
         </div>
         <div class="about-video">
-          <video autoplay loop muted playsinline preload="none" width="100%" height="auto" loading="lazy">
+          <video autoplay loop muted playsinline preload="none" width="100%" height="auto" loading="lazy" v-if="videoReel">
             <source :src="videoReel" type="video/mp4">
             Din browser understøtter ikke video-element.
           </video>
@@ -75,7 +75,8 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
-import videoReel from '@/assets/video/Instagram_Reel_4.mp4'
+
+const videoReel = new URL('/src/assets/video/Instagram_Reel_4.mp4', import.meta.url).href
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
