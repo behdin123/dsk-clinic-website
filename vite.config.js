@@ -3,7 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 // درمان‌های معتبر
-const CANONICAL = ['filler','skinbooster','prp','mesotherapy','microneedling'] // DISABLED: botox
+// const CANONICAL = ['filler','skinbooster','prp','mesotherapy','microneedling'] // DISABLED: botox
+const CANONICAL = ['filler','skinbooster','mesotherapy','microneedling'] // DISABLED: botox + prp
 
 const normalize = (p='/', root='/') => {
   let s = String(p || root).trim()

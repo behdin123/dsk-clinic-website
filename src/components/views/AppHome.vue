@@ -7,7 +7,7 @@
         <div class="hero-title">
           <p class="hero-eyebrow">DK Skønhedsklinik</p>
           <h1 data-aos="fade-right" data-aos-duration="3000">Lægebehandlede
-            Rynkebehandling & Filler i
+            Hudbehandlinger & Filler i
             <span class="locs">Esbjerg &amp; Vejle</span>
           </h1>
         </div>
@@ -17,7 +17,7 @@
           Vi tilbyder
           <!-- <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }" class="inline-link"
             aria-label="Rynkebehandling – læs mere" data-tooltip="Går til: Rynkebehandling"> -->
-            <strong>Rynkebehandling, </strong>
+            <strong>hudforbedrende behandlinger, </strong>
           <!-- </router-link>, -->
           <router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }" class="inline-link"
             aria-label="Filler – læs mere" data-tooltip="Går til: Filler">
@@ -42,7 +42,7 @@
         <div>
           <div class="mobile-show">
             <p data-aos="fade-right" data-aos-duration="3000">
-              💉 Ekspert i rynkebehandling og filler
+              💉 Ekspert i hudbehandling og filler
             </p>
             <p data-aos="fade-right" data-aos-duration="3000">
               💙 Naturlige og harmoniske resultater
@@ -227,7 +227,7 @@
           <div class="slide">
             <div class="slide-content">
               <img src="../../assets/Instagram/din_skønhed.webp"
-                alt="Ryngebehandling før-efter glød og fugt – DK Skønhedsklinik" loading="lazy" decoding="async">
+                alt="Hudbehandling før-efter glød og fugt – DK Skønhedsklinik" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -336,9 +336,9 @@
           <li>
             <b>To klinikker:</b>
             Besøg os i hjertet af
-            <a href="/kontaktos">Vejle</a>
+            <router-link :to="{ name: 'clinic-vejle' }" aria-label="Gå til klinikken i Vejle">Vejle</router-link>
             eller
-            <a href="/kontaktos">Esbjerg</a>.
+            <router-link :to="{ name: 'clinic-esbjerg' }" aria-label="Gå til klinikken i Esbjerg">Esbjerg</router-link>.
             Begge klinikker byder på hyggelige omgivelser og fleksible åbningstider – også aftener og weekender.
           </li>
         </ul>
@@ -410,14 +410,14 @@ const faqLd = computed(() => ({
 }))
 
 useHead({
-  title: 'DK Skønhedsklinik – Lægebehandlet Rynkebehandling & Filler i Esbjerg & Vejle',
+  title: 'DK Skønhedsklinik – Skønhedsklinik i Vejle & Esbjerg | Filler og Hudpleje',
   meta: [
-    { name: 'description', content: 'Lægebehandlet rynkebehandling, filler, Mesotherapy og Skinbooster. Naturlige resultater i Esbjerg og Vejle. Book gratis forundersøgelse i dag.' },
-    { name: 'keywords', content: 'skønhedsklinik, hudpleje, filler, rynkebehandling, Esbjerg, Vejle, anti-aging, lægebehandlet, skinbooster, mesotherapy' },
+    { name: 'description', content: 'Skønhedsklinik i Vejle og Esbjerg med filler, mesotherapy, skinbooster og microneedling. Lægebehandlet hudpleje og gratis forundersøgelse.' },
+    { name: 'keywords', content: 'skønhedsklinik vejle, filler vejle, skønhedsklinik esbjerg, filler esbjerg, hudpleje vejle, mesotherapy, skinbooster, microneedling' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
     { name: 'geo:region', content: 'DK-86,DK-82' },
-    { name: 'geo:placename', content: 'Esbjerg, Vejle, Danmark' },
+    { name: 'geo:placename', content: 'Vejle, Esbjerg, Danmark' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'da_DK' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
@@ -445,8 +445,8 @@ useHead({
         "name": "DK Skønhedsklinik",
         "url": "https://dsklinik.dk/",
         "telephone": "+45 53 50 37 50",
-        "email": "eskonhed@gmail.com",
-        "logo": "https://dsklinik.dk/assets/images/logo_blue.aacd9554.svg",
+        "email": "dr_arash_bagheri@yahoo.com",
+        "logo": "https://dsklinik.dk/og/logo.webp",
 
         /* Hovedlokation (Esbjerg) */
         "address": {

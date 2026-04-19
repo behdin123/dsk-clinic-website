@@ -6,7 +6,7 @@
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Vejle.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgVejle" alt="DK Skønhedsklinik Vejle" loading="lazy" />
+        <img :src="imgVejle" alt="DK Skønhedsklinik Vejle" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 
@@ -27,7 +27,7 @@
             </p>
           </address>
           <p><b>Åbningstider:</b> Lørdag-Søndag 11:00–18:00 (eller efter aftale)</p>
-          <p><b>Telefon:</b> <a href="tel:+45535037750" itemprop="telephone">+45 53 50 37 50</a></p>
+          <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
         </div>
 
         <p class="clinic-actions">
@@ -79,9 +79,10 @@ const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
 const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://dsklinik.dk/klinik/vejle/#localbusiness',
   'name': 'DK Skønhedsklinik – Vejle',
-  'image': 'https://dsklinik.dk/img/vejle.webp',
-  'description': 'Moderne skønhedsklinik i Vejle med lægebehandlet hudpleje, filler, botox og anti-aging behandlinger',
+  'image': 'https://dsklinik.dk/og/home.webp',
+  'description': 'Skønhedsklinik i Vejle med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling.',
   'address': {
     '@type': 'PostalAddress',
     'streetAddress': 'Søndergade 50',
@@ -99,35 +100,41 @@ const schemaData = {
     'description': 'Efter aftale til andre tidspunkter'
   },
   'priceRange': '$$',
-  'sameAs': 'https://www.facebook.com/profile.php?id=100054595142567'
+  'areaServed': ['Vejle', 'Trekantområdet'],
+  'sameAs': [
+    'https://www.facebook.com/profile.php?id=100054595142567',
+    'https://www.instagram.com/dk_skonhedsklinik/'
+  ]
 }
 
 useHead({
-  title: 'Klinik i Vejle – DK Skønhedsklinik | Hudpleje & Lægebehandlinger',
+  title: 'Skønhedsklinik Vejle | DK Skønhedsklinik | Filler & Hudbehandling',
   meta: [
-    { name: 'description', content: 'Besøg DK Skønhedsklinik i Vejle. Moderne hudklinik med lægebehandlet hudpleje, filler, rynkebehandling og anti-aging. Åbent lørdag-søndag 11-18. Kontakt: +45 53 50 37 50' },
-    { name: 'keywords', content: 'skønhedsklinik Vejle, hudpleje Vejle, filler Vejle, anti-aging Vejle, lægebehandlet hudpleje' },
+    { name: 'description', content: 'Skønhedsklinik i Vejle med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling. Book gratis forundersøgelse hos DK Skønhedsklinik.' },
+    { name: 'keywords', content: 'skønhedsklinik vejle, filler vejle, hudpleje vejle, skinbooster vejle, mesotherapy vejle, microneedling vejle' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
-    { property: 'og:title', content: 'Klinik i Vejle – DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Moderne skønhedsklinik i Vejle med lægebehandlet hudpleje, filler og rynkebehandling. Book din gratis forundersøgelse i dag.' },
+    { property: 'og:title', content: 'Skønhedsklinik Vejle – DK Skønhedsklinik' },
+    { property: 'og:description', content: 'Lægebehandlet skønhedsklinik i Vejle med filler og avanceret hudbehandling. Book gratis forundersøgelse.' },
     { property: 'og:type', content: 'business.business' },
     { property: 'og:url', content: 'https://dsklinik.dk/klinik/vejle/' },
-    { property: 'og:image', content: 'https://dsklinik.dk/img/vejle.webp' },
+    { property: 'og:image', content: 'https://dsklinik.dk/og/home.webp' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:locale', content: 'da_DK' },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Klinik i Vejle – DK Skønhedsklinik' },
-    { name: 'twitter:description', content: 'Lægebehandlet hudpleje og anti-aging i Vejle. Book gratis forundersøgelse.' },
+    { name: 'twitter:title', content: 'Skønhedsklinik Vejle – DK Skønhedsklinik' },
+    { name: 'twitter:description', content: 'Filler og lægebehandlet hudpleje i Vejle. Book gratis forundersøgelse.' },
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' },
     { name: 'geo:region', content: 'DK-82' },
     { name: 'geo:placename', content: 'Vejle' }
   ],
   link: [
     { rel: 'canonical', href: 'https://dsklinik.dk/klinik/vejle/' },
-    { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/klinik/vejle/' }
+    { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/klinik/vejle/' },
+    { rel: 'alternate', hreflang: 'x-default', href: 'https://dsklinik.dk/klinik/vejle/' }
   ],
   script: [
     {

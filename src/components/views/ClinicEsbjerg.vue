@@ -6,7 +6,7 @@
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Esbjerg.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgEsbjerg" alt="DK Skønhedsklinik Esbjerg" loading="lazy" />
+        <img :src="imgEsbjerg" alt="DK Skønhedsklinik Esbjerg" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 
@@ -27,7 +27,7 @@
             </p>
           </address>
           <p><b>Åbningstider:</b> Mandag–Fredag 17:00–20:00 (eller efter aftale)</p>
-          <p><b>Telefon:</b> <a href="tel:+45535037750" itemprop="telephone">+45 53 50 37 50</a></p>
+          <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
         </div>
 
         <p class="clinic-actions">
@@ -83,9 +83,10 @@ const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
 const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://dsklinik.dk/klinik/esbjerg/#localbusiness',
   'name': 'DK Skønhedsklinik – Esbjerg',
-  'image': 'https://dsklinik.dk/img/esbjerg.webp',
-  'description': 'Moderne skønhedsklinik i Esbjerg med lægebehandlet hudpleje, filler, botox og anti-aging behandlinger',
+  'image': 'https://dsklinik.dk/og/home.webp',
+  'description': 'Skønhedsklinik i Esbjerg med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling.',
   'address': {
     '@type': 'PostalAddress',
     'streetAddress': 'Havnegade 6',
@@ -103,35 +104,41 @@ const schemaData = {
     'description': 'Efter aftale til andre tidspunkter'
   },
   'priceRange': '$$',
-  'sameAs': 'https://www.facebook.com/profile.php?id=100054595142567'
+  'areaServed': ['Esbjerg', 'Sydvestjylland'],
+  'sameAs': [
+    'https://www.facebook.com/profile.php?id=100054595142567',
+    'https://www.instagram.com/dk_skonhedsklinik/'
+  ]
 }
 
 useHead({
   title: 'Klinik i Esbjerg – DK Skønhedsklinik | Hudpleje & Lægebehandlinger',
   meta: [
-    { name: 'description', content: 'Besøg DK Skønhedsklinik i Esbjerg. Moderne hudklinik med lægebehandlet hudpleje, filler, rynkebehandling og anti-aging. Åbent hverdage 17-20. Kontakt: +45 53 50 37 50' },
+    { name: 'description', content: 'Skønhedsklinik i Esbjerg med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling. Åbent hverdage 17-20.' },
     { name: 'keywords', content: 'skønhedsklinik Esbjerg, hudpleje Esbjerg, filler Esbjerg, anti-aging Esbjerg, lægebehandlet hudpleje' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
     { property: 'og:title', content: 'Klinik i Esbjerg – DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Moderne skønhedsklinik i Esbjerg med lægebehandlet hudpleje, filler og rynkebehandling. Book din gratis forundersøgelse i dag.' },
+    { property: 'og:description', content: 'Moderne skønhedsklinik i Esbjerg med lægebehandlet hudpleje, filler og hudforbedrende behandlinger. Book din gratis forundersøgelse i dag.' },
     { property: 'og:type', content: 'business.business' },
     { property: 'og:url', content: 'https://dsklinik.dk/klinik/esbjerg/' },
-    { property: 'og:image', content: 'https://dsklinik.dk/img/esbjerg.webp' },
+    { property: 'og:image', content: 'https://dsklinik.dk/og/home.webp' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:locale', content: 'da_DK' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Klinik i Esbjerg – DK Skønhedsklinik' },
-    { name: 'twitter:description', content: 'Lægebehandlet hudpleje og anti-aging i Esbjerg. Book gratis forundersøgelse.' },
+    { name: 'twitter:description', content: 'Filler og lægebehandlet hudpleje i Esbjerg. Book gratis forundersøgelse.' },
+    { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' },
     { name: 'geo:region', content: 'DK-86' },
     { name: 'geo:placename', content: 'Esbjerg' }
   ],
   link: [
     { rel: 'canonical', href: 'https://dsklinik.dk/klinik/esbjerg/' },
-    { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/klinik/esbjerg/' }
+    { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/klinik/esbjerg/' },
+    { rel: 'alternate', hreflang: 'x-default', href: 'https://dsklinik.dk/klinik/esbjerg/' }
   ],
   script: [
     {

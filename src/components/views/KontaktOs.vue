@@ -43,7 +43,7 @@
             <div>
                 <h2> <span>Tag din veninde med </span> <span>– og spar 200 kr. hver</span> </h2>
                 <p class="subhead">
-                    Kom to sammen til rynkebehandling, filler eller skinbooster og få 200 kr. i rabat pr. person.
+                    Kom to sammen til hudbehandling, filler eller skinbooster og få 200 kr. i rabat pr. person.
                 </p>
                 <p>
                     Gør besøget hyggeligt og trygt: Når I booker sammen og får jeres behandling samme dag,
@@ -286,10 +286,10 @@ useHead({
         { property: 'og:title', content: 'Kontakt DK Skønhedsklinik' },
         { property: 'og:description', content: 'Har du spørgsmål? Kontakt os for rådgivning og gratis forundersøgelse.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://dsklinik.dk/og/contact.jpg' },
+        { property: 'og:image', content: 'https://dsklinik.dk/og/contact.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
-        { name: 'twitter:image', content: 'https://dsklinik.dk/og/contact.jpg' },
+        { name: 'twitter:image', content: 'https://dsklinik.dk/og/contact.webp' },
         { name: 'twitter:title', content: 'Kontakt os' },
         { property: 'og:site_name', content: 'DK Skønhedsklinik' },
         { property: 'og:locale', content: 'da_DK' },
@@ -329,7 +329,7 @@ useHead({
                 "url": "https://dsklinik.dk/kontaktos/",
                 "image": "https://dsklinik.dk/og/logo.webp",
                 "parentOrganization": { "@id": ORG_ID },
-                "telephone": "+4553503750",
+                "telephone": "+45 53 50 37 50",
                 "email": "dr_arash_bagheri@yahoo.com",
                 "priceRange": "kr",
                 "address": {
@@ -369,7 +369,7 @@ useHead({
                 "url": "https://dsklinik.dk/kontaktos/",
                 "image": "https://dsklinik.dk/og/logo.webp",
                 "parentOrganization": { "@id": ORG_ID },
-                "telephone": "+4553503750",
+                "telephone": "+45 53 50 37 50",
                 "email": "dr_arash_bagheri@yahoo.com",
                 "priceRange": "DKK",
                 "address": {
@@ -398,12 +398,15 @@ useHead({
             })
         },
         {
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            "@id": "https://dsklinik.dk/#contact",
-            "name": "Kontakt DK Skønhedsklinik",
-            "url": "https://dsklinik.dk/kontaktos/",
-            "mainEntityOfPage": { "@id": "https://dsklinik.dk/#org" }
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "@id": "https://dsklinik.dk/#contact",
+                "name": "Kontakt DK Skønhedsklinik",
+                "url": "https://dsklinik.dk/kontaktos/",
+                "mainEntityOfPage": { "@id": "https://dsklinik.dk/#org" }
+            })
         },
         // 👇 denne skal også have trailing slash
         {

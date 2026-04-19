@@ -55,7 +55,7 @@
                 </p>
 
                 <p>
-                    Uanset om du ønsker en <b>Rynkebehandling</b>, <b>filler</b>, <b>skinbooster</b> eller andre
+                    Uanset om du ønsker en <b>hudbehandling</b>, <b>filler</b>, <b>skinbooster</b> eller andre
                     æstetiske forbedringer, er du i kyndige hænder hos vores specialuddannede behandlere.
                     Hos DK Skønhedsklinik er vores mission at hjælpe dig med at fremhæve din naturlige skønhed på en
                     sikker og professionel måde.
@@ -291,10 +291,10 @@ useHead({
         { property: 'og:title', content: 'Om DK Skønhedsklinik' },
         { property: 'og:description', content: 'Ekspertise, tryghed og kvalitet i hver behandling.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://dsklinik.dk/og/about.jpg' },
+        { property: 'og:image', content: 'https://dsklinik.dk/og/about.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
-        { name: 'twitter:image', content: 'https://dsklinik.dk/og/about.jpg' },
+        { name: 'twitter:image', content: 'https://dsklinik.dk/og/about.webp' },
         { property: 'og:url', content: 'https://dsklinik.dk/omos/' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Om DK Skønhedsklinik' },

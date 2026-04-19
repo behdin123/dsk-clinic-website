@@ -4,11 +4,11 @@
   { "path": "/omos/",                      "priority": 0.6,  "changefreq": "monthly" },
   { "path": "/kontaktos/",                 "priority": 0.6,  "changefreq": "monthly" },
 
-  { "path": "/klinik/vejle/",              "priority": 0.7,  "changefreq": "monthly" },
-  { "path": "/klinik/esbjerg/",            "priority": 0.7,  "changefreq": "monthly" },
+  { "path": "/klinik/vejle/",              "priority": 0.8,  "changefreq": "weekly" },
+  { "path": "/klinik/esbjerg/",            "priority": 0.8,  "changefreq": "weekly" },
 
-  { "path": "/behandlinger/filler/",       "priority": 0.8,  "changefreq": "monthly" },
-  { "path": "/behandlinger/skinbooster/",  "priority": 0.8,  "changefreq": "monthly" },
+  { "path": "/behandlinger/filler/",       "priority": 0.9,  "changefreq": "weekly" },
+  { "path": "/behandlinger/skinbooster/",  "priority": 0.8,  "changefreq": "weekly" },
   { "path": "/behandlinger/mesotherapy/",  "priority": 0.7,  "changefreq": "monthly" },
   { "path": "/behandlinger/microneedling/","priority": 0.7,  "changefreq": "monthly" }
 ]

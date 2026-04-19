@@ -48,8 +48,8 @@ const globalOrgSchema = {
   '@id': 'https://dsklinik.dk/#organization',
   'name': 'DK Skønhedsklinik',
   'url': 'https://dsklinik.dk/',
-  'logo': 'https://dsklinik.dk/logo.webp',
-  'description': 'Moderne skønhedsklinik med lægebehandlet hudpleje, filler, rynkebehandling og anti-aging behandlinger i Esbjerg og Vejle',
+  'logo': 'https://dsklinik.dk/og/logo.webp',
+  'description': 'Moderne skønhedsklinik med lægebehandlet hudpleje, filler og anti-aging behandlinger i Esbjerg og Vejle',
   'sameAs': [
     'https://www.facebook.com/profile.php?id=100054595142567',
     'https://www.instagram.com/dk_skonhedsklinik/'

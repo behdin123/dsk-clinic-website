@@ -9,7 +9,8 @@ import publicRoutes from './seo/routes.public.json'
 
 // درمان‌های معتبر برای صفحات داینامیک
 const CANONICAL_TYPES = [
-  'filler','skinbooster','prp','mesotherapy','microneedling' // DISABLED: botox
+  // 'prp', // DISABLED: PRP (kan genaktiveres senere)
+  'filler','skinbooster','mesotherapy','microneedling' // DISABLED: botox
 ]
 
 // نرمالایزر مسیر
