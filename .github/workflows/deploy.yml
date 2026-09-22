@@ -55,12 +55,13 @@ jobs:
             printf 'ls -1 webroots/\n' > ls.txt
             mapfile -t ENTRIES < <(sftp_run ls.txt | grep -v '^sftp>' | sed 's#/*$##' | grep -v '^$')
             echo "Fundet under webroots/: ${ENTRIES[*]:-<ingen>}"
-            if [ "${#ENTRIES[@]}" -ne 1 ]; then
-              echo "::error::Forventede præcis én mappe under webroots/. Sæt repo-variablen DEPLOY_PATH (fx webroots/<mappe>)."
+            # One.com: hoveddomænet serveres fra webroots/www (by-route er til ekstra routes)
+            if printf '%s\n' "${ENTRIES[@]}" | grep -qx 'webroots/www\|www'; then
+              TARGET="webroots/www"
+            else
+              echo "::error::Fandt ikke webroots/www. Sæt repo-variablen DEPLOY_PATH (fx webroots/<mappe>)."
               exit 1
             fi
-            TARGET="${ENTRIES[0]}"
-            case "$TARGET" in webroots/*) ;; *) TARGET="webroots/$TARGET" ;; esac
           fi
           echo "Uploader til: $TARGET"
 
