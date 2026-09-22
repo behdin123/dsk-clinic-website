@@ -4,7 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // درمان‌های معتبر
 // const CANONICAL = ['filler','skinbooster','prp','mesotherapy','microneedling'] // DISABLED: botox
-const CANONICAL = ['filler','skinbooster','mesotherapy','microneedling'] // DISABLED: botox + prp
+const CANONICAL = ['botox','filler','skinbooster','mesotherapy','microneedling'] // DISABLED: prp
 
 const normalize = (p='/', root='/') => {
   let s = String(p || root).trim()
@@ -15,7 +15,7 @@ const normalize = (p='/', root='/') => {
 }
 
 // اگر JSON داری، خوبه؛ ولی اینجا هم یک لیست مینیمال می‌سازیم که مطمئن باشیم
-const BASE_ROUTES = ['/', '/omos', '/kontaktos']
+const BASE_ROUTES = ['/', '/omos', '/kontaktos', '/klinik/esbjerg', '/klinik/vejle']
 const BEHANDLING_ROUTES = CANONICAL.map(t => `/behandlinger/${t}`)
 const INCLUDED_ROUTES = Array.from(new Set(
   [...BASE_ROUTES.map(normalize), ...BEHANDLING_ROUTES.map(normalize)]
@@ -29,6 +29,11 @@ export default defineConfig({
     },
   },
   server: { port: 5173, open: true },
+  // vite-ssg læser KUN ssgOptions herfra – uden dette prerenderes behandlingssiderne ikke
+  ssgOptions: {
+    dirStyle: 'nested',
+    includedRoutes: () => INCLUDED_ROUTES,
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,

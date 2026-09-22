@@ -26,7 +26,7 @@
               <span itemprop="addressCountry" style="display:none">DK</span>
             </p>
           </address>
-          <p><b>Åbningstider:</b> Lørdag-Søndag 11:00–18:00 (eller efter aftale)</p>
+          <p><b>Åbningstider:</b> Lørdag-Søndag 11:00–18:00 (efter aftale)</p>
           <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
         </div>
 
@@ -82,7 +82,7 @@ const schemaData = {
   '@id': 'https://dsklinik.dk/klinik/vejle/#localbusiness',
   'name': 'DK Skønhedsklinik – Vejle',
   'image': 'https://dsklinik.dk/og/home.webp',
-  'description': 'Skønhedsklinik i Vejle med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling.',
+  'description': 'Skønhedsklinik i Vejle med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling.',
   'address': {
     '@type': 'PostalAddress',
     'streetAddress': 'Søndergade 50',
@@ -110,8 +110,8 @@ const schemaData = {
 useHead({
   title: 'Skønhedsklinik Vejle | DK Skønhedsklinik | Filler & Hudbehandling',
   meta: [
-    { name: 'description', content: 'Skønhedsklinik i Vejle med lægebehandlet hudpleje, filler, skinbooster, mesotherapy og microneedling. Book gratis forundersøgelse hos DK Skønhedsklinik.' },
-    { name: 'keywords', content: 'skønhedsklinik vejle, filler vejle, hudpleje vejle, skinbooster vejle, mesotherapy vejle, microneedling vejle' },
+    { name: 'description', content: 'Skønhedsklinik i Vejle med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling. Book gratis forundersøgelse hos DK Skønhedsklinik.' },
+    { name: 'keywords', content: 'botox vejle, skønhedsklinik vejle, filler vejle, hudpleje vejle, skinbooster vejle, mesotherapy vejle, microneedling vejle' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
@@ -139,7 +139,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(schemaData)
+      innerHTML: JSON.stringify(schemaData)
     }
   ]
 })

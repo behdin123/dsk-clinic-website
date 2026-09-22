@@ -434,9 +434,9 @@ useHead({
     { rel: 'alternate', hreflang: 'da', href: CANONICAL },
   ],
   script: [
-    { type: 'application/ld+json', children: JSON.stringify(articleLd.value) },
-    { type: 'application/ld+json', children: JSON.stringify(breadcrumbLd) },
-    { type: 'application/ld+json', children: JSON.stringify(faqLd.value) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(articleLd.value) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumbLd) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(faqLd.value) },
   ],
 })
 </script>

@@ -304,7 +304,7 @@ useHead({
     script: [
         {
             type: 'application/ld+json',
-            children: JSON.stringify({
+            innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "@id": ORG_ID,
@@ -321,7 +321,7 @@ useHead({
         // شعبه‌ی Vejle
         {
             type: 'application/ld+json',
-            children: JSON.stringify({
+            innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "MedicalClinic",
                 "@id": "https://dsklinik.dk/#clinic-vejle",
@@ -361,7 +361,7 @@ useHead({
         // شعبه‌ی Esbjerg
         {
             type: 'application/ld+json',
-            children: JSON.stringify({
+            innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "MedicalClinic",
                 "@id": "https://dsklinik.dk/#clinic-esbjerg",
@@ -399,7 +399,7 @@ useHead({
         },
         {
             type: 'application/ld+json',
-            children: JSON.stringify({
+            innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "ContactPage",
                 "@id": "https://dsklinik.dk/#contact",
@@ -411,7 +411,7 @@ useHead({
         // 👇 denne skal også have trailing slash
         {
             type: 'application/ld+json',
-            children: JSON.stringify({
+            innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [

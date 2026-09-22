@@ -82,7 +82,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(globalOrgSchema)
+      innerHTML: JSON.stringify(globalOrgSchema)
     }
   ]
 })

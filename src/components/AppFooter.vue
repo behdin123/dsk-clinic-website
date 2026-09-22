@@ -48,7 +48,7 @@
         <section class="footer-section">
           <h3 class="footer-title">Behandlinger</h3>
           <ul class="footer-list">
-            <!-- <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li> -->
+            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li>
             <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">Filler</router-link></li>
             <li><router-link
                 :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">Skinbooster</router-link></li>

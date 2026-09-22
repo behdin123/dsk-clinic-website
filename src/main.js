@@ -1,7 +1,6 @@
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 import { routes } from './router'
-import { createHead } from '@unhead/vue'
 import VueLazyload from 'vue-lazyload'
 
 // (اختیاری) مسیرهای پابلیک که برای سایت‌مپ هم می‌سازی
@@ -10,7 +9,7 @@ import publicRoutes from './seo/routes.public.json'
 // درمان‌های معتبر برای صفحات داینامیک
 const CANONICAL_TYPES = [
   // 'prp', // DISABLED: PRP (kan genaktiveres senere)
-  'filler','skinbooster','mesotherapy','microneedling' // DISABLED: botox
+  'botox','filler','skinbooster','mesotherapy','microneedling'
 ]
 
 // نرمالایزر مسیر
@@ -47,8 +46,7 @@ export const createApp = ViteSSG(
     includedRoutes: () => INCLUDED_ROUTES,
   },
   ({ app, router, isClient }) => {
-    // Head برای SSR/SSG لازم است
-    app.use(createHead())
+    // Head installeres automatisk af vite-ssg (@unhead/vue v2)
 
     // Lazyload فقط سمت کلاینت
     if (isClient) {

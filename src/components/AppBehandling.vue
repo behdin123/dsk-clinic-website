@@ -354,7 +354,7 @@ const sectionAlt = (key) => {
 }
 
 const shortTitles = {
-  /* botox: 'Botox', */
+  botox: 'Botox',
   filler: 'Filler',
   skinbooster: 'Skinbooster',
   mesotherapy: 'Mesotherapy',

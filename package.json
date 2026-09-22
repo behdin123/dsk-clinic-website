@@ -11,7 +11,7 @@
     "postbuild": "npm run sitemap"
   },
   "dependencies": {
-    "@unhead/vue": "^1.11.20",
+    "@unhead/vue": "^2.1.17",
     "core-js": "^3.8.3",
     "minimist": "^1.2.8",
     "swiper": "^11.2.1",

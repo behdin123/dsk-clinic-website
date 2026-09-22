@@ -6,8 +6,8 @@
       <div class="hero-content-wrapper">
         <div class="hero-title">
           <p class="hero-eyebrow">DK Skønhedsklinik</p>
-          <h1 data-aos="fade-right" data-aos-duration="3000">Lægebehandlede
-            Hudbehandlinger & Filler i
+          <h1 data-aos="fade-right" data-aos-duration="3000">Lægebehandlet
+            Botox, Filler & Hudbehandlinger i
             <span class="locs">Esbjerg &amp; Vejle</span>
           </h1>
         </div>
@@ -15,10 +15,10 @@
         <p class="mobile_hide" data-aos="fade-right" data-aos-duration="3000">
           Hos DK Skønhedsklinik får du sikre, lægebehandlede kosmetiske behandlinger med fokus på naturlige resultater.
           Vi tilbyder
-          <!-- <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }" class="inline-link"
-            aria-label="Rynkebehandling – læs mere" data-tooltip="Går til: Rynkebehandling"> -->
-            <strong>hudforbedrende behandlinger, </strong>
-          <!-- </router-link>, -->
+          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }" class="inline-link"
+            aria-label="Botox rynkebehandling – læs mere" data-tooltip="Går til: Botox">
+            <strong>Botox</strong>
+          </router-link>,
           <router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }" class="inline-link"
             aria-label="Filler – læs mere" data-tooltip="Går til: Filler">
             <strong>Filler</strong>
@@ -42,7 +42,7 @@
         <div>
           <div class="mobile-show">
             <p data-aos="fade-right" data-aos-duration="3000">
-              💉 Ekspert i hudbehandling og filler
+              💉 Ekspert i botox, filler og hudbehandling
             </p>
             <p data-aos="fade-right" data-aos-duration="3000">
               💙 Naturlige og harmoniske resultater
@@ -81,11 +81,10 @@
         <h2 class="section-title">Populære Behandlinger</h2>
         <div class="container_carts">
 
-          <!-- DISABLED: Botox treatment card
           <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">
             <div class="card botox">
               <div class="card-content">
-                <h3>Rynkebehandling</h3>
+                <h3>Botox</h3>
                 <p>
                   Få reduceret rynker og fine linjer med en sikker og effektiv behandling.
                   Perfekt til et naturligt og frisk look
@@ -93,7 +92,6 @@
               </div>
             </div>
           </router-link>
-          -->
 
           <router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">
             <div class="card filler">
@@ -410,10 +408,10 @@ const faqLd = computed(() => ({
 }))
 
 useHead({
-  title: 'DK Skønhedsklinik – Skønhedsklinik i Vejle & Esbjerg | Filler og Hudpleje',
+  title: 'DK Skønhedsklinik – Botox & Filler i Esbjerg og Vejle | Lægebehandlet',
   meta: [
-    { name: 'description', content: 'Skønhedsklinik i Vejle og Esbjerg med filler, mesotherapy, skinbooster og microneedling. Lægebehandlet hudpleje og gratis forundersøgelse.' },
-    { name: 'keywords', content: 'skønhedsklinik vejle, filler vejle, skønhedsklinik esbjerg, filler esbjerg, hudpleje vejle, mesotherapy, skinbooster, microneedling' },
+    { name: 'description', content: 'Skønhedsklinik i Esbjerg og Vejle med botox, filler, skinbooster, mesotherapy og microneedling – udført af læge. Book gratis forundersøgelse.' },
+    { name: 'keywords', content: 'botox esbjerg, botox vejle, rynkebehandling, skønhedsklinik vejle, filler vejle, skønhedsklinik esbjerg, filler esbjerg, hudpleje vejle, mesotherapy, skinbooster, microneedling' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
     { name: 'geo:region', content: 'DK-86,DK-82' },
@@ -438,7 +436,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": ["MedicalClinic", "LocalBusiness", "Organization"],
         "@id": "https://dsklinik.dk/#clinic",
@@ -515,7 +513,7 @@ useHead({
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(faqLd.value)
+      innerHTML: JSON.stringify(faqLd.value)
     }
   ]
 })

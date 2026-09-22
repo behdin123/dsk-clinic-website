@@ -48,27 +48,15 @@ const articleRoutes = [] // Empty array - viden routes disabled
 export const routes = [
   { path: '/', name: 'home', component: AppHome },
 
-  // DISABLED: Botox treatment route
-  // {
-  //   path: '/behandlinger/:type(botox|filler|skinbooster|mesotherapy|microneedling)/',
-  //   name: 'behandling-dynamic',
-  //   component: behandlinger,
-  //   props: r => ({ type: String(r.params.type || '').toLowerCase() }),
-  // },
-  // {
-  //   path: '/behandlinger/:type(botox|filler|skinbooster|mesotherapy|microneedling)',
-  //   redirect: to => `/behandlinger/${String(to.params.type).toLowerCase()}/`,
-  // },
-
-  // ACTIVE: Non-botox treatments only
+  // Aktive behandlinger (Botox genaktiveret)
   {
-    path: '/behandlinger/:type(filler|skinbooster|mesotherapy|microneedling)/',
+    path: '/behandlinger/:type(botox|filler|skinbooster|mesotherapy|microneedling)/',
     name: 'behandling-dynamic',
     component: behandlinger,
     props: r => ({ type: String(r.params.type || '').toLowerCase() }),
   },
   {
-    path: '/behandlinger/:type(filler|skinbooster|mesotherapy|microneedling)',
+    path: '/behandlinger/:type(botox|filler|skinbooster|mesotherapy|microneedling)',
     redirect: to => `/behandlinger/${String(to.params.type).toLowerCase()}/`,
   },
 

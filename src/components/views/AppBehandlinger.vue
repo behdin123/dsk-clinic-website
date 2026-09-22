@@ -12,8 +12,7 @@ import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 
-// DISABLED: Botox treatment
-// import BotoxImage from '@/assets/Carts/Botox.webp'
+import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
 import SkinboosterImage from '@/assets/Carts/Skinbooster.webp'
 import MesotherapyImage from '@/assets/Carts/Mesotherapy.webp'
@@ -34,12 +33,10 @@ const currentType = computed(() => (props.type || '').toLowerCase())
 
 // داده‌ها با کلید lowercase تا با روتر هم‌خوان باشد
 const behandlinger = {
-  /*
-  DISABLED: Botox treatment object (preserved for future use)
   botox: {
     title: 'Botox behandling',
     imageSrc: BotoxImage,
-    description: 'Få reduceret rynker og fine linjer med en sikker og effektiv behandling. Perfekt til et naturligt og ungdommeligt look',
+    description: 'Få reduceret rynker og fine linjer med en sikker og effektiv behandling udført af læge. Perfekt til et naturligt og ungdommeligt look',
     duration: '15 min',
     result: 'Efter 14 dage',
     anesthesia: 'Ingen',
@@ -80,7 +77,7 @@ const behandlinger = {
         { title: 'Efterbehandling & kontrol', text: 'Effekt kan vurderes efter 14 dage, efter behov, hvor der kan laves finjustering for optimalt resultat.' }
       ],
       safety: {
-        note: 'Udføres af erfaren læge. Resultater og behov er individuelle.',
+        note: 'Udføres personligt af klinikkens læge, Arash Bagheri. Klinikken er registreret hos Styrelsen for Patientsikkerhed. Resultater og behov er individuelle.',
         contraindications: [
           'Graviditet og amning.',
           'Aktiv infektion i området.',
@@ -122,7 +119,6 @@ const behandlinger = {
       safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
     }
   },
-  */
   filler: {
     title: 'Filler behandling',
     imageSrc: FillerImage,
@@ -174,8 +170,7 @@ const behandlinger = {
         'Makeup efter <b>første døgn</b>.'
       ],
       combinations: [
-        // DISABLED: Botox reference
-        // { ref: 'botox', label: 'Botox', text: 'til mimiske linjer.' },
+        { ref: 'botox', label: 'Botox', text: 'til mimiske linjer.' },
         { ref: 'skinbooster', label: 'Skinbooster', text: 'for hudens kvalitet og fugt.' },
         {
           refs: [{ ref: 'microneedling', label: 'Microneedling' }],
@@ -243,8 +238,7 @@ const behandlinger = {
         'Undgå sauna/hård træning <b>24 timer</b>.'
       ],
       combinations: [
-        // DISABLED: Botox reference
-        // { ref: 'botox', label: 'Botox', text: '(linjer)' },
+        { ref: 'botox', label: 'Botox', text: '(linjer)' },
         { ref: 'filler', label: 'Filler', text: '(volumen)' },
         {
           refs: [{ ref: 'microneedling', label: 'Microneedling' }],
@@ -377,9 +371,8 @@ const behandlinger = {
         'Skånsom rens + fugt.'
       ],
       combinations: [
-        { ref: 'skinbooster', label: 'Skinbooster', text: 'for fugt/elasticitet.' }
-        // DISABLED: Botox reference
-        // { ref: 'botox', label: 'Botox', text: 'senere for mimiske linjer.' }
+        { ref: 'skinbooster', label: 'Skinbooster', text: 'for fugt/elasticitet.' },
+        { ref: 'botox', label: 'Botox', text: 'senere for mimiske linjer.' }
       ],
       pricing: {
         items: [
@@ -398,8 +391,7 @@ const behandlinger = {
 
 // URL مطلق برای OG images
 const OG_IMAGES = {
-  // DISABLED: Botox OG image
-  // botox: `${SITE_URL}/og/botox.webp`,
+  botox: `${SITE_URL}/og/botox.webp`,
   filler: `${SITE_URL}/og/filler.webp`,
   skinbooster: `${SITE_URL}/og/skinbooster.webp`,
   mesotherapy: `${SITE_URL}/og/mesotherapy.webp`,
@@ -415,11 +407,10 @@ const sectionAssets = computed(() => behandlingData.value.sectionsAssets || {})
 
 // متاهای اختصاصی هر درمان
 const META = {
-  // DISABLED: Botox metadata
-  // botox: {
-  //   title: 'Botox i Esbjerg & Vejle | DK Skønhedsklinik (lægebehandlet)',
-  //   desc: 'Reducer rynker med botox udført af erfaren læge. Naturlige resultater. Book gratis forundersøgelse.'
-  // },
+  botox: {
+    title: 'Botox i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
+    desc: 'Botox mod rynker i Esbjerg & Vejle – udføres personligt af læge. Naturlige resultater fra 850 kr. Book gratis forundersøgelse.'
+  },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
     desc: 'Læbe/kind-filler med naturlige resultater. Udført af erfaren læge. Book gratis forundersøgelse.'
@@ -614,11 +605,11 @@ useHead(() => {
   ]
 
   const scripts = [
-    { type: 'application/ld+json', children: JSON.stringify(procedureLd.value) },
-    { type: 'application/ld+json', children: JSON.stringify(breadcrumbLd.value) }
+    { type: 'application/ld+json', innerHTML: JSON.stringify(procedureLd.value) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumbLd.value) }
   ]
   if (hasFaq.value) {
-    scripts.push({ type: 'application/ld+json', children: JSON.stringify(faqLd.value) })
+    scripts.push({ type: 'application/ld+json', innerHTML: JSON.stringify(faqLd.value) })
   }
 
   return {

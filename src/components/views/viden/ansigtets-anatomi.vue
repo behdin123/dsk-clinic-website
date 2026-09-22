@@ -449,11 +449,11 @@ useHead({
     { rel: 'alternate', hreflang: 'da', href: CANONICAL }],
     script: [{
         type: 'application/ld+json',
-        children: JSON.stringify(articleLd.value)
+        innerHTML: JSON.stringify(articleLd.value)
     },
     {
         type: 'application/ld+json',
-        children: JSON.stringify(breadcrumbLd)
+        innerHTML: JSON.stringify(breadcrumbLd)
     }]
 })
 
