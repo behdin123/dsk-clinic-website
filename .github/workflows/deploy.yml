@@ -34,30 +34,38 @@ jobs:
       - name: Write deploy marker
         run: echo "${{ github.sha }}" > dist/deploy-version.txt
 
+      # Upload til websitets rod: One.com-login lander i brugerens hjemmemappe,
+      # mens sitet serveres fra webroots/<site>. Mappen findes automatisk
+      # (eller sættes manuelt med repo-variablen DEPLOY_PATH).
       - name: Deploy to One.com via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          port: ${{ secrets.SFTP_PORT }}
-          local_path: ./dist/*
-          remote_path: ./
-          sftp_only: true
-          delete_remote_files: false
-
-      # Diagnose: viser hvor SFTP-login lander, og hvad der ligger der (datoer)
-      - name: Inspect remote folder
-        if: always()
         env:
           SSHPASS: ${{ secrets.SFTP_PASSWORD }}
           HOST: ${{ secrets.SFTP_HOST }}
           USER: ${{ secrets.SFTP_USERNAME }}
           PORT: ${{ secrets.SFTP_PORT }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
         run: |
+          set -euo pipefail
           sudo apt-get install -y -qq sshpass >/dev/null
-          printf 'pwd\nls -la\nls -la ..\nls -la behandlinger\n' > cmds.txt
-          sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -P "$PORT" -b cmds.txt "$USER@$HOST" || true
+          sftp_run() { sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -P "$PORT" -b "$1" "$USER@$HOST"; }
+
+          if [ -n "${DEPLOY_PATH:-}" ]; then
+            TARGET="$DEPLOY_PATH"
+          else
+            printf 'ls -1 webroots/\n' > ls.txt
+            mapfile -t ENTRIES < <(sftp_run ls.txt | grep -v '^sftp>' | sed 's#/*$##' | grep -v '^$')
+            echo "Fundet under webroots/: ${ENTRIES[*]:-<ingen>}"
+            if [ "${#ENTRIES[@]}" -ne 1 ]; then
+              echo "::error::Forventede præcis én mappe under webroots/. Sæt repo-variablen DEPLOY_PATH (fx webroots/<mappe>)."
+              exit 1
+            fi
+            TARGET="${ENTRIES[0]}"
+            case "$TARGET" in webroots/*) ;; *) TARGET="webroots/$TARGET" ;; esac
+          fi
+          echo "Uploader til: $TARGET"
+
+          printf 'cd %s\nlcd dist\nput -r .\nls -la\n' "$TARGET" > put.txt
+          sftp_run put.txt
 
       # Fejl hvis live-sitet ikke viser den nye version
       - name: Verify live site
