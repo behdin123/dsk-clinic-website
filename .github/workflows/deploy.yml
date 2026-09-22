@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           lfs: true
 
@@ -19,7 +20,7 @@ jobs:
         run: git lfs pull
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
@@ -29,6 +30,9 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Write deploy marker
+        run: echo "${{ github.sha }}" > dist/deploy-version.txt
 
       - name: Deploy to One.com via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -41,3 +45,28 @@ jobs:
           remote_path: ./
           sftp_only: true
           delete_remote_files: false
+
+      # Diagnose: viser hvor SFTP-login lander, og hvad der ligger der (datoer)
+      - name: Inspect remote folder
+        if: always()
+        env:
+          SSHPASS: ${{ secrets.SFTP_PASSWORD }}
+          HOST: ${{ secrets.SFTP_HOST }}
+          USER: ${{ secrets.SFTP_USERNAME }}
+          PORT: ${{ secrets.SFTP_PORT }}
+        run: |
+          sudo apt-get install -y -qq sshpass >/dev/null
+          printf 'pwd\nls -la\nls -la ..\nls -la behandlinger\n' > cmds.txt
+          sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -P "$PORT" -b cmds.txt "$USER@$HOST" || true
+
+      # Fejl hvis live-sitet ikke viser den nye version
+      - name: Verify live site
+        run: |
+          for i in 1 2 3 4 5 6; do
+            live=$(curl -fsS "https://dsklinik.dk/deploy-version.txt?t=$(date +%s)" || true)
+            echo "attempt $i: live='$live' expected='${{ github.sha }}'"
+            [ "$live" = "${{ github.sha }}" ] && echo "✅ Live site updated" && exit 0
+            sleep 10
+          done
+          echo "::error::Upload fuldført, men dsklinik.dk viser ikke den nye version. SFTP lander i en mappe/server, som ikke er websitets rod."
+          exit 1
