@@ -33,3 +33,5 @@ pnpm-debug.log*
 *.mp4
 *.webm
 *.mov
+# ...men klinikvideoen skal med i deployet
+!public/assets/video/*.mp4

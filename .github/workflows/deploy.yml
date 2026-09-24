@@ -31,6 +31,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Strip build-internal files
+        run: rm -rf dist/.vite
+
       - name: Write deploy marker
         run: echo "${{ github.sha }}" > dist/deploy-version.txt
 

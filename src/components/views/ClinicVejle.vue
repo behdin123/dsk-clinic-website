@@ -59,8 +59,8 @@
           </p>
         </div>
         <div class="about-video">
-          <video autoplay loop muted playsinline width="100%" height="auto" v-if="videoReel">
-            <source :src="videoReel" type="video/mp4">
+          <video ref="videoEl" loop muted playsinline preload="none" width="100%" height="auto"
+            :poster="videoPoster" aria-label="Video fra klinikken">
             Din browser understøtter ikke video-element.
           </video>
         </div>
@@ -70,10 +70,30 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
 import imgVejle from '@/assets/klinik/vejle.webp'
 
-const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
+const videoReel = '/assets/video/Instagram_Reel_4.mp4'
+const videoPoster = '/assets/video/klinik-video-poster.webp'
+const videoEl = ref(null)
+
+// Videoen (9 MB) hentes foerst, naar den er paa vej ind i skaermbilledet
+let io = null
+onMounted(() => {
+  const el = videoEl.value
+  if (!el || typeof IntersectionObserver === 'undefined') return
+  io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue
+      if (!el.src) el.src = videoReel
+      el.play().catch(() => {})
+      io.disconnect(); io = null
+    }
+  }, { rootMargin: '200px' })
+  io.observe(el)
+})
+onBeforeUnmount(() => { if (io) { io.disconnect(); io = null } })
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
