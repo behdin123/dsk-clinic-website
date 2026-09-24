@@ -44,8 +44,10 @@
       </ul>
 
       <p class="note">
-        <b>Søgte du PRP mod hårtab?</b> Den behandling tilbyder vi ikke, og vi har ikke et
-        alternativ til den. Tal med din egen læge eller en hudlæge om mulighederne.
+        <b>Søgte du PRP mod hårtab?</b> PRP tilbyder vi ikke længere, men
+        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">mesoterapi</router-link>
+        kan i nogle tilfælde anvendes mod hårtab. Ved den gratis forundersøgelse vurderer
+        lægen, om det er relevant i netop dit tilfælde.
       </p>
 
       <div class="booking-button">
@@ -84,7 +86,7 @@ const faqs = [
   },
   {
     q: 'Tilbyder I PRP mod hårtab?',
-    a: 'Nej, og vi har ikke en anden behandling mod hårtab. Vi anbefaler, at du taler med din egen læge eller en hudlæge.'
+    a: 'Nej. Vi tilbyder mesoterapi, som i nogle tilfælde kan anvendes mod hårtab. Lægen vurderer ved den gratis forundersøgelse, om det er relevant for dig.'
   },
   {
     q: 'Kan jeg få rådgivning om, hvad der passer til min hud?',

@@ -78,7 +78,7 @@
 
     <div class="primary-color Behandlinger-section">
       <div class="container-width">
-        <h2 class="section-title">Populære Behandlinger</h2>
+        <h2 class="section-title">Populære kosmetiske behandlinger</h2>
         <div class="container_carts">
 
           <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">
@@ -313,8 +313,8 @@
         <ul class="why-us-list">
           <li>
             <b>Erfaring & ekspertise:</b>
-            Over 20 års erfaring med kosmetiske behandlinger. Klinikkens ansvarlige læge, Arash Bagheri, sikrer højeste
-            faglige niveau.
+            Over 20 års erfaring med kosmetiske behandlinger. Alle behandlinger udføres af klinikkens ansvarlige læge,
+            Arash Bagheri – ikke af en kosmetolog.
           </li>
           <li>
             <b>Sikkerhed i top:</b>
@@ -408,10 +408,10 @@ const faqLd = computed(() => ({
 }))
 
 useHead({
-  title: 'DK Skønhedsklinik – Botox & Filler i Esbjerg og Vejle | Lægebehandlet',
+  title: 'Botox & filler i Esbjerg & Vejle | DK Skønhedsklinik',
   meta: [
-    { name: 'description', content: 'Skønhedsklinik i Esbjerg og Vejle med botox, filler, skinbooster, mesotherapy og microneedling – udført af læge. Book gratis forundersøgelse.' },
-    { name: 'keywords', content: 'botox esbjerg, botox vejle, rynkebehandling, skønhedsklinik vejle, filler vejle, skønhedsklinik esbjerg, filler esbjerg, hudpleje vejle, mesotherapy, skinbooster, microneedling' },
+    { name: 'description', content: 'Kosmetisk klinik i Esbjerg og Vejle med botox, filler, skinbooster, mesotherapy og microneedling – udført af læge. Book gratis forundersøgelse.' },
+    { name: 'keywords', content: 'botox esbjerg, botox vejle, rynkebehandling, kosmetisk klinik esbjerg, kosmetisk klinik vejle, skønhedsklinik vejle, filler vejle, skønhedsklinik esbjerg, filler esbjerg, hudpleje vejle, mesotherapy, skinbooster, microneedling' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'author', content: 'DK Skønhedsklinik' },
     { name: 'geo:region', content: 'DK-86,DK-82' },
@@ -438,46 +438,47 @@ useHead({
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": ["MedicalClinic", "LocalBusiness", "Organization"],
-        "@id": "https://dsklinik.dk/#clinic",
-        "name": "DK Skønhedsklinik",
-        "url": "https://dsklinik.dk/",
-        "telephone": "+45 53 50 37 50",
-        "email": "dr_arash_bagheri@yahoo.com",
-        "logo": "https://dsklinik.dk/og/logo.webp",
-
-        /* Hovedlokation (Esbjerg) */
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Havnegade 6",
-          "addressLocality": "Esbjerg",
-          "postalCode": "6700",
-          "addressCountry": "DK"
-        },
-        "hasMap": "https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg",
-        "openingHoursSpecification": [
+        "@graph": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "17:00",
-            "closes": "20:00"
+            "@type": "MedicalClinic",
+            "@id": "https://dsklinik.dk/#esbjerg",
+            "name": "DK Skønhedsklinik – Esbjerg",
+            "url": "https://dsklinik.dk/klinik/esbjerg/",
+            "telephone": "+45 53 50 37 50",
+            "email": "dr_arash_bagheri@yahoo.com",
+            "image": "https://dsklinik.dk/og/home.webp",
+            "logo": "https://dsklinik.dk/og/logo.webp",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Havnegade 6",
+              "addressLocality": "Esbjerg",
+              "postalCode": "6700",
+              "addressCountry": "DK"
+            },
+            "hasMap": "https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg",
+            "geo": { "@type": "GeoCoordinates", "latitude": 55.4639497, "longitude": 8.4543111 },
+            "areaServed": ["Esbjerg", "Varde", "Ribe", "Bramming", "Sydvestjylland"],
+            "openingHoursSpecification": [
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:00", "closes": "18:00" }
+            ],
+            "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=100054595142567",
+              "https://www.instagram.com/dk_skonhedsklinik/"
+            ]
           },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday", "Sunday"],
-            "opens": "11:00",
-            "closes": "18:00"
-          }
-        ],
-
-        /* Vejle som department (sekundær lokation) */
-        "department": [
           {
             "@type": "MedicalClinic",
             "@id": "https://dsklinik.dk/#vejle",
             "name": "DK Skønhedsklinik – Vejle",
-            "url": "https://dsklinik.dk/",
+            "url": "https://dsklinik.dk/klinik/vejle/",
             "telephone": "+45 53 50 37 50",
+            "email": "dr_arash_bagheri@yahoo.com",
+            "image": "https://dsklinik.dk/og/home.webp",
+            "logo": "https://dsklinik.dk/og/logo.webp",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Søndergade 50",
@@ -486,28 +487,18 @@ useHead({
               "addressCountry": "DK"
             },
             "hasMap": "https://maps.google.com/?q=S%C3%B8ndergade+50,+7100+Vejle",
+            "geo": { "@type": "GeoCoordinates", "latitude": 55.7064855, "longitude": 9.5302675 },
+            "areaServed": ["Vejle", "Kolding", "Fredericia", "Horsens", "Trekantområdet"],
             "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "17:00",
-                "closes": "20:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Saturday", "Sunday"],
-                "opens": "11:00",
-                "closes": "18:00"
-              }
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:00", "closes": "18:00" }
             ],
-            "parentOrganization": { "@id": "https://dsklinik.dk/#clinic" }
+            "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=100054595142567",
+              "https://www.instagram.com/dk_skonhedsklinik/"
+            ]
           }
-        ],
-
-        "areaServed": ["Esbjerg", "Vejle", "Danmark"],
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=100054595142567",
-          "https://www.instagram.com/dk_skonhedsklinik/"
         ]
       })
     },

@@ -48,7 +48,7 @@
           <h2>Om klinikken i Vejle</h2>
           <p>
             Vores <strong>Vejle-afdeling</strong> er tænkt som en rolig, diskret "by appointment"-klinik med nordisk, lys indretning. Her
-            møder du vores læge i et professionelt miljø med tryghed, faglighed og komfort i centrum – fra første samtale
+            møder du vores læge til kosmetiske behandlinger i et professionelt miljø med tryghed, faglighed og komfort i centrum – fra første samtale
             til opfølgning.
 
             Nemmelig ankomst og overskuelig modtagelse uden store venteområder. Tidsbookede besøg sikrer ro og privatliv.
@@ -78,8 +78,11 @@ const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://dsklinik.dk/klinik/vejle/#localbusiness',
+  '@type': 'MedicalClinic',
+  '@id': 'https://dsklinik.dk/#vejle',
+  'parentOrganization': { '@id': 'https://dsklinik.dk/#organization' },
+  'hasMap': 'https://maps.google.com/?q=S%C3%B8ndergade+50,+7100+Vejle',
+  'geo': { '@type': 'GeoCoordinates', 'latitude': 55.7064855, 'longitude': 9.5302675 },
   'name': 'DK Skønhedsklinik – Vejle',
   'image': 'https://dsklinik.dk/og/home.webp',
   'description': 'Skønhedsklinik i Vejle med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling.',
@@ -92,13 +95,10 @@ const schemaData = {
   },
   'telephone': '+45 53 50 37 50',
   'url': 'https://dsklinik.dk/klinik/vejle/',
-  'openingHoursSpecification': {
-    '@type': 'OpeningHoursSpecification',
-    'dayOfWeek': ['Saturday', 'Sunday'],
-    'opens': '11:00',
-    'closes': '18:00',
-    'description': 'Efter aftale til andre tidspunkter'
-  },
+  'openingHoursSpecification': [
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '17:00', 'closes': '20:00' },
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday','Sunday'], 'opens': '11:00', 'closes': '18:00', 'description': 'Kun efter aftale' }
+  ],
   'priceRange': '$$',
   'areaServed': ['Vejle', 'Trekantområdet'],
   'sameAs': [
@@ -108,10 +108,10 @@ const schemaData = {
 }
 
 useHead({
-  title: 'Skønhedsklinik Vejle | DK Skønhedsklinik | Filler & Hudbehandling',
+  title: 'Kosmetisk klinik i Vejle | Botox & filler hos læge',
   meta: [
-    { name: 'description', content: 'Skønhedsklinik i Vejle med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling. Book gratis forundersøgelse hos DK Skønhedsklinik.' },
-    { name: 'keywords', content: 'botox vejle, skønhedsklinik vejle, filler vejle, hudpleje vejle, skinbooster vejle, mesotherapy vejle, microneedling vejle' },
+    { name: 'description', content: 'Kosmetisk klinik i Vejle på Søndergade 50 med botox, filler, skinbooster, mesotherapy og microneedling udført af læge. Book gratis forundersøgelse.' },
+    { name: 'keywords', content: 'botox vejle, kosmetisk klinik vejle, skønhedsklinik vejle, filler vejle, hudpleje vejle, skinbooster vejle, mesotherapy vejle, microneedling vejle' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'DK Skønhedsklinik' },

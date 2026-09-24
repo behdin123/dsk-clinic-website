@@ -272,11 +272,11 @@ const openBookingFromHero = () => {
     window.gtagEvent?.('booking_click', { placement: 'home_hero', component: 'AppHome' })
 }
 
-const ORG_ID = 'https://dsklinik.dk/#org'
+const ORG_ID = 'https://dsklinik.dk/#organization'
 const BOOKING_URL = 'https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6'
 
 useHead({
-    title: 'Kontakt DK Skønhedsklinik – Vejle & Esbjerg | Gratis konsultation',
+    title: 'Kontakt DK Skønhedsklinik | Esbjerg & Vejle',
     meta: [
         { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Skriv en sms til os +45 53 50 37 50 eller direkte på vore sociale medier for en gratis forundersøgelse.' },
         { name: 'keywords', content: 'kontakt skønhedsklinik, hudlæge Vejle, hudlæge Esbjerg, book konsultation' },
@@ -324,7 +324,7 @@ useHead({
             innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "MedicalClinic",
-                "@id": "https://dsklinik.dk/#clinic-vejle",
+                "@id": "https://dsklinik.dk/#vejle",
                 "name": "DK Skønhedsklinik – Vejle",
                 "url": "https://dsklinik.dk/kontaktos/",
                 "image": "https://dsklinik.dk/og/logo.webp",
@@ -364,7 +364,7 @@ useHead({
             innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "MedicalClinic",
-                "@id": "https://dsklinik.dk/#clinic-esbjerg",
+                "@id": "https://dsklinik.dk/#esbjerg",
                 "name": "DK Skønhedsklinik – Esbjerg",
                 "url": "https://dsklinik.dk/kontaktos/",
                 "image": "https://dsklinik.dk/og/logo.webp",
@@ -405,7 +405,7 @@ useHead({
                 "@id": "https://dsklinik.dk/#contact",
                 "name": "Kontakt DK Skønhedsklinik",
                 "url": "https://dsklinik.dk/kontaktos/",
-                "mainEntityOfPage": { "@id": "https://dsklinik.dk/#org" }
+                "mainEntityOfPage": { "@id": "https://dsklinik.dk/#organization" }
             })
         },
         // 👇 denne skal også have trailing slash

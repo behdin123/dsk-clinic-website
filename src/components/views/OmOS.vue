@@ -27,7 +27,7 @@
                 <div class="BannerPng">
                     <p>Klinikkens ansvarlige læge</p>
                     <p>Arash Bagheri</p>
-                    <img src="../../assets/OmOsArash.webp" alt="">
+                    <img src="../../assets/OmOsArash.webp" alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik">
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -39,7 +39,7 @@
         <!-- Om DK Skønhedsklinik (موجود) -->
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
-                <img data-aos="fade-right" class="first-img" src="../../assets/Clinic_consultation_2.webp" width="100%"
+                <img data-aos="fade-right" class="first-img" alt="Konsultation før kosmetisk behandling hos DK Skønhedsklinik" src="../../assets/Clinic_consultation_2.webp" width="100%"
                     height="auto">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
@@ -283,8 +283,8 @@ const faqSchema = {
 useHead({
     title: 'Om os – DK Skønhedsklinik (lægebehandlede behandlinger)',
     meta: [
-        { name: 'description', content: 'Lær klinikken og vores ansvarlige læge at kende. Naturlige, harmoniske resultater i Vejle og Esbjerg.' },
-        { name: 'keywords', content: 'om DK Skønhedsklinik, læge Arash Bagheri, hudlæge Danmark, skønhedsbehandlinger' },
+        { name: 'description', content: 'Mød Arash Bagheri, speciallæge og indehaver af DK Skønhedsklinik. Kosmetiske behandlinger udført af læge i Esbjerg og Vejle – naturlige resultater.' },
+        { name: 'keywords', content: 'om DK Skønhedsklinik, læge Arash Bagheri, kosmetisk klinik, kosmetiske behandlinger, skønhedsbehandlinger' },
         { name: 'author', content: 'DK Skønhedsklinik' },
         { name: 'geo:region', content: 'DK-86,DK-82' },
         { name: 'geo:placename', content: 'Esbjerg, Vejle' },

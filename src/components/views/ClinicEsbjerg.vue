@@ -50,7 +50,7 @@
           <h2>Om klinikken i Esbjerg</h2>
           <p>
             Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og
-            komfort. Behandlingerne
+            komfort. De kosmetiske behandlinger
             udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
             slut.
 
@@ -82,8 +82,11 @@ const videoReel = 'https://dsklinik.dk/assets/video/Instagram_Reel_4.mp4'
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://dsklinik.dk/klinik/esbjerg/#localbusiness',
+  '@type': 'MedicalClinic',
+  '@id': 'https://dsklinik.dk/#esbjerg',
+  'parentOrganization': { '@id': 'https://dsklinik.dk/#organization' },
+  'hasMap': 'https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg',
+  'geo': { '@type': 'GeoCoordinates', 'latitude': 55.4639497, 'longitude': 8.4543111 },
   'name': 'DK Skønhedsklinik – Esbjerg',
   'image': 'https://dsklinik.dk/og/home.webp',
   'description': 'Skønhedsklinik i Esbjerg med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling.',
@@ -96,13 +99,10 @@ const schemaData = {
   },
   'telephone': '+45 53 50 37 50',
   'url': 'https://dsklinik.dk/klinik/esbjerg/',
-  'openingHoursSpecification': {
-    '@type': 'OpeningHoursSpecification',
-    'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    'opens': '17:00',
-    'closes': '20:00',
-    'description': 'Efter aftale til andre tidspunkter'
-  },
+  'openingHoursSpecification': [
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '17:00', 'closes': '20:00' },
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday','Sunday'], 'opens': '11:00', 'closes': '18:00', 'description': 'Kun efter aftale' }
+  ],
   'priceRange': '$$',
   'areaServed': ['Esbjerg', 'Sydvestjylland'],
   'sameAs': [
@@ -112,10 +112,10 @@ const schemaData = {
 }
 
 useHead({
-  title: 'Klinik i Esbjerg – DK Skønhedsklinik | Hudpleje & Lægebehandlinger',
+  title: 'Kosmetisk klinik i Esbjerg | Botox & filler hos læge',
   meta: [
-    { name: 'description', content: 'Skønhedsklinik i Esbjerg med lægebehandlet botox, filler, skinbooster, mesotherapy og microneedling. Åbent hverdage 17-20.' },
-    { name: 'keywords', content: 'botox Esbjerg, skønhedsklinik Esbjerg, hudpleje Esbjerg, filler Esbjerg, anti-aging Esbjerg, lægebehandlet hudpleje' },
+    { name: 'description', content: 'Kosmetisk klinik i Esbjerg på Havnegade 6 med botox, filler, skinbooster, mesotherapy og microneedling udført af læge. Åbent hverdage 17-20.' },
+    { name: 'keywords', content: 'botox Esbjerg, kosmetisk klinik Esbjerg, skønhedsklinik Esbjerg, hudpleje Esbjerg, filler Esbjerg, anti-aging Esbjerg, lægebehandlet hudpleje' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'DK Skønhedsklinik' },

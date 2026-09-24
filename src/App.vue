@@ -60,21 +60,10 @@ const globalOrgSchema = {
     'telephone': '+45 53 50 37 50',
     'email': 'dr_arash_bagheri@yahoo.com'
   },
-  'address': [
-    {
-      '@type': 'PostalAddress',
-      'addressLocality': 'Esbjerg',
-      'postalCode': '6700',
-      'streetAddress': 'Havnegade 6',
-      'addressCountry': 'DK'
-    },
-    {
-      '@type': 'PostalAddress',
-      'addressLocality': 'Vejle',
-      'postalCode': '7100',
-      'streetAddress': 'Søndergade 50',
-      'addressCountry': 'DK'
-    }
+  // De to klinikker er ligestillede lokationer (defineres fuldt ud på forsiden og klinikssiderne)
+  'location': [
+    { '@id': 'https://dsklinik.dk/#esbjerg' },
+    { '@id': 'https://dsklinik.dk/#vejle' }
   ]
 }
 
