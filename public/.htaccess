@@ -33,10 +33,11 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.+)$ https://dsklinik.dk/$1/ [R=301,L]
 
-# 4) SPA/SSG fallback (beholdt)
+# 4) Alle sider er prerenderet. Ukendte URL'er skal give en aegte 404,
+#    ikke forsiden med status 200 (soft 404 = Google indekserer skrald)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [L]
+RewriteRule ^ - [R=404,L]
 
 ErrorDocument 404 /404.html
 
