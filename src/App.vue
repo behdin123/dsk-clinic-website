@@ -68,6 +68,7 @@ const globalOrgSchema = {
 }
 
 useHead({
+  htmlAttrs: { lang: 'da' },
   script: [
     {
       type: 'application/ld+json',

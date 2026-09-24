@@ -465,6 +465,7 @@ useHead({
             ],
             "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
             "sameAs": [
+              "https://share.google/GKWF9sJbSFoxUsfJA",
               "https://www.facebook.com/profile.php?id=100054595142567",
               "https://www.instagram.com/dk_skonhedsklinik/"
             ]
@@ -495,6 +496,7 @@ useHead({
             ],
             "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
             "sameAs": [
+              "https://share.google/xmCE5ekm5KMWgjowu",
               "https://www.facebook.com/profile.php?id=100054595142567",
               "https://www.instagram.com/dk_skonhedsklinik/"
             ]

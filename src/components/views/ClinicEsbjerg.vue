@@ -106,6 +106,7 @@ const schemaData = {
   'priceRange': '$$',
   'areaServed': ['Esbjerg', 'Sydvestjylland'],
   'sameAs': [
+    'https://share.google/GKWF9sJbSFoxUsfJA',
     'https://www.facebook.com/profile.php?id=100054595142567',
     'https://www.instagram.com/dk_skonhedsklinik/'
   ]

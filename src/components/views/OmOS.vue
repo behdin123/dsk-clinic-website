@@ -214,7 +214,7 @@
         <div class="container callout-cta" data-aos="fade-up" data-aos-duration="800">
             <div>
                 <h3 class="cta-note">De fleste behandlinger kræver forundersøgelse og betænkningstid</h3>
-                <a href="/booking" @click.prevent="openBooking" class="inline-link arrow læs-mere"
+                <a href="/kontaktos/" @click.prevent="openBooking" class="inline-link arrow læs-mere"
                     aria-label="Book en forundersøgelse">Book
                     forundersøgelse</a>
             </div>

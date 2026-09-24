@@ -102,6 +102,7 @@ const schemaData = {
   'priceRange': '$$',
   'areaServed': ['Vejle', 'Trekantområdet'],
   'sameAs': [
+    'https://share.google/xmCE5ekm5KMWgjowu',
     'https://www.facebook.com/profile.php?id=100054595142567',
     'https://www.instagram.com/dk_skonhedsklinik/'
   ]
