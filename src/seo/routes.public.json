@@ -11,5 +11,6 @@
   { "path": "/behandlinger/filler/",       "priority": 0.9,  "changefreq": "weekly" },
   { "path": "/behandlinger/skinbooster/",  "priority": 0.8,  "changefreq": "weekly" },
   { "path": "/behandlinger/mesotherapy/",  "priority": 0.7,  "changefreq": "monthly" },
-  { "path": "/behandlinger/microneedling/","priority": 0.7,  "changefreq": "monthly" }
+  { "path": "/behandlinger/microneedling/","priority": 0.7,  "changefreq": "monthly" },
+  { "path": "/behandlinger/prp/",          "priority": 0.3,  "changefreq": "yearly" }
 ]

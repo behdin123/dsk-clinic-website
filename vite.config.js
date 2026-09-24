@@ -15,7 +15,7 @@ const normalize = (p='/', root='/') => {
 }
 
 // اگر JSON داری، خوبه؛ ولی اینجا هم یک لیست مینیمال می‌سازیم که مطمئن باشیم
-const BASE_ROUTES = ['/', '/omos', '/kontaktos', '/klinik/esbjerg', '/klinik/vejle']
+const BASE_ROUTES = ['/', '/omos', '/kontaktos', '/klinik/esbjerg', '/klinik/vejle', '/behandlinger/prp']
 const BEHANDLING_ROUTES = CANONICAL.map(t => `/behandlinger/${t}`)
 const INCLUDED_ROUTES = Array.from(new Set(
   [...BASE_ROUTES.map(normalize), ...BEHANDLING_ROUTES.map(normalize)]

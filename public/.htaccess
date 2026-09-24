@@ -19,6 +19,12 @@ RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
 RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301,L]
 
+# 2b) Kendte URL'er med store bogstaver fra Googles indeks -> kanonisk version
+RewriteRule ^behandlinger/PRP/?$ https://dsklinik.dk/behandlinger/prp/ [R=301,L]
+RewriteRule ^behandlinger/Botox/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+RewriteRule ^behandlinger/Filler/?$ https://dsklinik.dk/behandlinger/filler/ [R=301,L]
+RewriteRule ^behandlinger/Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+
 # 3) Tilføj trailing slash, hvis der findes en rigtig mappe
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$

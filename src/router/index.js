@@ -7,6 +7,7 @@ const kontaktos   = () => import('@/components/views/KontaktOs.vue')
 // const viden   = () => import('@/components/views/vidensunivers.vue')
 
 // NEW: clinic routes (lazy-loaded)
+const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
 
@@ -59,6 +60,10 @@ export const routes = [
     path: '/behandlinger/:type(botox|filler|skinbooster|mesotherapy|microneedling)',
     redirect: to => `/behandlinger/${String(to.params.type).toLowerCase()}/`,
   },
+
+  // PRP udgaaet: siden bevares, da den stadig rangerer paa PRP-soegninger
+  { path: '/behandlinger/prp/', name: 'prp-udgaaet', component: prpUdgaaet },
+  { path: '/behandlinger/prp',  redirect: '/behandlinger/prp/' },
 
   { path: '/omos/', name: 'omos', component: omos },
   { path: '/omos', redirect: '/omos/' },
