@@ -59,7 +59,7 @@
           </p>
         </div>
         <div class="about-video">
-          <video ref="videoEl" loop muted playsinline preload="none" width="100%" height="auto"
+          <video ref="videoEl" loop muted playsinline preload="none" width="1080" height="1350"
             :poster="videoPoster" aria-label="Video fra klinikken">
             Din browser understøtter ikke video-element.
           </video>
@@ -87,6 +87,7 @@ onMounted(() => {
     for (const e of entries) {
       if (!e.isIntersecting) continue
       if (!el.src) el.src = videoReel
+      el.muted = true
       el.play().catch(() => {})
       io.disconnect(); io = null
     }
@@ -276,6 +277,9 @@ a{
 .about-video video {
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #eef1f5;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: block;
