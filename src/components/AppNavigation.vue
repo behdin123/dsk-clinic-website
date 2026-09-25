@@ -15,15 +15,15 @@
           Behandlinger
         </button>
         <div class="dropdown-menu">
-          <router-link to="/behandlinger/botox">Botox</router-link>
-          <router-link to="/behandlinger/filler">Filler</router-link>
-          <router-link to="/behandlinger/skinbooster">Skinbooster</router-link>
-          <router-link to="/behandlinger/mesotherapy">Mesotherapy</router-link>
-          <router-link to="/behandlinger/microneedling">Microneedling</router-link>
+          <router-link to="/behandlinger/botox/">Botox</router-link>
+          <router-link to="/behandlinger/filler/">Filler</router-link>
+          <router-link to="/behandlinger/skinbooster/">Skinbooster</router-link>
+          <router-link to="/behandlinger/mesotherapy/">Mesotherapy</router-link>
+          <router-link to="/behandlinger/microneedling/">Microneedling</router-link>
         </div>
       </div>
-      <router-link to="/omos">Om os</router-link>
-      <router-link to="/kontaktos">Kontakt</router-link>
+      <router-link to="/omos/">Om os</router-link>
+      <router-link to="/kontaktos/">Kontakt</router-link>
       <div class="dropdown">
         <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
           Klinikker
@@ -78,17 +78,17 @@
             </button>
             <transition name="expand">
               <ul v-show="isTreatmentsOpen" id="treatments-sub" class="sub">
-                <li><router-link @click="closeMenu" to="/behandlinger/botox">Botox</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/filler">Filler</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/skinbooster">Skinbooster</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/mesotherapy">Mesotherapy</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/microneedling">Microneedling</router-link></li>
+                <li><router-link @click="closeMenu" to="/behandlinger/botox/">Botox</router-link></li>
+                <li><router-link @click="closeMenu" to="/behandlinger/filler/">Filler</router-link></li>
+                <li><router-link @click="closeMenu" to="/behandlinger/skinbooster/">Skinbooster</router-link></li>
+                <li><router-link @click="closeMenu" to="/behandlinger/mesotherapy/">Mesotherapy</router-link></li>
+                <li><router-link @click="closeMenu" to="/behandlinger/microneedling/">Microneedling</router-link></li>
               </ul>
             </transition>
           </li>
 
-          <li class="omos-link"><router-link @click="closeMenu" to="/omos">Om os</router-link></li>
-          <li class="kontakt-link"><router-link @click="closeMenu" to="/kontaktos">Kontakt</router-link></li>
+          <li class="omos-link"><router-link @click="closeMenu" to="/omos/">Om os</router-link></li>
+          <li class="kontakt-link"><router-link @click="closeMenu" to="/kontaktos/">Kontakt</router-link></li>
 
           <li class="group-title">Klinikker</li>
 

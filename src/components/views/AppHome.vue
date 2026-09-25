@@ -164,7 +164,7 @@
             sikkerhed, etik og æstetik. Vi går aldrig på kompromis med din tryghed.
             <br> <br>
 
-            <router-link to="/omos" class="inline-link læs-mere" aria-label="Arash Bagheri – læs mere"
+            <router-link to="/omos/" class="inline-link læs-mere" aria-label="Arash Bagheri – læs mere"
               data-tooltip="Går til: Om os"> <span>🠮</span>Læse mere om klnikkens speciallæge..</router-link>
           </p>
 
@@ -297,7 +297,7 @@
           </div>
 
           <div class="booking-button">
-            <router-link to="/omos" class="arrow general_button"
+            <router-link to="/omos/" class="arrow general_button"
               aria-label="Om DK Skønhedsklinik, Ekspertise og kvalitet – læs mere" data-tooltip="Går til: Om os">
               Læse mere om DK Skønhedsklinik</router-link>
           </div>

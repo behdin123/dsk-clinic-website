@@ -201,7 +201,7 @@
             <!-- فلش/استایل شما اینجا از قبل روی li هست -->
             <template v-if="item.refs?.length">
               <template v-for="(r, idx) in item.refs" :key="r.ref">
-                <RouterLink :to="`/behandlinger/${r.ref}`" class="inline-link"><b>{{ r.label || titleFor(r.ref) }}</b>
+                <RouterLink :to="`/behandlinger/${r.ref}/`" class="inline-link"><b>{{ r.label || titleFor(r.ref) }}</b>
                 </RouterLink>
                 <span v-if="idx < item.refs.length - 1"> / </span>
               </template>
@@ -210,7 +210,7 @@
 
             <template v-else>
               <template v-if="item.ref">
-                <RouterLink :to="`/behandlinger/${item.ref}`" class="inline-link"><b>{{ item.label || titleFor(item.ref)
+                <RouterLink :to="`/behandlinger/${item.ref}/`" class="inline-link"><b>{{ item.label || titleFor(item.ref)
                     }}</b></RouterLink>
                 <span v-if="item.text">&nbsp;{{ item.text }}</span>
               </template>
