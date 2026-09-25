@@ -80,7 +80,7 @@ const videoEl = ref(null)
 
 // Videoen (9 MB) hentes foerst, naar den er paa vej ind i skaermbilledet
 let io = null
-onMounted(() => {
+const observeVideo = () => {
   const el = videoEl.value
   if (!el || typeof IntersectionObserver === 'undefined') return
   io = new IntersectionObserver((entries) => {
@@ -91,10 +91,20 @@ onMounted(() => {
       el.play().catch(() => {})
       io.disconnect(); io = null
     }
-  }, { rootMargin: '200px' })
+  }, { rootMargin: '100px' })
   io.observe(el)
+}
+
+onMounted(() => {
+  // Vent til billederne over videoen har fyldt layoutet ud. Ellers staar
+  // videoen hoejere oppe end i det faerdige layout og bliver hentet med det samme.
+  if (typeof document !== 'undefined' && document.readyState === 'complete') observeVideo()
+  else window.addEventListener('load', observeVideo, { once: true })
 })
-onBeforeUnmount(() => { if (io) { io.disconnect(); io = null } })
+onBeforeUnmount(() => {
+  window.removeEventListener('load', observeVideo)
+  if (io) { io.disconnect(); io = null }
+})
 
 // Schema.org struktureret data for lokalt firma
 const schemaData = {
