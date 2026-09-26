@@ -22,6 +22,7 @@
           <router-link to="/behandlinger/microneedling/">Microneedling</router-link>
         </div>
       </div>
+      <router-link to="/priser/">Priser</router-link>
       <router-link to="/omos/">Om os</router-link>
       <router-link to="/kontaktos/">Kontakt</router-link>
       <div class="dropdown">
@@ -87,6 +88,7 @@
             </transition>
           </li>
 
+          <li class="priser-link"><router-link @click="closeMenu" to="/priser/">Priser</router-link></li>
           <li class="omos-link"><router-link @click="closeMenu" to="/omos/">Om os</router-link></li>
           <li class="kontakt-link"><router-link @click="closeMenu" to="/kontaktos/">Kontakt</router-link></li>
 

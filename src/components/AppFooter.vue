@@ -57,6 +57,7 @@
                 :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">Mesotherapy</router-link></li>
             <li><router-link
                 :to="{ name: 'behandling-dynamic', params: { type: 'microneedling' } }">Microneedling</router-link></li>
+            <li><router-link to="/priser/">Priser</router-link></li>
           </ul>
         </section>
 
