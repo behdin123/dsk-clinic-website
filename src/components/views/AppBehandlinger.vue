@@ -11,6 +11,7 @@
 import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
+import { BOOKING_URL } from '@/config/booking'
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
@@ -413,19 +414,19 @@ const META = {
   },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
-    desc: 'Læbe/kind-filler med naturlige resultater. Udført af erfaren læge. Book gratis forundersøgelse.'
+    desc: 'Filler til læber og kinder i Esbjerg & Vejle – lagt af læge for et naturligt resultat. Fra 1.650 kr. pr. ml. Book gratis forundersøgelse.'
   },
   skinbooster: {
     title: 'Skinbooster i Esbjerg & Vejle | DK Skønhedsklinik',
-    desc: 'Forbedrer fugt og elasticitet i huden. Book gratis forundersøgelse.'
+    desc: 'Skinbooster i Esbjerg & Vejle giver huden fugt, glød og elasticitet. Udføres af læge på vores kosmetiske klinik. Fra 1.750 kr. Book gratis tid.'
   },
   mesotherapy: {
-    title: 'Mesotherapy i Esbjerg & Vejle | DK Skønhedsklinik',
-    desc: 'Vitamincocktail for glød og fornyelse. Book gratis forundersøgelse.'
+    title: 'Mesoterapi / Mesotherapy i Esbjerg & Vejle | DK Skønhedsklinik',
+    desc: 'Mesoterapi i Esbjerg & Vejle: en vitamincocktail der giver huden glød og fornyelse – og som vi også bruger mod hårtab. Fra 750 kr. Book gratis tid.'
   },
   microneedling: {
     title: 'Microneedling i Esbjerg & Vejle | DK Skønhedsklinik',
-    desc: 'Reducer ar, rynker og pigment. Book gratis forundersøgelse.'
+    desc: 'Microneedling i Esbjerg & Vejle reducerer ar, rynker og pigmentforandringer og booster hudens kollagen. Udføres af læge. Fra 1.050 kr. Book gratis tid.'
   }
 }
 
@@ -508,7 +509,6 @@ const priceFrom = computed(() => {
 
 
 // JSON-LD ها
-const BOOKING_URL = 'https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6'
 const procedureLd = computed(() => {
   const d = behandlingData.value
   const s = sectionsData.value || {}
