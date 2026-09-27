@@ -9,6 +9,7 @@ const kontaktos   = () => import('@/components/views/KontaktOs.vue')
 // NEW: clinic routes (lazy-loaded)
 const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const priser        = () => import('@/components/views/PriserView.vue')
+const booking       = () => import('@/components/views/BookingView.vue')
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
 
@@ -65,6 +66,9 @@ export const routes = [
   // PRP udgaaet: siden bevares, da den stadig rangerer paa PRP-soegninger
   { path: '/behandlinger/prp/', name: 'prp-udgaaet', component: prpUdgaaet },
   { path: '/behandlinger/prp',  redirect: '/behandlinger/prp/' },
+
+  { path: '/booking/', name: 'booking', component: booking },
+  { path: '/booking',  redirect: '/booking/' },
 
   { path: '/priser/', name: 'priser', component: priser },
   { path: '/priser',  redirect: '/priser/' },

@@ -9,9 +9,11 @@
     @click.self="showModal = false">
     <div class="custom-modal-content">
       <span type="button" class="close-btn" aria-label="Luk" @click="showModal = false">&times;</span>
-      <iframe
-        src="https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6"
-        width="100%" height="300" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      <iframe :src="BOOKING_URL" width="100%" height="300" frameborder="0" allowfullscreen
+        loading="lazy" title="Book tid hos DK Skønhedsklinik"></iframe>
+      <p class="modal-link">
+        <router-link to="/booking/" @click="showModal = false">Åbn den store bookingkalender</router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -21,6 +23,7 @@
 const fbq = window.fbq;
 
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { BOOKING_URL } from '@/config/booking'
 
 const props = defineProps({
   showButton: { type: Boolean, default: true }

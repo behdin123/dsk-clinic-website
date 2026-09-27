@@ -282,7 +282,7 @@ $c-blue: #2d58a1;
   flex-direction: column;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 140px 20px 100px !important;
+  padding: 70px 20px 100px !important;
   color: $c-dark;
 }
 
@@ -387,7 +387,6 @@ $c-blue: #2d58a1;
 .included,
 .steps-block,
 .closing {
-  margin-bottom: 54px;
 
   h2 { margin-bottom: 18px; }
 }

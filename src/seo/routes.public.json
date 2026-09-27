@@ -2,6 +2,7 @@
   { "path": "/",                           "priority": 1.0,  "changefreq": "weekly" },
 
   { "path": "/priser/",                    "priority": 0.8,  "changefreq": "monthly" },
+  { "path": "/booking/",                   "priority": 0.6,  "changefreq": "monthly" },
   { "path": "/omos/",                      "priority": 0.6,  "changefreq": "monthly" },
   { "path": "/kontaktos/",                 "priority": 0.6,  "changefreq": "monthly" },
 
