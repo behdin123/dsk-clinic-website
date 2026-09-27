@@ -141,9 +141,9 @@
                 <label for="cb-time">Bedste tidspunkt at ringe</label>
                 <select id="cb-time" v-model="cb.best" name="best_time">
                     <option value="Hele dagen">Hele dagen</option>
-                    <option value="07-12">16.00 – 18.00</option>
-                    <option value="12-16">18.00 – 20.00</option>
-                    <option value="16-20">20.00 – 21.00</option>
+                    <option value="16.00 – 18.00">16.00 – 18.00</option>
+                    <option value="18.00 – 20.00">18.00 – 20.00</option>
+                    <option value="20.00 – 21.00">20.00 – 21.00</option>
                 </select>
             </div>
 
@@ -381,7 +381,7 @@ useHead({
                     {
                         "@type": "OpeningHoursSpecification",
                         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                        "opens": "16:00", "closes": "20:00"
+                        "opens": "17:00", "closes": "20:00"
                     }
                 ],
                 "potentialAction": { "@type": "ReserveAction", "target": BOOKING_URL }

@@ -382,7 +382,7 @@ const faqs = [
   },
   {
     q: "<b>Har I åbent om aftenen?</b>",
-    a: "Ja. I Esbjerg har vi åbent mandag til fredag kl. 16-20, og i Vejle har vi åbent om søndagen kl. 11-18. Vi ved mange har travlt i dagtimerne, så vi forsøger at være fleksible. Kontakt os for at finde et tidspunkt der passer dig.",
+    a: "Ja. I Esbjerg har vi åbent mandag til fredag kl. 17-20, og i Vejle har vi åbent om søndagen kl. 11-18. Vi ved mange har travlt i dagtimerne, så vi forsøger at være fleksible. Kontakt os for at finde et tidspunkt der passer dig.",
   },
   {
     q: "<b>Kan jeg få en hurtig tid?</b>",
@@ -460,7 +460,7 @@ useHead({
             "geo": { "@type": "GeoCoordinates", "latitude": 55.4639497, "longitude": 8.4543111 },
             "areaServed": ["Esbjerg", "Varde", "Ribe", "Bramming", "Sydvestjylland"],
             "openingHoursSpecification": [
-              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "20:00" }
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00" }
             ],
             "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
             "sameAs": [

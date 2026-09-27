@@ -65,7 +65,7 @@
         <article class="clinic-card">
           <h3><router-link to="/klinik/esbjerg/">Esbjerg</router-link></h3>
           <address>Havnegade 6, 6700 Esbjerg</address>
-          <p class="hours">Mandag–fredag 16:00–20:00</p>
+          <p class="hours">Mandag–fredag 17:00–20:00</p>
         </article>
         <article class="clinic-card">
           <h3><router-link to="/klinik/vejle/">Vejle</router-link></h3>
@@ -187,7 +187,7 @@ $c-blue: #2d58a1;
   flex-direction: column;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 140px 20px 100px !important;
+  padding: 70px 20px 100px !important;
   color: $c-dark;
 }
 
@@ -237,8 +237,7 @@ $c-blue: #2d58a1;
   a { color: $c-blue; }
 }
 
-.after-booking,
-.clinics { margin-bottom: 56px; }
+.after-booking { margin-bottom: 56px; }
 
 h2 { margin-bottom: 18px; }
 
