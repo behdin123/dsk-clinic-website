@@ -26,7 +26,7 @@
               <span itemprop="addressCountry" style="display:none">DK</span>
             </p>
           </address>
-          <p><b>Åbningstider:</b> Mandag–Fredag 17:00–20:00 (efter aftale)</p>
+          <p><b>Åbningstider:</b> Mandag–fredag 16:00–20:00</p>
           <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
         </div>
 
@@ -131,8 +131,7 @@ const schemaData = {
   'telephone': '+45 53 50 37 50',
   'url': 'https://dsklinik.dk/klinik/esbjerg/',
   'openingHoursSpecification': [
-    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '17:00', 'closes': '20:00' },
-    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday','Sunday'], 'opens': '11:00', 'closes': '18:00', 'description': 'Kun efter aftale' }
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '16:00', 'closes': '20:00' }
   ],
   'priceRange': '$$',
   'areaServed': ['Esbjerg', 'Sydvestjylland'],
@@ -146,7 +145,7 @@ const schemaData = {
 useHead({
   title: 'Kosmetisk klinik i Esbjerg | Botox & filler hos læge',
   meta: [
-    { name: 'description', content: 'Kosmetisk klinik i Esbjerg på Havnegade 6 med botox, filler, skinbooster, mesotherapy og microneedling udført af læge. Åbent hverdage 17-20.' },
+    { name: 'description', content: 'Kosmetisk klinik i Esbjerg på Havnegade 6 med botox, filler, skinbooster, mesotherapy og microneedling udført af læge. Åbent hverdage 16-20.' },
     { name: 'keywords', content: 'botox Esbjerg, kosmetisk klinik Esbjerg, skønhedsklinik Esbjerg, hudpleje Esbjerg, filler Esbjerg, anti-aging Esbjerg, lægebehandlet hudpleje' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },

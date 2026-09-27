@@ -26,7 +26,7 @@
               <span itemprop="addressCountry" style="display:none">DK</span>
             </p>
           </address>
-          <p><b>Åbningstider:</b> Lørdag-Søndag 11:00–18:00 (efter aftale)</p>
+          <p><b>Åbningstider:</b> Søndag 11:00–18:00</p>
           <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
         </div>
 
@@ -127,8 +127,7 @@ const schemaData = {
   'telephone': '+45 53 50 37 50',
   'url': 'https://dsklinik.dk/klinik/vejle/',
   'openingHoursSpecification': [
-    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '17:00', 'closes': '20:00' },
-    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday','Sunday'], 'opens': '11:00', 'closes': '18:00', 'description': 'Kun efter aftale' }
+    { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Sunday'], 'opens': '11:00', 'closes': '18:00' }
   ],
   'priceRange': '$$',
   'areaServed': ['Vejle', 'Trekantområdet'],

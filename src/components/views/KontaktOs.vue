@@ -345,12 +345,7 @@ useHead({
                 "openingHoursSpecification": [
                     {
                         "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                        "opens": "17:00", "closes": "20:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Saturday", "Sunday"],
+                        "dayOfWeek": ["Sunday"],
                         "opens": "11:00", "closes": "18:00"
                     }
                 ],
@@ -386,12 +381,7 @@ useHead({
                     {
                         "@type": "OpeningHoursSpecification",
                         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                        "opens": "17:00", "closes": "20:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Saturday", "Sunday"],
-                        "opens": "11:00", "closes": "18:00"
+                        "opens": "16:00", "closes": "20:00"
                     }
                 ],
                 "potentialAction": { "@type": "ReserveAction", "target": BOOKING_URL }

@@ -65,12 +65,12 @@
         <article class="clinic-card">
           <h3><router-link to="/klinik/esbjerg/">Esbjerg</router-link></h3>
           <address>Havnegade 6, 6700 Esbjerg</address>
-          <p class="hours">Man–fre 17:00–20:00<br>Lør–søn 11:00–18:00 (efter aftale)</p>
+          <p class="hours">Mandag–fredag 16:00–20:00</p>
         </article>
         <article class="clinic-card">
           <h3><router-link to="/klinik/vejle/">Vejle</router-link></h3>
           <address>Søndergade 50, 7100 Vejle</address>
-          <p class="hours">Man–fre 17:00–20:00<br>Lør–søn 11:00–18:00 (efter aftale)</p>
+          <p class="hours">Søndag 11:00–18:00</p>
         </article>
       </div>
 

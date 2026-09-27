@@ -337,7 +337,7 @@
             <router-link :to="{ name: 'clinic-vejle' }" aria-label="Gå til klinikken i Vejle">Vejle</router-link>
             eller
             <router-link :to="{ name: 'clinic-esbjerg' }" aria-label="Gå til klinikken i Esbjerg">Esbjerg</router-link>.
-            Begge klinikker byder på hyggelige omgivelser og fleksible åbningstider – også aftener og weekender.
+            Begge klinikker byder på hyggelige omgivelser og fleksible åbningstider – både aftener i Esbjerg og søndage i Vejle.
           </li>
         </ul>
       </div>
@@ -382,7 +382,7 @@ const faqs = [
   },
   {
     q: "<b>Har I åbent om aftenen?</b>",
-    a: "Ja, vi har åbent i hverdagene kl. 17-20 samt lørdage og søndage kl. 11-18 (kun efter aftale). Vi ved mange har travlt i dagtimerne, så vi forsøger at være fleksible. Kontakt os for at finde et tidspunkt der passer dig.",
+    a: "Ja. I Esbjerg har vi åbent mandag til fredag kl. 16-20, og i Vejle har vi åbent om søndagen kl. 11-18. Vi ved mange har travlt i dagtimerne, så vi forsøger at være fleksible. Kontakt os for at finde et tidspunkt der passer dig.",
   },
   {
     q: "<b>Kan jeg få en hurtig tid?</b>",
@@ -460,8 +460,7 @@ useHead({
             "geo": { "@type": "GeoCoordinates", "latitude": 55.4639497, "longitude": 8.4543111 },
             "areaServed": ["Esbjerg", "Varde", "Ribe", "Bramming", "Sydvestjylland"],
             "openingHoursSpecification": [
-              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00" },
-              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:00", "closes": "18:00" }
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "20:00" }
             ],
             "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
             "sameAs": [
@@ -491,8 +490,7 @@ useHead({
             "geo": { "@type": "GeoCoordinates", "latitude": 55.7064855, "longitude": 9.5302675 },
             "areaServed": ["Vejle", "Kolding", "Fredericia", "Horsens", "Trekantområdet"],
             "openingHoursSpecification": [
-              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00" },
-              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:00", "closes": "18:00" }
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "11:00", "closes": "18:00" }
             ],
             "parentOrganization": { "@id": "https://dsklinik.dk/#organization" },
             "sameAs": [

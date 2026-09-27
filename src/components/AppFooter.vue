@@ -39,8 +39,8 @@
         <section class="footer-section">
           <h3 class="footer-title">Åbningstider</h3>
           <ul class="footer-list">
-            <li>Man–Fre: 17:00 – 20:00</li>
-            <li>Lør–Søn: 11:00 – 18:00</li>
+            <li>Esbjerg – man–fre: 16:00 – 20:00</li>
+            <li>Vejle – søndag: 11:00 – 18:00</li>
           </ul>
         </section>
 
