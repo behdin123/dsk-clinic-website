@@ -44,15 +44,15 @@ const behandlinger = {
     durability: '3-6 måneder',
     downtime: 'Få timer',
     consultation: 'Gratis',
-    price: '850',
+    price: '550',
     priceText: '1 område',
-    price2: '1.250',
+    price2: '1.100',
     priceText2: '2 område',
-    price3: '1.550',
+    price3: '1.650',
     priceText3: '3 område',
     sections: {
         audience: [
-          '<span class="intro">Botox hos DK Skønhedsklinik er en skånsom måde at blødgøre mimiske rynker på. Vi bruger Vistabel (Botox) og doserer præcist, så din mimik bevares og udtrykket forbliver naturligt. Er du nervøs første gang? Det forstår vi. Vi tager os tid til at lytte, vejlede og lægge en plan, der passer til netop dit ansigt.</span>',
+          '<span class="intro">Botox hos DK Skønhedsklinik er en skånsom måde at blødgøre mimiske rynker på. Vi bruger et godkendt botulinumtoksin og doserer præcist, så din mimik bevares og udtrykket forbliver naturligt. Er du nervøs første gang? Det forstår vi. Vi tager os tid til at lytte, vejlede og lægge en plan, der passer til netop dit ansigt.</span>',
 
           // Områder – hver som egen punkt
           '<b>Pande</b> (vandrette linjer).',
@@ -107,9 +107,9 @@ const behandlinger = {
       ],
       pricing: {
         items: [
-          { label: '1 område', price: '850 kr.' },
-          { label: '2 områder', price: '1.250 kr.' },
-          { label: '3 områder', price: '1.550 kr.' }
+          { label: '1 område', price: '550 kr.' },
+          { label: '2 områder', price: '1.100 kr.' },
+          { label: '3 områder', price: '1.650 kr.' }
         ],
         notes: 'Vedligehold anbefales ca. <b>3 mdr.</b> afhængigt af område.'
       }
@@ -410,7 +410,7 @@ const sectionAssets = computed(() => behandlingData.value.sectionsAssets || {})
 const META = {
   botox: {
     title: 'Botox i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
-    desc: 'Botox mod rynker i Esbjerg & Vejle – udføres personligt af læge. Naturlige resultater fra 850 kr. Book gratis forundersøgelse.'
+    desc: 'Botox mod rynker i Esbjerg & Vejle – udføres personligt af læge. Naturlige resultater fra 550 kr. Book gratis forundersøgelse.'
   },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',

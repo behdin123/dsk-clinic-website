@@ -292,7 +292,7 @@ const faqs = [
     },
     {
         q: '<b>Hvad koster det at få både botox og filler?</b>',
-        a: 'Det afhænger af omfanget. Hos os koster fx 1 område botox 850 kr., og 1 ml filler 3000 kr. Vi laver individuelle tilbud for kombinationer.'
+        a: 'Det afhænger af omfanget. Hos os koster fx 1 område botox 550 kr., og 1 ml filler 1.650 kr. Vi laver individuelle tilbud for kombinationer.'
     },
     {
         q: '<b>Er der alderbegrænsning for botox eller filler?</b>',

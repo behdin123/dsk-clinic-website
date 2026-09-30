@@ -124,9 +124,9 @@ const priceGroups = [
     title: 'Rynkebehandling med botox',
     intro: 'Prisen afhænger af, hvor mange områder der behandles – fx pande, mellem brynene og omkring øjnene.',
     rows: [
-      { label: 'Botox – 1 område', price: '850 kr.', type: 'botox' },
-      { label: 'Botox – 2 områder', price: '1.250 kr.', type: 'botox' },
-      { label: 'Botox – 3 områder', price: '1.550 kr.', type: 'botox', note: 'Holdbarhed typisk 3–4 måneder' }
+      { label: 'Botox – 1 område', price: '550 kr.', type: 'botox' },
+      { label: 'Botox – 2 områder', price: '1.100 kr.', type: 'botox' },
+      { label: 'Botox – 3 områder', price: '1.650 kr.', type: 'botox', note: 'Holdbarhed typisk 3–4 måneder' }
     ]
   },
   {
@@ -160,7 +160,7 @@ const priceGroups = [
 const faqs = [
   {
     q: 'Hvad koster botox?',
-    a: 'Fra 850 kr. for ét område. To områder koster 1.250 kr. og tre områder 1.550 kr. Effekten holder typisk 3–4 måneder, og prisen dækker også den kontrol, hvor dosis kan finjusteres efter 14 dage.'
+    a: 'Fra 550 kr. for ét område. To områder koster 1.100 kr. og tre områder 1.650 kr. Effekten holder typisk 3–4 måneder, og prisen dækker også den kontrol, hvor dosis kan finjusteres efter 14 dage.'
   },
   {
     q: 'Hvad koster 1 ml filler?',
@@ -198,9 +198,9 @@ const offerLd = {
   url: `${SITE_URL}/priser/`,
   provider: { '@id': `${SITE_URL}/#organization` },
   itemListElement: [
-    { type: 'botox', name: 'Botox – 1 område', price: '850' },
-    { type: 'botox', name: 'Botox – 2 områder', price: '1250' },
-    { type: 'botox', name: 'Botox – 3 områder', price: '1550' },
+    { type: 'botox', name: 'Botox – 1 område', price: '550' },
+    { type: 'botox', name: 'Botox – 2 områder', price: '1100' },
+    { type: 'botox', name: 'Botox – 3 områder', price: '1650' },
     { type: 'filler', name: 'Filler – 1 ml', price: '1650' },
     { type: 'skinbooster', name: 'Skinbooster – per session', price: '1750' },
     { type: 'mesotherapy', name: 'Mesotherapy – per session', price: '750' },
@@ -244,7 +244,7 @@ const breadcrumbLd = {
 useHead({
   title: 'Priser | Botox, filler og hudbehandlinger | DK Skønhedsklinik',
   meta: [
-    { name: 'description', content: 'Se priser på botox fra 850 kr., filler 1.650 kr. pr. ml, skinbooster, mesotherapy og microneedling i Esbjerg og Vejle. Gratis forundersøgelse hos læge.' },
+    { name: 'description', content: 'Se priser på botox fra 550 kr., filler 1.650 kr. pr. ml, skinbooster, mesotherapy og microneedling i Esbjerg og Vejle. Gratis forundersøgelse hos læge.' },
     { name: 'keywords', content: 'botox pris, hvad koster botox, filler pris, læbefiller pris, skinbooster pris, microneedling pris, priser skønhedsklinik esbjerg, priser kosmetisk klinik vejle' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
     { name: 'author', content: 'DK Skønhedsklinik' },
@@ -254,12 +254,12 @@ useHead({
     { property: 'og:locale', content: 'da_DK' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:title', content: 'Priser – botox, filler og hudbehandlinger | DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Botox fra 850 kr., filler 1.650 kr. pr. ml. Gratis forundersøgelse hos læge i Esbjerg og Vejle.' },
+    { property: 'og:description', content: 'Botox fra 550 kr., filler 1.650 kr. pr. ml. Gratis forundersøgelse hos læge i Esbjerg og Vejle.' },
     { property: 'og:url', content: `${SITE_URL}/priser/` },
     { property: 'og:image', content: `${SITE_URL}/og/home.webp` },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Priser | DK Skønhedsklinik' },
-    { name: 'twitter:description', content: 'Botox fra 850 kr., filler 1.650 kr. pr. ml. Gratis forundersøgelse hos læge.' },
+    { name: 'twitter:description', content: 'Botox fra 550 kr., filler 1.650 kr. pr. ml. Gratis forundersøgelse hos læge.' },
     { name: 'twitter:image', content: `${SITE_URL}/og/home.webp` }
   ],
   link: [
