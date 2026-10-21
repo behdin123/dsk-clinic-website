@@ -25,12 +25,23 @@ RewriteRule ^behandlinger/Botox/?$ https://dsklinik.dk/behandlinger/botox/ [R=30
 RewriteRule ^behandlinger/Filler/?$ https://dsklinik.dk/behandlinger/filler/ [R=301,L]
 RewriteRule ^behandlinger/Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
 
-# 3) Tilføj trailing slash, hvis der findes en rigtig mappe
+# 3) Mapper uden index.html (/behandlinger/, /klinik/, /assets/, /og/) skal give
+#    en AEGTE 404 - ikke et directory listing og ikke et 403.
+#    VIGTIGT: denne regel skal staa FOER trailing slash-reglen. Ellers bliver
+#    /behandlinger foerst omdirigeret til /behandlinger/, som saa fejler, og
+#    Google rapporterer det som "Omdirigeringsfejl".
+#    Naar oversigtssiden /behandlinger/ bygges, bliver den automatisk 200 igen.
 RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html !-f
+RewriteRule ^ - [R=404,L]
+
+# 4) Tilfoej trailing slash - men kun naar mappen rent faktisk har en side
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.+)$ https://dsklinik.dk/$1/ [R=301,L]
 
-# 4) Alle sider er prerenderet. Ukendte URL'er skal give en aegte 404,
+# 5) Alle sider er prerenderet. Ukendte URL'er skal give en aegte 404,
 #    ikke forsiden med status 200 (soft 404 = Google indekserer skrald)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -38,12 +49,20 @@ RewriteRule ^ - [R=404,L]
 
 ErrorDocument 404 /404.html
 
-# 5) Komprimering
+# 6) deploy-version.txt er et driftsvaerktoej, ikke indhold. Google skal ikke
+#    indeksere den (den returnerer 200 og ville ellers taelle som en side).
+<IfModule mod_headers.c>
+  <Files "deploy-version.txt">
+    Header set X-Robots-Tag "noindex"
+  </Files>
+</IfModule>
+
+# 7) Komprimering
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/json application/xml image/svg+xml
 </IfModule>
 
-# 6) Cache: statiske assets har hash i filnavnet og kan caches laenge
+# 8) Cache: statiske assets har hash i filnavnet og kan caches laenge
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"
