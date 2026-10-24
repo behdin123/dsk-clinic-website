@@ -12,6 +12,7 @@ const priser        = () => import('@/components/views/PriserView.vue')
 const booking       = () => import('@/components/views/BookingView.vue')
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
+const cookiepolitik = () => import('@/components/views/CookiePolitik.vue')
 
 // DISABLED: Viden article routes
 // --- AUTO routes for alle artikler i /views/viden/*.vue ---
@@ -89,6 +90,9 @@ export const routes = [
 
   { path: '/klinik/esbjerg/', name: 'clinic-esbjerg', component: clinicEsbjerg },
   { path: '/klinik/esbjerg',  redirect: '/klinik/esbjerg/' },
+
+  { path: '/cookies/', name: 'cookiepolitik', component: cookiepolitik },
+  { path: '/cookies',  redirect: '/cookies/' },
 
   ...articleRoutes,
 

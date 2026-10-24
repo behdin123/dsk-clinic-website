@@ -29,6 +29,9 @@
       <AppFooter />
     </div>
 
+    <!-- Cookiesamtykke. Styrer om GA4 og Meta Pixel overhovedet indlæses. -->
+    <CookieConsent />
+
   </div>
 </template>
 
@@ -37,6 +40,7 @@
 import AppNavigation from '@/components/AppNavigation.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import AppBooking from '@/components/AppBooking.vue'
+import CookieConsent from '@/components/CookieConsent.vue'
 import { useHead } from '@unhead/vue'
 import { ref, computed, watch, onMounted, onUnmounted, nextTick, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'

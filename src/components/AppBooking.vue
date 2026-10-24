@@ -19,11 +19,9 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line no-undef
-const fbq = window.fbq;
-
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { BOOKING_URL } from '@/config/booking'
+import { trackEvent } from '@/consent/consent'
 
 const props = defineProps({
   showButton: { type: Boolean, default: true }
@@ -31,23 +29,26 @@ const props = defineProps({
 
 const showModal = ref(false)
 
-function handleBookingClick() {
+// Én indgang til begge veje ind i bookingvinduet, så hændelsen altid
+// sendes — og kun én gang. Hændelsen hedder det, den er: kalenderen blev
+// åbnet. Selve bookingen sker hos geckobooking og måles ikke herfra.
+function openBooking(source) {
+  if (showModal.value) return
   showModal.value = true
-  if (fbq) {
-    fbq('track', 'Lead')
-  }
-  // GA4
-  window.gtagEvent('booking_click', {
-    placement: 'home_hero',   // اگر جای دیگری هم داری، مقدارش را متناسب بفرست
-    component: 'AppBooking'
-  })
+  trackEvent(
+    'booking_open',
+    { component: 'AppBooking', source },
+    { custom: 'BookingOpened' }
+  )
+}
+
+function handleBookingClick() {
+  openBooking('booking_button')
 }
 
 // 🔔 لیسنر برای باز کردن مودال از هرجای سایت (مثلاً CTA منوی موبایل)
-const openFromEvent = () => {
-  if (showModal.value) return
-  showModal.value = true
-  window.gtagEvent?.('booking_modal_open', { component: 'AppBooking', source: 'nav_cta' })
+const openFromEvent = (e) => {
+  openBooking(e?.detail?.source || 'nav_cta')
 }
 
 // (اختیاری) اگر جایی خواستی مودال را با ایونت ببندی

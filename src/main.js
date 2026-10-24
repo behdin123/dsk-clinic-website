@@ -1,3 +1,4 @@
+import { trackPageView } from '@/consent/consent'
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 import { routes } from './router'
@@ -96,16 +97,7 @@ export const createApp = ViteSSG(
       window.scrollTo({ top: 0, behavior: 'auto' })
 
       if (!first) {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'page_view', {
-            page_title: document.title,
-            page_location: window.location.origin + to.fullPath,
-            page_path: to.fullPath,
-          })
-        }
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'PageView')
-        }
+        trackPageView(to.fullPath)
       }
       first = false
     })
