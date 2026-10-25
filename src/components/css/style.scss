@@ -393,3 +393,99 @@
 
 
   
+
+/* ============================================================
+   SEKTIONSSYSTEM
+   Faelles rytme for alle sider: ensartet luft, tydelige
+   sektionsstarter og tonede paneler, saa en side laeses som en
+   opbygget helhed - ikke som tekstblokke sat efter hinanden.
+   ============================================================ */
+
+.sec {
+  margin: 0 auto 64px;
+  max-width: 980px;
+  width: 100%;
+}
+
+.sec--bred { max-width: 1100px; }
+
+/* Tonet panel - afgraenser en sektion uden at bryde ud af containeren */
+.sec--panel {
+  background: rgba(45, 88, 161, .045);
+  border: 1px solid rgba(45, 88, 161, .10);
+  border-radius: 18px;
+  padding: 42px 40px;
+}
+
+/* Lys variant til sektioner der skal loefte sig fra en tonet side */
+.sec--kort {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  padding: 42px 40px;
+}
+
+/* Sektionshoved */
+.sec__head {
+  margin-bottom: 26px;
+  max-width: 70ch;
+}
+
+.sec__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #2d58a1;
+  margin: 0 0 12px;
+}
+
+.sec__eyebrow::before {
+  content: '';
+  flex: none;
+  width: 24px;
+  height: 2px;
+  background: #2d58a1;
+  border-radius: 2px;
+}
+
+.sec__lead {
+  max-width: 66ch;
+  line-height: 1.75;
+  margin: 0;
+  color: rgba(21, 54, 85, .84);
+}
+
+/* To-kolonne: tekst + billede */
+.split {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.split--medie-foerst .split__medie { order: -1; }
+
+.split__tekst > p {
+  max-width: 60ch;
+  line-height: 1.75;
+  margin: 0 0 14px;
+}
+
+.split__medie img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+@media (max-width: 880px) {
+  .sec { margin-bottom: 48px; }
+  .sec--panel,
+  .sec--kort { padding: 30px 22px; border-radius: 14px; }
+  .split { grid-template-columns: 1fr; gap: 26px; }
+  .split--medie-foerst .split__medie { order: 0; }
+}

@@ -23,7 +23,7 @@
       </div>
     </header>
 
-    <section v-for="group in priceGroups" :key="group.id" class="price-block"
+    <section v-for="group in priceGroups" :key="group.id" class="sec price-block"
       :aria-labelledby="`grp-${group.id}`">
       <div class="price-head">
         <h2 :id="`grp-${group.id}`">{{ group.title }}</h2>
@@ -48,8 +48,11 @@
       </table>
     </section>
 
-    <section class="included" aria-labelledby="inkl-title">
-      <h2 id="inkl-title">Det er med i prisen</h2>
+    <section class="sec sec--panel" aria-labelledby="inkl-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Hvad du får</p>
+        <h2 id="inkl-title">Det er med i prisen</h2>
+      </div>
       <ul class="included-list">
         <li><b>Forundersøgelse hos læge.</b> Gennemgang af dine ønsker, din sygehistorie og hvad der er realistisk at opnå. Den er gratis, uanset om du bliver behandlet.</li>
         <li><b>Selve behandlingen</b> udført af klinikkens ansvarlige læge, Arash Bagheri – ikke af en kosmetolog.</li>
@@ -58,8 +61,11 @@
       </ul>
     </section>
 
-    <section class="steps-block" aria-labelledby="forloeb-title">
-      <h2 id="forloeb-title">Sådan foregår det</h2>
+    <section class="sec steps-block" aria-labelledby="forloeb-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Forløbet</p>
+        <h2 id="forloeb-title">Sådan foregår det</h2>
+      </div>
       <ol class="steps">
         <li>
           <span class="step-no">1</span>
@@ -85,12 +91,15 @@
       </ol>
     </section>
 
-    <section class="faq" aria-labelledby="priser-faq">
-      <h2 id="priser-faq" class="section-title">Ofte stillede spørgsmål om priser</h2>
+    <section class="sec sec--panel" aria-labelledby="priser-faq">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Spørgsmål</p>
+        <h2 id="priser-faq">Ofte stillede spørgsmål om priser</h2>
+      </div>
       <FaqList :items="faqs" />
     </section>
 
-    <section class="closing">
+    <section class="sec sec--kort closing">
       <h2>Er du i tvivl om, hvad der passer til dig?</h2>
       <p>
         Det finder vi ud af sammen ved forundersøgelsen. Den koster ikke noget, og du
@@ -380,12 +389,13 @@ $c-blue: #2d58a1;
   }
 }
 
-.included,
-.steps-block,
 .closing {
+  text-align: left;
 
-  h2 { margin-bottom: 18px; }
+  h2 { margin-bottom: 14px; }
 }
+
+.steps-block .steps { margin-top: 4px; }
 
 .included-list {
   padding-left: 18px;

@@ -38,11 +38,14 @@
 
         <!-- Lægens baggrund og autorisation -->
         <section class="container laegeprofil" aria-labelledby="laegeprofil-title">
-            <h2 id="laegeprofil-title">Lægens baggrund</h2>
-            <p class="laegeprofil__lead">
-                Alle behandlinger på klinikken udføres af læge – ikke af en kosmetolog. Her er
-                baggrunden, og hvordan du selv kan kontrollere den.
-            </p>
+            <div class="sec__head">
+                <p class="sec__eyebrow">Baggrund</p>
+                <h2 id="laegeprofil-title">Lægens baggrund</h2>
+                <p class="sec__lead">
+                    Alle behandlinger på klinikken udføres af læge – ikke af en kosmetolog. Her er
+                    baggrunden, og hvordan du selv kan kontrollere den.
+                </p>
+            </div>
 
             <div class="laegeprofil__grid">
                 <div class="laegeprofil__kort">
@@ -63,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="laegeprofil__autorisation">
+            <div class="laegeprofil__autorisation sec--kort">
                 <h3>Autorisation og registrering</h3>
                 <ul>
                     <li>Dansk lægeautorisation siden 2011 · <b>autorisations-ID 081Q1</b></li>
@@ -145,6 +148,7 @@
         <!-- Patientinformation (جدید) -->
         <section id="patientinformation" class="container patientinfo" aria-labelledby="pi-title">
             <header class="pi-header" data-aos="fade-up" data-aos-duration="800">
+                <p class="sec__eyebrow">Det skal du vide</p>
                 <h2 id="pi-title">Patientinformation (lovpligtigt)</h2>
                 <p class="pi-intro">
                     Hos os er tryghed, naturlighed og lægefaglighed i centrum. Her finder du kort og klart
@@ -241,8 +245,11 @@
         </section>
 
         <!-- FAQ (جدید) -->
-        <section v-if="faqs.length" id="faq" class="faq">
-            <h2 class="section-title">Ofte stillede spørgsmål</h2>
+        <section v-if="faqs.length" id="faq" class="container faq omos-faq">
+            <div class="sec__head">
+                <p class="sec__eyebrow">Spørgsmål</p>
+                <h2 class="section-title">Ofte stillede spørgsmål</h2>
+            </div>
 
             <FaqList :items="faqs" />
         </section>
@@ -451,6 +458,22 @@ const openBooking = () => {
 <style lang="scss" scoped>
 
 @use '../css/style.scss';
+.omos-faq {
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto 70px;
+    padding: 42px 40px;
+    background: rgba(45, 88, 161, .045);
+    border: 1px solid rgba(45, 88, 161, .10);
+    border-radius: 18px;
+
+    .section-title { margin: 0 !important; }
+}
+
+@media (max-width: 880px) {
+    .omos-faq { padding: 28px 20px; border-radius: 14px; margin-bottom: 48px; }
+}
+
 .laegeprofil {
     display: block;
     max-width: 1100px;
@@ -458,13 +481,7 @@ const openBooking = () => {
     padding: 70px 20px;
     color: #153655;
 
-    h2 { margin-bottom: 14px; }
-
-    &__lead {
-        max-width: 64ch;
-        line-height: 1.7;
-        margin-bottom: 34px;
-    }
+    .sec__head { margin-bottom: 34px; }
 
     &__grid {
         display: grid;
@@ -495,10 +512,9 @@ const openBooking = () => {
     }
 
     &__autorisation {
-        border-left: 3px solid #2d58a1;
-        padding-left: 22px;
+        padding: 30px 32px;
 
-        h3 { margin: 0 0 12px; }
+        h3 { margin: 0 0 14px; }
 
         ul {
             padding-left: 18px;

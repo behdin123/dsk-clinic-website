@@ -83,11 +83,30 @@ Struktur: `/behandlinger/` (hub) → kategori-/behandlingsside → underside.
 Se `claude/arbejdsstandard-og-informationsarkitektur.md` i projektet for det
 fulde kort.
 
+## 5b. Sektionssystem
+
+Alle sider bruger det samme system fra `src/components/css/style.scss`,
+saa en side laeses som en opbygget helhed - ikke tekstblokke sat efter
+hinanden:
+
+- `.sec` - sektion med ensartet luft. `.sec--panel` (tonet) og
+  `.sec--kort` (hvidt kort) afgraenser visuelt
+- `.sec__head` med `.sec__eyebrow` (lille versalt label), overskrift og
+  `.sec__lead`. **Hver sektion skal have en eyebrow** - det er dét, der
+  faar siden til at se opstillet ud frem for tilfaeldig
+- `.split` til to kolonner (tekst + billede). `.split--medie-foerst`
+  bytter om, saa siden skifter retning og ikke bliver monoton
+- Skift mellem almindelig og tonet sektion, saa oejet kan se hvor en
+  sektion slutter
+
 ## 6. Teknik
 
 - Byg aldrig i `node_modules` fra Windows — byg i en ren kopi med `npm ci`
 - Nye ruter skal tilføjes tre steder: `src/router/index.js`,
   `BASE_ROUTES` i `vite.config.js`, og `src/seo/routes.public.json`
+- **Tjek globale regler foer du vaelger et element.** `#app h1/h2/h3` har
+  `pointer-events: none`. Det kostede en runde, da FAQ-knappen blev lagt
+  i en `<h3>` og holdt op med at kunne klikkes
 - Verificér efter build: titel/description-længde, canonical, `lang="da"`,
   gyldig JSON-LD, antal prerenderede sider
 - Ændr ikke URL-struktur uden grund. Hver ændring koster en konsolideringsrunde

@@ -71,19 +71,16 @@
       </div>
     </section>
 
-    <section class="clinic-block" aria-labelledby="find-vej-esbjerg">
-      <h2 id="find-vej-esbjerg">Sådan finder du os</h2>
-      <p>
-        Klinikken ligger på <b>Havnegade 6</b>. Der er parkering lige ved bygningen, men
-        pladsen er delt op – og det er værd at læse med her, så du ikke ender med en afgift.
-      </p>
-
+    <section class="sec" aria-labelledby="find-vej-esbjerg">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Praktisk</p>
+        <h2 id="find-vej-esbjerg">Sådan finder du os</h2>
+        <p class="sec__lead">Klinikken ligger på <b>Havnegade 6</b>. Der er parkering lige ved bygningen, men pladsen er delt op – og det er værd at læse med her, så du ikke ender med en afgift.</p>
+      </div>
       <div class="parkering">
         <article class="parkering__kort parkering__kort--primaer">
           <h3>P-pladsen ved Havnegade / Tikanten <span class="badge">Lige ved døren</span></h3>
-          <p>
-            Pladsen ligger direkte ved bygningen. <b>Den er delt i to:</b>
-          </p>
+          <p>Pladsen ligger direkte ved bygningen. <b>Den er delt i to:</b></p>
           <ul>
             <li>En del er forbeholdt <b>beboere med registreret bil</b></li>
             <li>Ved siden af ligger et område, der er <b>åbent for alle med 2 timers p-skive</b></li>
@@ -107,40 +104,62 @@
       </p>
     </section>
 
-    <section class="clinic-block" aria-labelledby="behandlinger-esbjerg">
-      <h2 id="behandlinger-esbjerg">Behandlinger i Esbjerg</h2>
-      <p>Vi tilbyder de samme behandlinger og de samme priser i Esbjerg som i Vejle.</p>
+    <section class="sec sec--panel" aria-labelledby="behandlinger-esbjerg">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Behandlinger</p>
+        <h2 id="behandlinger-esbjerg">Behandlinger i Esbjerg</h2>
+        <p class="sec__lead">Vi tilbyder de samme behandlinger og de samme priser på begge klinikker.</p>
+      </div>
       <ul class="behandlingsliste">
         <li v-for="b in behandlinger" :key="b.slug">
-          <router-link :to="b.path"><b>{{ b.navn }}</b></router-link>
-          <span>{{ b.kort }}</span>
-          <em v-if="b.prisTekst">{{ b.prisTekst }}</em>
+          <div class="bl-tekst">
+            <router-link :to="b.path" class="bl-navn">{{ b.navn }}</router-link>
+            <p class="bl-kort">{{ b.kort }}</p>
+          </div>
+          <span v-if="b.prisTekst" class="bl-pris">{{ b.prisTekst }}</span>
         </li>
       </ul>
-      <p><router-link to="/priser/">Se alle priser</router-link></p>
+      <p class="bl-alle"><router-link to="/priser/">Se alle priser</router-link></p>
     </section>
 
-    <section class="clinic-block" aria-labelledby="laege-esbjerg">
-      <h2 id="laege-esbjerg">Hvem møder du?</h2>
-      <p>
-        Alle behandlinger udføres af klinikkens læge, <b>Arash Bagheri</b> – ikke af en kosmetolog.
-        Han har været læge i 30 år, heraf 17 i det danske sundhedsvæsen, og har mere end 20 års
-        erfaring med kosmetiske behandlinger. Autorisations-ID 081Q1.
-      </p>
-      <p><router-link to="/omos/">Læs mere om lægens baggrund og autorisation</router-link></p>
+    <section class="sec" aria-labelledby="laege-esbjerg">
+      <div class="split">
+        <div class="split__tekst">
+          <p class="sec__eyebrow">Klinikkens læge</p>
+          <h2 id="laege-esbjerg">Hvem møder du?</h2>
+          <p>
+            Alle behandlinger udføres af klinikkens læge, <b>Arash Bagheri</b> – ikke af en kosmetolog.
+            Han har været læge i 30 år, heraf 17 i det danske sundhedsvæsen, og har mere end
+            20 års erfaring med kosmetiske behandlinger.
+          </p>
+          <p class="laege-id">Autorisations-ID 081Q1 · gyldig autorisation</p>
+          <p><router-link to="/omos/" class="inline-link">Læs mere om lægens baggrund</router-link></p>
+        </div>
+        <div class="split__medie">
+          <img :src="imgArash" width="1000" height="1251" loading="lazy" decoding="async"
+            alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik" />
+        </div>
+      </div>
     </section>
 
-    <section class="clinic-block" aria-labelledby="opland-esbjerg">
-      <h2 id="opland-esbjerg">Vi har også kunder fra oplandet</h2>
-      <p>
-        En stor del af vores kunder kører til Esbjerg fra <b>Varde</b>, <b>Ribe</b>,
-        <b>Bramming</b> og <b>Grindsted</b>. Fra de fleste af dem er der under en halv times
-        kørsel, og da vi har åbent 17–20 på hverdage, kan de fleste nå det efter arbejde.
-      </p>
+    <section class="sec" aria-labelledby="opland-esbjerg">
+      <div class="split split--medie-foerst">
+        <div class="split__medie">
+          <OplandKort by="Esbjerg" :punkter="oplandsbyer" :titel-id="'opland-kort-esbjerg'" />
+        </div>
+        <div class="split__tekst">
+          <p class="sec__eyebrow">Opland</p>
+          <h2 id="opland-esbjerg">Vi har også kunder fra oplandet</h2>
+          <p>En stor del af vores kunder kører til Esbjerg fra Varde, Ribe, Bramming og Grindsted. Fra de fleste af dem er der under en halv times kørsel, og da vi har åbent 17–20 på hverdage, kan de fleste nå det efter arbejde.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="clinic-block" aria-labelledby="faq-esbjerg">
-      <h2 id="faq-esbjerg">Spørgsmål om Esbjerg-klinikken</h2>
+    <section class="sec sec--panel" aria-labelledby="faq-esbjerg">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Spørgsmål</p>
+        <h2 id="faq-esbjerg">Spørgsmål om Esbjerg-klinikken</h2>
+      </div>
       <FaqList :items="faqs" />
     </section>
   </section>
@@ -150,6 +169,8 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
+import OplandKort from '@/components/OplandKort.vue'
+import imgArash from '@/assets/klinik/arash-portraet.webp'
 import { liveBehandlinger } from '@/data/behandlinger'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
 import imgParkering from '@/assets/klinik/esbjerg-parkering.webp'
@@ -234,6 +255,14 @@ const faqs = [
   { q: 'Er det en læge, der behandler mig?',
     a: 'Ja. Alle behandlinger udføres af klinikkens læge, Arash Bagheri – ikke af en kosmetolog.' }
 ]
+// Stiliseret placering - omtrent rigtig retning, ikke geografisk praecis
+const oplandsbyer = [
+  { navn: 'Varde',     x: 218, y: 46  },
+  { navn: 'Grindsted', x: 350, y: 110 },
+  { navn: 'Bramming',  x: 346, y: 220, under: true },
+  { navn: 'Ribe',      x: 246, y: 312, under: true }
+]
+
 const behandlinger = liveBehandlinger()
 
 const faqLd = {
@@ -300,34 +329,67 @@ const openBooking = () => {
 </script>
 
 <style scoped>
-.clinic-block {
-  max-width: 860px;
-  margin: 0 auto 54px;
-  padding: 0 4px;
+.laege-id {
+  font-size: .9rem;
+  color: rgba(21, 54, 85, .62);
+  margin-bottom: 14px !important;
 }
-.clinic-block h2 { margin-bottom: 16px; }
-.clinic-block > p { max-width: 72ch; line-height: 1.7; margin-bottom: 14px; }
+
+.behandlingsliste { list-style: none; padding: 0; margin: 0; }
+.behandlingsliste li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(21, 54, 85, .1);
+}
+.behandlingsliste li:last-child { border-bottom: 0; }
+.bl-navn {
+  color: #2d58a1;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.04rem;
+}
+.bl-navn:hover { text-decoration: underline; }
+.bl-kort {
+  margin: 5px 0 0;
+  font-size: .92rem;
+  line-height: 1.55;
+  color: rgba(21, 54, 85, .74);
+  max-width: 54ch;
+}
+.bl-pris {
+  font-weight: 700;
+  font-size: .95rem;
+  white-space: nowrap;
+  color: #153655;
+  padding-top: 2px;
+}
+.bl-alle { margin: 20px 0 0; }
+.bl-alle a { color: #2d58a1; font-weight: 600; }
 
 .parkering {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
-  margin: 22px 0 16px;
+  margin: 0 0 20px;
 }
 .parkering__kort {
   border: 1px solid rgba(21, 54, 85, .12);
   border-radius: 14px;
-  padding: 20px;
+  padding: 22px;
   background: #fff;
 }
 .parkering__kort h3 { font-size: 1.02rem; margin: 0 0 10px; color: #2d58a1; }
 .parkering__kort p { font-size: .92rem; line-height: 1.6; margin: 0 0 10px; }
-.parkering__kort ul { padding-left: 18px; margin: 0; font-size: .9rem; line-height: 1.65; }
+.parkering__kort p:last-child { margin-bottom: 0; }
+.parkering__kort ul { padding-left: 18px; margin: 0 0 10px; font-size: .9rem; line-height: 1.65; }
 .parkering__kort li { margin-bottom: 5px; }
 .parkering__kort--primaer {
   grid-column: 1 / -1;
-  background: rgba(45, 88, 161, .04);
-  border-color: rgba(45, 88, 161, .26);
+  background: rgba(45, 88, 161, .05);
+  border-color: rgba(45, 88, 161, .24);
 }
 .badge {
   display: inline-block;
@@ -336,51 +398,41 @@ const openBooking = () => {
   border-radius: 999px;
   background: #2d58a1;
   color: #fff;
-  font-size: .68rem;
+  font-size: .66rem;
   font-weight: 700;
-  letter-spacing: .04em;
+  letter-spacing: .05em;
   text-transform: uppercase;
   vertical-align: middle;
 }
-.parkering__billede { margin: 6px 0 18px; }
+.parkering__billede { margin: 4px 0 20px; }
 .parkering__note {
   border-left: 3px solid #2d58a1;
   padding-left: 16px;
   font-size: .93rem;
   line-height: 1.65;
-  max-width: 70ch;
+  max-width: 68ch;
+  margin: 0 0 14px;
 }
-
-.behandlingsliste { list-style: none; padding: 0; margin: 0 0 16px; }
-.behandlingsliste li {
-  display: grid;
-  grid-template-columns: 180px 1fr auto;
-  gap: 14px;
-  align-items: baseline;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(21, 54, 85, .1);
+.parkering__transport {
+  font-size: .95rem;
+  line-height: 1.7;
+  max-width: 68ch;
+  margin: 0;
 }
-.behandlingsliste a { color: #2d58a1; text-decoration: none; }
-.behandlingsliste a:hover { text-decoration: underline; }
-.behandlingsliste span { font-size: .9rem; line-height: 1.55; color: rgba(21, 54, 85, .78); }
-.behandlingsliste em { font-style: normal; font-weight: 700; font-size: .88rem; white-space: nowrap; }
-
-.clinic-block .faq-list { max-width: 72ch; }
-.clinic-block .faq-item { border-bottom: 1px solid rgba(21, 54, 85, .12); }
-.clinic-block .faq-q {
-  cursor: pointer;
-  padding: 15px 0;
-  font-weight: 600;
-  list-style: none;
-}
-.clinic-block .faq-q::-webkit-details-marker { display: none; }
-.clinic-block .faq-q::after { content: '+'; float: right; color: #2d58a1; font-weight: 400; }
-.clinic-block .faq-item[open] .faq-q::after { content: '\2013'; }
-.clinic-block .faq-a p { padding: 0 0 15px; line-height: 1.7; margin: 0; max-width: none; }
 
 @media (max-width: 760px) {
   .parkering { grid-template-columns: 1fr; }
-  .behandlingsliste li { grid-template-columns: 1fr; gap: 4px; }
+  .behandlingsliste li { grid-template-columns: 1fr; gap: 6px; }
+  .bl-pris { padding-top: 4px; }
+}
+
+
+
+
+
+@media (max-width: 760px) {
+  
+  
 }
 
 .container {
