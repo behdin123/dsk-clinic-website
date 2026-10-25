@@ -474,6 +474,10 @@
 
 .split--medie-foerst .split__medie { order: -1; }
 
+/* Portraetvariant: et portraet behoever ikke halvdelen af sektionen.
+   Mediesoejlen faar en fast, beskeden bredde, og teksten faar resten. */
+.split--portraet { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); }
+
 .split__tekst > p {
   max-width: 60ch;
   line-height: 1.75;
@@ -493,4 +497,6 @@
   .sec--kort { padding: 30px 22px; border-radius: 14px; }
   .split { grid-template-columns: 1fr; gap: 26px; }
   .split--medie-foerst .split__medie { order: 0; }
+  .split--portraet { grid-template-columns: 1fr; }
+  .split--portraet .split__medie { margin: 0 auto; max-width: 280px; }
 }

@@ -147,7 +147,7 @@
     </section>
 
     <section class="sec" aria-labelledby="laege-vejle">
-      <div class="split">
+      <div class="split split--medie-foerst split--portraet">
         <div class="split__tekst">
           <p class="sec__eyebrow">Klinikkens læge</p>
           <h2 id="laege-vejle">Hvem møder du?</h2>
