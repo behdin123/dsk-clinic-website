@@ -87,12 +87,7 @@
 
     <section class="faq" aria-labelledby="priser-faq">
       <h2 id="priser-faq" class="section-title">Ofte stillede spørgsmål om priser</h2>
-      <div class="faq-list">
-        <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-          <summary class="faq-q">{{ item.q }}</summary>
-          <div class="faq-a"><p>{{ item.a }}</p></div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
 
     <section class="closing">
@@ -115,6 +110,7 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 
 const SITE_URL = 'https://dsklinik.dk'
 

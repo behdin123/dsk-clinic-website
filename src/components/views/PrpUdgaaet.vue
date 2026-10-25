@@ -60,18 +60,14 @@
 
     <section class="faq" aria-labelledby="prp-faq-title">
       <h2 id="prp-faq-title" class="section-title">Ofte stillede spørgsmål</h2>
-      <div class="faq-list">
-        <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-          <summary class="faq-q">{{ item.q }}</summary>
-          <div class="faq-a"><p>{{ item.a }}</p></div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
   </section>
 </template>
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 
 const SITE_URL = 'https://dsklinik.dk'
 

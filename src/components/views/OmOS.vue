@@ -244,15 +244,7 @@
         <section v-if="faqs.length" id="faq" class="faq">
             <h2 class="section-title">Ofte stillede spørgsmål</h2>
 
-            <div class="faq-list">
-                <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-                    <!-- vi bevarer <b> fra COPY_SECTION, derfor v-html -->
-                    <summary class="faq-q" v-html="item.q"></summary>
-                    <div class="faq-a">
-                        <p v-for="(p, j) in (Array.isArray(item.a) ? item.a : [item.a])" :key="j" v-html="p" />
-                    </div>
-                </details>
-            </div>
+            <FaqList :items="faqs" />
         </section>
 
         <!-- CTA (ساده و سازگار با روال فعلی سایت) -->
@@ -274,6 +266,7 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
 import imgVejle from '@/assets/klinik/vejle.webp'
 

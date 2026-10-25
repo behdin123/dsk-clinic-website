@@ -146,12 +146,7 @@
 
     <section class="block" aria-labelledby="faq-title">
       <h2 id="faq-title">Ofte stillede spørgsmål</h2>
-      <div class="faq-list">
-        <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-          <summary class="faq-q">{{ item.q }}</summary>
-          <div class="faq-a"><p>{{ item.a }}</p></div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
 
     <RelateredeBehandlinger slug="laebefiller" />
@@ -178,6 +173,7 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
 import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'

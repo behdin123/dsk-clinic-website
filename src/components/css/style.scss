@@ -132,37 +132,7 @@
   margin-bottom: 30px !important;
 }
 
-.faq-list {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.faq-q {
-  cursor: pointer;
-  padding: 20px 18px;
-  font-weight: 500;
-}
-
-.faq-a {
-  padding: 0 18px 14px;
-  line-height: 1.6;
-}
-
-.faq-a a {
-  color: #9ec5ff;
-  text-decoration: underline;
-}
-
-.faq-item[open] .faq-q {
-  background: rgba(255, 255, 255, 0.07);
-}
+/* FAQ-styling ligger nu i src/components/FaqList.vue (scoped) */
 
 .width-margin{
   margin: 0 auto;

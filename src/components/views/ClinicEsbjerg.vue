@@ -95,6 +95,12 @@
         </article>
       </div>
 
+      <MediaPlaceholder
+        class="parkering__billede"
+        :src="imgParkering"
+        alt="Parkeringspladsen ved Havnegade 6 i Esbjerg, set fra Havnegade – klinikken ligger i bygningen til venstre"
+        ratio="16 / 8" />
+
       <p class="parkering__note">
         Skiltningen kan ændre sig. <b>Læs skiltet, inden du forlader bilen</b> – en kontrolafgift
         koster langt mere end de to timer er værd.
@@ -135,12 +141,7 @@
 
     <section class="clinic-block" aria-labelledby="faq-esbjerg">
       <h2 id="faq-esbjerg">Spørgsmål om Esbjerg-klinikken</h2>
-      <div class="faq-list">
-        <details v-for="(f, i) in faqs" :key="i" class="faq-item">
-          <summary class="faq-q">{{ f.q }}</summary>
-          <div class="faq-a"><p>{{ f.a }}</p></div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
   </section>
 </template>
@@ -148,8 +149,11 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 import { liveBehandlinger } from '@/data/behandlinger'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
+import imgParkering from '@/assets/klinik/esbjerg-parkering.webp'
+import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
 
 const videoReel = '/assets/video/Instagram_Reel_4.mp4'
 const videoPoster = '/assets/video/klinik-video-poster.webp'
@@ -338,6 +342,7 @@ const openBooking = () => {
   text-transform: uppercase;
   vertical-align: middle;
 }
+.parkering__billede { margin: 6px 0 18px; }
 .parkering__note {
   border-left: 3px solid #2d58a1;
   padding-left: 16px;

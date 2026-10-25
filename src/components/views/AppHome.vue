@@ -348,15 +348,7 @@
     <section v-if="faqs.length" id="faq" class="faq">
       <h2 class="section-title">Ofte stillede spørgsmål</h2>
 
-      <div class="faq-list">
-        <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-          <!-- vi bevarer <b> fra COPY_SECTION, derfor v-html -->
-          <summary class="faq-q" v-html="item.q"></summary>
-          <div class="faq-a">
-            <p v-for="(p, j) in (Array.isArray(item.a) ? item.a : [item.a])" :key="j" v-html="p" />
-          </div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
 
   </div>
@@ -365,6 +357,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 import imgOmOs from '@/assets/OmOs.webp'
 import imgClinic from '@/assets/Clinic_consultation.webp'
 

@@ -102,6 +102,12 @@
         </article>
       </div>
 
+      <MediaPlaceholder
+        class="parkering__billede"
+        :src="imgParkering"
+        alt="Parkering ved DK Skønhedsklinik i Vejle – Å-centret ligger tættest på Søndergade 50"
+        ratio="4 / 3" />
+
       <p class="parkering__note">
         Taksterne kan ændre sig. <b>Tjek altid skiltningen på stedet</b>, inden du forlader bilen –
         en kontrolafgift koster langt mere end en times parkering.
@@ -147,12 +153,7 @@
 
     <section class="clinic-block" aria-labelledby="faq-vejle">
       <h2 id="faq-vejle">Spørgsmål om Vejle-klinikken</h2>
-      <div class="faq-list">
-        <details v-for="(f, i) in faqs" :key="i" class="faq-item">
-          <summary class="faq-q">{{ f.q }}</summary>
-          <div class="faq-a"><p>{{ f.a }}</p></div>
-        </details>
-      </div>
+      <FaqList :items="faqs" />
     </section>
   </section>
 </template>
@@ -160,8 +161,11 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
+import FaqList from '@/components/FaqList.vue'
 import { liveBehandlinger } from '@/data/behandlinger'
 import imgVejle from '@/assets/klinik/vejle.webp'
+import imgParkering from '@/assets/klinik/vejle-parkering.webp'
+import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
 
 const videoReel = '/assets/video/Instagram_Reel_4.mp4'
 const videoPoster = '/assets/video/klinik-video-poster.webp'
@@ -350,6 +354,7 @@ const openBooking = () => {
   text-transform: uppercase;
   vertical-align: middle;
 }
+.parkering__billede { margin: 6px 0 18px; }
 .parkering__note {
   border-left: 3px solid #2d58a1;
   padding-left: 16px;

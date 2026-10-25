@@ -247,14 +247,7 @@
   <section v-if="faqs.length" class="faq">
     <h2 class="section-title">Ofte stillede spørgsmål om {{ title }}</h2>
 
-    <div class="faq-list">
-      <details v-for="(item, i) in faqs" :key="i" class="faq-item">
-        <summary class="faq-q">{{ item.q }}</summary>
-        <div class="faq-a">
-          <p v-for="(p, j) in (Array.isArray(item.a) ? item.a : [item.a])" :key="j" v-html="p"></p>
-        </div>
-      </details>
-    </div>
+    <FaqList :items="faqs" />
   </section>
 
 
@@ -263,6 +256,7 @@
 <script setup>
 import { defineProps, computed } from 'vue';
 import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
+import FaqList from './FaqList.vue'
 
 
 const props = defineProps({
