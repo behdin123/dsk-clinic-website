@@ -159,8 +159,8 @@
             have omkring din huds friskhed og glød
           </p>
           <p>Mit navn er <b>Arash Bagheri</b>, læge og indehaver af DK Skønhedsklinik. Jeg har været læge
-            i 30 år – de seneste 17 i det danske sundhedsvæsen – og uddannede mig i mesoterapi i Paris og
-            Dubai i 2005. Jeg brænder for at hjælpe mine patienter til øget selvtillid og velvære.
+            i 30 år – de seneste 17 i det danske sundhedsvæsen – og har mere end 20 års erfaring inden for
+            kosmetiske behandlinger. Jeg brænder for at hjælpe mine patienter til øget selvtillid og velvære.
             I DK Skønhedsklinik sørger jeg for, at hver behandling lever op til vores høje standarder for
             sikkerhed, etik og æstetik. Vi går aldrig på kompromis med din tryghed.
             <br> <br>

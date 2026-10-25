@@ -58,8 +58,8 @@
                     <p class="laegeprofil__tekst">uddannelse i mesoterapi i Paris og Dubai, hos Enseignement International de Mésothérapie og ISAM.</p>
                 </div>
                 <div class="laegeprofil__kort">
-                    <p class="laegeprofil__tal">4 år</p>
-                    <p class="laegeprofil__tekst">som læge og intern direktør på en kosmetisk-kirurgisk klinik i Teheran, 2001–2005.</p>
+                    <p class="laegeprofil__tal">20+ år</p>
+                    <p class="laegeprofil__tekst">med kosmetiske behandlinger – fra fire år som læge og intern direktør på en kosmetisk-kirurgisk klinik i Teheran, 2001–2005.</p>
                 </div>
             </div>
 
@@ -67,13 +67,15 @@
                 <h3>Autorisation og registrering</h3>
                 <ul>
                     <li>Dansk lægeautorisation siden 2011 · <b>autorisations-ID 081Q1</b></li>
-                    <li>Tilladelse til selvstændigt virke siden 2013</li>
                     <li>Registreret hos Styrelsen for Patientsikkerhed til behandling med
                         ikke-permanente fillers (hyaluronsyre) og botulinumtoksin</li>
+                    <li>Klinikken er et registreret kosmetisk behandlingssted og er dermed
+                        underlagt Styrelsen for Patientsikkerheds tilsyn</li>
                 </ul>
                 <p class="laegeprofil__verificer">
-                    Du kan slå autorisationen op i Det Offentlige Autorisationsregister hos
-                    Styrelsen for Patientsikkerhed. Søg på navnet Arash Bagheri eller
+                    Du behøver ikke tage vores ord for det.
+                    <a href="https://autregweb.stps.dk/da" target="_blank" rel="noopener noreferrer">Slå autorisationen op i
+                    Autorisationsregistret</a> og søg på navnet Arash Bagheri eller
                     autorisations-ID 081Q1.
                 </p>
             </div>
@@ -155,12 +157,12 @@
                 <article class="pi-card" data-aos="fade-up" data-aos-duration="800">
                     <h3>Hvem udfører behandlingerne?</h3>
                     <p>
-                        Alle behandlinger udføres af klinikkens ansvarlige læge, <b>Arash Bagheri</b>.
-                        Du kan slå op i Autorisationsregisteret for at se autorisationsstatus.
+                        Alle behandlinger udføres af klinikkens ansvarlige læge, <b>Arash Bagheri</b>,
+                        autorisations-ID <b>081Q1</b>. Du kan selv slå autorisationen op og se, at den er gyldig.
                     </p>
                     <p class="pi-links">
-                        <a href="https://autregweb.sst.dk/Authorization.aspx?id=081Q1" target="_blank" rel="noopener">
-                            Autorisationsregister (STPS)
+                        <a href="https://autregweb.stps.dk/da" target="_blank" rel="noopener noreferrer">
+                            Slå op i Autorisationsregistret hos Styrelsen for Patientsikkerhed
                         </a>
                     </p>
                 </article>
@@ -362,7 +364,7 @@ useHead({
                     "givenName": "Arash",
                     "familyName": "Bagheri",
                     "jobTitle": "Læge",
-                    "description": "Læge med 30 års klinisk erfaring, heraf 17 år i det danske sundhedsvæsen. Uddannet i mesoterapi i Paris og Dubai i 2005 og tidligere intern direktør på en kosmetisk-kirurgisk klinik i Teheran.",
+                    "description": "Læge med 30 års klinisk erfaring, heraf 17 år i det danske sundhedsvæsen, og mere end 20 års erfaring inden for kosmetiske behandlinger. Uddannet i mesoterapi i Paris og Dubai i 2005 og tidligere intern direktør på en kosmetisk-kirurgisk klinik i Teheran.",
                     "identifier": {
                         "@type": "PropertyValue",
                         "name": "Autorisations-ID, Styrelsen for Patientsikkerhed",
