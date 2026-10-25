@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, useId } from 'vue'
 
 /**
  * Faelles FAQ for hele sitet.
@@ -53,7 +53,10 @@ defineProps({
 const aaben = ref(-1)
 const skift = i => { aaben.value = aaben.value === i ? -1 : i }
 
-const uid = `faq-${Math.random().toString(36).slice(2, 8)}`
+// useId() giver samme vaerdi paa server og klient. Math.random() gjorde ikke,
+// og den forskel fik Vue til at opgive hydreringen - saa blev knapperne
+// aldrig koblet til, og der skete intet ved klik.
+const uid = useId()
 
 const tilAfsnit = a => (Array.isArray(a) ? a : [a])
 </script>

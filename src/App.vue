@@ -339,6 +339,15 @@ body {
     pointer-events: none;
   }
 
+  /* Overskrifter er sat til pointer-events: none, saa de ikke fanger klik.
+     Men links og knapper INDE i en overskrift skal stadig kunne klikkes -
+     ellers er fx FAQ-knapperne og linkene paa PRP-siden doede. */
+  h1 a, h1 button,
+  h2 a, h2 button,
+  h3 a, h3 button {
+    pointer-events: auto;
+  }
+
   p {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
