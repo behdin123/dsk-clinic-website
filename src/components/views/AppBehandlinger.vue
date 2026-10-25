@@ -135,7 +135,7 @@ const behandlinger = {
     sections: {
       audience: [
         '<span class="intro">Filler hos DK Skønhedsklinik er en ikke-permanent hyaluronsyrebehandling, der giver fylde, fugt og glød, blødgør fine og dybe linjer og genskaber volumen – fx læber, læbelinjer, smilelinjer (nasolabiale folder) og linjer fra mundvige mod hagen (marionetlinjer), kindben, hage og kæbelinje. Vi doserer små, præcise mængder og skræddersyr behandlingen til dit ansigt for et harmonisk, naturligt udtryk.</span>',
-        'Ønske om <b>læbevolumen</b>, <b>kindfylde</b> eller skarpere <b>kæbelinje/hage</b>.',
+        'Ønske om <b>læbevolumen</b> – se vores side om <a href="/behandlinger/filler/laeber/">læbefiller</a> – <b>kindfylde</b> eller skarpere <b>kæbelinje/hage</b>.',
         'Udfyldning af <b>statiske linjer</b> (f.eks. smilelinjer - eller marionetlinjer).',
         'Harmonisering af ansigtstræk uden kirurgi – <b>kontur og symmetri</b>.',
         'Velegnet, hvis du ønsker <b>umiddelbart synlige</b> resultater.'

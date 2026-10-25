@@ -10,6 +10,7 @@ const kontaktos   = () => import('@/components/views/KontaktOs.vue')
 const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const priser        = () => import('@/components/views/PriserView.vue')
 const booking       = () => import('@/components/views/BookingView.vue')
+const laebefiller   = () => import('@/components/views/LaebefillerView.vue')
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
 const cookiepolitik = () => import('@/components/views/CookiePolitik.vue')
@@ -51,6 +52,10 @@ const articleRoutes = [] // Empty array - viden routes disabled
 // Vi accepterer både med/uden trailing slash og canonicaliserer til MED slash
 export const routes = [
   { path: '/', name: 'home', component: AppHome },
+
+  // Laebefiller: egen underside under filler (skal staa foer den dynamiske rute)
+  { path: '/behandlinger/filler/laeber/', name: 'laebefiller', component: laebefiller },
+  { path: '/behandlinger/filler/laeber',  redirect: '/behandlinger/filler/laeber/' },
 
   // Aktive behandlinger (Botox genaktiveret)
   {

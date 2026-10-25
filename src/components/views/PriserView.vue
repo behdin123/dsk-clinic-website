@@ -164,7 +164,7 @@ const faqs = [
   },
   {
     q: 'Hvad koster 1 ml filler?',
-    a: '1.650 kr. pr. ml. Hvor meget der skal bruges, afhænger af området og af, hvad du gerne vil opnå. Det finder vi ud af ved forundersøgelsen, inden du beslutter dig.'
+    a: '1.650 kr. pr. ml – også for læbefiller. Hvor meget der skal bruges, afhænger af området og af, hvad du gerne vil opnå. Det finder vi ud af ved forundersøgelsen, inden du beslutter dig.'
   },
   {
     q: 'Er forundersøgelsen virkelig gratis?',
