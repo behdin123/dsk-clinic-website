@@ -459,15 +459,25 @@ const openBooking = () => {
 
 @use '../css/style.scss';
 .omos-faq {
+    /* box-sizing + samme maal som resten af siden: panelets kant laa foer
+       20 px laengere til venstre end kortene ovenfor. */
+    box-sizing: border-box;
     display: block;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto 70px;
     padding: 42px 40px;
     background: rgba(45, 88, 161, .045);
     border: 1px solid rgba(45, 88, 161, .10);
     border-radius: 18px;
 
-    .section-title { margin: 0 !important; }
+    /* Overskriften var centreret, mens eyebrow'en stod til venstre -
+       de to linjer pegede hver sin vej. */
+    .sec__head { text-align: left; }
+    .section-title { margin: 0 !important; text-align: left; width: auto; }
+}
+
+@media (max-width: 1240px) {
+    .laegeprofil { padding-left: 20px; padding-right: 20px; }
 }
 
 @media (max-width: 880px) {
@@ -475,10 +485,11 @@ const openBooking = () => {
 }
 
 .laegeprofil {
+    box-sizing: border-box;
     display: block;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 70px 20px;
+    padding: 70px 0;
     color: #153655;
 
     .sec__head { margin-bottom: 34px; }

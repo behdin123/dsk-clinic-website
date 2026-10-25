@@ -3,8 +3,8 @@
         <div class="flex">
             <div class="kontaktOs-wrapper">
                 <div class="KontaktOsHeader">
-                    <h1>Kontakt DK Skønhedsklinik </h1>
-                    <h2>– Vi står klar til at hjælpe dig!</h2>
+                    <h1>Kontakt DK Skønhedsklinik</h1>
+                    <p class="kontakt-undertitel">Vi står klar til at hjælpe dig</p>
                     <p class="mobile-hide">Har du spørgsmål til vores behandlinger eller ønsker du at booke en gratis
                         konsultation?</p>
                 </div>
@@ -36,6 +36,75 @@
             </div>
         </div>
     </main>
+
+    <!-- Aabningstider stod kun i footeren. Paa en kontaktside er det det
+         foerste, folk leder efter - og de to klinikker har ikke samme tider. -->
+    <section id="klinikker" class="kontakt-klinikker" aria-labelledby="kontakt-klinikker-titel">
+        <div class="kontakt-klinikker__head">
+            <p class="sec__eyebrow">Vores klinikker</p>
+            <h2 id="kontakt-klinikker-titel">Hvor og hvornår kan du møde os?</h2>
+            <p class="kontakt-klinikker__lead">
+                Samme læge, samme priser og samme behandlinger begge steder.
+                Forundersøgelsen er gratis og uforpligtende.
+            </p>
+        </div>
+
+        <div class="kontakt-klinikker__grid">
+            <article class="kontakt-kort">
+                <h3>Vejle</h3>
+                <dl>
+                    <div>
+                        <dt>Adresse</dt>
+                        <dd>
+                            <address>Søndergade 50<br />7100 Vejle</address>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Åbningstider</dt>
+                        <dd>
+                            Søndag 11:00–18:00
+                            <span class="kontakt-kort__note">Andre tider kan aftales – dog kun søndag indtil videre</span>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Telefon</dt>
+                        <dd><a href="tel:+4553503750">+45 53 50 37 50</a></dd>
+                    </div>
+                </dl>
+                <p class="kontakt-kort__links">
+                    <router-link to="/klinik/vejle/">Se klinikken</router-link>
+                    <a href="https://maps.google.com/?q=Søndergade+50,+7100+Vejle" target="_blank" rel="noopener">Få rutevejledning</a>
+                </p>
+            </article>
+
+            <article class="kontakt-kort">
+                <h3>Esbjerg</h3>
+                <dl>
+                    <div>
+                        <dt>Adresse</dt>
+                        <dd>
+                            <address>Havnegade 6<br />6700 Esbjerg</address>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Åbningstider</dt>
+                        <dd>
+                            Mandag–fredag 17:00–20:00
+                            <span class="kontakt-kort__note">Andre tidspunkter kan aftales</span>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Telefon</dt>
+                        <dd><a href="tel:+4553503750">+45 53 50 37 50</a></dd>
+                    </div>
+                </dl>
+                <p class="kontakt-kort__links">
+                    <router-link to="/klinik/esbjerg/">Se klinikken</router-link>
+                    <a href="https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg" target="_blank" rel="noopener">Få rutevejledning</a>
+                </p>
+            </article>
+        </div>
+    </section>
 
 
     <section id="veninde-rabat" class="friend-offer section-wrapper width-margin">
@@ -79,7 +148,7 @@
             <div class="section-text">
                 <div class="follow-insta-text">
                     <b>For at se vores seneste tilbud, og nyheder</b>
-                    <h2>Follow os for nyheder og tilbud</h2>
+                    <h2>Følg os for nyheder og tilbud</h2>
                     <p>
                         På vores Sociale Medier hjælper vi dig med de spørgsmål du måtte have,
                         og samtidig kan du også se vores tilbud og nyheder som du kan få gavn af
@@ -620,8 +689,8 @@ h2 {
         padding-left: 0 !important;
     }
 
-    .KontaktOsHeader h2 {
-        font-size: 20px !important;
+    .KontaktOsHeader .kontakt-undertitel {
+        font-size: 20px;
     }
 
     .KontaktOsHeader h1 {
@@ -649,9 +718,11 @@ h2 {
         font-size: 45px !important;
     }
 
-    h2 {
-        font-size: 22px !important;
-        margin-top: 10px !important;
+    .kontakt-undertitel {
+        font-size: 22px;
+        font-weight: 700;
+        margin-top: 10px;
+        width: auto;
     }
 
     h1,
@@ -1142,5 +1213,115 @@ button[disabled] {
 .hp {
     position: absolute;
     left: -9999px;
+}
+
+/* ===== Klinikkort paa kontaktsiden ===== */
+.kontakt-klinikker {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 70px 20px 10px;
+    width: 100%;
+}
+
+.kontakt-klinikker *,
+.kontakt-klinikker *::before,
+.kontakt-klinikker *::after { box-sizing: border-box; }
+
+.kontakt-klinikker__head { margin-bottom: 30px; max-width: 70ch; }
+
+.kontakt-klinikker__head h2 {
+    color: #153655;
+    font-size: clamp(1.5rem, 2.4vw, 2rem) !important;
+    margin: 0 0 12px;
+}
+
+.kontakt-klinikker__lead {
+    color: rgba(21, 54, 85, .76);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.kontakt-klinikker__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.kontakt-kort {
+    background: #fff;
+    border: 1px solid rgba(21, 54, 85, .10);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+    padding: 30px 28px;
+}
+
+.kontakt-kort h3 {
+    color: #153655;
+    font-size: 1.25rem;
+    margin: 0 0 18px;
+}
+
+.kontakt-kort dl {
+    border-top: 1px solid rgba(21, 54, 85, .08);
+    margin: 0 0 20px;
+}
+
+.kontakt-kort dl > div {
+    border-bottom: 1px solid rgba(21, 54, 85, .08);
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 112px minmax(0, 1fr);
+    padding: 12px 0;
+}
+
+.kontakt-kort dt {
+    color: rgba(21, 54, 85, .62);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.kontakt-kort dd {
+    color: #153655;
+    font-weight: 600;
+    margin: 0;
+}
+
+.kontakt-kort address { font-style: normal; line-height: 1.5; }
+
+.kontakt-kort__note {
+    color: rgba(21, 54, 85, .60);
+    display: block;
+    font-size: .85rem;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.kontakt-kort dd a { color: #2d58a1; font-size: 1.05rem; text-decoration: none; }
+.kontakt-kort dd a:hover { text-decoration: underline; }
+
+.kontakt-kort__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 0;
+}
+
+.kontakt-kort__links a {
+    color: #2d58a1;
+    font-weight: 600;
+    font-size: .95rem;
+    text-decoration: none;
+}
+
+.kontakt-kort__links a:hover { text-decoration: underline; }
+
+@media (max-width: 880px) {
+    .kontakt-klinikker { padding: 44px 20px 0; }
+    .kontakt-klinikker__grid { grid-template-columns: minmax(0, 1fr); }
+    .kontakt-kort { padding: 24px 20px; }
+    .kontakt-kort dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
 </style>
