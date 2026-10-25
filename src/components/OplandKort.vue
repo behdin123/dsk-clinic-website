@@ -153,21 +153,24 @@ const byerSomTekst = computed(() =>
 .opland { margin: 0; width: 100%; }
 .opland svg { display: block; width: 100%; height: auto; }
 
-/* Paa brede skaerme staar diagrammet og tallene side om side - de to
+/* Paa brede skaerme staar tallene og diagrammet side om side - de to
    tunge elementer balancerer hinanden, og sektionen faar ikke en hoej
-   venstrespalte med tom luft ved siden af. */
+   spalte med tom luft ved siden af.
+   Tabellen ligger til venstre og diagrammet til hoejre: oejet laeser tekst
+   fra venstre, og den visuelle tyngde hoerer hjemme i den brede hoejreside. */
 @media (min-width: 860px) {
   .opland {
     align-items: center;
     column-gap: 48px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, .92fr);
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1fr);
   }
 
-  .opland__liste { border-top: 0; margin-top: 0; }
+  .opland svg { order: 2; }
+  .opland__liste { border-top: 0; margin-top: 0; order: 1; }
   .opland__liste li:first-child { border-top: 1px solid rgba(21, 54, 85, .1); }
   .opland__liste li { padding: 13px 0; }
-  .opland__note { grid-column: 1 / -1; margin-top: 18px; }
+  .opland__note { grid-column: 1 / -1; margin-top: 18px; order: 3; }
 }
 
 .baand { stroke: none; }
