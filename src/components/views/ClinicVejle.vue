@@ -169,12 +169,12 @@
     <section class="sec" aria-labelledby="opland-vejle">
       <div class="split split--medie-foerst">
         <div class="split__medie">
-          <OplandKort by="Vejle" :punkter="oplandsbyer" :titel-id="'opland-kort-vejle'" />
+          <OplandKort by="Vejle" :punkter="oplandsbyer" :titel-id="'opland-kort-vejle'" :maerkat-retning="250" />
         </div>
         <div class="split__tekst">
           <p class="sec__eyebrow">Opland</p>
           <h2 id="opland-vejle">Vi har også kunder fra oplandet</h2>
-          <p>Vejle-klinikken ligger centralt i Trekantområdet, og en stor del af vores kunder kører hertil fra Kolding, Fredericia, Horsens, Give og Jelling. Fra de fleste af dem er der under en halv times kørsel, og søndag er der hverken myldretid eller kø.</p>
+          <p>Vejle-klinikken ligger centralt i Trekantområdet, og en stor del af vores kunder kører hertil fra Kolding, Fredericia, Horsens, Give og Jelling. Fra dem alle er der under en halv times kørsel, og søndag er der hverken myldretid eller kø.</p>
         </div>
       </div>
     </section>
@@ -256,7 +256,7 @@ const schemaData = {
     { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Sunday'], 'opens': '11:00', 'closes': '18:00' }
   ],
   'priceRange': '$$',
-  'areaServed': ['Vejle', 'Trekantområdet'],
+  'areaServed': ['Vejle', 'Trekantområdet', 'Kolding', 'Fredericia', 'Horsens', 'Give', 'Jelling'],
   'sameAs': [
     'https://share.google/xmCE5ekm5KMWgjowu',
     'https://www.facebook.com/profile.php?id=100054595142567',
@@ -279,13 +279,14 @@ const faqs = [
   { q: 'Er det en læge, der behandler mig?',
     a: 'Ja. Alle behandlinger udføres af klinikkens læge, Arash Bagheri – ikke af en kosmetolog.' }
 ]
-// Stiliseret placering - omtrent rigtig retning, ikke geografisk praecis
+// Koerselsafstande ad vej fra Vejle, afrundet. Retning er grader fra nord.
+// Afstanden fra midten i diagrammet foelger koeretiden, ikke kilometerne.
 const oplandsbyer = [
-  { navn: 'Horsens',    x: 232, y: 44  },
-  { navn: 'Jelling',    x: 92,  y: 86  },
-  { navn: 'Give',       x: 58,  y: 178, under: true },
-  { navn: 'Fredericia', x: 332, y: 236, under: true },
-  { navn: 'Kolding',    x: 182, y: 312, under: true }
+  { navn: 'Horsens',    km: 27, minutter: 25, retning: 10  },
+  { navn: 'Jelling',    km: 12, minutter: 15, retning: 325 },
+  { navn: 'Give',       km: 30, minutter: 25, retning: 275 },
+  { navn: 'Fredericia', km: 24, minutter: 20, retning: 140 },
+  { navn: 'Kolding',    km: 27, minutter: 25, retning: 205 }
 ]
 
 const behandlinger = liveBehandlinger()

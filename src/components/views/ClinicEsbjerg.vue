@@ -160,7 +160,7 @@
     <section class="sec" aria-labelledby="opland-esbjerg">
       <div class="split split--medie-foerst">
         <div class="split__medie">
-          <OplandKort by="Esbjerg" :punkter="oplandsbyer" :titel-id="'opland-kort-esbjerg'" />
+          <OplandKort by="Esbjerg" :punkter="oplandsbyer" :titel-id="'opland-kort-esbjerg'" :maerkat-retning="250" />
         </div>
         <div class="split__tekst">
           <p class="sec__eyebrow">Opland</p>
@@ -247,7 +247,7 @@ const schemaData = {
     { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '17:00', 'closes': '20:00' }
   ],
   'priceRange': '$$',
-  'areaServed': ['Esbjerg', 'Sydvestjylland'],
+  'areaServed': ['Esbjerg', 'Sydvestjylland', 'Varde', 'Bramming', 'Ribe', 'Grindsted'],
   'sameAs': [
     'https://share.google/GKWF9sJbSFoxUsfJA',
     'https://www.facebook.com/profile.php?id=100054595142567',
@@ -270,12 +270,13 @@ const faqs = [
   { q: 'Er det en læge, der behandler mig?',
     a: 'Ja. Alle behandlinger udføres af klinikkens læge, Arash Bagheri – ikke af en kosmetolog.' }
 ]
-// Stiliseret placering - omtrent rigtig retning, ikke geografisk praecis
+// Koerselsafstande ad vej fra Esbjerg, afrundet. Retning er grader fra nord.
+// Afstanden fra midten i diagrammet foelger koeretiden, ikke kilometerne.
 const oplandsbyer = [
-  { navn: 'Varde',     x: 218, y: 46  },
-  { navn: 'Grindsted', x: 350, y: 110 },
-  { navn: 'Bramming',  x: 346, y: 220, under: true },
-  { navn: 'Ribe',      x: 246, y: 312, under: true }
+  { navn: 'Varde',     km: 18, minutter: 20, retning: 5   },
+  { navn: 'Grindsted', km: 47, minutter: 40, retning: 50  },
+  { navn: 'Bramming',  km: 19, minutter: 20, retning: 90  },
+  { navn: 'Ribe',      km: 31, minutter: 30, retning: 152 }
 ]
 
 const behandlinger = liveBehandlinger()
