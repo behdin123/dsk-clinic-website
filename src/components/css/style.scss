@@ -402,10 +402,15 @@
    ============================================================ */
 
 .sec {
+  box-sizing: border-box;
   margin: 0 auto 64px;
   max-width: 980px;
   width: 100%;
 }
+
+.sec *,
+.sec *::before,
+.sec *::after { box-sizing: border-box; }
 
 .sec--bred { max-width: 1100px; }
 

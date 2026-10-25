@@ -1,12 +1,12 @@
 <template>
   <section class="container OmKlinik clinic-view" aria-labelledby="clinic-title">
-    <header class="clinic-hero" aria-hidden="true">
+    <header class="clinic-hero">
       <div class="hero-inner">
         <h1 id="clinic-title">DK Skønhedsklinik – Esbjerg</h1>
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Esbjerg.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgEsbjerg" alt="DK Skønhedsklinik Esbjerg" loading="eager" fetchpriority="high" decoding="async" />
+        <img :src="imgEsbjerg" alt="Klinikken i Esbjerg" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 
@@ -16,26 +16,42 @@
         <meta itemprop="telephone" content="+45 53 50 37 50" />
         <meta itemprop="url" content="https://dsklinik.dk/klinik/esbjerg/" />
 
-        <div>
-          <h2>Adresse & kontakt</h2>
-          <address>
-            <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-              <span itemprop="streetAddress"><b>Adresse:</b> Havnegade 6</span>,
-              <span itemprop="addressLocality">Esbjerg</span>
-              <span itemprop="postalCode" style="display:none">6700</span>
-              <span itemprop="addressCountry" style="display:none">DK</span>
-            </p>
-          </address>
-          <p><b>Åbningstider:</b> Mandag–fredag 17:00–20:00</p>
-          <p><b>Telefon:</b> <a href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></p>
-        </div>
+        <div class="clinic-info__body">
+          <p class="sec__eyebrow">Kontakt</p>
+          <h2>Adresse &amp; kontakt</h2>
 
-        <p class="clinic-actions">
-          <button class="general_button" type="button" @click="openBooking"
-            aria-label="Book gratis forundersøgelse">Book forundersøgelse</button>
-          <a class="general_button" :href="directionsLink" target="_blank" rel="noopener"
-            aria-label="Få rutevejledning til DK Skønhedsklinik Esbjerg">Få rutevejledning</a>
-        </p>
+          <dl class="kontaktliste">
+            <div class="kontaktliste__raekke">
+              <dt>Adresse</dt>
+              <dd>
+                <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                  <span itemprop="streetAddress">Havnegade 6</span><br />
+                  <span itemprop="postalCode">6700</span> <span itemprop="addressLocality">Esbjerg</span>
+                  <span itemprop="addressCountry" style="display:none">DK</span>
+                </address>
+              </dd>
+            </div>
+            <div class="kontaktliste__raekke">
+              <dt>Åbningstider</dt>
+              <dd>
+                Mandag–fredag 17:00–20:00
+                <span class="kontaktliste__note">Andre tidspunkter kan aftales</span>
+              </dd>
+            </div>
+            <div class="kontaktliste__raekke">
+              <dt>Telefon</dt>
+              <dd><a class="kontakt-tlf" href="tel:+4553503750" itemprop="telephone">+45 53 50 37 50</a></dd>
+            </div>
+          </dl>
+
+          <p class="clinic-actions">
+            <button class="general_button" type="button" @click="openBooking"
+              aria-label="Book gratis forundersøgelse">Book forundersøgelse</button>
+            <a class="general_button general_button--sekundaer" :href="directionsLink" target="_blank" rel="noopener"
+              aria-label="Få rutevejledning til DK Skønhedsklinik Esbjerg">Få rutevejledning</a>
+          </p>
+          <p class="clinic-info__gratis">Forundersøgelsen er gratis og uforpligtende – du betaler først efter behandlingen.</p>
+        </div>
       </article>
 
       <aside class="clinic-map" aria-label="Kort over DK Skønhedsklinik Esbjerg">
@@ -47,6 +63,7 @@
     <section class="clinic-about">
       <div class="about-content">
         <div class="about-text">
+          <p class="sec__eyebrow">Klinikken</p>
           <h2>Om klinikken i Esbjerg</h2>
           <p>
             Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og
@@ -57,9 +74,7 @@
 
             Lokalet har nem adgang fra gaden/indgangen og gode forhold for alle besøgende.
             <br><br>
-            <strong>Parkering</strong>
-            <br>
-            Der findes parkeringsmuligheder i nærområdet i kort gåafstand.
+            Kom gerne et par minutter før, så der er ro til samtalen.
           </p>
         </div>
         <div class="about-video">
@@ -133,7 +148,7 @@
             20 års erfaring med kosmetiske behandlinger.
           </p>
           <p class="laege-id">Autorisations-ID 081Q1 · gyldig autorisation</p>
-          <p><router-link to="/omos/" class="inline-link">Læs mere om lægens baggrund</router-link></p>
+          <p><router-link to="/omos/" class="laes-mere">Læs mere om lægens baggrund<span aria-hidden="true">→</span></router-link></p>
         </div>
         <div class="split__medie">
           <img :src="imgArash" width="1000" height="1251" loading="lazy" decoding="async"
@@ -329,6 +344,34 @@ const openBooking = () => {
 </script>
 
 <style scoped>
+/* H1 laa bag den faste navigation og var dermed usynlig. */
+.container.clinic-view { flex-direction: column; }
+
+.clinic-hero .hero-inner h1 {
+  color: #153655;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.clinic-hero .hero-inner .lead {
+  max-width: 58ch;
+  line-height: 1.7;
+  color: rgba(21, 54, 85, .78);
+  margin: 0;
+}
+
+/* Adresse & kontakt skal veje tungest - det er det, folk kom efter */
+.clinic-info h2 { margin-bottom: 14px; }
+
+/* Behandlingslisten: tekst og pris skal hoere sammen, ikke have en flod imellem */
+.behandlingsliste { max-width: 760px; }
+.behandlingsliste li > * { min-width: 0; }
+.bl-tekst { min-width: 0; }
+.bl-kort { max-width: none; overflow-wrap: anywhere; }
+
+
+
 .laege-id {
   font-size: .9rem;
   color: rgba(21, 54, 85, .62);
@@ -464,7 +507,9 @@ strong {
 }
 
 
-a {
+/* Reglen gjaldt foer ALLE links paa siden - ogsaa telefonnummer og
+   inline-links, der dermed mistede deres understregning. Nu kun knapper. */
+.general_button {
   padding: 0 !important;
   height: 59px;
   text-decoration: none;
@@ -645,6 +690,267 @@ a {
 @media (max-width: 900px) {
   .hero-figure img {
     height: 200px;
+  }
+}
+
+/* ============================================================
+   Designjustering: hierarki, balance og vertikal rytme
+   ============================================================ */
+
+/* Hero: lavere baand, saa H1 og indhold naaes hurtigere */
+.clinic-hero { gap: 18px; }
+
+.clinic-hero .hero-figure img {
+  height: clamp(220px, 26vw, 340px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .10);
+}
+
+/* Kontakt + kort staar side om side - adressen hoerer sammen med kortet,
+   og vi sparer ca. 500 px lodret vej til resten af siden. */
+.clinic-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: 28px;
+  align-items: stretch;
+  padding: 44px 0 56px;
+}
+
+/* Kontaktblokken er det, folk kom efter - den skal se ud som et kort,
+   ikke som loes tekst ved siden af to blaa knapper. */
+.clinic-info {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  display: block;
+  max-width: none;
+  padding: 34px 32px;
+}
+
+.clinic-info__body { display: block; }
+
+.clinic-info h2 {
+  font-size: clamp(1.3rem, 1.9vw, 1.6rem);
+  margin: 0 0 22px;
+}
+
+.kontaktliste {
+  border-top: 1px solid rgba(21, 54, 85, .08);
+  margin: 0 0 26px;
+}
+
+.kontaktliste__raekke {
+  border-bottom: 1px solid rgba(21, 54, 85, .08);
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.kontaktliste dt {
+  color: rgba(21, 54, 85, .62);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.kontaktliste dd {
+  color: #153655;
+  font-weight: 600;
+  margin: 0;
+}
+
+.kontaktliste address {
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.kontaktliste__note {
+  color: rgba(21, 54, 85, .60);
+  display: block;
+  font-size: .86rem;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.kontakt-tlf {
+  color: #2d58a1;
+  font-size: 1.12rem;
+  text-decoration: none;
+}
+
+.kontakt-tlf:hover,
+.kontakt-tlf:focus-visible { text-decoration: underline; }
+
+/* Knapperne: én primaer handling, én sekundaer. Foer stod to ens blaa
+   blokke og trak mere opmaerksomhed end selve adressen. */
+.clinic-actions {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 0 0 14px;
+}
+
+.clinic-info,
+.clinic-info *,
+.clinic-info *::before,
+.clinic-info *::after { box-sizing: border-box; }
+
+.clinic-info .general_button {
+  border-radius: 10px;
+  flex: 1 1 0;
+  font-size: 13px;
+  height: 54px;
+  line-height: 54px;
+  min-width: 0;
+  padding: 0 14px !important;
+  width: auto !important;
+}
+
+.clinic-info .general_button--sekundaer {
+  background: #fff;
+  border: 1.5px solid rgba(45, 88, 161, .45);
+  color: #2d58a1 !important;
+  line-height: 51px;
+}
+
+.clinic-info .general_button--sekundaer:hover,
+.clinic-info .general_button--sekundaer:focus-visible {
+  background: rgba(45, 88, 161, .06);
+  border-color: #2d58a1;
+  opacity: 1;
+}
+
+.clinic-info__gratis {
+  color: rgba(21, 54, 85, .62);
+  font-size: .88rem;
+  margin: 0;
+}
+
+/* Kortet faar samme hoejde som kortet ved siden af */
+.clinic-map {
+  border-radius: 18px;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.clinic-map iframe {
+  display: block;
+  height: 100% !important;
+  min-height: 420px;
+  border-radius: 18px;
+}
+
+/* Vertikal rytme: afsnittene laa for langt fra hinanden i forhold til
+   maengden af indhold. */
+.clinic-about { margin-top: 0; }
+.clinic-about .about-content { gap: 48px; }
+
+@media only screen and (max-width: 1000px) {
+  .clinic-hero,
+  .clinic-grid,
+  .clinic-about { padding: 32px 0 !important; }
+}
+
+@media (max-width: 900px) {
+  .clinic-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 28px 0 40px;
+  }
+
+  .clinic-info { padding: 26px 22px; }
+
+  .clinic-map iframe { min-height: 300px; }
+
+  .clinic-hero .hero-figure img { height: 200px; }
+}
+
+@media (max-width: 560px) {
+  .kontaktliste__raekke {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .clinic-actions { flex-direction: column; }
+  .clinic-info .general_button { width: 100% !important; }
+}
+
+/* ---- Runde 2: luft, balance og klikbarhed ---- */
+
+/* Der laa ca. 150 px tom luft under navigationen, foer oejet naaede H1. */
+.container.clinic-view { padding-top: 56px !important; }
+
+/* "Om klinikken": teksten sluttede langt foer videoen - blokken saa skaev ud. */
+.clinic-about .about-content {
+  align-items: center;
+  gap: 56px;
+}
+
+.clinic-about .about-text { width: auto; flex: 1 1 56%; }
+
+.clinic-about .about-video { width: auto; flex: 0 1 38%; max-width: 380px; }
+
+/* Parkeringsbilledet fyldte naesten 750 px i hoejden og overdoev afsnittet. */
+.parkering__billede {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+
+/* Behandlingslisten: pris og beskrivelse skal hoere sammen */
+.behandlingsliste { max-width: 700px; }
+
+/* Et "laes mere" skal ligne et link, ikke broedtekst */
+.laes-mere {
+  align-items: center;
+  color: #2d58a1 !important;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 8px;
+  height: auto;
+  text-decoration: none;
+}
+
+.laes-mere span { transition: transform .2s ease; }
+
+.laes-mere:hover,
+.laes-mere:focus-visible { text-decoration: underline; }
+.laes-mere:hover span { transform: translateX(3px); }
+
+@media (max-width: 1000px) {
+  .container.clinic-view { padding-top: 36px !important; }
+  .clinic-about .about-text,
+  .clinic-about .about-video { width: 100%; max-width: none; }
+}
+
+/* ---- Runde 3: én fælles venstrekant ---- */
+/* Hero og kontaktblokken laa i containerens fulde bredde (1200 px),
+   mens .sec-afsnittene var 980 px og centreret. Det gav tre forskellige
+   venstrekanter ned gennem siden. Nu deler alt samme maal. */
+.clinic-view .clinic-hero,
+.clinic-view .clinic-grid,
+.clinic-view .clinic-about {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 980px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .clinic-view .clinic-hero,
+  .clinic-view .clinic-grid,
+  .clinic-view .clinic-about { max-width: none; }
+
+  /* .sec-afsnittene laa helt ud til skaermkanten paa mobil, mens resten
+     havde 20 px luft. Samme venstrekant hele vejen ned. */
+  .clinic-view .sec {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
   }
 }
 </style>
