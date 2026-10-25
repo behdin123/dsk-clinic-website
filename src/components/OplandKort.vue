@@ -153,6 +153,23 @@ const byerSomTekst = computed(() =>
 .opland { margin: 0; width: 100%; }
 .opland svg { display: block; width: 100%; height: auto; }
 
+/* Paa brede skaerme staar diagrammet og tallene side om side - de to
+   tunge elementer balancerer hinanden, og sektionen faar ikke en hoej
+   venstrespalte med tom luft ved siden af. */
+@media (min-width: 860px) {
+  .opland {
+    align-items: center;
+    column-gap: 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .92fr);
+  }
+
+  .opland__liste { border-top: 0; margin-top: 0; }
+  .opland__liste li:first-child { border-top: 1px solid rgba(21, 54, 85, .1); }
+  .opland__liste li { padding: 13px 0; }
+  .opland__note { grid-column: 1 / -1; margin-top: 18px; }
+}
+
 .baand { stroke: none; }
 .baand--lys { fill: rgba(45, 88, 161, .06); }
 .baand--moerk { fill: rgba(45, 88, 161, .03); }

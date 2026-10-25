@@ -158,16 +158,12 @@
     </section>
 
     <section class="sec" aria-labelledby="opland-esbjerg">
-      <div class="split split--medie-foerst">
-        <div class="split__medie">
-          <OplandKort by="Esbjerg" :punkter="oplandsbyer" :titel-id="'opland-kort-esbjerg'" :maerkat-retning="250" />
-        </div>
-        <div class="split__tekst">
-          <p class="sec__eyebrow">Opland</p>
-          <h2 id="opland-esbjerg">Vi har også kunder fra oplandet</h2>
-          <p>En stor del af vores kunder kører til Esbjerg fra Varde, Ribe, Bramming og Grindsted. Fra de fleste af dem er der under en halv times kørsel, og da vi har åbent 17–20 på hverdage, kan de fleste nå det efter arbejde.</p>
-        </div>
+      <div class="sec__head">
+        <p class="sec__eyebrow">Opland</p>
+        <h2 id="opland-esbjerg">Vi har også kunder fra oplandet</h2>
+        <p class="sec__lead">En stor del af vores kunder kører til Esbjerg fra Varde, Ribe, Bramming og Grindsted. Fra de fleste af dem er der under en halv times kørsel, og da vi har åbent 17–20 på hverdage, kan de fleste nå det efter arbejde.</p>
       </div>
+      <OplandKort by="Esbjerg" :punkter="oplandsbyer" :titel-id="'opland-kort-esbjerg'" :maerkat-retning="250" />
     </section>
 
     <section class="sec sec--panel" aria-labelledby="faq-esbjerg">

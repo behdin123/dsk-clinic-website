@@ -167,16 +167,12 @@
     </section>
 
     <section class="sec" aria-labelledby="opland-vejle">
-      <div class="split split--medie-foerst">
-        <div class="split__medie">
-          <OplandKort by="Vejle" :punkter="oplandsbyer" :titel-id="'opland-kort-vejle'" :maerkat-retning="250" />
-        </div>
-        <div class="split__tekst">
-          <p class="sec__eyebrow">Opland</p>
-          <h2 id="opland-vejle">Vi har også kunder fra oplandet</h2>
-          <p>Vejle-klinikken ligger centralt i Trekantområdet, og en stor del af vores kunder kører hertil fra Kolding, Fredericia, Horsens, Give og Jelling. Fra dem alle er der under en halv times kørsel, og søndag er der hverken myldretid eller kø.</p>
-        </div>
+      <div class="sec__head">
+        <p class="sec__eyebrow">Opland</p>
+        <h2 id="opland-vejle">Vi har også kunder fra oplandet</h2>
+        <p class="sec__lead">Vejle-klinikken ligger centralt i Trekantområdet, og en stor del af vores kunder kører hertil fra Kolding, Fredericia, Horsens, Give og Jelling. Fra dem alle er der under en halv times kørsel, og søndag er der hverken myldretid eller kø.</p>
       </div>
+      <OplandKort by="Vejle" :punkter="oplandsbyer" :titel-id="'opland-kort-vejle'" :maerkat-retning="250" />
     </section>
 
     <section class="sec sec--panel" aria-labelledby="faq-vejle">
