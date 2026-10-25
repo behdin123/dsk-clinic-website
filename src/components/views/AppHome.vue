@@ -158,14 +158,15 @@
             Du kan komme i kontakt med os og komme alle de spørgsmål du måtte
             have omkring din huds friskhed og glød
           </p>
-          <p>Mit navn er <b>Arash Bagheri</b>, speciallæge og indehaver af DK Skønhedsklinik. Med over 20 års erfaring
-            inden for æstetiske behandlinger brænder jeg for at hjælpe mine patienter til øget selvtillid og velvære.
+          <p>Mit navn er <b>Arash Bagheri</b>, læge og indehaver af DK Skønhedsklinik. Jeg har været læge
+            i 30 år – de seneste 17 i det danske sundhedsvæsen – og uddannede mig i mesoterapi i Paris og
+            Dubai i 2005. Jeg brænder for at hjælpe mine patienter til øget selvtillid og velvære.
             I DK Skønhedsklinik sørger jeg for, at hver behandling lever op til vores høje standarder for
             sikkerhed, etik og æstetik. Vi går aldrig på kompromis med din tryghed.
             <br> <br>
 
             <router-link to="/omos/" class="inline-link læs-mere" aria-label="Arash Bagheri – læs mere"
-              data-tooltip="Går til: Om os"> <span>🠮</span>Læse mere om klnikkens speciallæge..</router-link>
+              data-tooltip="Går til: Om os"> <span>🠮</span>Læs mere om klinikkens læge</router-link>
           </p>
 
 

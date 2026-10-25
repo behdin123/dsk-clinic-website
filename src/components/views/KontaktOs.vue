@@ -279,7 +279,7 @@ useHead({
     title: 'Kontakt DK Skønhedsklinik | Esbjerg & Vejle',
     meta: [
         { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Skriv en sms til os +45 53 50 37 50 eller direkte på vore sociale medier for en gratis forundersøgelse.' },
-        { name: 'keywords', content: 'kontakt skønhedsklinik, hudlæge Vejle, hudlæge Esbjerg, book konsultation' },
+        { name: 'keywords', content: 'kontakt skønhedsklinik, kosmetisk klinik Vejle, kosmetisk klinik Esbjerg, book konsultation' },
         { name: 'author', content: 'DK Skønhedsklinik' },
         { name: 'geo:region', content: 'DK-86,DK-82' },
         { name: 'geo:placename', content: 'Vejle, Esbjerg, Danmark' },

@@ -36,6 +36,49 @@
             </div>
         </div>
 
+        <!-- Lægens baggrund og autorisation -->
+        <section class="container laegeprofil" aria-labelledby="laegeprofil-title">
+            <h2 id="laegeprofil-title">Lægens baggrund</h2>
+            <p class="laegeprofil__lead">
+                Alle behandlinger på klinikken udføres af læge – ikke af en kosmetolog. Her er
+                baggrunden, og hvordan du selv kan kontrollere den.
+            </p>
+
+            <div class="laegeprofil__grid">
+                <div class="laegeprofil__kort">
+                    <p class="laegeprofil__tal">30 år</p>
+                    <p class="laegeprofil__tekst">som læge. Uddannet i 1996, med klinisk erfaring fra hospitalsafdelinger i både Danmark og Iran.</p>
+                </div>
+                <div class="laegeprofil__kort">
+                    <p class="laegeprofil__tal">17 år</p>
+                    <p class="laegeprofil__tekst">i det danske sundhedsvæsen – blandt andet psykiatri, neurologi og neurorehabilitering.</p>
+                </div>
+                <div class="laegeprofil__kort">
+                    <p class="laegeprofil__tal">2005</p>
+                    <p class="laegeprofil__tekst">uddannelse i mesoterapi i Paris og Dubai, hos Enseignement International de Mésothérapie og ISAM.</p>
+                </div>
+                <div class="laegeprofil__kort">
+                    <p class="laegeprofil__tal">4 år</p>
+                    <p class="laegeprofil__tekst">som læge og intern direktør på en kosmetisk-kirurgisk klinik i Teheran, 2001–2005.</p>
+                </div>
+            </div>
+
+            <div class="laegeprofil__autorisation">
+                <h3>Autorisation og registrering</h3>
+                <ul>
+                    <li>Dansk lægeautorisation siden 2011 · <b>autorisations-ID 081Q1</b></li>
+                    <li>Tilladelse til selvstændigt virke siden 2013</li>
+                    <li>Registreret hos Styrelsen for Patientsikkerhed til behandling med
+                        ikke-permanente fillers (hyaluronsyre) og botulinumtoksin</li>
+                </ul>
+                <p class="laegeprofil__verificer">
+                    Du kan slå autorisationen op i Det Offentlige Autorisationsregister hos
+                    Styrelsen for Patientsikkerhed. Søg på navnet Arash Bagheri eller
+                    autorisations-ID 081Q1.
+                </p>
+            </div>
+        </section>
+
         <!-- Om DK Skønhedsklinik (موجود) -->
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
@@ -283,7 +326,7 @@ const faqSchema = {
 useHead({
     title: 'Om os – DK Skønhedsklinik (lægebehandlede behandlinger)',
     meta: [
-        { name: 'description', content: 'Mød Arash Bagheri, speciallæge og indehaver af DK Skønhedsklinik. Kosmetiske behandlinger udført af læge i Esbjerg og Vejle – naturlige resultater.' },
+        { name: 'description', content: 'Mød Arash Bagheri, læge og indehaver af DK Skønhedsklinik. 30 års erfaring som læge. Kosmetiske behandlinger i Esbjerg og Vejle – autorisations-ID 081Q1.' },
         { name: 'keywords', content: 'om DK Skønhedsklinik, læge Arash Bagheri, kosmetisk klinik, kosmetiske behandlinger, skønhedsbehandlinger' },
         { name: 'author', content: 'DK Skønhedsklinik' },
         { name: 'geo:region', content: 'DK-86,DK-82' },
@@ -314,13 +357,71 @@ useHead({
                 "url": "https://dsklinik.dk/omos/",
                 "mainEntity": {
                     "@type": "Person",
+                    "@id": "https://dsklinik.dk/#arash-bagheri",
                     "name": "Arash Bagheri",
+                    "givenName": "Arash",
+                    "familyName": "Bagheri",
                     "jobTitle": "Læge",
-                    "worksFor": {
-                        "@type": "Organization",
-                        "name": "DK Skønhedsklinik",
-                        "url": "https://dsklinik.dk/"
-                    }
+                    "description": "Læge med 30 års klinisk erfaring, heraf 17 år i det danske sundhedsvæsen. Uddannet i mesoterapi i Paris og Dubai i 2005 og tidligere intern direktør på en kosmetisk-kirurgisk klinik i Teheran.",
+                    "identifier": {
+                        "@type": "PropertyValue",
+                        "name": "Autorisations-ID, Styrelsen for Patientsikkerhed",
+                        "value": "081Q1"
+                    },
+                    "hasCredential": [
+                        {
+                            "@type": "EducationalOccupationalCredential",
+                            "credentialCategory": "Autorisation som læge",
+                            "dateCreated": "2011-10-10",
+                            "recognizedBy": {
+                                "@type": "GovernmentOrganization",
+                                "name": "Styrelsen for Patientsikkerhed",
+                                "url": "https://stps.dk/"
+                            }
+                        },
+                        {
+                            "@type": "EducationalOccupationalCredential",
+                            "credentialCategory": "Tilladelse til selvstændigt virke",
+                            "dateCreated": "2013-04-08",
+                            "recognizedBy": {
+                                "@type": "GovernmentOrganization",
+                                "name": "Styrelsen for Patientsikkerhed",
+                                "url": "https://stps.dk/"
+                            }
+                        },
+                        {
+                            "@type": "EducationalOccupationalCredential",
+                            "credentialCategory": "Kursusbevis",
+                            "name": "International Course on Aesthetic Mesotherapy",
+                            "dateCreated": "2005-10-21",
+                            "recognizedBy": {
+                                "@type": "Organization",
+                                "name": "International Society of Aesthetics & Mesotherapy (ISAM)"
+                            }
+                        },
+                        {
+                            "@type": "EducationalOccupationalCredential",
+                            "credentialCategory": "Kursusbevis",
+                            "name": "Mésothérapie – attestation de stage",
+                            "dateCreated": "2005-11-28",
+                            "recognizedBy": {
+                                "@type": "Organization",
+                                "name": "Enseignement International de Mésothérapie, Paris"
+                            }
+                        }
+                    ],
+                    "alumniOf": {
+                        "@type": "CollegeOrUniversity",
+                        "name": "Kashan Universitet",
+                        "address": { "@type": "PostalAddress", "addressCountry": "IR" }
+                    },
+                    "knowsAbout": [
+                        "Behandling med botulinumtoksin",
+                        "Ikke-permanente fillers med hyaluronsyre",
+                        "Mesoterapi",
+                        "Æstetisk medicin"
+                    ],
+                    "worksFor": { "@id": "https://dsklinik.dk/#organization" }
                 }
             })
         },
@@ -353,7 +454,83 @@ const openBooking = () => {
 
 
 <style lang="scss" scoped>
+
 @use '../css/style.scss';
+.laegeprofil {
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 20px;
+    color: #153655;
+
+    h2 { margin-bottom: 14px; }
+
+    &__lead {
+        max-width: 64ch;
+        line-height: 1.7;
+        margin-bottom: 34px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    &__kort {
+        border: 1px solid rgba(21, 54, 85, .12);
+        border-radius: 14px;
+        padding: 22px 20px;
+        background: rgba(45, 88, 161, .03);
+    }
+
+    &__tal {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2d58a1;
+        margin: 0 0 8px;
+    }
+
+    &__tekst {
+        font-size: .92rem;
+        line-height: 1.6;
+        margin: 0;
+        color: rgba(21, 54, 85, .82);
+    }
+
+    &__autorisation {
+        border-left: 3px solid #2d58a1;
+        padding-left: 22px;
+
+        h3 { margin: 0 0 12px; }
+
+        ul {
+            padding-left: 18px;
+            line-height: 1.7;
+            max-width: 72ch;
+            margin: 0 0 14px;
+        }
+
+        li { margin-bottom: 8px; }
+    }
+
+    &__verificer {
+        font-size: .92rem;
+        color: rgba(21, 54, 85, .72);
+        max-width: 68ch;
+        margin: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .laegeprofil__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .laegeprofil { padding: 50px 18px; }
+    .laegeprofil__grid { grid-template-columns: 1fr; gap: 14px; }
+}
 
 :root {
     --pi-card-bg: #ffffff;
