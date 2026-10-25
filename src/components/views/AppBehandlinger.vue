@@ -5,13 +5,19 @@
     :consultation="behandlingData.consultation" :price="behandlingData.price" :priceText="behandlingData.priceText"
     :price2="behandlingData.price2" :priceText2="behandlingData.priceText2" :price3="behandlingData.price3"
     :priceText3="behandlingData.priceText3" :faqs="faqs" :sections="sectionsData" :section-assets="sectionAssets" />
+
+  <div class="behandling-relateret container">
+    <RelateredeBehandlinger v-if="registerSlug" :slug="registerSlug" />
+  </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
+import RelateredeBehandlinger from '../RelateredeBehandlinger.vue'
 import { BOOKING_URL } from '@/config/booking'
+import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
@@ -559,14 +565,25 @@ const hasFaq = computed(() => !!FAQ_BANK[currentType.value])
 
 
 
-const breadcrumbLd = computed(() => ({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Forside', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: behandlingData.value.title, item: canonical.value }
-  ]
-}))
+// Slaas op i det centrale register, saa navn og sti i broedkrummerne er
+// de samme som i menu, footer og paa oversigtssiden.
+const registerBehandling = computed(() =>
+  findBehandlingVedPath(`/behandlinger/${currentType.value || FALLBACK}/`)
+)
+const registerSlug = computed(() => registerBehandling.value?.slug || '')
+
+const breadcrumbLd = computed(() =>
+  registerSlug.value
+    ? broedkrummeSchema(broedkrummerFor(registerSlug.value))
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Forside', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: behandlingData.value.title, item: canonical.value }
+        ]
+      }
+)
 
 // head داینامیک (تابع می‌دهیم تا با تغییر route آپدیت شود)
 useHead(() => {

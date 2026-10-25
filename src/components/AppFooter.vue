@@ -48,16 +48,10 @@
         <section class="footer-section">
           <h3 class="footer-title">Behandlinger</h3>
           <ul class="footer-list">
-            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">Botox</router-link></li>
-            <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">Filler</router-link></li>
-            <li><router-link
-                :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">Skinbooster</router-link></li>
-            <!-- <li><router-link :to="{ name: 'behandling-dynamic', params: { type: 'prp' } }">PRP</router-link></li> -->
-            <li><router-link
-                :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">Mesotherapy</router-link></li>
-            <li><router-link
-                :to="{ name: 'behandling-dynamic', params: { type: 'microneedling' } }">Microneedling</router-link></li>
-            <li><router-link to="/behandlinger/filler/laeber/">Læbefiller</router-link></li>
+            <li v-for="b in footerBehandlinger" :key="b.slug">
+              <router-link :to="b.path">{{ b.navn }}</router-link>
+            </li>
+            <li v-if="hubLive"><router-link to="/behandlinger/">Alle behandlinger</router-link></li>
             <li><router-link to="/priser/">Priser</router-link></li>
             <li><router-link to="/booking/">Book tid</router-link></li>
           </ul>
@@ -99,6 +93,16 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+import { computed } from 'vue'
+import { liveBehandlinger, HUB_LIVE } from '@/data/behandlinger'
+
+// Footerens behandlingsliste laeses fra det centrale register.
+const hubLive = HUB_LIVE
+const footerBehandlinger = computed(() => liveBehandlinger())
+</script>
+
 
 <style lang="scss" scoped>
 .site-footer {

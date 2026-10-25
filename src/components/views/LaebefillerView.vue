@@ -1,5 +1,7 @@
 <template>
   <section class="container laeber-view" aria-labelledby="laeber-title">
+    <AppBreadcrumbs :sti="broedkrummer" />
+
     <header class="laeber-hero">
       <p class="eyebrow">Filler · Læber</p>
       <h1 id="laeber-title">Læbefiller i Esbjerg &amp; Vejle – lagt af læge</h1>
@@ -14,6 +16,12 @@
         <li>Fra 1.650 kr. pr. ml</li>
         <li>48 timers betænkningstid</li>
       </ul>
+
+      <MediaPlaceholder
+        class="hero-media"
+        alt="Læbefillerbehandling hos DK Skønhedsklinik"
+        motiv="Hero: nærbillede af læber med naturligt resultat, eller lægen under behandling i klinikken"
+        ratio="16 / 7" />
     </header>
 
     <section class="block" aria-labelledby="hvad-title">
@@ -67,6 +75,12 @@
         Små mængder filler i mundvigene kan løfte et udtryk, der virker træt eller surt, uden
         at ændre selve læben.
       </p>
+
+      <MediaPlaceholder
+        class="omraade-media"
+        alt="Oversigt over de fem områder omkring læberne, der kan behandles med filler"
+        motiv="SVG-diagram: ansigtsudsnit med de fem markerede områder – volumen, læbekant, asymmetri, læbelinjer og mundvige"
+        ratio="16 / 9" />
     </section>
 
     <section class="block" aria-labelledby="forloeb-title">
@@ -140,6 +154,8 @@
       </div>
     </section>
 
+    <RelateredeBehandlinger slug="laebefiller" />
+
     <section class="closing" aria-labelledby="cta-title">
       <h2 id="cta-title">Book en gratis forundersøgelse</h2>
       <p>
@@ -162,7 +178,13 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
+import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
+import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
 import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
+import { broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
+
+const broedkrummer = broedkrummerFor('laebefiller')
 
 const SITE_URL = 'https://dsklinik.dk'
 const CANONICAL = `${SITE_URL}/behandlinger/filler/laeber/`
@@ -248,15 +270,8 @@ const faqLd = {
   }))
 }
 
-const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Forside', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'Filler', item: `${SITE_URL}/behandlinger/filler/` },
-    { '@type': 'ListItem', position: 3, name: 'Læbefiller', item: CANONICAL }
-  ]
-}
+// Samme kilde som de synlige broedkrummer – de kan ikke komme til at afvige.
+const breadcrumbLd = broedkrummeSchema(broedkrummer)
 
 useHead({
   title: 'Læbefiller i Esbjerg & Vejle | Hos læge | DK Skønhedsklinik',
@@ -318,6 +333,9 @@ $c-blue: #2d58a1;
     line-height: 1.7;
   }
 }
+
+.hero-media { margin-top: 30px; }
+.omraade-media { margin-top: 28px; }
 
 .chips {
   display: flex;

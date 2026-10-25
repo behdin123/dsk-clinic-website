@@ -15,11 +15,11 @@
           Behandlinger
         </button>
         <div class="dropdown-menu">
-          <router-link to="/behandlinger/botox/">Botox</router-link>
-          <router-link to="/behandlinger/filler/">Filler</router-link>
-          <router-link to="/behandlinger/skinbooster/">Skinbooster</router-link>
-          <router-link to="/behandlinger/mesotherapy/">Mesotherapy</router-link>
-          <router-link to="/behandlinger/microneedling/">Microneedling</router-link>
+          <div v-for="kat in menuKategorier" :key="kat.id" class="dropdown-group">
+            <p class="dropdown-group__title">{{ kat.navn }}</p>
+            <router-link v-for="b in kat.behandlinger" :key="b.slug" :to="b.path">{{ b.navn }}</router-link>
+          </div>
+          <router-link v-if="hubLive" to="/behandlinger/" class="dropdown-all">Se alle behandlinger</router-link>
         </div>
       </div>
       <router-link to="/priser/">Priser</router-link>
@@ -79,11 +79,15 @@
             </button>
             <transition name="expand">
               <ul v-show="isTreatmentsOpen" id="treatments-sub" class="sub">
-                <li><router-link @click="closeMenu" to="/behandlinger/botox/">Botox</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/filler/">Filler</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/skinbooster/">Skinbooster</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/mesotherapy/">Mesotherapy</router-link></li>
-                <li><router-link @click="closeMenu" to="/behandlinger/microneedling/">Microneedling</router-link></li>
+                <template v-for="kat in menuKategorier" :key="kat.id">
+                  <li class="sub-title">{{ kat.navn }}</li>
+                  <li v-for="b in kat.behandlinger" :key="b.slug">
+                    <router-link @click="closeMenu" :to="b.path">{{ b.navn }}</router-link>
+                  </li>
+                </template>
+                <li v-if="hubLive" class="sub-all">
+                  <router-link @click="closeMenu" to="/behandlinger/">Se alle behandlinger</router-link>
+                </li>
               </ul>
             </transition>
           </li>
@@ -147,8 +151,16 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { aktiveKategorier, behandlingerIKategori, HUB_LIVE } from '@/data/behandlinger'
+
+// Menuen bygges af det centrale behandlingsregister, saa en ny behandling
+// kun skal tilfoejes et sted for at dukke op her.
+const hubLive = HUB_LIVE
+const menuKategorier = computed(() =>
+  aktiveKategorier().map(k => ({ ...k, behandlinger: behandlingerIKategori(k.id) }))
+)
 
 defineProps({
   isSticky: Boolean,
@@ -316,6 +328,38 @@ watch(
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+.dropdown-group + .dropdown-group {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(21, 54, 85, .1);
+}
+.dropdown-group__title {
+  margin: 0;
+  padding: 6px 0 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(21, 54, 85, .5);
+}
+.sub .sub-title {
+  padding: 10px 0 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  opacity: .55;
+}
+.sub .sub-all a {
+  font-weight: 700;
+}
+.dropdown-all {
+  margin-top: 8px;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(21, 54, 85, .1);
+  font-weight: 700;
+  color: #2d58a1 !important;
 }
 
 @media (max-width:1550px) {
