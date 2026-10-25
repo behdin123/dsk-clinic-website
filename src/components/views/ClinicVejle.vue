@@ -6,7 +6,7 @@
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Vejle.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgVejle" alt="Klinikken i Vejle" loading="eager" fetchpriority="high" decoding="async" />
+        <img :src="imgVejle" alt="Indgangen til DK Skønhedsklinik på Søndergade 50 i Vejle" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 
@@ -115,8 +115,8 @@
       <MediaPlaceholder
         class="parkering__billede"
         :src="imgParkering"
-        alt="Parkering ved DK Skønhedsklinik i Vejle – Å-centret ligger tættest på Søndergade 50"
-        ratio="4 / 3" />
+        alt="Parkeringsbåsene foran indgangen på Søndergade 50 i Vejle"
+        ratio="12 / 5" />
 
       <p class="parkering__note">
         Taksterne kan ændre sig. <b>Tjek altid skiltningen på stedet</b>, inden du forlader bilen –
@@ -375,10 +375,9 @@ const openBooking = () => {
 .clinic-info h2 { margin-bottom: 14px; }
 
 /* Behandlingslisten: tekst og pris skal hoere sammen, ikke have en flod imellem */
-.behandlingsliste { max-width: 760px; }
 .behandlingsliste li > * { min-width: 0; }
 .bl-tekst { min-width: 0; }
-.bl-kort { max-width: none; overflow-wrap: anywhere; }
+.bl-kort { overflow-wrap: anywhere; }
 
 
 
@@ -391,9 +390,9 @@ const openBooking = () => {
 .behandlingsliste { list-style: none; padding: 0; margin: 0; }
 .behandlingsliste li {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
   padding: 18px 0;
   border-bottom: 1px solid rgba(21, 54, 85, .1);
 }
@@ -410,14 +409,13 @@ const openBooking = () => {
   font-size: .92rem;
   line-height: 1.55;
   color: rgba(21, 54, 85, .74);
-  max-width: 54ch;
 }
 .bl-pris {
   font-weight: 700;
   font-size: .95rem;
   white-space: nowrap;
   color: #153655;
-  padding-top: 2px;
+  text-align: right;
 }
 .bl-alle { margin: 20px 0 0; }
 .bl-alle a { color: #2d58a1; font-weight: 600; }
@@ -877,15 +875,13 @@ strong {
 
 .clinic-about .about-video { width: auto; flex: 0 1 38%; max-width: 380px; }
 
-/* Parkeringsbilledet fyldte naesten 750 px i hoejden og overdoev afsnittet. */
+/* Parkeringsbilledet fyldte naesten 750 px i hoejden og overdoev afsnittet.
+   Nu et baand, der viser baasene foran doeren - ikke facaden én gang til. */
 .parkering__billede {
   margin-left: auto;
   margin-right: auto;
-  max-width: 640px;
+  max-width: 860px;
 }
-
-/* Behandlingslisten: pris og beskrivelse skal hoere sammen */
-.behandlingsliste { max-width: 700px; }
 
 /* Et "laes mere" skal ligne et link, ikke broedtekst */
 .laes-mere {

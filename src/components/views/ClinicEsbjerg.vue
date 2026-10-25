@@ -365,10 +365,9 @@ const openBooking = () => {
 .clinic-info h2 { margin-bottom: 14px; }
 
 /* Behandlingslisten: tekst og pris skal hoere sammen, ikke have en flod imellem */
-.behandlingsliste { max-width: 760px; }
 .behandlingsliste li > * { min-width: 0; }
 .bl-tekst { min-width: 0; }
-.bl-kort { max-width: none; overflow-wrap: anywhere; }
+.bl-kort { overflow-wrap: anywhere; }
 
 
 
@@ -381,9 +380,9 @@ const openBooking = () => {
 .behandlingsliste { list-style: none; padding: 0; margin: 0; }
 .behandlingsliste li {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
   padding: 18px 0;
   border-bottom: 1px solid rgba(21, 54, 85, .1);
 }
@@ -400,14 +399,13 @@ const openBooking = () => {
   font-size: .92rem;
   line-height: 1.55;
   color: rgba(21, 54, 85, .74);
-  max-width: 54ch;
 }
 .bl-pris {
   font-weight: 700;
   font-size: .95rem;
   white-space: nowrap;
   color: #153655;
-  padding-top: 2px;
+  text-align: right;
 }
 .bl-alle { margin: 20px 0 0; }
 .bl-alle a { color: #2d58a1; font-weight: 600; }
@@ -898,11 +896,8 @@ strong {
 .parkering__billede {
   margin-left: auto;
   margin-right: auto;
-  max-width: 640px;
+  max-width: 860px;
 }
-
-/* Behandlingslisten: pris og beskrivelse skal hoere sammen */
-.behandlingsliste { max-width: 700px; }
 
 /* Et "laes mere" skal ligne et link, ikke broedtekst */
 .laes-mere {
