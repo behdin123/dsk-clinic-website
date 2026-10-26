@@ -523,11 +523,14 @@ useHead({
 <style lang="scss" scoped>
 @use '../css/style.scss';
 
+/* Samme regel som .bg-img i App.vue: heroen foelger sit indhold i stedet
+   for at vaere laast til browservinduets hoejde. */
 main {
+    align-items: center;
     display: flex;
-    height: 65vh;
-    min-height: 800px;
-    align-content: center;
+    height: auto;
+    min-height: 0;
+    padding: clamp(170px, 12vw, 230px) 0 clamp(80px, 6vw, 120px);
     background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
     background-position: center;
@@ -539,14 +542,11 @@ main {
     }
 
     /* Overlay */
+    /* Overlayet skal daekke heroen, uanset hvor hoej den bliver. */
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 65vh;
-        min-height: 800px;
+        inset: 0;
         background-color: rgba(0, 0, 0, 0.3);
         /* Sort overlay med 50% gennemsigtighed */
         z-index: 1;
@@ -577,12 +577,16 @@ main {
     }
 }
 
+/* Heroens to spalter: samme gitter med fast mellemrum som resten af
+   websiden, saa de vokser sammen i stedet for at efterlade et tomt baelte. */
 .flex {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    max-width: var(--maal);
+    display: grid;
+    gap: clamp(32px, 3.5vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
     margin: 0 auto;
+    max-width: var(--maal);
+    width: 100%;
 }
 
 .flex_info {
@@ -848,15 +852,18 @@ h2 {
 }
 
 .klinikken {
-    width: 45%;
     display: flex;
+    width: auto;
     z-index: 3;
 
+    /* Billedet havde height: 100%, som kun gav mening da heroen var
+       laast til en fast hoejde. Nu holder det selv sit forhold. */
     img {
-        width: 100%;
-        height: 100%;
+        aspect-ratio: 3 / 2;
         border-radius: 20px;
+        height: auto;
         object-fit: cover;
+        width: 100%;
     }
 }
 
@@ -938,14 +945,6 @@ h2 {
 
 
 @media only screen and (max-width: 1550px) {
-    main {
-        height: 82vh;
-
-        &::before {
-            height: 82vh;
-        }
-    }
-
     .KontaktOsHeader {
         h1 {
             font-size: 36px !important;
@@ -1024,8 +1023,7 @@ h2 {
 
     .flex {
         padding: 0 5%;
-        margin-top: 50px !important;
-        height: 100%;
+        height: auto;
         justify-content: space-between;
     }
 
@@ -1044,23 +1042,9 @@ h2 {
 
 
 @media only screen and (max-width: 780px) {
-    /* Heroen havde fast hoejde (65vh / min 800px). Da indholdet voksede,
-       spildte billedet ud over bunden af sektionen. Den foelger nu sit
-       indhold paa smalle skaerme. */
-    main {
-        height: auto;
-        min-height: auto;
-        padding-bottom: 40px;
+    main p { width: auto !important; }
 
-        p {
-            width: auto !important;
-        }
-    }
-
-    main .flex {
-        gap: 28px;
-        height: auto;
-    }
+    main .flex { gap: 28px; }
 
     .klinikken { margin-top: 4px; }
 

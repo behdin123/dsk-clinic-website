@@ -367,12 +367,20 @@ body {
     font-weight: 500;
   }
 
+  /* ===== Hero-hoejde: én regel for hele websiden =====
+     Heroen laa paa height: 65vh med min-height: 800px. Det betyder tre ting:
+     samme side bliver forskellig hoej alt efter hvor hoejt browservinduet er,
+     der staar 200-270 px tom plads under indholdet paa en bred skaerm, og
+     indholdet bliver klippet af, saa snart der kommer en linje mere paa en
+     smal. Heroen foelger nu sit indhold, med luft nok foroven til at rydde
+     den faste navigation. Samme opsaetning paa alle skaermstoerrelser. */
   .bg-img {
-    height: 65vh;
-    min-height: 800px;
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-height: 0;
+    padding: clamp(170px, 12vw, 230px) 0 clamp(70px, 5vw, 110px);
     position: relative;
   }
 

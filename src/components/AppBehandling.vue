@@ -936,6 +936,12 @@ body {
   box-sizing: border-box;
 }
 
+/* Undtagelsen fra den faelles hero-regel: her ligger billedet i selve
+   heroen og skal gaa helt til kanten, saa luften er lagt indeni i stedet. */
+#Main .bg-img {
+  padding: 0;
+}
+
 #Main .bg-img {
   display: flex !important;
   align-items: center !important;

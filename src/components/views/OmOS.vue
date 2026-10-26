@@ -620,9 +620,7 @@ const openBooking = () => {
     }
 }
 
-.bg-img {
-    padding: 0 !important;
-}
+/* Hoejde og luft kommer fra den faelles .bg-img-regel i App.vue. */
 
 
 h2 {
@@ -816,10 +814,6 @@ h2 {
         padding: 70px 0 !important;
     }
 
-    .bg-img {
-        height: 82vh !important;
-    }
-
     .Bannertxt {
         padding-left: 0 !important;
     }
@@ -847,10 +841,6 @@ h2 {
 }
 
 @media only screen and (max-width: 1380px) {
-    .bg-img {
-        height: auto !important;
-    }
-
     .scroll-indicator {
         display: none;
     }
@@ -873,9 +863,6 @@ h2 {
 }
 
 @media only screen and (max-width: 1280px) {
-    .bg-img {
-        padding: 50px 0 !important;
-    }
 
     /* Under 1280 px stables heroen: billedet foerst, saa teksten. */
     .OmOsBannerDiv {
@@ -984,12 +971,6 @@ h2 {
 }
 
 @media only screen and (max-width: 550px) {
-    /* Bredden paa hero-afsnittene styres af gitteret. En 100 %-regel her
-       ramte ogsaa billedteksterne inde i portraettet, som er absolut
-       placeret - de stak derfor ud over billedets hoejrekant. */
-    .bg-img {
-        padding: 50px 0 !important;
-    }
 
     .OmOsBannerDiv .BannerPng {
         p:nth-child(2) {
