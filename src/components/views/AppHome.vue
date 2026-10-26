@@ -1019,7 +1019,7 @@ onMounted(() => {
    Bemaerk: dette style-blok er IKKE scoped, saa variablen skal haenge paa
    .home - ellers siver den ud til alle andre siders heroer. */
 .home .bg-img {
-  --hero-luft: clamp(56px, 15vh, 140px);
+  --hero-luft: clamp(56px, 20vh, 190px);
 }
 
 /* Overlay قبلی بمانَد ولی z-index منطقی باشد */
