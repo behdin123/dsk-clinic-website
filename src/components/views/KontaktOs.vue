@@ -107,80 +107,10 @@
     </section>
 
 
-    <section id="veninde-rabat" class="friend-offer section-wrapper width-margin">
-        <div class="section-text">
-            <div>
-                <h2> <span>Tag din veninde med </span> <span>– og spar 200 kr. hver</span> </h2>
-                <p class="subhead">
-                    Kom to sammen til hudbehandling, filler eller skinbooster og få 200 kr. i rabat pr. person.
-                </p>
-                <p>
-                    Gør besøget hyggeligt og trygt: Når I booker sammen og får jeres behandling samme dag,
-                    får I hver 200 kr. rabbat på jeres behandling. Tilbuddet gælder ved kosmetiske behandlinger udført
-                    af vores autoriserede behandlere og kan ikke kombineres med andre kampagner.
-                </p>
-                <p>
-                    Skriv <i>“veninde-rabat”</i> i kommentarfeltet ved booking – eller
-                    <a class="inline-link" href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"
-                            rel="noopener noreferrer" aria-label="Instagram DK Skønhedsklinik"
-                        data-tooltip="Går til: Instagram - skriv en DM" :to="{ name: 'kontaktos' }">
-                        kontakt os
-                    </a> 
-                    for hjælp til at finde en fælles tid.
-                </p>
-            </div>
-            <button type="button" class="general_button  arrow" @click="openBookingFromHero"
-                aria-label="Book gratis forundersøgelse">
-                Book gratis forundersøgelse
-            </button>
-        </div>
-
-        <div class="section-media">
-            <img src="../../assets/cecilie-mette.webp" alt="Skinbooster behandling – frisk og ungdommelig hud" loading="lazy"
-                decoding="async">
-        </div>
-    </section>
-
-
-
-    <section id="follow-insta-wrapper" class="section-wrapper  follow-insta-wrapper">
-        <div class="width-margin flex-row">
-            <div class="section-text">
-                <div class="follow-insta-text">
-                    <b>For at se vores seneste tilbud, og nyheder</b>
-                    <h2>Følg os for nyheder og tilbud</h2>
-                    <p>
-                        På vores Sociale Medier hjælper vi dig med de spørgsmål du måtte have,
-                        og samtidig kan du også se vores tilbud og nyheder som du kan få gavn af
-                    </p>
-                </div>
-                <div class="follow-insta-icons-wrapper">
-                    <p>Du skriv en besked til os på Facebook eller Instagram og vi vil svar hurtigst muligt</p>
-                    <div class="follow-insta-icons">
-                        <a class="soc NavFacebook" href="https://www.facebook.com/profile.php?id=100054595142567"
-                            target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <img class="icon facebook" src="../../assets/icons/Facebook_Logo_Primary.webp" width="23"
-                                height="23" alt="" />
-                        </a>
-                        <a class="soc NavInstagram" href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"
-                            rel="noopener noreferrer" aria-label="Instagram">
-                            <img class="icon" src="../../assets/icons/Instagram_Glyph_Gradient.webp" width="23"
-                                height="23" alt="" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="section-media">
-                <img src="../../assets/DK_Skønhedsklinik.webp" alt="Skinbooster behandling – frisk og ungdommelig hud"
-                    loading="lazy" decoding="async">
-            </div>
-        </div>
-    </section>
-
-
     <!-- Sektion: Bliv ringet op – indsæt på Kontakt-siden -->
     <section id="ring-mig-op" class="callback section-wrapper width-margin">
         <div class="section-text">
+            <p class="sec__eyebrow">Hurtig kontakt</p>
             <h2>Bliv ringet op – vælg et tidspunkt, der passer dig</h2>
             <p class="subhead">Har du spørgsmål eller vil du hurtigt finde en tid? Udfyld dine oplysninger – så ringer
                 vi dig op.</p>
@@ -253,6 +183,80 @@
             </button>
         </form>
     </section>
+
+
+    <!-- Slaaet fra indtil videre: ingen kunder har naevnt tilbuddet,
+         og priserne er i forvejen i den lave ende. Taendes med
+         visVenindeRabat = true i script-blokken. -->
+    <section v-if="visVenindeRabat" id="veninde-rabat" class="friend-offer section-wrapper width-margin">
+        <div class="section-text">
+            <div>
+                <p class="sec__eyebrow">Tilbud</p>
+                <h2> <span>Tag din veninde med </span> <span>– og spar 200 kr. hver</span> </h2>
+                <p class="subhead">
+                    Kom to sammen til hudbehandling, filler eller skinbooster og få 200 kr. i rabat pr. person.
+                </p>
+                <p>
+                    Gør besøget hyggeligt og trygt: Når I booker sammen og får jeres behandling samme dag,
+                    får I hver 200 kr. rabbat på jeres behandling. Tilbuddet gælder ved kosmetiske behandlinger udført
+                    af vores autoriserede behandlere og kan ikke kombineres med andre kampagner.
+                </p>
+                <p>
+                    Skriv <i>“veninde-rabat”</i> i kommentarfeltet ved booking – eller
+                    <a class="inline-link" href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram DK Skønhedsklinik"
+                        data-tooltip="Går til: Instagram - skriv en DM" :to="{ name: 'kontaktos' }">
+                        kontakt os
+                    </a> 
+                    for hjælp til at finde en fælles tid.
+                </p>
+            </div>
+            <button type="button" class="general_button  arrow" @click="openBookingFromHero"
+                aria-label="Book gratis forundersøgelse">
+                Book gratis forundersøgelse
+            </button>
+        </div>
+
+        <div class="section-media">
+            <img src="../../assets/cecilie-mette.webp" alt="Skinbooster behandling – frisk og ungdommelig hud" loading="lazy"
+                decoding="async">
+        </div>
+    </section>
+
+
+    <section id="follow-insta-wrapper" class="section-wrapper  follow-insta-wrapper">
+        <div class="width-margin flex-row">
+            <div class="section-text">
+                <div class="follow-insta-text">
+                    <p class="sec__eyebrow sec__eyebrow--lys">Sociale medier</p>
+                    <h2>Følg os for nyheder og tilbud</h2>
+                    <p>
+                        På vores Sociale Medier hjælper vi dig med de spørgsmål du måtte have,
+                        og samtidig kan du også se vores tilbud og nyheder som du kan få gavn af
+                    </p>
+                </div>
+                <div class="follow-insta-icons-wrapper">
+                    <p>Du skriv en besked til os på Facebook eller Instagram og vi vil svar hurtigst muligt</p>
+                    <div class="follow-insta-icons">
+                        <a class="soc NavFacebook" href="https://www.facebook.com/profile.php?id=100054595142567"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img class="icon facebook" src="../../assets/icons/Facebook_Logo_Primary.webp" width="23"
+                                height="23" alt="" />
+                        </a>
+                        <a class="soc NavInstagram" href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
+                            <img class="icon" src="../../assets/icons/Instagram_Glyph_Gradient.webp" width="23"
+                                height="23" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-media">
+                <img src="../../assets/DK_Skønhedsklinik.webp" alt="Skinbooster behandling – frisk og ungdommelig hud"
+                    loading="lazy" decoding="async">
+            </div>
+        </div>
+    </section>
 </template>
 
 
@@ -261,6 +265,10 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import { reactive, ref } from 'vue'
+
+/* Veninde-rabatten er slaaet fra indtil videre. Saet til true for at
+   vise sektionen igen - markup og styling staar uroert. */
+const visVenindeRabat = false
 
 /* --- STATE --- */
 const cb = reactive({
@@ -1129,10 +1137,22 @@ h2 {
 }
 
 .callback-form {
+    /* Felterne flød foer paa baggrunden ved siden af tekstspalten.
+       Samme kortramme som klinikkortene, saa siden har ét formsprog. */
+    background: #fff;
+    border: 1px solid rgba(21, 54, 85, .10);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+    box-sizing: border-box;
     display: grid;
-    width: 40%;
-    gap: 25px;
+    gap: 20px;
+    padding: 32px 30px;
+    width: 44%;
 }
+
+.callback-form *,
+.callback-form *::before,
+.callback-form *::after { box-sizing: border-box; }
 
 .form-row {
     display: grid;
@@ -1164,6 +1184,154 @@ textarea {
     border-radius: .6rem;
     font: inherit;
     margin-right: 10px;
+}
+
+/* ===== Ensrettede formularelementer =====
+   Select, radio og checkbox var browserens standard midt i en ellers
+   designet side - og de ser forskellige ud i hver browser og paa hvert
+   styresystem. Her tegnes de selv, saa de er ens alle steder. */
+
+.callback-form label {
+    color: #153655;
+    font-size: .92rem;
+}
+
+.callback-form input[type="text"],
+.callback-form input[type="tel"],
+.callback-form select,
+.callback-form textarea {
+    background: #fff;
+    border: 1px solid rgba(21, 54, 85, .18);
+    border-radius: 10px;
+    color: #153655;
+    margin-right: 0;
+    padding: .72rem .85rem;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    width: 100%;
+}
+
+.callback-form input::placeholder,
+.callback-form textarea::placeholder { color: rgba(21, 54, 85, .42); }
+
+.callback-form input[type="text"]:focus,
+.callback-form input[type="tel"]:focus,
+.callback-form select:focus,
+.callback-form textarea:focus {
+    border-color: #2d58a1;
+    box-shadow: 0 0 0 3px rgba(45, 88, 161, .14);
+    outline: none;
+}
+
+.callback-form textarea { line-height: 1.6; resize: vertical; }
+
+/* Select: egen pil, saa den ikke skifter udseende fra browser til browser */
+.callback-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232d58a1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 14px center;
+    background-repeat: no-repeat;
+    background-size: 14px 9px;
+    cursor: pointer;
+    padding-right: 40px;
+}
+
+/* Radio og checkbox tegnes selv */
+.callback-form input[type="radio"],
+.callback-form input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1.5px solid rgba(21, 54, 85, .32);
+    cursor: pointer;
+    display: grid;
+    flex: 0 0 auto;
+    height: 20px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    place-content: center;
+    transition: border-color .15s ease, background-color .15s ease;
+    width: 20px;
+}
+
+.callback-form input[type="radio"] { border-radius: 50%; }
+.callback-form input[type="checkbox"] { border-radius: 6px; }
+
+.callback-form input[type="radio"]::before {
+    background: #fff;
+    border-radius: 50%;
+    content: '';
+    height: 8px;
+    transform: scale(0);
+    transition: transform .12s ease;
+    width: 8px;
+}
+
+.callback-form input[type="checkbox"]::before {
+    content: '';
+    height: 10px;
+    width: 6px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transform-origin: center;
+    transition: transform .12s ease;
+    margin-top: -2px;
+}
+
+.callback-form input[type="radio"]:checked,
+.callback-form input[type="checkbox"]:checked {
+    background: #2d58a1;
+    border-color: #2d58a1;
+}
+
+.callback-form input[type="radio"]:checked::before { transform: scale(1); }
+.callback-form input[type="checkbox"]:checked::before { transform: rotate(45deg) scale(1); }
+
+.callback-form input[type="radio"]:focus-visible,
+.callback-form input[type="checkbox"]:focus-visible {
+    box-shadow: 0 0 0 3px rgba(45, 88, 161, .22);
+    outline: none;
+}
+
+/* Klinikvalget som klikbare felter - stoerre traefflade paa mobil */
+.callback-form fieldset.form-row { gap: 8px; }
+
+.callback-form fieldset.form-row legend {
+    color: #153655;
+    font-size: .92rem;
+    font-weight: 600;
+}
+
+.callback-form fieldset.form-row > label {
+    align-items: center;
+    border: 1px solid rgba(21, 54, 85, .14);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    font-weight: 500;
+    padding: 10px 12px;
+    transition: border-color .15s ease, background-color .15s ease;
+}
+
+.callback-form fieldset.form-row > label:hover {
+    background: rgba(45, 88, 161, .04);
+    border-color: rgba(45, 88, 161, .3);
+}
+
+.callback-form .consent {
+    align-items: flex-start;
+    color: rgba(21, 54, 85, .82);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.callback-form .consent input { margin-top: 1px; }
+
+.callback-form .btn {
+    border-radius: 10px;
+    font-size: .95rem;
+    padding: .95rem 1.1rem;
 }
 
 .consent {
@@ -1214,6 +1382,17 @@ button[disabled] {
     position: absolute;
     left: -9999px;
 }
+
+/* Tekstspalten er kortere end formularkortet. Centreret lodret deler
+   luften over og under i stedet for at efterlade et tomt hul nederst. */
+.callback.section-wrapper { align-items: center; }
+
+/* Legenden stod 6 px laengere inde end de oevrige labels */
+.callback-form fieldset.form-row legend { padding: 0; }
+
+/* Eyebrow paa de moerke baand skal vaere laesbar */
+.sec__eyebrow--lys { color: rgba(255, 255, 255, .78) !important; }
+.sec__eyebrow--lys::before { background: rgba(255, 255, 255, .6) !important; }
 
 /* ===== Klinikkort paa kontaktsiden ===== */
 .kontakt-klinikker {

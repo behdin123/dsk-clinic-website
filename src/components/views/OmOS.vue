@@ -3,12 +3,17 @@
         <div id="Art-works-dark-version-image" class="bg-img img">
             <div class="OmOsBannerDiv">
                 <div class="Bannertxt">
-                    <h1 data-aos="fade-right" data-aos-duration="3000">Mød Arash</h1>
-                    <p>"Skønhed findes i alle mennesker, men hvis der er noget, du ønsker at forbedre eller justere for
-                        at føle dig mere tilpas i dit udseende, står jeg klar til at hjælpe dig på en tryg og
-                        professionel måde."</p>
+                    <p class="sec__eyebrow sec__eyebrow--lys">Mød lægen bag klinikken</p>
+                    <h1 data-aos="fade-right" data-aos-duration="3000">Om DK Skønhedsklinik og læge Arash Bagheri</h1>
 
-                    <p>
+                    <blockquote class="hero-citat">
+                        <p>Skønhed findes i alle mennesker, men hvis der er noget, du ønsker at forbedre eller
+                            justere for at føle dig mere tilpas i dit udseende, står jeg klar til at hjælpe dig
+                            på en tryg og professionel måde.</p>
+                        <cite>Arash Bagheri, klinikkens ansvarlige læge</cite>
+                    </blockquote>
+
+                    <p class="hero-brod">
                         Med mere end 20 års erfaring inden for kosmetiske behandlinger har Arash en dyb forståelse for,
                         hvordan skønhed kan styrke både selvtillid og velvære.
                         Hans filosofi bygger på en respektfuld og individuel tilgang,
@@ -16,7 +21,7 @@
                         hud.
                     </p>
 
-                    <p>
+                    <p class="hero-brod">
                         Som klinikkens ansvarlige læge prioriterer Arash tryghed, æstetik og høj faglighed i alle
                         behandlinger.
                         Uanset om du ønsker en diskret forbedring eller en større forandring, kan du være sikker på at
@@ -121,9 +126,14 @@
         <!-- Clinics Mini (Esbjerg + Vejle) -->
         <section class="clinics-mini" aria-labelledby="clinics-title">
             <div class="container clinics-mini__inner">
-                <h2 id="clinics-title" class="clinics-mini__title" data-aos="fade-up" data-aos-duration="800">
-                    Vores afdelinger
-                </h2>
+                <div class="clinics-mini__head" data-aos="fade-up" data-aos-duration="800">
+                    <p class="sec__eyebrow sec__eyebrow--lys">Afdelinger</p>
+                    <h2 id="clinics-title" class="clinics-mini__title">Vores afdelinger</h2>
+                    <p class="clinics-mini__lead">
+                        Vi har klinik i Vejle og i Esbjerg. Samme læge, samme priser og samme behandlinger
+                        begge steder – vælg den, der ligger tættest på dig.
+                    </p>
+                </div>
 
                 <div class="clinics-mini__grid" role="list">
                     <!-- Card: Esbjerg -->
@@ -205,8 +215,12 @@
         <!-- Timeline: Dit forløb med lægen (جدید) -->
         <section class="patientinfo container slice is-steps" aria-labelledby="pi-flow-title">
             <div class="slice-inner column">
+                <p class="sec__eyebrow" data-aos="fade-up" data-aos-duration="800">Sådan foregår det</p>
                 <h2 id="pi-flow-title" class="slice-title" data-aos="fade-up" data-aos-duration="800">Dit forløb med
                     lægen</h2>
+                <p class="steps-lead" data-aos="fade-up" data-aos-duration="800">
+                    Fra første samtale til opfølgning er det den samme læge, du møder.
+                </p>
                 <ol class="steps-flow">
                     <div class="steps-rail" aria-hidden="true"></div>
                     <li class="step-card" data-aos="fade-up" data-aos-duration="800">
@@ -484,6 +498,20 @@ const openBooking = () => {
     .omos-faq { padding: 28px 20px; border-radius: 14px; margin-bottom: 48px; }
 }
 
+.is-steps .slice-title {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.is-steps .slice-inner { align-items: flex-start; }
+
+.steps-lead {
+    color: rgba(21, 54, 85, .76);
+    line-height: 1.7;
+    margin: 0 0 34px;
+    max-width: 66ch;
+}
+
 .laegeprofil {
     box-sizing: border-box;
     display: block;
@@ -609,15 +637,10 @@ h2 {
             width: 95%;
         }
 
-        p:nth-child(3) {
+        .hero-brod {
             font-size: 20px !important;
             font-weight: lighter;
             margin-top: 20px;
-        }
-
-        p:nth-child(4) {
-            font-size: 20px !important;
-            font-weight: lighter;
         }
     }
 
@@ -714,15 +737,10 @@ h2 {
                 width: 95%;
             }
 
-            p:nth-child(3) {
+            .hero-brod {
                 font-size: 16px !important;
                 font-weight: lighter;
                 margin-top: 20px;
-            }
-
-            p:nth-child(4) {
-                font-size: 16px !important;
-                font-weight: lighter;
             }
         }
     }
@@ -740,12 +758,7 @@ h2 {
                 width: 95%;
             }
 
-            p:nth-child(3) {
-                font-size: 16px !important;
-                font-weight: lighter;
-            }
-
-            p:nth-child(4) {
+            .hero-brod {
                 font-size: 16px !important;
                 font-weight: lighter;
             }
@@ -1137,11 +1150,15 @@ h2 {
     }
 }
 
+/* Overskrifterne skiftede mellem venstre og centreret fire gange ned
+   gennem siden. Resten af websiden bruger venstrestillet eyebrow + H2 +
+   manchet, saa om os-siden foelger nu samme regel hele vejen. */
 .pi-header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 72ch;
 }
 
 
@@ -1259,8 +1276,17 @@ h2 {
 
 .clinics-mini__title {
     color: #fff;
-    text-align: center;
-    margin: 0 0 50px 0;
+    text-align: left;
+    margin: 0 0 8px 0;
+}
+
+.clinics-mini__head { margin-bottom: 38px; }
+
+.clinics-mini__lead {
+    color: rgba(255, 255, 255, .80);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 62ch;
 }
 
 .clinics-mini__grid {
@@ -1410,4 +1436,53 @@ h2 {
         background-size: 0 !important;
     }
 }
+
+/* Den laengere H1 fyldte fire linjer ved 55 px og aad hele heroen.
+   Skaleret ned til to linjer - overskriften skal introducere siden,
+   ikke vaere siden. */
+.Bannertxt h1 {
+    font-size: clamp(1.9rem, 2.4vw, 2.3rem) !important;
+    line-height: 1.14;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+/* ===== Hero: citat med kildeangivelse ===== */
+.hero-citat {
+    border-left: 3px solid rgba(255, 255, 255, .45);
+    margin: 22px 0 0;
+    padding: 2px 0 2px 20px;
+}
+
+.hero-citat p {
+    color: #fff !important;
+    font-size: 21px !important;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0;
+    width: 100% !important;
+}
+
+.hero-citat cite {
+    color: rgba(255, 255, 255, .78);
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: .01em;
+    margin-top: 12px;
+}
+
+@media only screen and (max-width: 1750px) {
+    .hero-citat p { font-size: 18px !important; }
+}
+
+@media only screen and (max-width: 880px) {
+    .hero-citat { padding-left: 16px; }
+    .hero-citat p { font-size: 17px !important; }
+}
+
+/* Eyebrow paa moerk baggrund */
+.sec__eyebrow--lys { color: rgba(255, 255, 255, .78) !important; }
+.sec__eyebrow--lys::before { background: rgba(255, 255, 255, .6) !important; }
 </style>
