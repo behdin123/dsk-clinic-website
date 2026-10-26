@@ -1,33 +1,44 @@
 <template>
     <main>
         <div class="flex">
+            <!-- Adresser, telefon og aabningstider stod baade her OG i de to
+                 klinikkort lige nedenunder. Heroen gentog altsaa sig selv, foer
+                 man havde scrollet én gang. Den bruger nu pladsen paa det, kortene
+                 IKKE siger: hvad man kan forvente, og én handling man kan tage. -->
             <div class="kontaktOs-wrapper">
                 <div class="KontaktOsHeader">
+                    <p class="sec__eyebrow sec__eyebrow--lys">Kontakt</p>
                     <h1>Kontakt DK Skønhedsklinik</h1>
-                    <p class="kontakt-undertitel">Vi står klar til at hjælpe dig</p>
-                    <p class="mobile-hide">Har du spørgsmål til vores behandlinger eller ønsker du at booke en gratis
-                        konsultation?</p>
-                </div>
-                <div class="Informations">
-                    <img src="../../assets/icons/phoneIcon.webp" alt="" aria-hidden="true">
-                    <p><a href="tel:+4553503750">+45 53 50 37 50</a></p>
-                </div>
-                <div class="Informations">
-                    <img src="../../assets/icons/mailIcon.webp" alt="" aria-hidden="true">
-                    <p><a href="mailto:dr_arash_bagheri@yahoo.com">dr_arash_bagheri@yahoo.com</a></p>
-                </div>
-                <div class="Informations">
-                    <img src="../../assets/icons/mapIcon.webp" alt="" aria-hidden="true">
-                    <p class="map-links">
-                        <a href="https://maps.google.com/?q=Søndergade+50,+7100+Vejle">Søndergade 50, 7100 Vejle</a>
-                        <span class="separator">-</span>
-                        <a href="https://maps.google.com/?q=Havnegade+6,+6700+Esbjerg">Havnegade 6, 6700 Esbjerg</a>
+                    <p class="kontakt-undertitel">Vi svarer typisk inden for én hverdag</p>
+                    <p class="hero-lead">
+                        Ring, skriv eller få en opringning. Vi hjælper dig med at finde den rigtige
+                        behandling og en tid i Vejle eller Esbjerg – og forundersøgelsen er gratis
+                        og uforpligtende.
                     </p>
                 </div>
+
+                <ul class="hero-punkter">
+                    <li>Behandlingen udføres af læge</li>
+                    <li>Gratis forundersøgelse</li>
+                    <li>Klinik i Vejle og Esbjerg</li>
+                </ul>
+
+                <p class="hero-handlinger">
+                    <a class="hero-knap hero-knap--primaer" href="tel:+4553503750">Ring 53 50 37 50</a>
+                    <button class="hero-knap hero-knap--sekundaer" type="button" @click="openBookingFromHero">
+                        Book forundersøgelse
+                    </button>
+                </p>
+
+                <p class="hero-mail">
+                    Skriver du hellere?
+                    <a href="mailto:dr_arash_bagheri@yahoo.com">Send os en mail</a>
+                </p>
             </div>
 
             <div class="klinikken">
-                <img src="../../assets/OmOs.webp" alt="klinik miljø">
+                <img src="../../assets/Clinic_consultation.webp"
+                    alt="Læge Arash Bagheri under en forundersøgelse på DK Skønhedsklinik" />
             </div>
 
             <div class="scroll-indicator">
@@ -1033,12 +1044,25 @@ h2 {
 
 
 @media only screen and (max-width: 780px) {
+    /* Heroen havde fast hoejde (65vh / min 800px). Da indholdet voksede,
+       spildte billedet ud over bunden af sektionen. Den foelger nu sit
+       indhold paa smalle skaerme. */
     main {
+        height: auto;
         min-height: auto;
+        padding-bottom: 40px;
+
         p {
             width: auto !important;
         }
     }
+
+    main .flex {
+        gap: 28px;
+        height: auto;
+    }
+
+    .klinikken { margin-top: 4px; }
 
     .location-div {
         padding: 40px 0;
@@ -1573,5 +1597,110 @@ button[disabled] {
     .kontakt-klinikker__grid { grid-template-columns: minmax(0, 1fr); }
     .kontakt-kort { padding: 24px 20px; }
     .kontakt-kort dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+
+/* ===== Hero paa kontaktsiden =====
+   Heroen gentog adresser, telefon og e-mail, som ogsaa staar i de to
+   klinikkort lige nedenunder. Den bruger nu pladsen paa det, kortene ikke
+   siger: hvad man kan forvente, og én tydelig handling. */
+.KontaktOsHeader .hero-lead {
+    color: rgba(255, 255, 255, .84) !important;
+    font-size: clamp(15px, 1.02vw, 17px);
+    line-height: 1.75;
+    margin: 16px 0 0;
+    max-width: 58ch;
+    width: 100%;
+}
+
+.hero-punkter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    list-style: none;
+    margin: 26px 0 0;
+    padding: 0;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-punkter li {
+    align-items: center;
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 999px;
+    color: #fff;
+    display: flex;
+    font-size: .88rem;
+    font-weight: 600;
+    gap: 8px;
+    padding: 8px 16px 8px 13px;
+}
+
+.hero-punkter li::before {
+    content: '';
+    flex: 0 0 auto;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background: #9fc0f5;
+}
+
+.hero-handlinger {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 28px 0 0;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-knap {
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: 16px 26px;
+    text-decoration: none;
+    transition: background-color .15s ease, transform .15s ease;
+    white-space: nowrap;
+}
+
+.hero-knap--primaer { background: #fff; color: #1e4078 !important; }
+
+.hero-knap--primaer:hover,
+.hero-knap--primaer:focus-visible { background: #eaf0fa; transform: translateY(-1px); }
+
+.hero-knap--sekundaer {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, .55);
+    color: #fff !important;
+}
+
+.hero-knap--sekundaer:hover,
+.hero-knap--sekundaer:focus-visible {
+    background: rgba(255, 255, 255, .12);
+    border-color: #fff;
+}
+
+.hero-mail {
+    color: rgba(255, 255, 255, .72) !important;
+    font-size: .9rem;
+    margin: 18px 0 0;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-mail a {
+    color: #fff !important;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 880px) {
+    .hero-handlinger { flex-direction: column; }
+    .hero-knap { text-align: center; width: 100%; box-sizing: border-box; }
 }
 </style>

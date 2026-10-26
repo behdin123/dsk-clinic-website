@@ -558,7 +558,7 @@ const openBooking = () => {
 
     &__tal {
         font-size: 1.6rem;
-        font-weight: 700;
+        font-weight: 700 !important;
         color: #2d58a1;
         margin: 0 0 8px;
     }
@@ -644,35 +644,42 @@ h2 {
     color: #000 !important;
 }
 
+/* ===== Hero =====
+   Hele heroens layout er defineret her og kun her. Bredder og skrift-
+   stoerrelser laa foer spredt ud over otte media queries, der alle satte
+   procenter paa de samme elementer: tekstspalten endte som 35 % af heroen
+   med et tomt baelte i midten, og hvert breakpoint rettede op paa det
+   foregaaende. Nu ét gitter med clamp(), saa alle skaermstoerrelser
+   foelger samme opsaetning uden overstyringer. */
 .OmOsBannerDiv {
-    display: flex;
-    justify-content: space-between;
-    max-width: var(--maal);
+    align-items: center;
+    display: grid;
+    gap: clamp(32px, 3.5vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, clamp(290px, 26vw, 460px));
     margin: 0 auto;
-
-    div {
-        width: 50%;
-
-        h1 {
-            width: 95%;
-        }
-
-        .hero-brod {
-            font-size: 20px !important;
-            font-weight: lighter;
-            margin-top: 20px;
-        }
-    }
+    max-width: var(--maal);
 
     .Bannertxt {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: auto;
+    }
+
+    .Bannertxt h1 { width: 100%; }
+
+    .hero-brod {
+        font-size: clamp(15px, 1.02vw, 17px) !important;
+        font-weight: 300;
+        line-height: 1.75;
+        margin-top: 18px;
+        max-width: 64ch;
+        width: 100% !important;
     }
 
     .BannerPng {
-        width: 22vw;
-        height: 100%;
+        width: auto;
+        height: auto;
         z-index: 4;
         position: relative;
 
@@ -755,54 +762,19 @@ h2 {
     }
 }
 
+/* Bredden styres af gitteret ovenfor - ikke af procenter pr. breakpoint. */
 .bg-img p {
     z-index: 3;
-    width: 70% !important;
     line-height: 1.6;
     text-shadow: none !important;
-    font-size: 22px !important;
 }
 
-@media only screen and (max-width: 2150px) {
-    .bg-img p {
-        width: 85% !important;
-    }
-}
-
-@media only screen and (max-width: 1950px) {
-    .OmOsBannerDiv {
-        div {
-            h1 {
-                width: 95%;
-            }
-
-            .hero-brod {
-                font-size: 16px !important;
-                font-weight: lighter;
-                margin-top: 20px;
-            }
-        }
-    }
-}
+/* Billedteksterne er absolut placeret med left/right - de skal ikke ogsaa
+   have en bredde, ellers stikker de ud over billedet paa smalle skaerme. */
+.BannerPng p { width: auto !important; }
 
 @media only screen and (max-width: 1750px) {
-    .bg-img p {
-        width: 75% !important;
-        font-size: 22px !important;
-    }
-
     .OmOsBannerDiv {
-        div {
-            h1 {
-                width: 95%;
-            }
-
-            .hero-brod {
-                font-size: 16px !important;
-                font-weight: lighter;
-            }
-        }
-
         .BannerPng {
             p:nth-child(2) {
                 bottom: 10px;
@@ -824,10 +796,6 @@ h2 {
     .OmOsBannerDiv {
         margin: 0 auto;
         max-width: var(--maal);
-
-        div {
-            width: 45%;
-        }
     }
 
     .patientinfo {
@@ -852,10 +820,6 @@ h2 {
         height: 82vh !important;
     }
 
-    .OmOsBannerDiv .BannerPng {
-        width: 28vw;
-    }
-
     .Bannertxt {
         padding-left: 0 !important;
     }
@@ -871,10 +835,6 @@ h2 {
         p {
             font-size: 16px !important;
         }
-    }
-
-    .bg-img p {
-        width: 90% !important;
     }
 
     .img h1 {
@@ -917,17 +877,18 @@ h2 {
         padding: 50px 0 !important;
     }
 
+    /* Under 1280 px stables heroen: billedet foerst, saa teksten. */
     .OmOsBannerDiv {
-        padding: 0 10% 0 10%;
-        flex-direction: column-reverse;
-        align-items: center;
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        padding: 0 6%;
 
-        div {
-            width: 60%;
-        }
+        .Bannertxt { order: 2; }
 
         .BannerPng {
-            width: 50vw;
+            order: 1;
+            max-width: 420px;
+            width: 100%;
 
             p:nth-child(2) {
                 left: 20px;
@@ -939,10 +900,6 @@ h2 {
                 bottom: 60px !important;
             }
         }
-    }
-
-    .bg-img p {
-        font-size: 18px !important;
     }
 
     .callout-cta {
@@ -990,16 +947,8 @@ h2 {
 
 @media only screen and (max-width: 1000px) {
     .OmOsBannerDiv {
-        padding: 10px 10% 0 10%;
-
-        div {
-            margin-top: 30px;
-            width: 70%;
-        }
-
-        .BannerPng {
-            width: 60vw !important;
-        }
+        padding: 10px 6% 0;
+        gap: 28px;
     }
 
     .pi-card {
@@ -1018,17 +967,7 @@ h2 {
     }
 
     .OmOsBannerDiv {
-        padding: 10px 0 0 0;
-
-        div {
-            margin-top: 30px;
-            width: 77%;
-        }
-
-        .BannerPng {
-            width: 80vw !important;
-            margin-top: 1px;
-        }
+        padding: 10px 0 0;
     }
 
     .patientinfo .pi-intro {
@@ -1045,12 +984,11 @@ h2 {
 }
 
 @media only screen and (max-width: 550px) {
+    /* Bredden paa hero-afsnittene styres af gitteret. En 100 %-regel her
+       ramte ogsaa billedteksterne inde i portraettet, som er absolut
+       placeret - de stak derfor ud over billedets hoejrekant. */
     .bg-img {
         padding: 50px 0 !important;
-
-        p {
-            width: 100% !important;
-        }
     }
 
     .OmOsBannerDiv .BannerPng {
@@ -1092,15 +1030,7 @@ h2 {
 
 @media only screen and (max-width: 380px) {
     .OmOsBannerDiv {
-        padding: 120px 0 0 0;
-
-        div {
-            width: 88%;
-        }
-
-        .BannerPng {
-            width: 100% !important;
-        }
+        padding: 120px 0 0;
     }
 }
 
