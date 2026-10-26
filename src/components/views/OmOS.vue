@@ -215,12 +215,13 @@
         <!-- Timeline: Dit forløb med lægen (جدید) -->
         <section class="patientinfo container slice is-steps" aria-labelledby="pi-flow-title">
             <div class="slice-inner column">
-                <p class="sec__eyebrow" data-aos="fade-up" data-aos-duration="800">Sådan foregår det</p>
-                <h2 id="pi-flow-title" class="slice-title" data-aos="fade-up" data-aos-duration="800">Dit forløb med
-                    lægen</h2>
-                <p class="steps-lead" data-aos="fade-up" data-aos-duration="800">
-                    Fra første samtale til opfølgning er det den samme læge, du møder.
-                </p>
+                <div class="sec__head steps-head" data-aos="fade-up" data-aos-duration="800">
+                    <p class="sec__eyebrow">Sådan foregår det</p>
+                    <h2 id="pi-flow-title" class="slice-title">Dit forløb med lægen</h2>
+                    <p class="steps-lead">
+                        Fra første samtale til opfølgning er det den samme læge, du møder.
+                    </p>
+                </div>
                 <ol class="steps-flow">
                     <div class="steps-rail" aria-hidden="true"></div>
                     <li class="step-card" data-aos="fade-up" data-aos-duration="800">
@@ -258,7 +259,10 @@
             </div>
         </section>
 
-        <!-- FAQ (جدید) -->
+        <!-- FAQ: ligger i samme lyse baand som trinnene ovenfor, saa panelet
+             laeses som et kort i et baand - ikke som en kasse klistret op ad
+             kanten af et hvidt felt. Samme virkning som paa klinikssiderne. -->
+        <div class="omos-faq-baand">
         <section v-if="faqs.length" id="faq" class="container faq omos-faq">
             <div class="sec__head">
                 <p class="sec__eyebrow">Spørgsmål</p>
@@ -267,14 +271,20 @@
 
             <FaqList :items="faqs" />
         </section>
+        </div>
 
         <!-- CTA (ساده و سازگار با روال فعلی سایت) -->
         <div class="container callout-cta" data-aos="fade-up" data-aos-duration="800">
             <div>
-                <h3 class="cta-note">De fleste behandlinger kræver forundersøgelse og betænkningstid</h3>
-                <a href="/kontaktos/" @click.prevent="openBooking" class="inline-link arrow læs-mere"
-                    aria-label="Book en forundersøgelse">Book
-                    forundersøgelse</a>
+                <div class="cta-tekst">
+                    <h3 class="cta-note">Klar til at tage første skridt?</h3>
+                    <p class="cta-lead">
+                        Forundersøgelsen er gratis og uforpligtende. De fleste behandlinger kræver
+                        betænkningstid, så du har god tid til at tænke over det bagefter.
+                    </p>
+                </div>
+                <a href="/kontaktos/" @click.prevent="openBooking" class="cta-knap"
+                    aria-label="Book en gratis forundersøgelse">Book forundersøgelse</a>
             </div>
         </div>
 
@@ -472,17 +482,23 @@ const openBooking = () => {
 <style lang="scss" scoped>
 
 @use '../css/style.scss';
+.omos-faq-baand {
+    background: #f4f3f0;
+    padding: 10px 0 80px;
+}
+
 .omos-faq {
-    /* box-sizing + samme maal som resten af siden: panelets kant laa foer
-       20 px laengere til venstre end kortene ovenfor. */
+    /* Hvidt kort paa det lyse baand - samme kortsprog som kontaktkortene
+       og formularen. Panelet laa foer paa hvid baggrund og forsvandt. */
+    background: #fff;
+    border: 1px solid rgba(21, 54, 85, .10);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(21, 54, 85, .05);
     box-sizing: border-box;
     display: block;
+    margin: 0 auto;
     max-width: 1200px;
-    margin: 0 auto 70px;
     padding: 42px 40px;
-    background: rgba(45, 88, 161, .045);
-    border: 1px solid rgba(45, 88, 161, .10);
-    border-radius: 18px;
 
     /* Overskriften var centreret, mens eyebrow'en stod til venstre -
        de to linjer pegede hver sin vej. */
@@ -495,20 +511,23 @@ const openBooking = () => {
 }
 
 @media (max-width: 880px) {
-    .omos-faq { padding: 28px 20px; border-radius: 14px; margin-bottom: 48px; }
+    .omos-faq-baand { padding: 6px 0 52px; }
+    .omos-faq { padding: 28px 20px; border-radius: 14px; }
 }
 
 .is-steps .slice-title {
     text-align: left;
-    margin-bottom: 8px;
+    margin: 0 0 10px;
 }
 
 .is-steps .slice-inner { align-items: flex-start; }
 
+.steps-head .sec__eyebrow { margin: 0 0 14px; }
+
 .steps-lead {
     color: rgba(21, 54, 85, .76);
     line-height: 1.7;
-    margin: 0 0 34px;
+    margin: 0;
     max-width: 66ch;
 }
 
@@ -1158,7 +1177,7 @@ h2 {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    max-width: 72ch;
+    max-width: 77ch;
 }
 
 
@@ -1179,11 +1198,11 @@ h2 {
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 24px;
-        margin-top: 28px;
+  
     }
 
     .pi-intro {
-        width: 48%;
+        margin-top: 0;
     }
 
     .pi-card {
@@ -1403,38 +1422,80 @@ h2 {
 }
 
 
+/* Baggrunden var #15365595 - navy med 58 % gennemsigtighed, saa baandet
+   endte som en udvasket graa, der ikke findes i paletten.
+   Fuld navy (#153655) loeste farven, men footeren har praecis samme navy,
+   saa de to smeltede sammen til én blaa klump. Baandet faar derfor
+   brandblaa: samme palette, men tydeligt sit eget felt over footeren. */
 .callout-cta {
-    height: 120px;
-    max-width: unset;
-    padding: 0;
-    background: #15365595;
+    background: #2d58a1;
     border-radius: 0;
+    height: auto;
+    max-width: unset;
+    padding: 46px 20px;
 
-    div {
+    > div {
+        align-items: center;
+        display: flex;
+        gap: 40px;
+        justify-content: space-between;
         margin: 0 auto;
         max-width: 1200px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         width: 100%;
-
-        h3 {
-            font-size: 24px;
-            color: #fff !important;
-        }
-
-        a {
-            border: 2px solid #ffffff;
-            color: #fff !important;
-            padding: 20px;
-            border-radius: 15px;
-        }
     }
 
-    .inline-link:hover,
-    .inline-link:focus {
-        background-size: 0 !important;
+    .cta-tekst { max-width: 62ch; }
+
+    h3 {
+        color: #fff !important;
+        font-size: 26px;
+        margin: 0 0 10px;
     }
+
+    .cta-lead {
+        color: rgba(255, 255, 255, .78) !important;
+        font-size: 16px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* Solid knap i stedet for hvid kontur: det er sidens primaere handling,
+       og en kontur laeses som en sekundaer. */
+    .cta-knap {
+        background: #fff;
+        border-radius: 12px;
+        box-sizing: border-box;
+        color: #153655 !important;
+        flex: 0 0 auto;
+        font-weight: 700;
+        padding: 16px 26px;
+        text-decoration: none;
+        transition: background-color .15s ease, transform .15s ease;
+        white-space: nowrap;
+    }
+
+    .cta-knap {
+        color: #1e4078 !important;
+    }
+
+    .cta-knap:hover,
+    .cta-knap:focus-visible {
+        background: #eaf0fa;
+        transform: translateY(-1px);
+    }
+}
+
+@media (max-width: 880px) {
+    .callout-cta { padding: 34px 20px; }
+
+    .callout-cta > div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .callout-cta h3 { font-size: 21px; }
+    .callout-cta .cta-knap { text-align: center; width: 100%; }
 }
 
 /* Den laengere H1 fyldte fire linjer ved 55 px og aad hele heroen.
