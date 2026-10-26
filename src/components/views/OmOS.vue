@@ -96,7 +96,7 @@
                     height="auto">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
-                <h3 data-aos="fade-up" data-aos-duration="1000">Vores klinikker</h3>
+                <p class="sec__eyebrow" data-aos="fade-up" data-aos-duration="1000">Vores klinikker</p>
                 <h2 data-aos="fade-up" data-aos-duration="1000">Om DK Skønhedsklinik</h2>
 
                 <p data-aos="fade-up" data-aos-duration="1000">
@@ -718,22 +718,41 @@ h2 {
     }
 }
 
+/* Spalterne var 45 % + 45 % med space-between, saa mellemrummet voksede
+   med skaermen og endte som et tomt baelte paa brede skaerme. Nu et gitter
+   med fast mellemrum: spalterne vokser, hullet goer ikke. */
 .Multimediedesigner {
-    max-width: 1500px;
+    align-items: center;
+    display: grid !important;
+    gap: 64px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin: 0 auto;
+    max-width: var(--maal);
     padding: 100px 0 !important;
 
     .txt {
-        width: 45% !important;
+        width: auto !important;
         padding-left: 0%;
         margin-right: 0%;
     }
+
+    .txt p { max-width: 68ch; }
 }
 
 .VIKING-image {
     position: relative;
     overflow: hidden;
-    width: 45% !important;
+    width: auto !important;
+}
+
+/* Paa smalle skaerme skal de to spalter stables. Uden det her blev
+   gitteret staaende i to spalter paa 132 px og skubbede siden i bredden. */
+@media only screen and (max-width: 1000px) {
+    .Multimediedesigner {
+        gap: 28px;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 50px 0 !important;
+    }
 }
 
 .bg-img p {

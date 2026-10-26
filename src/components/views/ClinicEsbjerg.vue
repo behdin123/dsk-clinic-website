@@ -561,7 +561,7 @@ strong {
 }
 
 .about-text {
-  width: 45%;
+  width: 50%;
   min-width: 0;
 }
 
@@ -885,7 +885,6 @@ strong {
   gap: 56px;
 }
 
-.clinic-about .about-text { width: auto; flex: 1 1 56%; }
 
 .clinic-about .about-video { width: auto; flex: 0 1 38%; max-width: 380px; }
 

@@ -226,10 +226,11 @@
     }
 }
 
+/* --maal styrer bredden paa alle skaermstoerrelser. */
 .slice-inner {
   display: flex;
   margin: 0 auto;
-  max-width: 1500px;
+  max-width: var(--maal);
   gap: 55px;
 }
 
@@ -482,7 +483,11 @@
 
 /* Portraetvariant: et portraet behoever ikke halvdelen af sektionen.
    Mediesoejlen faar en fast, beskeden bredde, og teksten faar resten. */
-.split--portraet { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); }
+.split--portraet {
+  grid-template-columns: minmax(0, clamp(300px, 23vw, 440px)) minmax(0, 1fr);
+}
+
+.split--portraet .split__tekst > p { max-width: 64ch; }
 
 .split__tekst > p {
   max-width: 60ch;

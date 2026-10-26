@@ -161,12 +161,14 @@ const byerSomTekst = computed(() =>
 @media (min-width: 860px) {
   .opland {
     align-items: center;
-    column-gap: 48px;
+    column-gap: 56px;
     display: grid;
-    grid-template-columns: minmax(0, .92fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .opland svg { order: 2; }
+  /* Uden loft voksede diagrammet til hele spalten og blev dobbelt saa
+     stort som tabellen ved siden af. */
+  .opland svg { order: 2; margin: 0 auto; max-width: 520px; }
   .opland__liste { border-top: 0; margin-top: 0; order: 1; }
   .opland__liste li:first-child { border-top: 1px solid rgba(21, 54, 85, .1); }
   .opland__liste li { padding: 13px 0; }

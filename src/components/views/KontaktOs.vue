@@ -597,13 +597,18 @@ h2 {
     color: var(--quaternary-color) !important;
 }
 
+/* Spalterne var 40 % + resten med space-between. Paa en bred skaerm blev
+   mellemrummet i midten et tomt baelte, der voksede med skaermen. Nu et
+   gitter med fast mellemrum. */
 .section-wrapper {
-    display: flex;
+    align-items: center;
+    display: grid;
+    gap: 64px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding: 100px 0;
-    justify-content: space-between;
 
     .section-text {
-        width: 40%;
+        width: auto;
         line-height: 1.6;
         font-size: 16px;
 
@@ -614,7 +619,7 @@ h2 {
     }
 
     .section-media {
-        width: 40%;
+        width: auto;
         aspect-ratio: 1/1;
 
         img {
@@ -647,6 +652,18 @@ h2 {
         display: flex;
         flex-direction: column;
     }
+}
+
+/* Instagram-baandet har kun ét barn (.width-margin), ikke to spalter, saa
+   gitteret hoerer hjemme et niveau laengere inde. Uden det her havnede hele
+   baandet i foerste gitterspalte og laa klistret til venstre kant. */
+.section-wrapper.follow-insta-wrapper { display: block; }
+
+.follow-insta-wrapper .flex-row {
+    align-items: center;
+    display: grid;
+    gap: 64px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .follow-insta-wrapper {

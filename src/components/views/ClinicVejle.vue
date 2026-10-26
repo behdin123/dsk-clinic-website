@@ -561,7 +561,7 @@ strong {
 }
 
 .about-text {
-  width: 45%;
+  width: 55%;
   min-width: 0;
 }
 
@@ -868,7 +868,7 @@ strong {
   gap: 56px;
 }
 
-.clinic-about .about-text { width: auto; flex: 1 1 56%; }
+
 
 .clinic-about .about-video { width: auto; flex: 0 1 38%; max-width: 380px; }
 
@@ -877,7 +877,6 @@ strong {
 .parkering__billede {
   margin-left: auto;
   margin-right: auto;
-  max-width: 860px;
 }
 
 /* Et "laes mere" skal ligne et link, ikke broedtekst */
