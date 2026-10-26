@@ -266,13 +266,23 @@ onMounted(() => {
   --maal: 980px;
   --gutter: 20px;
 
-  /* Luften over og under hero-indholdet. Navigationen ligger IKKE oven paa
-     heroen - heroen begynder praecis hvor navigationen slutter - saa lige
-     meget padding i top og bund giver ogsaa optisk lige meget luft.
-     Vaerdien foelger vindueshoejden, saa heroen holder sig inden for
-     skaermen paa en lille laptop i stedet for at skubbe indholdet ned. */
-  --hero-luft: clamp(24px, 4.5vh, 76px);
+  /* ===== Hero-hoejde =====
+     Navigationen ligger IKKE oven paa heroen - heroen begynder praecis dér,
+     hvor navigationen slutter - saa lige meget padding i top og bund giver
+     ogsaa optisk lige meget luft.
+
+     --hero-luft: luften over og under indholdet. Lille paa en lav skaerm,
+       saa heroen ikke aeder hele synsfeltet; stor paa en hoej skaerm.
+     --hero-kig: hvor meget af naeste sektion der skal vaere synligt under
+       heroen. Heroen faar en min-hoejde paa "skaerm minus navigation minus
+       kig", saa den fylder skaermen paa en stor monitor i stedet for at
+       staa som en lav stribe - og saa man altid kan se, at der er mere. */
+  --hero-luft: clamp(14px, 3vh, 120px);
+  --hero-kig: clamp(72px, 9vh, 150px);
+  --nav-h: 140px;
 }
+
+@media (max-width: 1000px) { :root { --nav-h: 120px; } }
 
 @media (min-width: 1500px) { :root { --maal: 1080px; } }
 @media (min-width: 1800px) { :root { --maal: 1220px; } }
@@ -382,11 +392,14 @@ body {
      smal. Heroen foelger nu sit indhold, med luft nok foroven til at rydde
      den faste navigation. Samme opsaetning paa alle skaermstoerrelser. */
   .bg-img {
+    align-content: center;
+    box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: grid;
     height: auto;
-    min-height: 0;
+    min-height: calc(100svh - var(--nav-h) - var(--hero-kig));
     padding-block: var(--hero-luft);
     padding-inline: 0;
     position: relative;

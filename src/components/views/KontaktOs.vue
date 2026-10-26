@@ -523,9 +523,10 @@ useHead({
    for at vaere laast til browservinduets hoejde. */
 main {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     height: auto;
-    min-height: 0;
+    min-height: calc(100svh - var(--nav-h) - var(--hero-kig));
     padding-block: var(--hero-luft);
     padding-inline: 0;
     background-image: url('@/assets/BannerBehandling.webp') !important;
