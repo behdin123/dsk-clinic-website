@@ -937,11 +937,9 @@ body {
 }
 
 /* Undtagelsen fra den faelles hero-regel: her ligger billedet i selve
-   heroen og skal gaa helt til kanten, saa luften er lagt indeni i stedet.
-   Heroen beholder ogsaa et kig til naeste sektion paa alle skaermer. */
+   heroen og skal gaa helt til kanten, saa luften er lagt indeni i stedet. */
 #Main .bg-img {
   padding: 0;
-  --hero-kig: clamp(72px, 10vh, 180px);
 }
 
 #Main .bg-img {

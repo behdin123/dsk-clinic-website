@@ -35,11 +35,6 @@
                     <img src="../../assets/OmOsArash.webp" alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik">
                 </div>
             </div>
-
-            <div class="scroll-indicator" aria-hidden="true">
-                <span>scroll ned</span>
-                <div class="line"></div>
-            </div>
         </div>
 
         <!-- Lægens baggrund og autorisation -->
@@ -621,11 +616,7 @@ const openBooking = () => {
     }
 }
 
-/* Hoejde og luft kommer fra den faelles .bg-img-regel i App.vue. Her
-   siges kun, at scroll-pilen skal have sin egen plads i bunden: paa denne
-   side gaar teksten helt ud i heroens bredde, saa pilen ville ellers lande
-   oven i den. */
-.OmOS { --pil-reserve: var(--pil-plads); }
+/* Hoejde og luft kommer fra den faelles .bg-img-regel i App.vue. */
 
 
 h2 {

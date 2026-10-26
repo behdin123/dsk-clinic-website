@@ -40,11 +40,7 @@
                 <img src="../../assets/Clinic_consultation.webp"
                     alt="Læge Arash Bagheri under en forundersøgelse på DK Skønhedsklinik" />
             </div>
-        </div>
 
-        <div class="scroll-indicator" aria-hidden="true">
-            <span>scroll ned</span>
-            <div class="line"></div>
         </div>
     </main>
 
@@ -527,13 +523,11 @@ useHead({
    for at vaere laast til browservinduets hoejde. */
 main {
     align-items: center;
-    box-sizing: border-box;
     display: flex;
     height: auto;
-    min-height: calc(100svh - var(--nav-h) - var(--hero-kig));
-    padding-block: var(--hero-luft) calc(var(--hero-luft) + var(--pil-plads));
+    min-height: 0;
+    padding-block: var(--hero-luft);
     padding-inline: 0;
-    /* se kommentaren i OmOS.vue: pilen skal have sin egen plads */
     background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
     background-position: center;

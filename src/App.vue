@@ -266,36 +266,13 @@ onMounted(() => {
   --maal: 980px;
   --gutter: 20px;
 
-  /* ===== Hero-hoejde =====
-     Navigationen ligger IKKE oven paa heroen - heroen begynder praecis dér,
-     hvor navigationen slutter - saa lige meget padding i top og bund giver
-     ogsaa optisk lige meget luft.
-
-     --hero-luft: luften over og under indholdet. Lille paa en lav skaerm,
-       saa heroen ikke aeder hele synsfeltet; stor paa en hoej skaerm.
-     --hero-kig: hvor meget af naeste sektion der skal vaere synligt under
-       heroen. Heroen faar en min-hoejde paa "skaerm minus navigation minus
-       kig".
-
-     Paa en laptop er kigget 0: heroen fylder hele skaermen, og
-     scroll-pilen fortaeller, at der er mere. Foerst naar skaermen er hoej
-     nok til at heroen alligevel ville staa med tom luft, aabner vi et kig
-     til naeste sektion. Forsiden og behandlingssiderne har deres eget kig
-     laengere nede - dér er baggrundsbilledet selve indholdet. */
-  --hero-luft: clamp(10px, 2vh, 120px);
-  --hero-kig: clamp(0px, calc((100vh - 880px) * 0.32), 150px);
-  --nav-h: 140px;
-
-  /* Plads i heroens bund til scroll-pilen paa de sider, hvor den ellers
-     ville lande oven i broedteksten. Nul paa lave skaerme, hvor pilen
-     alligevel er skjult. */
-  --pil-plads: 0px;
-  --pil-reserve: 0px;
+  /* Luften over og under hero-indholdet. Navigationen ligger IKKE oven paa
+     heroen - heroen begynder praecis hvor navigationen slutter - saa lige
+     meget padding i top og bund giver ogsaa optisk lige meget luft.
+     Vaerdien foelger vindueshoejden, saa heroen holder sig inden for
+     skaermen paa en lille laptop i stedet for at skubbe indholdet ned. */
+  --hero-luft: clamp(24px, 4.5vh, 76px);
 }
-
-@media (min-height: 740px) { :root { --pil-plads: 86px; } }
-
-@media (max-width: 1000px) { :root { --nav-h: 120px; } }
 
 @media (min-width: 1500px) { :root { --maal: 1080px; } }
 @media (min-width: 1800px) { :root { --maal: 1220px; } }
@@ -405,15 +382,12 @@ body {
      smal. Heroen foelger nu sit indhold, med luft nok foroven til at rydde
      den faste navigation. Samme opsaetning paa alle skaermstoerrelser. */
   .bg-img {
-    align-content: center;
-    box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: grid;
     height: auto;
-    min-height: calc(100svh - var(--nav-h) - var(--hero-kig));
-    padding-block: var(--hero-luft) calc(var(--hero-luft) + var(--pil-reserve));
+    min-height: 0;
+    padding-block: var(--hero-luft);
     padding-inline: 0;
     position: relative;
   }
