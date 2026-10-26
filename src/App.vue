@@ -275,12 +275,25 @@ onMounted(() => {
        saa heroen ikke aeder hele synsfeltet; stor paa en hoej skaerm.
      --hero-kig: hvor meget af naeste sektion der skal vaere synligt under
        heroen. Heroen faar en min-hoejde paa "skaerm minus navigation minus
-       kig", saa den fylder skaermen paa en stor monitor i stedet for at
-       staa som en lav stribe - og saa man altid kan se, at der er mere. */
-  --hero-luft: clamp(14px, 3vh, 120px);
-  --hero-kig: clamp(72px, 9vh, 150px);
+       kig".
+
+     Paa en laptop er kigget 0: heroen fylder hele skaermen, og
+     scroll-pilen fortaeller, at der er mere. Foerst naar skaermen er hoej
+     nok til at heroen alligevel ville staa med tom luft, aabner vi et kig
+     til naeste sektion. Forsiden og behandlingssiderne har deres eget kig
+     laengere nede - dér er baggrundsbilledet selve indholdet. */
+  --hero-luft: clamp(10px, 2vh, 120px);
+  --hero-kig: clamp(0px, calc((100vh - 880px) * 0.32), 150px);
   --nav-h: 140px;
+
+  /* Plads i heroens bund til scroll-pilen paa de sider, hvor den ellers
+     ville lande oven i broedteksten. Nul paa lave skaerme, hvor pilen
+     alligevel er skjult. */
+  --pil-plads: 0px;
+  --pil-reserve: 0px;
 }
+
+@media (min-height: 740px) { :root { --pil-plads: 86px; } }
 
 @media (max-width: 1000px) { :root { --nav-h: 120px; } }
 
@@ -400,7 +413,7 @@ body {
     display: grid;
     height: auto;
     min-height: calc(100svh - var(--nav-h) - var(--hero-kig));
-    padding-block: var(--hero-luft);
+    padding-block: var(--hero-luft) calc(var(--hero-luft) + var(--pil-reserve));
     padding-inline: 0;
     position: relative;
   }

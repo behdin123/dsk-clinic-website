@@ -85,24 +85,32 @@
 
 
 
+    /* Pilen sidder i heroens bund. Den maa aldrig lande oven i broedteksten,
+       saa den vises kun naar skaermen er hoej nok til at heroen har luft
+       i bunden. */
     .scroll-indicator {
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       color: #fff;
       font-family: Arial, sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       z-index: 4;
+      pointer-events: none;
       text-shadow: 2px 2px 4px rgb(0, 0, 0);
       .line {
-          margin: 15px auto 10px auto;
+          margin: 12px auto 0;
           width: 2px !important;
-          height: 80px;
+          height: 56px;
           background-color: #fff;
           animation: bounce 2s infinite;
       }
+  }
+
+  @media (max-height: 739px) {
+    .scroll-indicator { display: none; }
   }
   
   @keyframes bounce {
