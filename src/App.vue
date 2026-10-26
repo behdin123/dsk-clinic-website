@@ -256,7 +256,21 @@ onMounted(() => {
 
   --column-backgroundColor: #EAEAEA;
   --card-backgroundColor: #f9f9f9;
+
+  /* ===== Sidens maalestok =====
+     Én bredde for alle sektioner, saa indholdet staar paa samme venstre-
+     og hoejrekant hele vejen ned. Den vokser i trin paa store skaerme:
+     paa en 4K-skaerm saa en fast 980 px ud som en smal stribe midt i
+     et hav af tom plads. Den stopper ved 1460 px - derover bliver
+     tekstlinjerne for lange til at laese behageligt. */
+  --maal: 980px;
+  --gutter: 20px;
 }
+
+@media (min-width: 1500px) { :root { --maal: 1080px; } }
+@media (min-width: 1800px) { :root { --maal: 1220px; } }
+@media (min-width: 2200px) { :root { --maal: 1340px; } }
+@media (min-width: 2600px) { :root { --maal: 1460px; } }
 
 
 #navDiv {

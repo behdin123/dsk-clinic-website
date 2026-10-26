@@ -136,13 +136,15 @@
 
 .width-margin{
   margin: 0 auto;
-  max-width: 1500px;
+  max-width: var(--maal);
 }
 
 @media (max-width: 1550px) {
+  /* --maal styrer bredden paa alle skaermstoerrelser - den gamle
+     1200 px-overstyring her ville laase den fast igen. */
   .width-margin{
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: var(--maal);
   }
   .faq {
     padding: 70px 8%;
@@ -404,7 +406,7 @@
 .sec {
   box-sizing: border-box;
   margin: 0 auto 64px;
-  max-width: 980px;
+  max-width: var(--maal);
   width: 100%;
 }
 
@@ -412,7 +414,11 @@
 .sec *::before,
 .sec *::after { box-sizing: border-box; }
 
-.sec--bred { max-width: 1100px; }
+.sec--bred { max-width: calc(var(--maal) + 120px); }
+
+/* Laesbarhed: en manchet maa gerne staa i en bred sektion, men linjerne
+   skal ikke blive 180 tegn lange paa en stor skaerm. */
+.sec__lead { max-width: 72ch; }
 
 /* Tonet panel - afgraenser en sektion uden at bryde ud af containeren */
 .sec--panel {

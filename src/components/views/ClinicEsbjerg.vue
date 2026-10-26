@@ -928,7 +928,7 @@ strong {
 .clinic-view .clinic-about {
   margin-left: auto;
   margin-right: auto;
-  max-width: 980px;
+  max-width: var(--maal);
   width: 100%;
 }
 

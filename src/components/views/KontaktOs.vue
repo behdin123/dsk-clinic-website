@@ -115,10 +115,24 @@
             <p class="subhead">Har du spørgsmål eller vil du hurtigt finde en tid? Udfyld dine oplysninger – så ringer
                 vi dig op.</p>
             <p>
-                Vi kontakter dig typisk inden for én hverdag. Vælg gerne hvilket tidsrum der passer bedst, og hvilken
-                klinik
-                du ønsker (Vejle eller Esbjerg). Rådgivningen er uforpligtende, og forundersøgelsen er gratis.
+                Vælg gerne hvilket tidsrum der passer bedst, og hvilken klinik du ønsker.
+                Rådgivningen er uforpligtende.
             </p>
+
+            <ol class="kontakt-trin">
+                <li>
+                    <span class="kontakt-trin__nr">1</span>
+                    <span>Du udfylder felterne – det tager under et minut.</span>
+                </li>
+                <li>
+                    <span class="kontakt-trin__nr">2</span>
+                    <span>Vi ringer dig op, typisk inden for én hverdag.</span>
+                </li>
+                <li>
+                    <span class="kontakt-trin__nr">3</span>
+                    <span>Vi finder en tid i Vejle eller Esbjerg. Forundersøgelsen er gratis.</span>
+                </li>
+            </ol>
         </div>
 
         <!-- Bemærk: name-attributter + skjult _subject -->
@@ -228,7 +242,7 @@
         <div class="width-margin flex-row">
             <div class="section-text">
                 <div class="follow-insta-text">
-                    <p class="sec__eyebrow sec__eyebrow--lys">Sociale medier</p>
+                    <p class="sec__eyebrow">Sociale medier</p>
                     <h2>Følg os for nyheder og tilbud</h2>
                     <p>
                         På vores Sociale Medier hjælper vi dig med de spørgsmål du måtte have,
@@ -556,7 +570,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 1500px;
+    max-width: var(--maal);
     margin: 0 auto;
 }
 
@@ -636,13 +650,18 @@ h2 {
 }
 
 .follow-insta-wrapper {
-    background: #153655;
+    /* Sektionen havde praecis samme navy som footeren og laeste derfor som
+       en del af den. Nu lys som de to sektioner ovenfor: siden har én moerk
+       top (hero) og én moerk bund (footer), og alt indhold imellem er lyst. */
+    background: transparent;
 
     h2,
     b,
     p {
-        color: #fff !important;
+        color: #153655 !important;
     }
+
+    .follow-insta-text p { color: rgba(21, 54, 85, .78) !important; }
 
     .section-text {
         display: flex;
@@ -656,12 +675,15 @@ h2 {
             .soc {
                 display: flex;
                 align-items: center;
+                border: 1px solid rgba(21, 54, 85, .14);
                 border-radius: 15px;
                 background: #fff;
                 padding: 5px 15px;
                 text-decoration: none;
-                transition: 0.3s opacity;
+                transition: 0.3s opacity, 0.15s border-color;
             }
+
+            .soc:hover { border-color: rgba(45, 88, 161, .4); }
 
             .icon {
                 width: 35px;
@@ -847,9 +869,10 @@ h2 {
 }
 
 @media only screen and (max-width: 1950px) {
+    /* --maal styrer bredden paa alle skaermstoerrelser. */
     .flex {
         display: flex;
-        max-width: 1500px;
+        max-width: var(--maal);
     }
 
     .KontaktOsHeader {
@@ -929,9 +952,10 @@ h2 {
         gap: 15px !important;
     }
 
+    /* --maal styrer bredden paa alle skaermstoerrelser. */
     .flex {
         display: flex;
-        max-width: 1200px;
+        max-width: var(--maal);
     }
 }
 
@@ -1383,9 +1407,39 @@ button[disabled] {
     left: -9999px;
 }
 
-/* Tekstspalten er kortere end formularkortet. Centreret lodret deler
-   luften over og under i stedet for at efterlade et tomt hul nederst. */
 .callback.section-wrapper { align-items: center; }
+
+/* Hvad sker der, naar man har trykket send? Spoergsmaalet staar altid,
+   og svaret giver tekstspalten den vaegt, formularkortet har. */
+.kontakt-trin {
+    counter-reset: trin;
+    display: grid;
+    gap: 14px;
+    list-style: none;
+    margin: 26px 0 0;
+    padding: 0;
+}
+
+.kontakt-trin li {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    line-height: 1.55;
+}
+
+.kontakt-trin__nr {
+    align-items: center;
+    background: rgba(45, 88, 161, .09);
+    border-radius: 50%;
+    color: #2d58a1;
+    display: flex;
+    flex: 0 0 auto;
+    font-size: .88rem;
+    font-weight: 700;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+}
 
 /* Legenden stod 6 px laengere inde end de oevrige labels */
 .callback-form fieldset.form-row legend { padding: 0; }
@@ -1398,7 +1452,7 @@ button[disabled] {
 .kontakt-klinikker {
     box-sizing: border-box;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: var(--maal);
     padding: 70px 20px 10px;
     width: 100%;
 }

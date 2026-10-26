@@ -4,7 +4,7 @@
             <div class="OmOsBannerDiv">
                 <div class="Bannertxt">
                     <p class="sec__eyebrow sec__eyebrow--lys">Mød lægen bag klinikken</p>
-                    <h1 data-aos="fade-right" data-aos-duration="3000">Om DK Skønhedsklinik og læge Arash Bagheri</h1>
+                    <h1 data-aos="fade-right" data-aos-duration="3000">Om DK Skønhedsklinik og <br> læge Arash Bagheri</h1>
 
                     <blockquote class="hero-citat">
                         <p>Skønhed findes i alle mennesker, men hvis der er noget, du ønsker at forbedre eller
@@ -490,6 +490,7 @@ const openBooking = () => {
 .omos-faq {
     /* Hvidt kort paa det lyse baand - samme kortsprog som kontaktkortene
        og formularen. Panelet laa foer paa hvid baggrund og forsvandt. */
+    max-width: var(--maal) !important;
     background: #fff;
     border: 1px solid rgba(21, 54, 85, .10);
     border-radius: 18px;
@@ -497,7 +498,7 @@ const openBooking = () => {
     box-sizing: border-box;
     display: block;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: var(--maal);
     padding: 42px 40px;
 
     /* Overskriften var centreret, mens eyebrow'en stod til venstre -
@@ -534,7 +535,7 @@ const openBooking = () => {
 .laegeprofil {
     box-sizing: border-box;
     display: block;
-    max-width: 1200px;
+    max-width: var(--maal);
     margin: 0 auto;
     padding: 70px 0;
     color: #153655;
@@ -646,7 +647,7 @@ h2 {
 .OmOsBannerDiv {
     display: flex;
     justify-content: space-between;
-    max-width: 1500px;
+    max-width: var(--maal);
     margin: 0 auto;
 
     div {
@@ -800,9 +801,10 @@ h2 {
 
 
 @media only screen and (max-width: 1550px) {
+    /* --maal styrer bredden paa alle skaermstoerrelser. */
     .OmOsBannerDiv {
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: var(--maal);
 
         div {
             width: 45%;
@@ -820,7 +822,7 @@ h2 {
     .patientinfo,
     .slice-inner,
     .clinics-mini__inner {
-        max-width: 1200px !important;
+        max-width: var(--maal) !important;
     }
 
     .Multimediedesigner {
@@ -1182,7 +1184,7 @@ h2 {
 
 
 .patientinfo {
-    max-width: 1500px;
+    max-width: var(--maal);
     margin: 0 auto;
     padding: 70px 0;
     flex-direction: column;
@@ -1284,7 +1286,7 @@ h2 {
 .clinics-mini__inner {
     display: flex;
     flex-direction: column;
-    max-width: 1500px;
+    max-width: var(--maal);
     margin: 0 auto;
     gap: 16px;
 
@@ -1440,7 +1442,7 @@ h2 {
         gap: 40px;
         justify-content: space-between;
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: var(--maal);
         width: 100%;
     }
 

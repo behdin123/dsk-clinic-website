@@ -112,7 +112,7 @@ const footerBehandlinger = computed(() => liveBehandlinger())
     color: #fff !important;
     padding: 50px 0;
     margin: 0 auto;
-    max-width: 1500px;
+    max-width: var(--maal);
   }
 }
 
@@ -245,8 +245,9 @@ h2 {
 /* Responsive */
 @media (max-width: 1550px) {
   .site-footer {
+    /* --maal styrer bredden paa alle skaermstoerrelser. */
     .footer {
-      max-width: 1200px;
+      max-width: var(--maal);
     }
   }
 }
