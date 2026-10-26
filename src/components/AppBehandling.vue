@@ -1400,10 +1400,6 @@ button[type="submit"],
     font-size: 36px !important;
   }
 
-  .bg-img {
-    padding: 0 !important;
-  }
-
   .fuld-width {
     width: 100% !important;
   }

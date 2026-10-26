@@ -35,10 +35,6 @@
                     <img src="../../assets/OmOsArash.webp" alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik">
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <span>scroll ned</span>
-                <div class="line"></div>
-            </div>
         </div>
 
         <!-- Lægens baggrund og autorisation -->

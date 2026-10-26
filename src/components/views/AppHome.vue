@@ -1009,6 +1009,17 @@ onMounted(() => {
 .bg-img {
   position: relative;
   background-image: url('@/assets/BannerBehandling3.webp') !important;
+
+}
+
+/* Forsiden er undtagelsen: her er baggrundsbilledet selve indholdet, og
+   paddingen bestemmer hvor stor en del af det man faar at se. Luften er
+   stadig lige stor i top og bund - den er bare stoerre end paa de sider,
+   hvor baggrunden kun er en tone.
+   Bemaerk: dette style-blok er IKKE scoped, saa variablen skal haenge paa
+   .home - ellers siver den ud til alle andre siders heroer. */
+.home .bg-img {
+  --hero-luft: clamp(56px, 15vh, 140px);
 }
 
 /* Overlay قبلی بمانَد ولی z-index منطقی باشد */

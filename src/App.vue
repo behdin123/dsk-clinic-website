@@ -265,6 +265,13 @@ onMounted(() => {
      tekstlinjerne for lange til at laese behageligt. */
   --maal: 980px;
   --gutter: 20px;
+
+  /* Luften over og under hero-indholdet. Navigationen ligger IKKE oven paa
+     heroen - heroen begynder praecis hvor navigationen slutter - saa lige
+     meget padding i top og bund giver ogsaa optisk lige meget luft.
+     Vaerdien foelger vindueshoejden, saa heroen holder sig inden for
+     skaermen paa en lille laptop i stedet for at skubbe indholdet ned. */
+  --hero-luft: clamp(24px, 4.5vh, 76px);
 }
 
 @media (min-width: 1500px) { :root { --maal: 1080px; } }
@@ -380,7 +387,8 @@ body {
     background-size: cover;
     height: auto;
     min-height: 0;
-    padding: clamp(170px, 12vw, 230px) 0 clamp(70px, 5vw, 110px);
+    padding-block: var(--hero-luft);
+    padding-inline: 0;
     position: relative;
   }
 

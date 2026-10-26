@@ -41,10 +41,6 @@
                     alt="Læge Arash Bagheri under en forundersøgelse på DK Skønhedsklinik" />
             </div>
 
-            <div class="scroll-indicator">
-                <span>scroll ned</span>
-                <div class="line"></div>
-            </div>
         </div>
     </main>
 
@@ -530,7 +526,8 @@ main {
     display: flex;
     height: auto;
     min-height: 0;
-    padding: clamp(170px, 12vw, 230px) 0 clamp(80px, 6vw, 120px);
+    padding-block: var(--hero-luft);
+    padding-inline: 0;
     background-image: url('@/assets/BannerBehandling.webp') !important;
     background-size: cover;
     background-position: center;
@@ -555,7 +552,6 @@ main {
 }
 
 .kontaktOs-wrapper {
-    width: 50%;
     margin-right: 5%;
 
     .Informations {
@@ -911,8 +907,6 @@ h2 {
     }
 
     .KontaktOsHeader {
-        width: 60vw !important;
-
         h1,
         h2,
         p {

@@ -549,7 +549,6 @@ strong {
 
 .clinic-about {
   margin-top: 12px;
-  max-width: 1500px;
   line-height: 1.6;
 }
 
