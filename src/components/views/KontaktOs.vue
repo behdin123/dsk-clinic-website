@@ -616,7 +616,7 @@ h2 {
     display: grid;
     gap: 64px;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    padding: 100px 0;
+    padding: 44px 0 56px;
 
     .section-text {
         width: auto;
@@ -670,12 +670,22 @@ h2 {
    baandet i foerste gitterspalte og laa klistret til venstre kant. */
 .section-wrapper.follow-insta-wrapper { display: block; }
 
-.follow-insta-wrapper .flex-row {
+/* #id for at vinde over .flex-row's egen display: flex - ellers blev
+   spalterne 458 og 229 px i stedet for lige store. */
+#follow-insta-wrapper .flex-row {
     align-items: center;
     display: grid;
     gap: 64px;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
+
+#follow-insta-wrapper .section-text,
+#follow-insta-wrapper .section-media { width: auto; }
+
+/* Billedet til venstre, teksten til hoejre. Byttet med order, saa teksten
+   stadig staar foerst i DOM'en og stabler rigtigt paa mobil. */
+.follow-insta-wrapper .flex-row .section-media { order: 1; }
+.follow-insta-wrapper .flex-row .section-text { order: 2; }
 
 .follow-insta-wrapper {
     /* Sektionen havde praecis samme navy som footeren og laeste derfor som
@@ -1167,6 +1177,7 @@ h2 {
 
 .callback {
     display: flex;
+    justify-content: space-between;
     gap: 1.25rem;
     align-items: start;
 
@@ -1472,7 +1483,7 @@ button[disabled] {
     box-sizing: border-box;
     margin: 0 auto;
     max-width: var(--maal);
-    padding: 70px 20px 10px;
+    padding: 44px 0 56px;
     width: 100%;
 }
 
@@ -1680,5 +1691,52 @@ button[disabled] {
 @media (max-width: 880px) {
     .hero-handlinger { flex-direction: column; }
     .hero-knap { text-align: center; width: 100%; box-sizing: border-box; }
+}
+
+/* ===== Hero paa mobil =====
+   Spalterne stablede, men intet satte bredden, saa teksten og knapperne
+   loeb ud over hoejrekanten og blev klippet af heroens overflow: hidden.
+   Der var heller ingen sideluft. */
+@media (max-width: 900px) {
+  /* Instagram-baandet er et gitter nu, saa det skal stables eksplicit */
+  #follow-insta-wrapper .flex-row {
+    gap: 28px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #follow-insta-wrapper .section-media { order: 2; }
+  #follow-insta-wrapper .section-text { order: 1; }
+
+  /* Pilen foran de sociale knapper gjorde raekken bredere end skaermen */
+  .follow-insta-icons { flex-wrap: wrap; gap: 14px; }
+  .follow-insta-wrapper .soc::before { margin-right: 10px; font-size: 24px; }
+
+  main .flex {
+    box-sizing: border-box;
+    display: grid;
+    gap: 26px;
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 20px;
+    width: 100%;
+  }
+
+  main .flex > * { max-width: 100%; min-width: 0; }
+
+  .kontaktOs-wrapper { order: 1; width: 100%; }
+  .klinikken { order: 2; width: 100%; }
+
+  .KontaktOsHeader h1 { font-size: clamp(1.55rem, 6.6vw, 2rem) !important; }
+  .KontaktOsHeader .hero-lead,
+  .KontaktOsHeader p { max-width: none; width: 100%; }
+
+  .hero-punkter li { font-size: .85rem; }
+
+  .hero-handlinger { flex-direction: column; }
+
+  .hero-knap {
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+  }
 }
 </style>

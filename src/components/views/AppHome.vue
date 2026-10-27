@@ -40,17 +40,11 @@
         </p>
 
         <div>
-          <div class="mobile-show">
-            <p data-aos="fade-right" data-aos-duration="3000">
-              💉 Ekspert i botox, filler og hudbehandling
-            </p>
-            <p data-aos="fade-right" data-aos-duration="3000">
-              💙 Naturlige og harmoniske resultater
-            </p>
-            <p data-aos="fade-right" data-aos-duration="3000">
-              ✅ Udføres af erfaren læge
-            </p>
-          </div>
+          <ul class="mobile-show hero-punkter" data-aos="fade-right" data-aos-duration="3000">
+            <li>Botox, filler og hudbehandling</li>
+            <li>Naturlige og harmoniske resultater</li>
+            <li>Udføres af erfaren læge</li>
+          </ul>
 
           <div class="booking-button">
             <button class="general_button" type="button" @click="openBookingFromHero"
@@ -1245,10 +1239,6 @@ onMounted(() => {
     margin-bottom: 20px !important;
   }
 
-  .Multimediedesigner .txt p {
-    font-size: 16px !important;
-  }
-
   .bg-img {
     p {
       font-size: 18px !important;
@@ -1403,10 +1393,6 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     align-content: flex-end;
-
-    p {
-      font-size: 18px;
-    }
   }
 
   .ui-ux {
@@ -2331,5 +2317,87 @@ onMounted(() => {
   margin: 0 !important;
   color: var(--titleBanner-color) !important;
   letter-spacing: -.5px;
+}
+
+/* ===== Forsidens hero paa mobil =====
+   Teksten laa oven paa laegens ansigt uden nogen form for afdaempning, og
+   punkterne var emoji - det ser hjemmelavet ud paa en laegeklinik. Her
+   lægges en moerk bund ind under teksten, saa den er laesbar uanset hvor
+   billedet lander, og punkterne faar samme chip-udseende som paa
+   kontaktsiden. */
+@media (max-width: 900px) {
+  .home .bg-img {
+    /* !important fordi den faelles regel i App.vue er mere specifik */
+    background-position: 86% center !important;
+  }
+
+  /* To daempninger: én fra venstre, saa teksten har sin egen flade og ikke
+     ligger hen over ansigtet, og én fra bunden, saa knappen staar rent. */
+  .home .bg-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg,
+        rgba(10, 22, 36, .92) 0%,
+        rgba(10, 22, 36, .78) 38%,
+        rgba(10, 22, 36, .26) 72%,
+        rgba(10, 22, 36, .12) 100%),
+      linear-gradient(to bottom,
+        rgba(10, 22, 36, 0) 45%,
+        rgba(10, 22, 36, .55) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .home .hero-content-wrapper {
+    padding-inline: 20px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .home .hero-title h1 {
+    font-size: clamp(1.65rem, 7.4vw, 2.1rem) !important;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .home .hero-punkter {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    margin: 22px 0 0;
+    padding: 0;
+  }
+
+  .home .hero-punkter li {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    font-size: .98rem;
+    font-weight: 600;
+    gap: 10px;
+    line-height: 1.35;
+  }
+
+  .home .hero-punkter li::before {
+    background: rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 50%;
+    content: '';
+    flex: 0 0 auto;
+    height: 9px;
+    width: 9px;
+  }
+
+  .home .booking-button { margin-top: 26px; }
+
+  .home .booking-button .general_button {
+    box-sizing: border-box;
+    display: block;
+    max-width: 340px;
+    text-align: center;
+    width: 100%;
+  }
 }
 </style>

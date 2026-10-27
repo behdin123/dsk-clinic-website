@@ -483,6 +483,10 @@ const openBooking = () => {
     padding: 10px 0 80px;
 }
 
+.slice-inner{
+    gap: 0;
+}
+
 .omos-faq {
     /* Hvidt kort paa det lyse baand - samme kortsprog som kontaktkortene
        og formularen. Panelet laa foer paa hvid baggrund og forsvandt. */
@@ -533,7 +537,7 @@ const openBooking = () => {
     display: block;
     max-width: var(--maal);
     margin: 0 auto;
-    padding: 70px 0;
+    padding: 44px 0 56px;
     color: #153655;
 
     .sec__head { margin-bottom: 34px; }
@@ -729,7 +733,7 @@ h2 {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin: 0 auto;
     max-width: var(--maal);
-    padding: 100px 0 !important;
+    padding: 44px 0 56px;
 
     .txt {
         width: auto !important;
@@ -816,15 +820,6 @@ h2 {
 
     h2 {
         font-size: 36px;
-    }
-
-    .Multimediedesigner .txt {
-        margin-right: 0 !important;
-        width: 50% !important;
-
-        p {
-            font-size: 16px !important;
-        }
     }
 
     .img h1 {
@@ -1449,7 +1444,7 @@ h2 {
     font-style: italic;
     line-height: 1.6;
     margin: 0;
-    width: 100% !important;
+    width: 80% !important;
 }
 
 .hero-citat cite {
@@ -1474,4 +1469,30 @@ h2 {
 /* Eyebrow paa moerk baggrund */
 .sec__eyebrow--lys { color: rgba(255, 255, 255, .78) !important; }
 .sec__eyebrow--lys::before { background: rgba(255, 255, 255, .6) !important; }
+
+/* ===== Hero paa mobil =====
+   Portraettet havde order: 1 og laa derfor foerst - beskaaret og uden
+   overskrift over sig. Teksten havde samtidig ingen sideluft. */
+@media (max-width: 900px) {
+  .OmOsBannerDiv {
+    gap: 26px;
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 20px;
+  }
+
+  .OmOsBannerDiv .Bannertxt { order: 1; }
+
+  .OmOsBannerDiv .BannerPng {
+    margin: 0 auto;
+    max-width: 320px;
+    order: 2;
+    width: 100%;
+  }
+
+  .OmOsBannerDiv .BannerPng p:nth-child(2) { font-size: 1.6rem !important; }
+  .OmOsBannerDiv .BannerPng p:first-child { font-size: .95rem !important; }
+
+  .hero-citat { padding-left: 14px; }
+  .Bannertxt h1 { font-size: clamp(1.55rem, 6.6vw, 2rem) !important; }
+}
 </style>

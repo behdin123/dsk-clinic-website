@@ -3,62 +3,86 @@
 
   <url>
     <loc>https://dsklinik.dk/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://dsklinik.dk/priser/</loc>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dsklinik.dk/booking/</loc>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://dsklinik.dk/omos/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/kontaktos/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/klinik/vejle/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/klinik/esbjerg/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/behandlinger/botox/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/behandlinger/filler/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dsklinik.dk/behandlinger/filler/laeber/</loc>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/behandlinger/skinbooster/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/behandlinger/mesotherapy/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dsklinik.dk/behandlinger/microneedling/</loc>
-    <lastmod>2026-09-22T13:02:30.231Z</lastmod>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dsklinik.dk/behandlinger/prp/</loc>
+    <lastmod>2026-10-27T07:59:20.263Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
