@@ -97,14 +97,6 @@ watch(showModal, (open) => {
 }
 
 
-.hide-nav {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .2s ease;
-  /* هر z-index قبلی را بی‌اثر می‌کند */
-  z-index: 0 !important;
-}
-
 .general_button:hover {
   background-color: #1e4070;
 }

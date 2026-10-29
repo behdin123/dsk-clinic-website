@@ -5,7 +5,6 @@
         routePageClass,
         'navbar',
         { 'default-bg': isTransparent, transparent: !isTransparent, sticky: isSticky, 'is-visible': isStickyVisible },
-        { 'hide-nav': modalOpen }
       ]">
         <AppNavigation :is-sticky="isSticky" :page-class="routePageClass" />
       </div>
@@ -25,9 +24,7 @@
     <!-- خود کامپوننت رزرو -->
     <AppBooking :show-button="false" />
 
-    <div :class="[{ 'hide-nav': modalOpen }]">
-      <AppFooter />
-    </div>
+    <AppFooter />
 
     <!-- Cookiesamtykke. Styrer om GA4 og Meta Pixel overhovedet indlæses. -->
     <CookieConsent />

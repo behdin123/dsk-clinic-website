@@ -18,7 +18,7 @@
           <button class="knap knap--primaer" type="button" @click="openBooking">
             Book gratis forundersøgelse
           </button>
-          <a class="knap knap--sekundaer" href="#med-i-prisen">Det er med i prisen</a>
+          <a class="knap knap--sekundaer" href="#med-i-prisen" @click.prevent="tilSektion('med-i-prisen')">Det er med i prisen</a>
         </div>
       </div>
 
@@ -170,6 +170,16 @@ const alleRaekker = priceGroups.flatMap((g) => g.rows)
 const overblik = ['Botox – 1 område', 'Filler – 1 ml', 'Skinbooster – per session']
   .map((label) => alleRaekker.find((r) => r.label === label))
   .filter(Boolean)
+
+
+/* Ankerlink: rul blødt hen til sektionen og laeg den midt paa skaermen */
+const tilSektion = (id, blok = 'center') => {
+  const el = document.getElementById(id)
+  if (!el) return
+  const roligt = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  el.scrollIntoView({ behavior: roligt ? 'auto' : 'smooth', block: blok })
+  history.replaceState(null, '', `#${id}`)
+}
 
 const faqs = [
   {

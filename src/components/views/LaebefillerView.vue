@@ -1,5 +1,6 @@
 <template>
   <section class="container laeber-view" aria-labelledby="laeber-title">
+    <div class="laeber-top">
     <AppBreadcrumbs :sti="broedkrummer" />
 
     <header class="side-hero">
@@ -21,7 +22,7 @@
           <button class="knap knap--primaer" type="button" @click="openBooking">
             Book gratis forundersøgelse
           </button>
-          <a class="knap knap--sekundaer" href="#pris">Se pris</a>
+          <a class="knap knap--sekundaer" href="#pris" @click.prevent="tilSektion('pris')">Se pris</a>
         </div>
       </div>
 
@@ -30,6 +31,7 @@
           alt="Læge Arash Bagheri lægger læbefiller hos en patient i klinikken">
       </figure>
     </header>
+    </div>
 
     <dl class="fakta" aria-label="Læbefiller i tal">
       <div><dt>1.350 kr.</dt><dd>pr. ml hyaluronsyre</dd></div>
@@ -80,7 +82,7 @@
 
       <div class="omraader">
         <article class="omraade">
-          <h3>Mere volumen</h3>
+          <h3><span class="omraade__nr" aria-hidden="true">1</span>Mere volumen</h3>
           <p>
             Den klassiske læbeforstørrelse. Vi tilfører fylde jævnt i over- og underlæbe, typisk
             med lidt mere i underlæben, så proportionerne bliver naturlige. De fleste starter med
@@ -88,21 +90,21 @@
           </p>
         </article>
         <article class="omraade">
-          <h3>Tydeligere læbekant</h3>
+          <h3><span class="omraade__nr" aria-hidden="true">2</span>Tydeligere læbekant</h3>
           <p>
             Her handler det ikke om volumen, men om kontur. En præcis læbekant giver læben et
             skarpere, mere defineret udtryk – velegnet hvis kanten er blevet udvisket med årene.
           </p>
         </article>
         <article class="omraade">
-          <h3>Asymmetri</h3>
+          <h3><span class="omraade__nr" aria-hidden="true">3</span>Asymmetri</h3>
           <p>
             Få læber er helt symmetriske. Filler kan udligne forskelle i højde eller fylde mellem
             de to sider eller mellem over- og underlæbe.
           </p>
         </article>
         <article class="omraade">
-          <h3>Læbelinjer over munden</h3>
+          <h3><span class="omraade__nr" aria-hidden="true">4</span>Læbelinjer over munden</h3>
           <p>
             De lodrette linjer over overlæben – ofte kaldet rygerrynker. De behandles med en blødere
             filler lagt overfladisk, og kombineres nogle gange med
@@ -111,17 +113,13 @@
           </p>
         </article>
         <article class="omraade">
-          <h3>Nedadvendte mundvige</h3>
+          <h3><span class="omraade__nr" aria-hidden="true">5</span>Nedadvendte mundvige</h3>
           <p>
             Små mængder filler i mundvigene kan løfte et udtryk, der virker træt eller surt, uden
             at ændre selve læben.
           </p>
         </article>
-        <MediaPlaceholder
-          class="omraade omraade--medie"
-          alt="Oversigt over de fem områder omkring læberne, der kan behandles med filler"
-          motiv="SVG-diagram: ansigtsudsnit med de fem markerede områder"
-          ratio="4 / 3" />
+        <LaebeOmraader />
       </div>
     </section>
 
@@ -230,7 +228,7 @@
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
-import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
+import LaebeOmraader from '@/components/LaebeOmraader.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
 import imgHero from '@/assets/behandlinger/filler.webp'
 import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
@@ -243,6 +241,16 @@ const CANONICAL = `${SITE_URL}/behandlinger/filler/laeber/`
 
 const phone = CLINIC_PHONE
 const phoneHref = CLINIC_PHONE_HREF
+
+
+/* Ankerlink: rul blødt hen til sektionen og laeg den midt paa skaermen */
+const tilSektion = (id, blok = 'center') => {
+  const el = document.getElementById(id)
+  if (!el) return
+  const roligt = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  el.scrollIntoView({ behavior: roligt ? 'auto' : 'smooth', block: blok })
+  history.replaceState(null, '', `#${id}`)
+}
 
 const faqs = [
   {
@@ -393,13 +401,38 @@ $c-blue: #2d58a1;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
 }
 
-.laeber-kort { padding: 28px 28px 30px !important; }
+/* "Kort fortalt": samme udtryk som overblikket paa prissiden -
+   navy kort, lille titel i versaler og raekker adskilt af tynde streger */
+.laeber-kort {
+  background: $c-dark !important;
+  border: 0 !important;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .14) !important;
+  color: #fff;
+  padding: 32px 32px 18px !important;
+}
 
 .laeber-kort h3 {
-  color: $c-dark;
-  font-size: 1.05rem;
-  margin: 0 0 16px;
+  color: rgba(255, 255, 255, .7);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
 }
+
+.laeber-kort .tjek { gap: 0; }
+
+.laeber-kort .tjek li {
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 0 14px 34px;
+}
+
+.laeber-kort .tjek li:last-child { border-bottom: 0; }
+
+.laeber-kort .tjek li::before { top: 14px; }
 
 /* Fem omraader + diagram = et helt gitter (3 x 2) */
 .omraader {
@@ -532,5 +565,46 @@ $c-blue: #2d58a1;
     max-width: none !important;
     width: 90% !important;
   }
+}
+
+/* ===== Hero i hvidt baand =====
+   Heroen skal kunne baere siden: et hvidt baand i fuld bredde, der klart
+   adskiller den fra indholdet paa den graa side. box-shadow + clip-path
+   giver fuld bredde uden vandret scroll. */
+.laeber-view { padding-top: 0 !important; }
+
+.laeber-top {
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
+  margin-bottom: 56px;
+  padding: 28px 0 56px;
+}
+
+.laeber-top .side-hero { margin-bottom: 0; }
+.laeber-top .side-hero h1 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
+.laeber-top .side-hero__media img { max-height: 600px; }
+
+/* Numrene paa kortene svarer til numrene i diagrammet */
+.omraade h3 {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.omraade__nr {
+  align-items: center;
+  background: #2d58a1;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 24px;
+  font-size: .78rem;
+  height: 24px;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .laeber-top { padding: 20px 0 40px; }
 }
 </style>
