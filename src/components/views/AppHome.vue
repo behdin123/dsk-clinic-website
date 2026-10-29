@@ -2402,7 +2402,7 @@ onMounted(() => {
 
   .home .bg-img p.hero-lead {
     font-size: .98rem;
-    max-width: 34ch;
+    max-width: 25ch;
   }
 
   /* Lave telefoner (iPhone SE o.l.): manchetten ville skubbe teksten ned

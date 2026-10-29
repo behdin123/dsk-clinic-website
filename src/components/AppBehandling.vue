@@ -72,6 +72,7 @@
 
   </div>
 
+  <div class="Behandling-content-main">
   <!-- 1) Audience -->
   <section v-if="sections.audience" id="audience" class="slice">
     <div class="slice-inner">
@@ -269,6 +270,8 @@
     </div>
   </section>
 
+  </div>
+
 
 </template>
 
@@ -412,7 +415,6 @@ $c-white: #fff;
 $bd-dark: rgba(255, 255, 255, .18);
 $bd-light: rgba(0, 0, 0, .14);
 $bd-muted: rgba(255, 255, 255, .12);
-
 
 .faq-q {
   font-weight: 700;
