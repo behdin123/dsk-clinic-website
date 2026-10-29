@@ -60,7 +60,58 @@
       </aside>
     </div>
 
-    <section class="clinic-about">
+    <section class="sec" aria-labelledby="find-vej-vejle">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Praktisk</p>
+        <h2 id="find-vej-vejle">Sådan finder du os</h2>
+        <p class="sec__lead">Klinikken ligger på <b>Søndergade 50</b> midt i Vejle. Der er flere parkeringsmuligheder inden for få minutters gang, og den tætteste holder praktisk talt foran døren.</p>
+      </div>
+      <div class="parkering">
+        <article class="parkering__kort parkering__kort--primaer">
+          <h3>Å-centret <span class="badge">Tættest på</span></h3>
+          <p>Du kommer stort set lige foran indgangen. 110 pladser og åbent døgnet rundt.</p>
+          <ul>
+            <li>Første halve time gratis</li>
+            <li>Derefter 44 kr. pr. påbegyndt time</li>
+          </ul>
+          <p class="parkering__advarsel">
+            <b>Husk at registrere bilen i en parkeringsapp</b> – også selvom du kun holder i den
+            gratis første halve time. Ellers kan du få en kontrolafgift.
+          </p>
+        </article>
+
+        <article class="parkering__kort">
+          <h3>Q-Park Bryggen</h3>
+          <p>P-huset under Bryggen shoppingcenter ved Søndertorv. Et par minutters gang.</p>
+        </article>
+
+        <article class="parkering__kort">
+          <h3>Enghavecentret</h3>
+          <p>Alternativ i kort gåafstand med 30 minutters gratis parkering.</p>
+          <p class="parkering__advarsel">
+            <b>Husk at registrere bilen i en parkeringsapp</b> – også selvom du kun holder i de
+            gratis første 30 minutter. Ellers kan du få en kontrolafgift.
+          </p>
+        </article>
+      </div>
+
+      <MediaPlaceholder
+        class="parkering__billede"
+        :src="imgParkering"
+        alt="Parkeringsbåsene foran indgangen på Søndergade 50 i Vejle"
+        ratio="12 / 5" />
+
+      <p class="parkering__note">
+        Taksterne kan ændre sig. <b>Tjek altid skiltningen på stedet</b>, inden du forlader bilen –
+        en kontrolafgift koster langt mere end en times parkering.
+      </p>
+
+      <p class="parkering__transport">
+        Kommer du med tog eller bus, er der få minutters gang fra Vejle Station gennem midtbyen.
+      </p>
+    </section>
+
+    <section class="clinic-about blue-background">
       <div class="about-content">
         <div class="about-text">
           <p class="sec__eyebrow">Klinikken</p>
@@ -84,51 +135,8 @@
       </div>
     </section>
 
-    <section class="sec" aria-labelledby="find-vej-vejle">
-      <div class="sec__head">
-        <p class="sec__eyebrow">Praktisk</p>
-        <h2 id="find-vej-vejle">Sådan finder du os</h2>
-        <p class="sec__lead">Klinikken ligger på <b>Søndergade 50</b> midt i Vejle. Der er flere parkeringsmuligheder inden for få minutters gang, og den tætteste holder praktisk talt foran døren.</p>
-      </div>
-      <div class="parkering">
-        <article class="parkering__kort parkering__kort--primaer">
-          <h3>Å-centret <span class="badge">Tættest på</span></h3>
-          <p>Du kommer stort set lige foran indgangen. 110 pladser og åbent døgnet rundt.</p>
-          <ul>
-            <li>Første halve time gratis</li>
-            <li>Derefter 44 kr. pr. påbegyndt time</li>
-            <li>Maks. 500 kr. pr. døgn</li>
-          </ul>
-        </article>
 
-        <article class="parkering__kort">
-          <h3>Q-Park Bryggen</h3>
-          <p>P-huset under Bryggen shoppingcenter ved Søndertorv. Et par minutters gang.</p>
-        </article>
-
-        <article class="parkering__kort">
-          <h3>Enghavecentret</h3>
-          <p>Alternativ i kort gåafstand med 30 minutters gratis parkering.</p>
-        </article>
-      </div>
-
-      <MediaPlaceholder
-        class="parkering__billede"
-        :src="imgParkering"
-        alt="Parkeringsbåsene foran indgangen på Søndergade 50 i Vejle"
-        ratio="12 / 5" />
-
-      <p class="parkering__note">
-        Taksterne kan ændre sig. <b>Tjek altid skiltningen på stedet</b>, inden du forlader bilen –
-        en kontrolafgift koster langt mere end en times parkering.
-      </p>
-
-      <p class="parkering__transport">
-        Kommer du med tog eller bus, er der få minutters gang fra Vejle Station gennem midtbyen.
-      </p>
-    </section>
-
-    <section class="sec sec--panel" aria-labelledby="behandlinger-vejle">
+    <section class="sec sec--panel margin-correction" aria-labelledby="behandlinger-vejle">
       <div class="sec__head">
         <p class="sec__eyebrow">Behandlinger</p>
         <h2 id="behandlinger-vejle">Behandlinger i Vejle</h2>
@@ -146,7 +154,7 @@
       <p class="bl-alle"><router-link to="/priser/">Se alle priser</router-link></p>
     </section>
 
-    <section class="sec" aria-labelledby="laege-vejle">
+    <section class="sec blue-background" aria-labelledby="laege-vejle">
       <div class="split split--medie-foerst split--portraet">
         <div class="split__tekst">
           <p class="sec__eyebrow">Klinikkens læge</p>
@@ -478,15 +486,10 @@ const openBooking = () => {
 
 
 
-@media (max-width: 760px) {
-  
-  
-}
 
 .container {
   flex-direction: column;
   margin: 0 auto;
-  padding: 100px 0 !important;
 }
 
 .clinic-hero {
@@ -596,7 +599,6 @@ strong {
 
 @media only screen and (max-width: 1550px) {
   .container {
-    max-width: 1200px;
     padding: 70px 0 !important;
   }
 
@@ -605,17 +607,7 @@ strong {
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .container {
-    max-width: 1000px;
-  }
-}
-
 @media only screen and (max-width: 1000px) {
-  .container {
-    max-width: 800px;
-    padding: 0 !important;
-  }
 
   .container {
     align-items: center !important;
@@ -858,7 +850,7 @@ strong {
 /* ---- Runde 2: luft, balance og klikbarhed ---- */
 
 /* Der laa ca. 150 px tom luft under navigationen, foer oejet naaede H1. */
-.container.clinic-view { padding-top: 56px !important; }
+.container.clinic-view { padding: 56px 0 0 0 !important; }
 
 /* "Om klinikken": teksten sluttede langt foer videoen - blokken saa skaev ud. */
 .clinic-about .about-content {
@@ -925,5 +917,17 @@ strong {
     margin-right: auto;
     width: 90%;
   }
+}
+
+/* Vigtig parkeringsinfo: skal kunne ses, men ikke raabe */
+.parkering__advarsel {
+  background: rgba(217, 130, 43, .08);
+  border-left: 3px solid #d9822b;
+  border-radius: 0 8px 8px 0;
+  color: #153655;
+  font-size: .92rem;
+  line-height: 1.5;
+  margin: 12px 0 0;
+  padding: 10px 12px;
 }
 </style>

@@ -213,8 +213,8 @@
         </div>
 
         <div class="VIKING-image">
-          <img class="first-img" :src="imgOmOs" width="100%" height="auto"
-            alt="Konsultation hos DK Skønhedsklinik i Esbjerg og Vejle">
+          <img class="first-img samtale-img" :src="imgOmOs" width="1400" height="1738" loading="lazy"
+            alt="Læge Arash Bagheri under en konsultation hos DK Skønhedsklinik">
         </div>
       </div>
     </div>
@@ -357,9 +357,14 @@
 
 
     <section v-if="faqs.length" id="faq" class="faq">
-      <h2 class="section-title">Ofte stillede spørgsmål</h2>
+      <div class="sec sec--kort faq-kort">
+        <div class="sec__head">
+          <p class="sec__eyebrow">Spørgsmål</p>
+          <h2 id="faq-title">Ofte stillede spørgsmål</h2>
+        </div>
 
-      <FaqList :items="faqs" />
+        <FaqList :items="faqs" />
+      </div>
     </section>
 
   </div>
@@ -369,7 +374,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
-import imgOmOs from '@/assets/OmOs.webp'
+import imgOmOs from '@/assets/DSK-samtale.webp'
 import imgClinic from '@/assets/Clinic_consultation.webp'
 
 const faqs = [
@@ -2303,7 +2308,7 @@ onMounted(() => {
     box-shadow: 0 4px 14px rgba(10, 22, 36, .22);
     color: #fff;
     display: flex;
-    font-size: .76rem;
+    font-size: .9rem;
     font-weight: 600;
     gap: 6px;
     line-height: 1.35;
@@ -2326,7 +2331,6 @@ onMounted(() => {
   .home .hero-ring {
     border-radius: 12px;
     box-sizing: border-box;
-    display: block !important;
     font-family: inherit;
     font-size: 1rem;
     font-weight: 700;
@@ -2336,11 +2340,7 @@ onMounted(() => {
     text-decoration: none;
   }
 
-  .home .booking-button .general_button {
-    background: #fff;
-    border: 0;
-    color: #1e4078 !important;
-  }
+
 
   .home .hero-ring {
     -webkit-backdrop-filter: blur(6px);
@@ -2468,12 +2468,6 @@ onMounted(() => {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-  }
-
-  .home .booking-button .general_button,
-  .home .hero-ring {
-    padding: 15px 26px;
-    width: auto !important;
   }
 }
 
@@ -2654,5 +2648,20 @@ onMounted(() => {
   }
 
   .home .container_carts .card { height: 330px; }
+}
+
+/* Portraetbilledet beskaeres til kvadrat - hold laegens hoved i billedet */
+.home .samtale-img { object-position: 50% 30%; }
+
+/* FAQ: hvidt kort med eyebrow, ligesom om os og behandlingssiderne */
+.home .faq .faq-kort {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.home .faq .faq-kort h2 {
+  color: #153655 !important;
+  text-align: left;
 }
 </style>

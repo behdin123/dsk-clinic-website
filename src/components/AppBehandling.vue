@@ -118,22 +118,20 @@
   </section>
 
   <!-- 3) Steps -->
-  <section v-if="steps3.length" id="steps" class="slice is-steps">
+  <section v-if="steps3.length" id="steps" class="slice forloeb" aria-labelledby="forloeb-titel">
     <div class="slice-inner">
-      <div class="slice-body">
-        <h2 class="slice-title icon-steps">Sådan foregår {{ title }}</h2>
-
-        <div class="steps-flow" role="list" aria-label="Behandlingsforløb i tre trin">
-          <div class="steps-rail" aria-hidden="true"></div>
-
-          <div v-for="(s, i) in steps3" :key="'s-' + i" class="step-card" role="listitem"
-            :aria-label="`Trin ${i + 1}: ${s.title}`">
-            <div class="step-badge" :aria-hidden="true">{{ i + 1 }}</div>
-            <h3 class="step-title">{{ s.title }}</h3>
-            <p class="step-text" v-html="s.text"></p>
-          </div>
-        </div>
+      <div class="sec__head">
+        <p class="sec__eyebrow">Forløb</p>
+        <h2 id="forloeb-titel">Sådan foregår {{ title }}</h2>
       </div>
+
+      <ol class="forloeb__liste">
+        <li v-for="(s, i) in steps3" :key="'s-' + i" class="forloeb__trin">
+          <span class="forloeb__nr" aria-hidden="true">{{ String(i + 1).padStart(2, '0') }}</span>
+          <h3 class="forloeb__titel">{{ s.title }}</h3>
+          <p class="forloeb__tekst" v-html="s.text"></p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -168,21 +166,27 @@
   </section>
 
   <!-- 5) Aftercare -->
-  <section v-if="sections.aftercare?.length" id="aftercare" class="slice is-aftercare">
-    <div class="slice-inner narrow">
-      <header class="ac-head">
-        <h2 class="slice-title icon-leaf">Efterbehandling for {{ title }}</h2>
-        <p class="ac-lead">Gode råd de første 24–48 timer for et pænt og trygt resultat.</p>
-      </header>
+  <section v-if="sections.aftercare?.length" id="aftercare" class="slice efter" aria-labelledby="efter-titel">
+    <div class="slice-inner">
+      <div class="efter__panel">
+        <div class="sec__head">
+          <p class="sec__eyebrow">Efter behandlingen</p>
+          <h2 id="efter-titel">Efterbehandling for {{ title }}</h2>
+          <p class="sec__lead">Gode råd de første 24–48 timer for et pænt og trygt resultat.</p>
+        </div>
 
-      <ul class="ac-grid" role="list" aria-label="Efterbehandlingsråd">
-        <li v-for="(a, i) in decorateAftercare(sections.aftercare)" :key="'af-' + i" class="ac-card" role="listitem">
-          <span class="ac-check" aria-hidden="true">✓</span>
-          <div class="ac-text" v-html="a"></div>
-        </li>
-      </ul>
+        <ul class="efter__liste" :class="{ 'efter__liste--par': sections.aftercare.length % 2 === 0 && sections.aftercare.length < 6 }">
+          <li v-for="(a, i) in decorateAftercare(sections.aftercare)" :key="'af-' + i" class="efter__raad">
+            <span class="efter__ikon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5l3 3 6-7" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+            <span class="efter__tekst" v-html="a"></span>
+          </li>
+        </ul>
 
-      <p v-if="sections.aftercareNote" class="after-note" v-html="sections.aftercareNote" />
+        <p v-if="sections.aftercareNote" class="efter__note" v-html="sections.aftercareNote" />
+      </div>
     </div>
   </section>
 
@@ -228,26 +232,41 @@
   </section>
 
   <!-- 7) Pricing -->
-  <section v-if="sections.pricing" id="pricing" class="slice">
+  <section v-if="sections.pricing" id="pricing" class="slice pris" aria-labelledby="pris-titel">
     <div class="slice-inner">
-      <div class="slice-body fuld-width">
-        <h2 class="slice-title icon-coin">Pris & serier</h2>
-        <b>For {{ title }} </b>
-        <ul class="price-list" v-if="sections.pricing.items?.length">
-          <li v-for="(p, i) in sections.pricing.items" :key="'p-' + i">
-            <span>{{ p.label }}</span><b v-if="p.price">{{ p.price }}</b>
-          </li>
-        </ul>
-        <p v-if="sections.pricing.notes" class="muted" v-html="sections.pricing.notes" />
+      <div class="pris__kort">
+        <div class="pris__intro">
+          <p class="sec__eyebrow">Pris</p>
+          <h2 id="pris-titel">Pris på {{ title }}</h2>
+          <p v-if="sections.pricing.notes" class="pris__note" v-html="sections.pricing.notes" />
+          <p class="pris__note">
+            Forundersøgelsen er gratis og uforpligtende, og du betaler først efter behandlingen.
+          </p>
+          <div class="pris__handling">
+            <AppBooking />
+            <router-link :to="{ name: 'priser' }" class="pris__link">Se alle priser</router-link>
+          </div>
+        </div>
+
+        <dl v-if="sections.pricing.items?.length" class="pris__liste">
+          <div v-for="(p, i) in sections.pricing.items" :key="'p-' + i" class="pris__raekke">
+            <dt>{{ p.label }}</dt>
+            <dd>{{ p.price }}</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
   <section v-if="faqs.length" class="faq">
-    <h2 class="section-title">Ofte stillede spørgsmål om {{ title }}</h2>
-
-    <FaqList :items="faqs" />
+    <div class="sec sec--kort faq-kort">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Spørgsmål</p>
+        <h2 id="faq-behandling">Ofte stillede spørgsmål om {{ title }}</h2>
+      </div>
+      <FaqList :items="faqs" />
+    </div>
   </section>
 
 
@@ -447,10 +466,6 @@ $bd-muted: rgba(255, 255, 255, .12);
   flex-direction: row-reverse;
 }
 
-.slice-body {
-  width: 45%;
-}
-
 .resultater-body {
   width: 45% !important;
 
@@ -461,15 +476,10 @@ $bd-muted: rgba(255, 255, 255, .12);
   }
 }
 
-.fuld-width {
-  width: 100% !important;
-  margin: 0 15%;
-}
-
 .section-safety-body .muted {
-  margin-top: 0;
-  margin-left: 5px;
+  margin-top: 5px;
   font-size: 16px;
+  max-width: 66ch;
 }
 
 #expectations {
@@ -543,29 +553,11 @@ $bd-muted: rgba(255, 255, 255, .12);
   }
 }
 
-// ===== Price list =====
-.price-list {
-  padding-left: 0;
-  margin: 10px 0 0;
-}
-
-.price-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px dashed $bd-muted;
-}
-
-.price-list li:last-child {
-  border-bottom: none;
-}
-
 
 // ===== Audience (ruled rows with arrow) =====
 
 #audience {
-  background: #f3f3f3 !important;
+  background: var(--primary-color) !important;
   color: $c-black;
 
   .slice-title {
@@ -573,35 +565,15 @@ $bd-muted: rgba(255, 255, 255, .12);
   }
 }
 
+.slice-body{
+  max-width: 800px;
+}
+
 .slice-title {
   text-align: left !important;
 }
 
-.ac-head {
-  .slice-title {
-    color: #fff !important;
-  }
-}
 
-.is-steps {
-  .slice-title {
-    color: #fff !important;
-    text-align: center !important;
-  }
-
-  .step-title {
-    font-size: 24px;
-    font-weight: 400 !important;
-  }
-}
-
-.step-card {
-  text-align: left !important;
-}
-
-.step-card::before {
-  left: 13% !important;
-}
 
 #audience .bullet {
   padding: 0;
@@ -720,8 +692,6 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 .section-safety-intro {
-  display: flex;
-  align-items: center;
   margin-top: 20px;
   margin-bottom: 50px !important;
 }
@@ -759,52 +729,8 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 
-// ===== Aftercare (cards) =====
-.slice.is-aftercare {
-  background: $c-dark;
-  color: $c-white;
-  position: relative;
-  padding: 100px 16px;
-  overflow: hidden;
-}
-
-.slice.is-aftercare .slice-inner.narrow {
-  flex-direction: column;
-  gap: 20px;
-}
-
-.slice.is-aftercare .slice-body {
-  width: auto;
-}
-
-.ac-head h2 {
-  margin-bottom: 15px !important;
-}
-
-.ac-lead {
-  margin: 6px 0 0;
-  opacity: .9;
-  font-size: 1.05rem;
-}
-
-.ac-grid {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-  display: flex;
-  gap: 16px;
-}
-
-
 
 @media (max-width: 1250px) {
-  .ac-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .step-card::before {
-    display: none;
-  }
 
   .slice-inner {
     max-width: 1000px !important;
@@ -823,103 +749,10 @@ $bd-muted: rgba(255, 255, 255, .12);
     grid-template-columns: 1fr;
     column-gap: 0;
   }
-
-
-
-  .steps-flow {
-    margin-top: 30px;
-  }
-
-  .ac-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 540px) {
-  .ac-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.ac-card {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: 16px;
-  padding: 18px 16px;
-  min-height: 120px;
-  display: flex;
-  flex: 1 1 0;
-  gap: 12px;
-  align-items: flex-start;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .22);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-.ac-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .26);
-  border-color: rgba(255, 255, 255, .18);
-}
-
-.ac-check {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  border-radius: 999px;
-  text-align: center;
-  font-weight: 900;
-  color: #0b1e35;
-  background: #fff;
-  border: 6px solid rgba(255, 255, 255, .18);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .22);
-}
-
-.ac-text {
-  line-height: 1.7;
-  opacity: .98;
-  font-size: 1.05rem;
-}
-
-.ac-chip {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .14);
-  border: 1px solid rgba(255, 255, 255, .22);
-  font-weight: 700;
-  font-size: .92rem;
-  margin: 0 4px;
-}
-
-.after-note {
-  margin-top: 14px;
-  opacity: .85;
-  font-size: .95rem;
-}
-
-/* neutralize legacy .check inside this section */
-.slice.is-aftercare .check {
-  padding-left: 0;
-  line-height: inherit;
-}
-
-.slice.is-aftercare .check li::before {
-  content: none;
-}
-
-
-// ===== Steps flow =====
-.slice.is-steps .slice-inner {
-  justify-content: center !important;
 }
 
 .slice-inner {
   justify-content: space-between;
-}
-
-.slice.is-steps .slice-body {
-  width: auto;
 }
 
 /* vertical timeline on mobile */
@@ -1392,20 +1225,8 @@ button[type="submit"],
     margin: 0 auto;
   }
 
-  .steps-flow {
-    gap: 35px;
-  }
-
   h2 {
     font-size: 36px !important;
-  }
-
-  .fuld-width {
-    width: 100% !important;
-  }
-
-  .slice.is-steps .slice-body {
-    width: auto !important;
   }
 
   .audience-media img {
@@ -1431,13 +1252,8 @@ button[type="submit"],
     flex: 0 0 130px;
   }
 
-  .step-text,
   #safety .bullet li {
     font-size: 14px;
-  }
-
-  .step-text {
-    margin: 22px 0 0 0;
   }
 
   .resultater-body {
@@ -1453,9 +1269,6 @@ button[type="submit"],
 }
 
 @media (max-width: 1050px) {
-  .fuld-width {
-    margin: 0 !important;
-  }
 
   .slice-body {
     width: 80vw !important;
@@ -1496,11 +1309,6 @@ button[type="submit"],
     align-items: center;
   }
 
-  .slice.is-steps .slice-body {
-    width: 90% !important;
-    margin: 0 auto;
-  }
-
   .section-safety-intro {
     flex-direction: column;
     align-items: start;
@@ -1523,31 +1331,12 @@ button[type="submit"],
     .slice-title {
       margin-bottom: 5px !important;
     }
-
-    .price-list {
-      margin: 20px 0 !important;
-    }
   }
 
   .resultater-body p {
     font-size: 16px;
   }
 
-  .slice.is-aftercare {
-    padding: 60px 20px;
-
-    .slice-inner.narrow {
-      margin: 0 !important;
-    }
-  }
-
-  .ac-grid {
-    flex-wrap: wrap;
-
-    .ac-card {
-      min-width: 82vw;
-    }
-  }
 }
 
 @media (max-width: 666px) {
@@ -1560,10 +1349,6 @@ button[type="submit"],
   }
 
   .slice-body {
-    width: 100% !important;
-  }
-
-   .slice.is-steps .slice-body {
     width: 100% !important;
   }
 
@@ -1617,5 +1402,261 @@ button[type="submit"],
   .line {
     width: 100%;
   }
+}
+
+/* ===== Maalestokken paa behandlingssiderne =====
+   Alt under heroen staar paa var(--maal) - samme venstre- og hoejrekant
+   som resten af sitet. Baandene beholder fuld baggrund; sideluften holder
+   indholdet inde paa maalet. Under 1000 px: 90 % ligesom de andre sider. */
+.slice,
+.faq {
+  box-sizing: border-box;
+  padding-left: max(var(--gutter), calc((100% - var(--maal)) / 2)) !important;
+  padding-right: max(var(--gutter), calc((100% - var(--maal)) / 2)) !important;
+}
+
+.slice > .slice-inner,
+.faq .faq-kort {
+  box-sizing: border-box;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.slice > .slice-inner { padding-left: 0 !important; padding-right: 0 !important; }
+
+.faq .faq-kort { margin-bottom: 0; }
+.faq .faq-kort h2 { text-align: left; }
+
+@media (max-width: 1000px) {
+  .slice,
+  .faq {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+}
+
+/* Hero-billedet: samme 3:2-format paa alle behandlingssider, ogsaa naar
+   billedfilen selv er naesten kvadratisk (skinbooster, microneedling). */
+.media_and_content .img_wrap img { aspect-ratio: 3 / 2; }
+
+/* ===== Forloeb (alle behandlingssider) =====
+   Ét gitter, der selv finder antallet af kolonner: tre side om side paa
+   laptop og desktop, én under hinanden paa mobil. Kortene er lige hoeje. */
+#steps.forloeb { background: #153655; color: #fff; }
+
+.forloeb .slice-inner,
+.efter .slice-inner,
+.pris .slice-inner { display: block; }
+
+.forloeb .sec__eyebrow { color: rgba(255, 255, 255, .78) !important; }
+.forloeb .sec__eyebrow::before { background: rgba(255, 255, 255, .6) !important; }
+.forloeb h2 { color: #fff !important; text-align: left !important; }
+
+.forloeb__liste {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+}
+
+.forloeb__trin {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 18px;
+  box-sizing: border-box;
+  padding: 28px 26px 30px;
+}
+
+.forloeb__nr {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
+  color: #9fc0f5;
+  display: inline-flex;
+  font-size: .85rem;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .04em;
+  width: 40px;
+}
+
+.forloeb__titel {
+  color: #fff !important;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 18px 0 8px;
+}
+
+.forloeb__tekst {
+  color: rgba(255, 255, 255, .8);
+  font-size: .98rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ===== Efterbehandling =====
+   Tonet panel (samme som klinikssidernes paneler) med raad i to kolonner
+   og et flueben i brandblaa - ligner resten af sitet. */
+#aftercare.efter { background: #fff; color: #153655; }
+
+.efter__panel {
+  background: rgba(45, 88, 161, .045);
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-sizing: border-box;
+  padding: 42px 40px;
+}
+
+.efter h2 { color: #153655 !important; text-align: left !important; }
+
+.efter__liste {
+  display: grid;
+  gap: 14px 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.efter__raad {
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .05);
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.efter__ikon {
+  align-items: center;
+  background: #2d58a1;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 26px;
+  height: 26px;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.efter__tekst {
+  color: #153655;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.efter__tekst :deep(.ac-chip) {
+  background: rgba(45, 88, 161, .10);
+  border-radius: 999px;
+  color: #2d58a1;
+  font-weight: 700;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.efter__note {
+  color: rgba(21, 54, 85, .8);
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 20px 0 0;
+}
+
+/* ===== Pris =====
+   Hvidt kort (kortsproget): til venstre overskrift, note og handling,
+   til hoejre prislisten som en ren tabel med tynde streger. */
+#pricing.pris { background: #f4f3f0; color: #153655; }
+
+.pris__kort {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  display: grid;
+  gap: 40px 56px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 42px 40px;
+}
+
+.pris h2 {
+  color: #153655 !important;
+  margin: 0 0 14px;
+  text-align: left !important;
+}
+
+.pris__note {
+  color: rgba(21, 54, 85, .82);
+  line-height: 1.65;
+  margin: 0 0 10px;
+  max-width: 52ch;
+}
+
+.pris__handling {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  margin-top: 22px;
+}
+
+.pris__link {
+  color: #2d58a1;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pris__liste { margin: 0; }
+
+.pris__raekke {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(21, 54, 85, .12);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.pris__raekke:first-child { border-top: 1px solid rgba(21, 54, 85, .12); }
+
+.pris__raekke dt { color: #153655; font-weight: 600; }
+
+.pris__raekke dd {
+  color: #153655;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .pris__kort { grid-template-columns: minmax(0, 1fr); }
+  .efter__liste,
+  .efter__liste--par { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 2 eller 4 raad: to kolonner, saa der ikke staar et enligt kort */
+@media (min-width: 901px) {
+  .efter__liste--par { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tre trin side om side ned til tablet - under det én kolonne,
+   saa der aldrig staar et enligt kort paa en ny raekke. */
+@media (max-width: 700px) {
+  .forloeb__liste { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .efter__panel,
+  .pris__kort { padding: 26px 22px; }
 }
 </style>

@@ -60,32 +60,6 @@
       </aside>
     </div>
 
-    <section class="clinic-about">
-      <div class="about-content">
-        <div class="about-text">
-          <p class="sec__eyebrow">Klinikken</p>
-          <h2>Om klinikken i Esbjerg</h2>
-          <p>
-            Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og
-            komfort. De kosmetiske behandlinger
-            udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
-            slut.
-
-
-            Lokalet har nem adgang fra gaden/indgangen og gode forhold for alle besøgende.
-            <br><br>
-            Kom gerne et par minutter før, så der er ro til samtalen.
-          </p>
-        </div>
-        <div class="about-video">
-          <video ref="videoEl" loop muted playsinline preload="none" width="1080" height="1350"
-            :poster="videoPoster" aria-label="Video fra klinikken">
-            Din browser understøtter ikke video-element.
-          </video>
-        </div>
-      </div>
-    </section>
-
     <section class="sec" aria-labelledby="find-vej-esbjerg">
       <div class="sec__head">
         <p class="sec__eyebrow">Praktisk</p>
@@ -111,7 +85,7 @@
         class="parkering__billede"
         :src="imgParkering"
         alt="Parkeringspladsen ved Havnegade 6 i Esbjerg, set fra Havnegade – klinikken ligger i bygningen til venstre"
-        ratio="16 / 8" />
+        ratio="12 / 5" />
 
       <p class="parkering__note">
         Skiltningen kan ændre sig. <b>Læs skiltet, inden du forlader bilen</b> – en kontrolafgift
@@ -119,7 +93,34 @@
       </p>
     </section>
 
-    <section class="sec sec--panel" aria-labelledby="behandlinger-esbjerg">
+    <section class="clinic-about blue-background">
+      <div class="about-content">
+        <div class="about-text">
+          <p class="sec__eyebrow">Klinikken</p>
+          <h2>Om klinikken i Esbjerg</h2>
+          <p>
+            Vores <strong>Esbjerg-afdeling</strong> er indrettet lyst og roligt med fokus på diskretion, hygiejne og
+            komfort. De kosmetiske behandlinger
+            udføres af vores erfarne læge i et klinisk, men imødekommende miljø, hvor du kan føle dig tryg fra start til
+            slut.
+
+
+            Lokalet har nem adgang fra gaden/indgangen og gode forhold for alle besøgende.
+            <br><br>
+            Kom gerne et par minutter før, så der er ro til samtalen.
+          </p>
+        </div>
+        <div class="about-video">
+          <video ref="videoEl" loop muted playsinline preload="none" width="1080" height="1350"
+            :poster="videoPoster" aria-label="Video fra klinikken">
+            Din browser understøtter ikke video-element.
+          </video>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="sec sec--panel margin-correction" aria-labelledby="behandlinger-esbjerg">
       <div class="sec__head">
         <p class="sec__eyebrow">Behandlinger</p>
         <h2 id="behandlinger-esbjerg">Behandlinger i Esbjerg</h2>
@@ -137,7 +138,7 @@
       <p class="bl-alle"><router-link to="/priser/">Se alle priser</router-link></p>
     </section>
 
-    <section class="sec" aria-labelledby="laege-esbjerg">
+    <section class="sec blue-background" aria-labelledby="laege-esbjerg">
       <div class="split split--medie-foerst split--portraet">
         <div class="split__tekst">
           <p class="sec__eyebrow">Klinikkens læge</p>
@@ -464,15 +465,6 @@ const openBooking = () => {
   .bl-pris { padding-top: 4px; }
 }
 
-
-
-
-
-@media (max-width: 760px) {
-  
-  
-}
-
 .container {
   flex-direction: column;
   margin: 0 auto;
@@ -596,7 +588,6 @@ strong {
 
 @media only screen and (max-width: 1550px) {
   .container {
-    max-width: 1200px;
     padding: 70px 0 !important;
   }
 
@@ -605,17 +596,7 @@ strong {
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .container {
-    max-width: 1000px;
-  }
-}
-
 @media only screen and (max-width: 1000px) {
-  .container {
-    max-width: 800px;
-    padding: 0 !important;
-  }
 
   .container {
     align-items: center !important;
@@ -875,7 +856,7 @@ strong {
 /* ---- Runde 2: luft, balance og klikbarhed ---- */
 
 /* Der laa ca. 150 px tom luft under navigationen, foer oejet naaede H1. */
-.container.clinic-view { padding-top: 56px !important; }
+.container.clinic-view { padding: 56px 0 0 0 !important; }
 
 /* "Om klinikken": teksten sluttede langt foer videoen - blokken saa skaev ud. */
 .clinic-about .about-content {
@@ -889,8 +870,7 @@ strong {
 /* Parkeringsbilledet fyldte naesten 750 px i hoejden og overdoev afsnittet. */
 .parkering__billede {
   margin-left: auto;
-  margin-right: auto;
-  max-width: 860px;
+  margin-right: auto;  
 }
 
 /* Et "laes mere" skal ligne et link, ikke broedtekst */

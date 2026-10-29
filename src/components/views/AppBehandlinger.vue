@@ -136,7 +136,7 @@ const behandlinger = {
     durability: '12 måneder',
     downtime: '1-3 dage',
     consultation: 'Gratis',
-    price: '1.650',
+    price: '1.350',
     priceText: '1 ml',
     sections: {
       audience: [
@@ -186,7 +186,7 @@ const behandlinger = {
       ],
       pricing: {
         items: [
-          { label: '1 ml', price: '1.650 kr.' }
+          { label: '1 ml', price: '1.350 kr.' }
         ],
         notes: 'Holdbarhed og behov for vedligehold afhænger af område og livsstil.'
       }
@@ -207,7 +207,7 @@ const behandlinger = {
     durability: '6-12 måneder',
     downtime: '1-2 dage',
     consultation: 'Gratis',
-    price: 'Fra 1.750',
+    price: 'Fra 1.350',
     priceText: 'Kommer an på typen af skinbooster der bruges',
     sections: {
       audience: [
@@ -254,7 +254,7 @@ const behandlinger = {
       ],
       pricing: {
         items: [
-          { label: 'Skinbooster (per session)', price: 'Fra 1.750 kr.' }
+          { label: 'Skinbooster (per session)', price: 'Fra 1.350 kr.' }
         ],
         notes: 'Prisen afhænger af type/område.'
       }
@@ -420,11 +420,11 @@ const META = {
   },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
-    desc: 'Filler til læber og kinder i Esbjerg & Vejle – lagt af læge for et naturligt resultat. Fra 1.650 kr. pr. ml. Book gratis forundersøgelse.'
+    desc: 'Filler til læber og kinder i Esbjerg & Vejle – lagt af læge for et naturligt resultat. Fra 1.350 kr. pr. ml. Book gratis forundersøgelse.'
   },
   skinbooster: {
     title: 'Skinbooster i Esbjerg & Vejle | DK Skønhedsklinik',
-    desc: 'Skinbooster i Esbjerg & Vejle giver huden fugt, glød og elasticitet. Udføres af læge på vores kosmetiske klinik. Fra 1.750 kr. Book gratis tid.'
+    desc: 'Skinbooster i Esbjerg & Vejle giver huden fugt, glød og elasticitet. Udføres af læge på vores kosmetiske klinik. Fra 1.350 kr. Book gratis tid.'
   },
   mesotherapy: {
     title: 'Mesoterapi / Mesotherapy i Esbjerg & Vejle | DK Skønhedsklinik',
@@ -648,4 +648,20 @@ useHead(() => {
 
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* Relaterede behandlinger: paa maalet, ligesom paa laebefiller-siden */
+.behandling-relateret {
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+  padding-inline: max(var(--gutter), (100% - var(--maal)) / 2) !important;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  background: var(--primary-color) !important;
+}
+
+@media (max-width: 1000px) {
+  .behandling-relateret { max-width: none; width: 90%; }
+}
+</style>

@@ -13,7 +13,7 @@
       </p>
       <ul class="chips">
         <li>Gratis forundersøgelse</li>
-        <li>Fra 1.650 kr. pr. ml</li>
+        <li>Fra 1.350 kr. pr. ml</li>
         <li>48 timers betænkningstid</li>
       </ul>
 
@@ -129,7 +129,7 @@
         <tbody>
           <tr>
             <th scope="row">Læbefiller<span>Hyaluronsyre, ikke-permanent</span></th>
-            <td>1.650 kr. pr. ml</td>
+            <td>1.350 kr. pr. ml</td>
           </tr>
           <tr>
             <th scope="row">Forundersøgelse<span>Hos læge, uforpligtende</span></th>
@@ -144,8 +144,11 @@
       </p>
     </section>
 
-    <section class="block" aria-labelledby="faq-title">
-      <h2 id="faq-title">Ofte stillede spørgsmål</h2>
+    <section class="sec sec--panel" aria-labelledby="faq-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Spørgsmål</p>
+        <h2 id="faq-title">Ofte stillede spørgsmål om læbefiller</h2>
+      </div>
       <FaqList :items="faqs" />
     </section>
 
@@ -191,7 +194,7 @@ const phoneHref = CLINIC_PHONE_HREF
 const faqs = [
   {
     q: 'Hvad koster læbefiller?',
-    a: '1.650 kr. pr. ml. De fleste starter med 0,5–1 ml. Forundersøgelsen hos lægen er gratis, og du betaler først, når du er behandlet.'
+    a: '1.350 kr. pr. ml. De fleste starter med 0,5–1 ml. Forundersøgelsen hos lægen er gratis, og du betaler først, når du er behandlet.'
   },
   {
     q: 'Hvor længe holder læbefiller?',
@@ -248,7 +251,7 @@ const procedureLd = {
   offers: {
     '@type': 'Offer',
     priceCurrency: 'DKK',
-    price: '1650',
+    price: '1350',
     description: 'Pr. ml hyaluronsyre-filler',
     url: BOOKING_URL,
     availability: 'https://schema.org/InStock'
@@ -273,19 +276,19 @@ useHead({
   title: 'Læbefiller i Esbjerg & Vejle | Hos læge | DK Skønhedsklinik',
   htmlAttrs: { lang: 'da' },
   meta: [
-    { name: 'description', content: 'Læbefiller i Esbjerg og Vejle lagt af læge – naturlig fylde og tydeligere læbekant. Fra 1.650 kr. pr. ml. Book en gratis forundersøgelse.' },
+    { name: 'description', content: 'Læbefiller i Esbjerg og Vejle lagt af læge – naturlig fylde og tydeligere læbekant. Fra 1.350 kr. pr. ml. Book en gratis forundersøgelse.' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
     { name: 'author', content: 'DK Skønhedsklinik' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'da_DK' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:title', content: 'Læbefiller i Esbjerg & Vejle | Lagt af læge' },
-    { property: 'og:description', content: 'Naturlig fylde og tydeligere læbekant, lagt af læge. Fra 1.650 kr. pr. ml. Gratis forundersøgelse.' },
+    { property: 'og:description', content: 'Naturlig fylde og tydeligere læbekant, lagt af læge. Fra 1.350 kr. pr. ml. Gratis forundersøgelse.' },
     { property: 'og:url', content: CANONICAL },
     { property: 'og:image', content: `${SITE_URL}/og/home.webp` },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Læbefiller i Esbjerg & Vejle | Lagt af læge' },
-    { name: 'twitter:description', content: 'Naturlig fylde og tydeligere læbekant. Fra 1.650 kr. pr. ml.' }
+    { name: 'twitter:description', content: 'Naturlig fylde og tydeligere læbekant. Fra 1.350 kr. pr. ml.' }
   ],
   link: [
     { rel: 'canonical', href: CANONICAL },
@@ -307,7 +310,7 @@ $c-blue: #2d58a1;
   flex-direction: column;
   max-width: var(--maal);
   margin: 0 auto;
-  padding: 70px 20px 100px !important;
+  padding: 64px 20px !important;
   color: $c-dark;
 }
 
@@ -423,8 +426,6 @@ $c-blue: #2d58a1;
     color: $c-blue;
   }
 }
-
-.faq-list { max-width: 72ch; }
 
 .faq-item {
   border-bottom: 1px solid rgba(21, 54, 85, .12);

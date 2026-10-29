@@ -31,7 +31,7 @@
           <h3><router-link :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">Skinbooster</router-link></h3>
           <p>
             Blød hyaluronsyre, der fugter huden indefra og forbedrer elasticitet og tekstur.
-            Velegnet ved tør, mat hud og fine linjer. Fra 1.750 kr.
+            Velegnet ved tør, mat hud og fine linjer. Fra 1.350 kr.
           </p>
         </li>
         <li>

@@ -45,8 +45,7 @@ $c-dark: #153655;
 $c-blue: #2d58a1;
 
 .relateret {
-  margin-top: 64px;
-  padding-top: 40px;
+  padding: 64px 0;
   border-top: 1px solid rgba(21, 54, 85, .12);
 }
 
