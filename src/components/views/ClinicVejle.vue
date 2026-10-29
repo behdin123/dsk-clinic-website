@@ -616,10 +616,8 @@ strong {
   }
 
   .clinic-hero,
-  .clinic-grid,
-  .clinic-about {
+  .clinic-grid {
     width: 90% !important;
-    padding: 50px 0;
   }
 
   .about-content {
@@ -819,12 +817,6 @@ strong {
 .clinic-about { margin-top: 0; }
 .clinic-about .about-content { gap: 48px; }
 
-@media only screen and (max-width: 1000px) {
-  .clinic-hero,
-  .clinic-grid,
-  .clinic-about { padding: 32px 0 !important; }
-}
-
 @media (max-width: 900px) {
   .clinic-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -899,8 +891,7 @@ strong {
    mens .sec-afsnittene var 980 px og centreret. Det gav tre forskellige
    venstrekanter ned gennem siden. Nu deler alt samme maal. */
 .clinic-view .clinic-hero,
-.clinic-view .clinic-grid,
-.clinic-view .clinic-about {
+.clinic-view .clinic-grid{
   margin-left: auto;
   margin-right: auto;
   max-width: var(--maal);

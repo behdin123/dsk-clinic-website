@@ -523,56 +523,7 @@ const openBooking = () => {
 
 @use '../css/style.scss';
 
-/* ===== Flyttet fra AppHome.vue =====
-   Disse regler laa globalt i forsidens stylesheet og ramte ogsaa
-   "Om DK Skønhedsklinik" her (samme klasser). Forsiden har faaet sin egen
-   layout-regel, saa reglerne er flyttet hertil, saa denne side ser ud som
-   foer. :where() holder specificiteten nede, som da de var globale. */
-:where(.VIKING-image) { width: 45%; }
-:where(.Multimediedesigner .txt) { width: 40%; }
 
-@media only screen and (max-width: 1800px) {
-  :where(.margin-left) { padding-right: 0% !important; }
-}
-
-@media only screen and (max-width: 1550px) {
-  :where(.VIKING-image) { width: 37vw; }
-  :where(.OmKlinik) { padding: 70px 11% 70px 8% !important; }
-}
-
-@media only screen and (max-width: 1380px) {
-  :where(.txt) { font-size: 18px; width: 50vw; }
-  :where(.VIKING-image) { overflow: hidden; position: relative; width: 45% !important; }
-  :where(.VIKING-image img) {
-    height: 100% !important;
-    max-height: 100% !important;
-    max-width: none;
-    min-height: 100%;
-    position: relative;
-    width: auto !important;
-  }
-  :where(.margin-left) { margin-left: 0 !important; margin-right: 0 !important; }
-}
-
-@media only screen and (max-width: 1120px) {
-  :where(.Multimediedesigner .txt) { width: auto !important; }
-  :where(.VIKING-image) { width: 90vw; }
-  :where(.Multimediedesigner) { padding: 70px 8% 50px 8%; }
-}
-
-@media only screen and (max-width: 1050px) {
-  :where(.VIKING-image) { width: 78vw !important; }
-}
-
-@media only screen and (max-width: 660px) {
-  :where(.VIKING) { padding: 50px 5% !important; }
-  :where(.VIKING-image) { width: 90vw !important; }
-  :where(.Multimediedesigner) { padding: 100px 5% 20px 5%; }
-}
-
-@media only screen and (max-width: 390px) {
-  :where(.txt) { width: 90vw !important; }
-}
 .omos-faq-baand {
     background: #f4f3f0;
     padding: 10px 0 80px;
@@ -757,7 +708,7 @@ h2 {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin: 0 auto;
     max-width: var(--maal);
-    padding: 44px 0 56px;
+    padding: 44px 0 56px !important;
 
     .txt {
         width: auto !important;
@@ -832,10 +783,6 @@ h2 {
     .slice-inner,
     .clinics-mini__inner {
         max-width: var(--maal) !important;
-    }
-
-    .Multimediedesigner {
-        padding: 70px 0 !important;
     }
 
     .Bannertxt {
@@ -918,18 +865,6 @@ h2 {
 }
 
 @media only screen and (max-width: 1120px) {
-    .Multimediedesigner .txt {
-        width: 100% !important;
-    }
-
-    .VIKING-image {
-        width: 85vw !important;
-    }
-
-    .OmKlinik {
-        padding: 40px 8% 40px 8% !important;
-    }
-
     .callout-cta {
         .læs-mere {
             width: 150px;
@@ -1536,7 +1471,6 @@ h2 {
     /* Uden egen kort-flade: ingen sideluft - de 90 % er luften */
     .OmOS .OmOsBannerDiv,
     .OmOS .laegeprofil,
-    .OmOS .autorisation,
     .OmOS > .Multimediedesigner,
     .OmOS .clinics-mini__inner,
     .OmOS #patientinformation,
