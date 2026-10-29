@@ -15,7 +15,7 @@
           <section class="article_wrapper">
             <article class="content">
               <header>
-                <h1>{{ title }}</h1>
+                <h1>{{ h1Tekst }}</h1>
               </header>
               <div class="entry_content_wrap">
                 <div class="entry_content clear">
@@ -319,6 +319,12 @@ const priceTextWordCount = computed(() => {
 // برای ایمن‌سازی رندر لیست‌ها
 const list = v => Array.isArray(v) ? v : (v ? [v] : [])
 const getAsset = key => props.sectionAssets?.[key] || props.imageSrc
+/* H1 skal ramme en soegning: "Botox i Esbjerg & Vejle – udført af læge"
+   i stedet for "Botox behandling". title bruges stadig i de oevrige
+   overskrifter ("Sådan foregår …", "Pris på …"). */
+const h1Tekst = computed(() =>
+  `${String(props.title || '').replace(/\s*behandling$/i, '')} i Esbjerg & Vejle – udført af læge`)
+
 const steps3 = computed(() => (props.sections?.steps || []).slice(0, 3))
 
 const decorateAftercare = (arr = []) =>

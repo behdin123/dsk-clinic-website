@@ -1,59 +1,67 @@
 <template>
   <section class="container priser-view" aria-labelledby="priser-title">
-    <header class="priser-hero">
-      <p class="eyebrow">DK Skønhedsklinik</p>
-      <h1 id="priser-title">Priser på botox, filler og hudbehandlinger</h1>
-      <p class="lead">
-        Her er vores priser i Esbjerg og Vejle. Alle behandlinger udføres af klinikkens læge,
-        og forundersøgelsen er altid gratis og uforpligtende – også hvis du vælger ikke at
-        blive behandlet bagefter.
-      </p>
-
-      <ul class="hero-points">
-        <li><b>Gratis</b> forundersøgelse hos læge</li>
-        <li><b>Samme priser</b> i Esbjerg og Vejle</li>
-        <li><b>Ingen binding</b> – du beslutter efter betænkningstiden</li>
-      </ul>
-
-      <div class="booking-button">
-        <button class="general_button arrow" type="button" @click="openBooking"
-          aria-label="Book gratis forundersøgelse">
-          Book gratis forundersøgelse
-        </button>
+    <header class="side-hero">
+      <div>
+        <p class="sec__eyebrow">Priser</p>
+        <h1 id="priser-title">Priser på botox, filler og hudbehandlinger</h1>
+        <p class="side-hero__lead">
+          Her er vores priser i Esbjerg og Vejle. Alle behandlinger udføres af klinikkens læge,
+          og forundersøgelsen er altid gratis og uforpligtende – også hvis du vælger ikke at
+          blive behandlet bagefter.
+        </p>
+        <ul class="side-hero__chips">
+          <li>Gratis forundersøgelse hos læge</li>
+          <li>Samme priser i Esbjerg og Vejle</li>
+          <li>Ingen binding</li>
+        </ul>
+        <div class="side-hero__handling">
+          <button class="knap knap--primaer" type="button" @click="openBooking">
+            Book gratis forundersøgelse
+          </button>
+          <a class="knap knap--sekundaer" href="#med-i-prisen">Det er med i prisen</a>
+        </div>
       </div>
+
+      <aside class="overblik" aria-labelledby="overblik-titel">
+        <p id="overblik-titel" class="overblik__titel">Mest valgte behandlinger</p>
+        <dl class="overblik__liste">
+          <div v-for="row in overblik" :key="row.label">
+            <dt><router-link :to="`/behandlinger/${row.type}/`">{{ row.label }}</router-link></dt>
+            <dd>{{ row.price }}</dd>
+          </div>
+          <div>
+            <dt>Forundersøgelse hos læge</dt>
+            <dd>Gratis</dd>
+          </div>
+        </dl>
+        <p class="overblik__note">Du betaler først efter behandlingen.</p>
+      </aside>
     </header>
 
-    <section v-for="group in priceGroups" :key="group.id" class="sec price-block"
+    <section v-for="group in priceGroups" :key="group.id" :id="group.id" class="sec priskort"
       :aria-labelledby="`grp-${group.id}`">
-      <div class="price-head">
+      <div class="priskort__intro">
         <h2 :id="`grp-${group.id}`">{{ group.title }}</h2>
-        <p class="price-intro">{{ group.intro }}</p>
+        <p>{{ group.intro }}</p>
       </div>
-
-      <table class="price-table">
-        <caption class="sr-only">{{ group.title }} – priser</caption>
-        <thead>
-          <tr><th scope="col">Behandling</th><th scope="col">Pris</th></tr>
-        </thead>
-        <tbody>
-          <tr v-for="row in group.rows" :key="row.label">
-            <th scope="row">
-              <router-link v-if="row.type" :to="`/behandlinger/${row.type}/`">{{ row.label }}</router-link>
-              <span v-else>{{ row.label }}</span>
-              <small v-if="row.note">{{ row.note }}</small>
-            </th>
-            <td>{{ row.price }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <dl class="prisliste">
+        <div v-for="row in group.rows" :key="row.label">
+          <dt>
+            <router-link v-if="row.type" :to="`/behandlinger/${row.type}/`">{{ row.label }}</router-link>
+            <span v-else>{{ row.label }}</span>
+            <small v-if="row.note">{{ row.note }}</small>
+          </dt>
+          <dd>{{ row.price }}</dd>
+        </div>
+      </dl>
     </section>
 
-    <section class="sec sec--panel" aria-labelledby="inkl-title">
+    <section id="med-i-prisen" class="sec sec--panel" aria-labelledby="inkl-title">
       <div class="sec__head">
         <p class="sec__eyebrow">Hvad du får</p>
         <h2 id="inkl-title">Det er med i prisen</h2>
       </div>
-      <ul class="included-list">
+      <ul class="tjek tjek--2">
         <li><b>Forundersøgelse hos læge.</b> Gennemgang af dine ønsker, din sygehistorie og hvad der er realistisk at opnå. Den er gratis, uanset om du bliver behandlet.</li>
         <li><b>Selve behandlingen</b> udført af klinikkens ansvarlige læge, Arash Bagheri – ikke af en kosmetolog.</li>
         <li><b>Kontrol efter behov.</b> Ved botox kan effekten vurderes efter 14 dage, hvor dosis kan finjusteres.</li>
@@ -61,32 +69,26 @@
       </ul>
     </section>
 
-    <section class="sec steps-block" aria-labelledby="forloeb-title">
+    <section class="sec" aria-labelledby="forloeb-title">
       <div class="sec__head">
         <p class="sec__eyebrow">Forløbet</p>
         <h2 id="forloeb-title">Sådan foregår det</h2>
       </div>
-      <ol class="steps">
+      <ol class="trin">
         <li>
-          <span class="step-no">1</span>
-          <div>
-            <h3>Gratis forundersøgelse</h3>
-            <p>Online eller i klinikken. Du får en anbefaling, en pris og svar på dine spørgsmål – uden at binde dig til noget.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">01</span>
+          <h3>Gratis forundersøgelse</h3>
+          <p>Online eller i klinikken. Du får en anbefaling, en pris og svar på dine spørgsmål – uden at binde dig til noget.</p>
         </li>
         <li>
-          <span class="step-no">2</span>
-          <div>
-            <h3>Mindst 48 timers betænkningstid</h3>
-            <p>Lovpligtig ved kosmetisk behandling. Tiden er din til at tænke over det.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">02</span>
+          <h3>Mindst 48 timers betænkningstid</h3>
+          <p>Lovpligtig ved kosmetisk behandling. Tiden er din til at tænke over det.</p>
         </li>
         <li>
-          <span class="step-no">3</span>
-          <div>
-            <h3>Behandling og opfølgning</h3>
-            <p>Behandlingen udføres af lægen, og du får besked om, hvornår resultatet kan vurderes.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">03</span>
+          <h3>Behandling og opfølgning</h3>
+          <p>Behandlingen udføres af lægen, og du får besked om, hvornår resultatet kan vurderes.</p>
         </li>
       </ol>
     </section>
@@ -99,17 +101,18 @@
       <FaqList :items="faqs" />
     </section>
 
-    <section class="sec sec--kort closing">
-      <h2>Er du i tvivl om, hvad der passer til dig?</h2>
-      <p>
-        Det finder vi ud af sammen ved forundersøgelsen. Den koster ikke noget, og du
-        forpligter dig ikke til behandling. Klinikkerne ligger i
-        <router-link to="/klinik/esbjerg/">Esbjerg</router-link> og
-        <router-link to="/klinik/vejle/">Vejle</router-link>.
-      </p>
-      <div class="booking-button">
-        <button class="general_button arrow" type="button" @click="openBooking"
-          aria-label="Book gratis forundersøgelse">
+    <section class="sec cta-kort" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Er du i tvivl om, hvad der passer til dig?</h2>
+        <p>
+          Det finder vi ud af sammen ved forundersøgelsen. Den koster ikke noget, og du
+          forpligter dig ikke til behandling. Klinikkerne ligger i
+          <router-link to="/klinik/esbjerg/">Esbjerg</router-link> og
+          <router-link to="/klinik/vejle/">Vejle</router-link>.
+        </p>
+      </div>
+      <div class="cta-kort__handling">
+        <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
       </div>
@@ -161,6 +164,12 @@ const priceGroups = [
     ]
   }
 ]
+
+/* Overblik i heroen: hentes fra prislisten, saa tallene aldrig kan skilles ad */
+const alleRaekker = priceGroups.flatMap((g) => g.rows)
+const overblik = ['Botox – 1 område', 'Filler – 1 ml', 'Skinbooster – per session']
+  .map((label) => alleRaekker.find((r) => r.label === label))
+  .filter(Boolean)
 
 const faqs = [
   {
@@ -247,7 +256,7 @@ const breadcrumbLd = {
 }
 
 useHead({
-  title: 'Priser | Botox, filler og hudbehandlinger | DK Skønhedsklinik',
+  title: 'Priser | Botox, filler og hudbehandling | DK Skønhedsklinik',
   meta: [
     { name: 'description', content: 'Se priser på botox fra 550 kr., filler 1.350 kr. pr. ml, skinbooster, mesotherapy og microneedling i Esbjerg og Vejle. Gratis forundersøgelse hos læge.' },
     { name: 'keywords', content: 'botox pris, hvad koster botox, filler pris, læbefiller pris, skinbooster pris, microneedling pris, priser skønhedsklinik esbjerg, priser kosmetisk klinik vejle' },
@@ -284,180 +293,82 @@ $c-dark: #153655;
 $c-blue: #2d58a1;
 
 .priser-view {
-  flex-direction: column;
-  max-width: var(--maal);
-  margin: 0 auto;
-  padding-block: var(--hero-luft); 
-  padding-inline: 20px;
   color: $c-dark;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--maal);
+  padding: 56px 20px 72px !important;
 }
 
 .sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0, 0, 0, 0);
-  white-space: nowrap; border: 0;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.priser-hero {
-  margin-bottom: 60px;
+.sec { margin-bottom: 64px; }
 
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .8rem;
-    color: $c-blue;
-    margin-bottom: 10px;
-  }
+/* Prisgrupperne staar taettere end andre sektioner - de hoerer sammen */
+.priskort { margin-bottom: 20px; }
+.priskort:last-of-type { margin-bottom: 64px; }
+#konsultation { margin-bottom: 64px; }
 
-  h1 { margin-bottom: 18px; }
-  .lead { max-width: 66ch; }
-}
-
-.hero-points {
-  list-style: none;
-  padding: 0;
-  margin: 26px 0 32px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-
-  li {
-    background: rgba(45, 88, 161, .07);
-    border: 1px solid rgba(45, 88, 161, .16);
-    border-radius: 999px;
-    padding: 9px 18px;
-    font-size: .95rem;
-  }
-}
-
-.price-block {
-  margin-bottom: 54px;
-
-  .price-head h2 { margin-bottom: 8px; }
-  .price-intro { max-width: 70ch; margin-bottom: 20px; }
-}
-
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  thead th {
-    text-align: left;
-    font-size: .78rem;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: rgba(21, 54, 85, .6);
-    border-bottom: 2px solid rgba(21, 54, 85, .14);
-    padding: 0 0 10px;
-
-    &:last-child { text-align: right; }
-  }
-
-  tbody tr { border-bottom: 1px solid rgba(21, 54, 85, .1); }
-
-  tbody th {
-    text-align: left;
-    font-weight: 600;
-    padding: 16px 16px 16px 0;
-
-    a {
-      color: $c-dark;
-      text-decoration: none;
-      border-bottom: 1px dotted $c-blue;
-
-      &:hover { color: $c-blue; }
-    }
-
-    small {
-      display: block;
-      font-weight: 400;
-      font-size: .85rem;
-      color: rgba(21, 54, 85, .62);
-      margin-top: 4px;
-    }
-  }
-
-  tbody td {
-    text-align: right;
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: $c-blue;
-    vertical-align: top;
-    padding: 16px 0;
-  }
-}
-
-.closing {
-  text-align: left;
-
-  h2 { margin-bottom: 14px; }
-}
-
-.steps-block .steps { margin-top: 4px; }
-
-.included-list {
-  padding-left: 18px;
-  max-width: 76ch;
-
-  li { margin-bottom: 12px; }
-}
-
-.steps {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-  li {
-    display: flex;
-    gap: 14px;
-    border: 1px solid rgba(21, 54, 85, .14);
-    border-radius: 12px;
-    padding: 22px;
-  }
-
-  h3 { margin-bottom: 6px; font-size: 1.05rem; }
-  p { font-size: .95rem; }
-}
-
-.step-no {
-  flex: 0 0 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: $c-blue;
+/* Overblik i heroen: navy kort med de mest valgte priser */
+.overblik {
+  background: $c-dark;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .14);
+  box-sizing: border-box;
   color: #fff;
-  display: grid;
-  place-items: center;
+  padding: 32px 32px 28px;
+}
+
+.overblik__titel {
+  color: rgba(255, 255, 255, .7);
+  font-size: .75rem;
   font-weight: 700;
+  letter-spacing: .13em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
 }
 
-.closing {
-  background: rgba(45, 88, 161, .06);
-  border-radius: 14px;
-  padding: 34px;
+.overblik__liste { margin: 0; }
 
-  p { max-width: 62ch; margin-bottom: 8px; }
-
-  a { color: $c-blue; }
+.overblik__liste > div {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 14px 0;
 }
 
-.booking-button { margin-top: 22px; }
+.overblik__liste dt { color: #fff; font-weight: 600; }
+.overblik__liste dt a { color: #fff; text-decoration: none; }
+.overblik__liste dt a:hover,
+.overblik__liste dt a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
-.faq { margin-bottom: 54px; }
-
-@media only screen and (max-width: 600px) {
-  .price-table tbody th { padding-right: 10px; }
-  .price-table tbody td { font-size: 1rem; }
-  .closing { padding: 24px; }
+.overblik__liste dd {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
 }
 
-/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
-   Hver blok paa siden staar i 90 % bredde, centreret, saa alt deler samme
-   venstre- og hoejrekant og skalerer selv fra tablet til mobil. */
+.overblik__note {
+  color: rgba(255, 255, 255, .75);
+  font-size: .9rem;
+  margin: 16px 0 0;
+}
+
+/* Under 1000 px: samme opskrift som klinikssiderne - 90 % bredde */
 @media only screen and (max-width: 1000px) {
   .priser-view {
     padding-left: 0 !important;

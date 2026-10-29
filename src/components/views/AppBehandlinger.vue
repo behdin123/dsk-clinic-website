@@ -416,7 +416,7 @@ const sectionAssets = computed(() => behandlingData.value.sectionsAssets || {})
 const META = {
   botox: {
     title: 'Botox i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
-    desc: 'Botox mod rynker i Esbjerg & Vejle – udføres personligt af læge. Naturlige resultater fra 550 kr. Book gratis forundersøgelse.'
+    desc: 'Botox mod rynker i Esbjerg & Vejle – udføres personligt af læge. Naturlige resultater fra 550 kr. pr. område. Book gratis forundersøgelse.'
   },
   filler: {
     title: 'Filler i Esbjerg & Vejle | Lægebehandlet | DK Skønhedsklinik',
@@ -427,7 +427,7 @@ const META = {
     desc: 'Skinbooster i Esbjerg & Vejle giver huden fugt, glød og elasticitet. Udføres af læge på vores kosmetiske klinik. Fra 1.350 kr. Book gratis tid.'
   },
   mesotherapy: {
-    title: 'Mesoterapi / Mesotherapy i Esbjerg & Vejle | DK Skønhedsklinik',
+    title: 'Mesoterapi i Esbjerg & Vejle | DK Skønhedsklinik',
     desc: 'Mesoterapi i Esbjerg & Vejle: en vitamincocktail der giver huden glød og fornyelse – og som vi også bruger mod hårtab. Fra 750 kr. Book gratis tid.'
   },
   microneedling: {

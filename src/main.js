@@ -1,6 +1,7 @@
 import { trackPageView } from '@/consent/consent'
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
+import './components/css/byggeklodser.scss'
 import { routes } from './router'
 import VueLazyload from 'vue-lazyload'
 

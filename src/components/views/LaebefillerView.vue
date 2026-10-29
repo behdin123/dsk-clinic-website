@@ -2,146 +2,199 @@
   <section class="container laeber-view" aria-labelledby="laeber-title">
     <AppBreadcrumbs :sti="broedkrummer" />
 
-    <header class="laeber-hero">
-      <p class="eyebrow">Filler · Læber</p>
-      <h1 id="laeber-title">Læbefiller i Esbjerg &amp; Vejle – lagt af læge</h1>
-      <p class="lead">
-        Læbefiller – eller lip filler, som mange kalder det – giver fylde, form og en
-        tydeligere læbekant med hyaluronsyre. Hos
-        DK Skønhedsklinik lægges den af en læge, og vi arbejder i små mængder ad gangen,
-        så resultatet bliver naturligt og passer til resten af dit ansigt.
-      </p>
-      <ul class="chips">
-        <li>Gratis forundersøgelse</li>
-        <li>Fra 1.350 kr. pr. ml</li>
-        <li>48 timers betænkningstid</li>
-      </ul>
+    <header class="side-hero">
+      <div>
+        <p class="sec__eyebrow">Filler · Læber</p>
+        <h1 id="laeber-title">Læbefiller i Esbjerg &amp; Vejle – lagt af læge</h1>
+        <p class="side-hero__lead">
+          Læbefiller – eller lip filler, som mange kalder det – giver fylde, form og en
+          tydeligere læbekant med hyaluronsyre. Hos DK Skønhedsklinik lægges den af en læge, og
+          vi arbejder i små mængder ad gangen, så resultatet bliver naturligt og passer til
+          resten af dit ansigt.
+        </p>
+        <ul class="side-hero__chips">
+          <li>Gratis forundersøgelse</li>
+          <li>Udføres af læge</li>
+          <li>48 timers betænkningstid</li>
+        </ul>
+        <div class="side-hero__handling">
+          <button class="knap knap--primaer" type="button" @click="openBooking">
+            Book gratis forundersøgelse
+          </button>
+          <a class="knap knap--sekundaer" href="#pris">Se pris</a>
+        </div>
+      </div>
 
-      <MediaPlaceholder
-        class="hero-media"
-        alt="Læbefillerbehandling hos DK Skønhedsklinik"
-        motiv="Hero: nærbillede af læber med naturligt resultat, eller lægen under behandling i klinikken"
-        ratio="16 / 7" />
+      <figure class="side-hero__media">
+        <img :src="imgHero" width="1800" height="2400" fetchpriority="high" decoding="async"
+          alt="Læge Arash Bagheri lægger læbefiller hos en patient i klinikken">
+      </figure>
     </header>
 
-    <section class="block" aria-labelledby="hvad-title">
-      <h2 id="hvad-title">Hvad er læbefiller?</h2>
-      <p>
-        Læbefiller, lip filler og læbeforstørrelse dækker over det samme: en ikke-permanent
-        behandling med hyaluronsyre – et stof, kroppen selv
-        danner. Det lægges med en tynd kanyle i og omkring læben, hvor det binder vand og
-        giver fylde. Resultatet er synligt med det samme og nedbrydes langsomt af kroppen
-        igen over 6–12 måneder.
-      </p>
-      <p>
-        Fordi materialet er ikke-permanent, er en læbefiller aldrig en endelig beslutning.
-        Hyaluronsyre kan desuden opløses igen med enzymet hyaluronidase, hvis resultatet
-        ikke blev som ønsket. Tal med lægen om det ved forundersøgelsen.
-      </p>
+    <dl class="fakta" aria-label="Læbefiller i tal">
+      <div><dt>1.350 kr.</dt><dd>pr. ml hyaluronsyre</dd></div>
+      <div><dt>0,5–1 ml</dt><dd>starter de fleste med</dd></div>
+      <div><dt>20–30 min.</dt><dd>tager selve injektionerne</dd></div>
+      <div><dt>6–12 mdr.</dt><dd>holder resultatet typisk</dd></div>
+    </dl>
+
+    <section class="sec" aria-labelledby="hvad-title">
+      <div class="laeber-split">
+        <div>
+          <div class="sec__head">
+            <p class="sec__eyebrow">Behandlingen</p>
+            <h2 id="hvad-title">Hvad er læbefiller?</h2>
+          </div>
+          <p>
+            Læbefiller, lip filler og læbeforstørrelse dækker over det samme: en ikke-permanent
+            behandling med hyaluronsyre – et stof, kroppen selv danner. Det lægges med en tynd
+            kanyle i og omkring læben, hvor det binder vand og giver fylde. Resultatet er synligt
+            med det samme og nedbrydes langsomt af kroppen igen over 6–12 måneder.
+          </p>
+          <p>
+            Fordi materialet er ikke-permanent, er en læbefiller aldrig en endelig beslutning.
+            Hyaluronsyre kan desuden opløses igen med enzymet hyaluronidase, hvis resultatet
+            ikke blev som ønsket. Tal med lægen om det ved forundersøgelsen.
+          </p>
+        </div>
+
+        <aside class="sec--kort laeber-kort" aria-label="Kort fortalt">
+          <h3>Kort fortalt</h3>
+          <ul class="tjek">
+            <li>Hyaluronsyre – et stof, kroppen selv danner</li>
+            <li>Resultatet ses med det samme</li>
+            <li>Nedbrydes af kroppen over 6–12 måneder</li>
+            <li>Kan opløses igen med hyaluronidase</li>
+            <li>Lægges af klinikkens læge</li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
-    <section class="block" aria-labelledby="omraader-title">
-      <h2 id="omraader-title">Hvad kan vi gøre med dine læber?</h2>
+    <section class="sec" aria-labelledby="omraader-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Muligheder</p>
+        <h2 id="omraader-title">Hvad kan vi gøre med dine læber?</h2>
+        <p class="sec__lead">Fem ting, læbefiller kan hjælpe med – alene eller i kombination.</p>
+      </div>
 
-      <h3>Mere volumen</h3>
-      <p>
-        Den klassiske læbeforstørrelse. Vi tilfører fylde jævnt i over- og underlæbe, typisk
-        med lidt mere i underlæben, så proportionerne bliver naturlige. De fleste starter med
-        0,5–1 ml.
-      </p>
-
-      <h3>Tydeligere læbekant</h3>
-      <p>
-        Her handler det ikke om volumen, men om kontur. En præcis læbekant giver læben et
-        skarpere, mere defineret udtryk – velegnet hvis kanten er blevet udvisket med årene.
-      </p>
-
-      <h3>Asymmetri</h3>
-      <p>
-        Få læber er helt symmetriske. Filler kan udligne forskelle i højde eller fylde mellem
-        de to sider eller mellem over- og underlæbe.
-      </p>
-
-      <h3>Læbelinjer over munden</h3>
-      <p>
-        De lodrette linjer over overlæben – ofte kaldet rygerrynker. De behandles med en blødere
-        filler lagt overfladisk, og kombineres nogle gange med
-        <router-link :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">skinbooster</router-link>
-        for bedre hudkvalitet i området.
-      </p>
-
-      <h3>Nedadvendte mundvige</h3>
-      <p>
-        Små mængder filler i mundvigene kan løfte et udtryk, der virker træt eller surt, uden
-        at ændre selve læben.
-      </p>
-
-      <MediaPlaceholder
-        class="omraade-media"
-        alt="Oversigt over de fem områder omkring læberne, der kan behandles med filler"
-        motiv="SVG-diagram: ansigtsudsnit med de fem markerede områder – volumen, læbekant, asymmetri, læbelinjer og mundvige"
-        ratio="16 / 9" />
+      <div class="omraader">
+        <article class="omraade">
+          <h3>Mere volumen</h3>
+          <p>
+            Den klassiske læbeforstørrelse. Vi tilfører fylde jævnt i over- og underlæbe, typisk
+            med lidt mere i underlæben, så proportionerne bliver naturlige. De fleste starter med
+            0,5–1 ml.
+          </p>
+        </article>
+        <article class="omraade">
+          <h3>Tydeligere læbekant</h3>
+          <p>
+            Her handler det ikke om volumen, men om kontur. En præcis læbekant giver læben et
+            skarpere, mere defineret udtryk – velegnet hvis kanten er blevet udvisket med årene.
+          </p>
+        </article>
+        <article class="omraade">
+          <h3>Asymmetri</h3>
+          <p>
+            Få læber er helt symmetriske. Filler kan udligne forskelle i højde eller fylde mellem
+            de to sider eller mellem over- og underlæbe.
+          </p>
+        </article>
+        <article class="omraade">
+          <h3>Læbelinjer over munden</h3>
+          <p>
+            De lodrette linjer over overlæben – ofte kaldet rygerrynker. De behandles med en blødere
+            filler lagt overfladisk, og kombineres nogle gange med
+            <router-link :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">skinbooster</router-link>
+            for bedre hudkvalitet i området.
+          </p>
+        </article>
+        <article class="omraade">
+          <h3>Nedadvendte mundvige</h3>
+          <p>
+            Små mængder filler i mundvigene kan løfte et udtryk, der virker træt eller surt, uden
+            at ændre selve læben.
+          </p>
+        </article>
+        <MediaPlaceholder
+          class="omraade omraade--medie"
+          alt="Oversigt over de fem områder omkring læberne, der kan behandles med filler"
+          motiv="SVG-diagram: ansigtsudsnit med de fem markerede områder"
+          ratio="4 / 3" />
+      </div>
     </section>
 
-    <section class="block" aria-labelledby="forloeb-title">
-      <h2 id="forloeb-title">Sådan foregår behandlingen</h2>
-      <ol class="steps">
+    <section class="sec sec--panel" aria-labelledby="forloeb-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Forløb</p>
+        <h2 id="forloeb-title">Sådan foregår behandlingen</h2>
+      </div>
+      <ol class="trin trin--4">
         <li>
-          <b>Gratis forundersøgelse.</b> Lægen ser på dine læber, dine ønsker og din ansigtsform
-          og fortæller, hvad der realistisk kan opnås – og hvad der ikke kan.
+          <span class="trin__nr" aria-hidden="true">01</span>
+          <h3>Gratis forundersøgelse</h3>
+          <p>Lægen ser på dine læber, dine ønsker og din ansigtsform og fortæller, hvad der realistisk kan opnås – og hvad der ikke kan.</p>
         </li>
         <li>
-          <b>48 timers betænkningstid.</b> Lovpligtig ved kosmetisk behandling. Du behandles
-          aldrig samme dag som forundersøgelsen.
+          <span class="trin__nr" aria-hidden="true">02</span>
+          <h3>48 timers betænkningstid</h3>
+          <p>Lovpligtig ved kosmetisk behandling. Du behandles aldrig samme dag som forundersøgelsen.</p>
         </li>
         <li>
-          <b>Bedøvende creme.</b> Lægges på 20–30 minutter før, så behandlingen er til at holde ud.
-          Selve injektionerne tager 20–30 minutter.
+          <span class="trin__nr" aria-hidden="true">03</span>
+          <h3>Bedøvende creme</h3>
+          <p>Lægges på 20–30 minutter før, så behandlingen er til at holde ud. Selve injektionerne tager 20–30 minutter.</p>
         </li>
         <li>
-          <b>Kontrol.</b> Vi ser dig igen, når hævelsen har lagt sig, og kan justere, hvis der
-          er behov for det.
+          <span class="trin__nr" aria-hidden="true">04</span>
+          <h3>Kontrol</h3>
+          <p>Vi ser dig igen, når hævelsen har lagt sig, og kan justere, hvis der er behov for det.</p>
         </li>
       </ol>
     </section>
 
-    <section class="block" aria-labelledby="haevelse-title">
-      <h2 id="haevelse-title">Hævelse dag for dag</h2>
-      <p>
-        Hævelse efter læbefiller er helt normalt og det, de fleste bliver overraskede over.
-        Et typisk forløb ser sådan ud:
-      </p>
-      <ul class="timeline">
-        <li><b>Dag 0–1:</b> Mest hævet. Læberne kan føles spændte og se større ud, end resultatet bliver.</li>
-        <li><b>Dag 2–3:</b> Hævelsen aftager tydeligt. Eventuelle blå mærker kan vise sig.</li>
-        <li><b>Dag 4–7:</b> Læberne begynder at ligne det endelige resultat.</li>
-        <li><b>Efter 2 uger:</b> Fillerren har sat sig. Først her kan resultatet vurderes.</li>
-      </ul>
-      <p class="note">
-        Planlæg derfor ikke en læbefiller tæt på en bryllupsdag, et jobinterview eller en ferie.
+    <section class="sec" aria-labelledby="haevelse-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Efter behandlingen</p>
+        <h2 id="haevelse-title">Hævelse dag for dag</h2>
+        <p class="sec__lead">
+          Hævelse efter læbefiller er helt normalt og det, de fleste bliver overraskede over.
+          Et typisk forløb ser sådan ud:
+        </p>
+      </div>
+      <ol class="tidslinje">
+        <li><span class="tidslinje__dag">Dag 0–1</span><p>Mest hævet. Læberne kan føles spændte og se større ud, end resultatet bliver.</p></li>
+        <li><span class="tidslinje__dag">Dag 2–3</span><p>Hævelsen aftager tydeligt. Eventuelle blå mærker kan vise sig.</p></li>
+        <li><span class="tidslinje__dag">Dag 4–7</span><p>Læberne begynder at ligne det endelige resultat.</p></li>
+        <li><span class="tidslinje__dag">Efter 2 uger</span><p>Filleren har sat sig. Først her kan resultatet vurderes.</p></li>
+      </ol>
+      <p class="bemaerk">
+        <b>Planlæg derfor ikke en læbefiller tæt på en bryllupsdag, et jobinterview eller en ferie.</b>
         Regn med to uger.
       </p>
     </section>
 
-    <section class="block" aria-labelledby="pris-title">
-      <h2 id="pris-title">Pris</h2>
-      <table class="price-table">
-        <tbody>
-          <tr>
-            <th scope="row">Læbefiller<span>Hyaluronsyre, ikke-permanent</span></th>
-            <td>1.350 kr. pr. ml</td>
-          </tr>
-          <tr>
-            <th scope="row">Forundersøgelse<span>Hos læge, uforpligtende</span></th>
-            <td>Gratis</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        Hvor meget der skal bruges, afhænger af dine læber og hvad du gerne vil opnå. De fleste
-        starter med 0,5–1 ml. Det aftaler du med lægen ved forundersøgelsen, inden du beslutter dig.
-        Se alle priser på <router-link to="/priser/">prissiden</router-link>.
-      </p>
+    <section id="pris" class="sec priskort" aria-labelledby="pris-title">
+      <div class="priskort__intro">
+        <p class="sec__eyebrow">Pris</p>
+        <h2 id="pris-title">Pris på læbefiller</h2>
+        <p>
+          Hvor meget der skal bruges, afhænger af dine læber og hvad du gerne vil opnå. De fleste
+          starter med 0,5–1 ml. Det aftaler du med lægen ved forundersøgelsen, inden du beslutter dig.
+        </p>
+        <p>Se alle priser på <router-link to="/priser/">prissiden</router-link>.</p>
+      </div>
+      <dl class="prisliste">
+        <div>
+          <dt>Læbefiller<small>Hyaluronsyre, ikke-permanent</small></dt>
+          <dd>1.350 kr. pr. ml</dd>
+        </div>
+        <div>
+          <dt>Forundersøgelse<small>Hos læge, uforpligtende</small></dt>
+          <dd>Gratis</dd>
+        </div>
+      </dl>
     </section>
 
     <section class="sec sec--panel" aria-labelledby="faq-title">
@@ -154,22 +207,21 @@
 
     <RelateredeBehandlinger slug="laebefiller" />
 
-    <section class="closing" aria-labelledby="cta-title">
-      <h2 id="cta-title">Book en gratis forundersøgelse</h2>
-      <p>
-        Vi har klinikker i <router-link to="/klinik/esbjerg/">Esbjerg</router-link> og
-        <router-link to="/klinik/vejle/">Vejle</router-link>. Forundersøgelsen er gratis og
-        uforpligtende, og du bliver ikke behandlet samme dag.
-      </p>
-      <div class="booking-button">
-        <button class="general_button arrow" type="button" @click="openBooking"
-          aria-label="Book gratis forundersøgelse">
+    <section class="sec cta-kort" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Book en gratis forundersøgelse</h2>
+        <p>
+          Vi har klinikker i <router-link to="/klinik/esbjerg/">Esbjerg</router-link> og
+          <router-link to="/klinik/vejle/">Vejle</router-link>. Forundersøgelsen er gratis og
+          uforpligtende, og du bliver ikke behandlet samme dag.
+        </p>
+      </div>
+      <div class="cta-kort__handling">
+        <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
+        <p>Hellere ringe? <a :href="phoneHref">{{ phone }}</a></p>
       </div>
-      <p class="phone-line">
-        Hellere ringe? <a :href="phoneHref">{{ phone }}</a>
-      </p>
     </section>
   </section>
 </template>
@@ -180,6 +232,7 @@ import FaqList from '@/components/FaqList.vue'
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
 import MediaPlaceholder from '@/components/MediaPlaceholder.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
+import imgHero from '@/assets/behandlinger/filler.webp'
 import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
 import { broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
 
@@ -307,172 +360,177 @@ $c-dark: #153655;
 $c-blue: #2d58a1;
 
 .laeber-view {
-  flex-direction: column;
-  max-width: var(--maal);
-  margin: 0 auto;
-  padding: 64px 20px !important;
   color: $c-dark;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--maal);
+  padding: 40px 20px 72px !important;
 }
 
-.laeber-hero {
-  margin-bottom: 54px;
-
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .8rem;
-    color: $c-blue;
-    margin-bottom: 10px;
-  }
-
-  h1 { margin-bottom: 18px; }
-
-  .lead {
-    max-width: 64ch;
-    line-height: 1.7;
-  }
-}
-
-.hero-media { margin-top: 30px; }
-.omraade-media { margin-top: 28px; }
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
   padding: 0;
-  margin: 24px 0 0;
-
-  li {
-    border: 1px solid rgba(45, 88, 161, .25);
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-size: .9rem;
-    font-weight: 600;
-    color: $c-blue;
-  }
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.block {
-  margin-bottom: 54px;
+.sec { margin-bottom: 64px; }
 
-  h2 { margin-bottom: 18px; }
+.laeber-view p { line-height: 1.7; }
+.laeber-view .sec > p,
+.laeber-split p { max-width: 64ch; }
 
-  h3 {
-    margin: 26px 0 8px;
-    font-size: 1.1rem;
-    color: $c-blue;
-  }
-
-  p {
-    max-width: 72ch;
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
-  .note {
-    border-left: 3px solid $c-blue;
-    padding-left: 16px;
-    font-style: italic;
-  }
+/* Hvad er: tekst + "kort fortalt" */
+.laeber-split {
+  align-items: start;
+  display: grid;
+  gap: 40px 56px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
 }
 
-.steps {
-  max-width: 72ch;
-  padding-left: 20px;
-  line-height: 1.7;
+.laeber-kort { padding: 28px 28px 30px !important; }
 
-  li { margin-bottom: 14px; }
+.laeber-kort h3 {
+  color: $c-dark;
+  font-size: 1.05rem;
+  margin: 0 0 16px;
 }
 
-.timeline {
-  max-width: 72ch;
-  padding-left: 18px;
-  line-height: 1.7;
-
-  li { margin-bottom: 10px; }
+/* Fem omraader + diagram = et helt gitter (3 x 2) */
+.omraader {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.price-table {
-  width: 100%;
-  max-width: 620px;
-  border-collapse: collapse;
-  margin-bottom: 18px;
-
-  th, td {
-    border-bottom: 1px solid rgba(21, 54, 85, .12);
-    padding: 16px 0;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  th {
-    font-weight: 600;
-
-    span {
-      display: block;
-      font-weight: 400;
-      font-size: .85rem;
-      color: rgba(21, 54, 85, .62);
-      margin-top: 4px;
-    }
-  }
-
-  td {
-    text-align: right;
-    white-space: nowrap;
-    font-weight: 700;
-    color: $c-blue;
-  }
+.omraade {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  padding: 24px 24px 26px;
 }
 
-.faq-item {
-  border-bottom: 1px solid rgba(21, 54, 85, .12);
-
-  .faq-q {
-    cursor: pointer;
-    padding: 16px 0;
-    font-weight: 600;
-    list-style: none;
-
-    &::-webkit-details-marker { display: none; }
-
-    &::after {
-      content: '+';
-      float: right;
-      color: $c-blue;
-      font-weight: 400;
-    }
-  }
-
-  &[open] .faq-q::after { content: '–'; }
-
-  .faq-a p {
-    padding: 0 0 16px;
-    line-height: 1.7;
-    margin: 0;
-  }
+.omraade h3 {
+  color: $c-dark;
+  font-size: 1.08rem;
+  margin: 0 0 8px;
 }
 
-.closing {
-  h2 { margin-bottom: 14px; }
+.omraade p {
+  color: rgba(21, 54, 85, .82);
+  font-size: .97rem;
+  line-height: 1.65;
+  margin: 0;
+}
 
-  p {
-    max-width: 68ch;
-    line-height: 1.7;
-  }
+.omraade a { color: $c-blue; }
 
-  .booking-button { margin: 22px 0 14px; }
+.omraade--medie {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .phone-line {
-    font-size: .95rem;
+/* Hævelse: tidslinje med prikker - vandret paa store skaerme */
+.tidslinje {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  position: relative;
+}
 
-    a { color: $c-blue; font-weight: 600; }
-  }
+.tidslinje::before {
+  background: rgba(45, 88, 161, .22);
+  content: '';
+  height: 2px;
+  left: 6px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.tidslinje li {
+  padding-top: 30px;
+  position: relative;
+}
+
+.tidslinje li::before {
+  background: #fff;
+  border: 3px solid $c-blue;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: '';
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 14px;
+}
+
+.tidslinje__dag {
+  color: $c-blue;
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.tidslinje p {
+  color: rgba(21, 54, 85, .85);
+  font-size: .97rem;
+  margin: 0;
+}
+
+.bemaerk {
+  background: rgba(45, 88, 161, .06);
+  border-left: 3px solid $c-blue;
+  border-radius: 0 10px 10px 0;
+  color: $c-dark;
+  line-height: 1.6;
+  margin: 32px 0 0;
+  max-width: none !important;
+  padding: 14px 18px;
+}
+
+@media (max-width: 900px) {
+  .laeber-split { grid-template-columns: minmax(0, 1fr); }
+  .omraader { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 700px) {
-  .laeber-view { padding: 50px 18px 70px !important; }
+  .omraader { grid-template-columns: minmax(0, 1fr); }
+
+  .tidslinje { gap: 22px; grid-template-columns: minmax(0, 1fr); padding-left: 30px; }
+  .tidslinje::before { bottom: 6px; height: auto; left: 6px; right: auto; top: 6px; width: 2px; }
+  .tidslinje li { padding-top: 0; }
+  .tidslinje li::before { left: -30px; top: 3px; }
+}
+
+/* Under 1000 px: samme opskrift som klinikssiderne - 90 % bredde */
+@media only screen and (max-width: 1000px) {
+  .laeber-view {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .laeber-view > * {
+    box-sizing: border-box;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: none !important;
+    width: 90% !important;
+  }
 }
 </style>

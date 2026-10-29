@@ -1,0 +1,362 @@
+
+/* =====================================================================
+   Faelles byggeklodser til undersider, priser og booking
+   (bruges af laebefiller-siden og de kommende ca. 12 filler-undersider,
+   prissiden og bookingsiden). Samme kortsprog som resten af sitet:
+   hvidt, 1 px kant, radius 18, blød skygge.
+   ===================================================================== */
+
+/* --- Knapper --- */
+.knap {
+  align-items: center;
+  border: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+}
+
+.knap:hover,
+.knap:focus-visible { transform: translateY(-1px); }
+
+.knap--primaer { background: #2d58a1; color: #fff !important; }
+.knap--primaer:hover,
+.knap--primaer:focus-visible { background: #234a8c; }
+
+.knap--sekundaer {
+  background: transparent;
+  border: 1.5px solid rgba(21, 54, 85, .32);
+  color: #153655 !important;
+}
+.knap--sekundaer:hover,
+.knap--sekundaer:focus-visible { border-color: #153655; }
+
+.knap--hvid { background: #fff; color: #1e4078 !important; }
+.knap--hvid:hover,
+.knap--hvid:focus-visible { background: #eaf0fa; }
+
+/* --- Side-hero: tekst til venstre, billede eller info-kort til hoejre --- */
+.side-hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  margin: 0 0 64px;
+}
+
+.side-hero h1 {
+  color: #153655;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1.14;
+  margin: 0 0 16px !important;
+}
+
+.side-hero__lead {
+  color: rgba(21, 54, 85, .86);
+  font-size: 1.06rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.side-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+
+.side-hero__chips li {
+  align-items: center;
+  background: rgba(45, 88, 161, .07);
+  border: 1px solid rgba(45, 88, 161, .16);
+  border-radius: 999px;
+  color: #153655;
+  display: flex;
+  font-size: .86rem;
+  font-weight: 600;
+  gap: 8px;
+  padding: 7px 14px 7px 12px;
+}
+
+.side-hero__chips li::before {
+  background: #2d58a1;
+  border-radius: 50%;
+  content: '';
+  flex: 0 0 auto;
+  height: 6px;
+  width: 6px;
+}
+
+.side-hero__handling {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 28px;
+}
+
+.side-hero__media {
+  margin: 0;
+}
+
+.side-hero__media img {
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .10);
+  display: block;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .side-hero { grid-template-columns: minmax(0, 1fr); margin-bottom: 48px; }
+  .side-hero__media img { aspect-ratio: 4 / 3; max-height: none; }
+}
+
+/* --- Nøgletal i en raekke --- */
+.fakta {
+  border-bottom: 1px solid rgba(21, 54, 85, .12);
+  border-top: 1px solid rgba(21, 54, 85, .12);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 64px;
+  padding: 26px 0;
+}
+
+.fakta dt {
+  color: #153655;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.fakta dd {
+  color: rgba(21, 54, 85, .72);
+  font-size: .92rem;
+  line-height: 1.45;
+  margin: 6px 0 0;
+}
+
+@media (max-width: 700px) {
+  .fakta { gap: 22px 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- Tjekliste med flueben --- */
+.tjek {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tjek li {
+  color: #153655;
+  line-height: 1.6;
+  padding-left: 32px;
+  position: relative;
+}
+
+.tjek li::before {
+  background: #2d58a1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 13px no-repeat;
+  border-radius: 50%;
+  content: '';
+  height: 22px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 22px;
+}
+
+.tjek--2 { gap: 14px 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 700px) {
+  .tjek--2 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Nummererede trin i kort --- */
+.trin {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trin--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.trin > li {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  padding: 26px 24px 28px;
+}
+
+.trin__nr {
+  align-items: center;
+  background: rgba(45, 88, 161, .10);
+  border-radius: 50%;
+  color: #2d58a1;
+  display: inline-flex;
+  font-size: .85rem;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.trin h3 {
+  color: #153655;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 16px 0 8px;
+}
+
+.trin p {
+  color: rgba(21, 54, 85, .82);
+  font-size: .97rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .trin--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .trin,
+  .trin--4 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Pris-kort: tekst til venstre, prisliste til hoejre --- */
+.priskort {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  display: grid;
+  gap: 32px 56px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 40px;
+}
+
+.priskort h2 {
+  color: #153655;
+  margin: 0 0 12px;
+}
+
+.priskort__intro p {
+  color: rgba(21, 54, 85, .82);
+  line-height: 1.65;
+  margin: 0 0 10px;
+  max-width: 52ch;
+}
+
+.prisliste { margin: 0; }
+
+.prisliste > div {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(21, 54, 85, .12);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.prisliste > div:first-child { border-top: 1px solid rgba(21, 54, 85, .12); }
+
+.prisliste dt {
+  color: #153655;
+  font-weight: 600;
+}
+
+.prisliste dt a {
+  color: #153655;
+  text-decoration: none;
+}
+
+.prisliste dt a:hover,
+.prisliste dt a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+
+.prisliste dt small {
+  color: rgba(21, 54, 85, .62);
+  display: block;
+  font-size: .85rem;
+  font-weight: 400;
+  margin-top: 3px;
+}
+
+.prisliste dd {
+  color: #153655;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .priskort { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .priskort { padding: 26px 22px; }
+}
+
+/* --- CTA-kort i brandblaa --- */
+.cta-kort {
+  align-items: center;
+  background: #2d58a1;
+  border-radius: 18px;
+  box-sizing: border-box;
+  color: #fff;
+  display: grid;
+  gap: 24px 40px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: clamp(30px, 4vw, 52px) clamp(24px, 4vw, 56px);
+}
+
+.cta-kort h2 {
+  color: #fff !important;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  margin: 0 0 10px;
+}
+
+.cta-kort p {
+  color: rgba(255, 255, 255, .88);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.cta-kort a:not(.knap) { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.cta-kort__handling {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 800px) {
+  .cta-kort { grid-template-columns: minmax(0, 1fr); }
+  .cta-kort__handling { align-items: flex-start; }
+}

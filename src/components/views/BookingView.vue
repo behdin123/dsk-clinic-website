@@ -1,16 +1,46 @@
 <template>
   <section class="container booking-view" aria-labelledby="booking-title">
-    <header class="booking-hero">
-      <p class="eyebrow">DK Skønhedsklinik</p>
-      <h1 id="booking-title">Book tid i Esbjerg eller Vejle</h1>
-      <p class="lead">
-        Vælg et tidspunkt herunder. Din første tid er altid en <b>gratis og uforpligtende
-        forundersøgelse</b> hos klinikkens læge – også hvis du ender med ikke at blive behandlet.
-      </p>
+    <header class="side-hero">
+      <div>
+        <p class="sec__eyebrow">Booking</p>
+        <h1 id="booking-title">Book tid i Esbjerg eller Vejle</h1>
+        <p class="side-hero__lead">
+          Vælg et tidspunkt herunder. Din første tid er altid en <b>gratis og uforpligtende
+          forundersøgelse</b> hos klinikkens læge – også hvis du ender med ikke at blive behandlet.
+        </p>
+        <ul class="side-hero__chips">
+          <li>Gratis forundersøgelse</li>
+          <li>Udføres af læge</li>
+          <li>Du betaler efter behandlingen</li>
+        </ul>
+        <div class="side-hero__handling">
+          <a class="knap knap--primaer" href="#vaelg-tid">Vælg en tid</a>
+          <router-link class="knap knap--sekundaer" to="/priser/">Se priser</router-link>
+        </div>
+      </div>
+
+      <aside class="sec--kort kontakt-boks" aria-labelledby="kontakt-titel">
+        <h2 id="kontakt-titel">Hellere skrive eller ringe?</h2>
+        <p>Vi svarer typisk inden for én hverdag.</p>
+        <div class="kontakt-boks__knapper">
+          <a class="knap knap--primaer" :href="smsHref">Send en sms</a>
+          <a class="knap knap--sekundaer" :href="phoneHref">Ring {{ phone }}</a>
+        </div>
+        <dl class="kontakt-boks__tider">
+          <div><dt>Esbjerg</dt><dd>Mandag–fredag 17:00–20:00</dd></div>
+          <div><dt>Vejle</dt><dd>Søndag 11:00–18:00</dd></div>
+        </dl>
+        <p class="kontakt-boks__note">
+          Eller brug <router-link to="/kontaktos/">kontaktformularen</router-link>.
+        </p>
+      </aside>
     </header>
 
-    <section class="booking-embed" aria-labelledby="vaelg-tid">
-      <h2 id="vaelg-tid" class="sr-only">Vælg tidspunkt</h2>
+    <section class="sec sec--kort booking-embed" aria-labelledby="vaelg-tid">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Vælg tid</p>
+        <h2 id="vaelg-tid">Find en ledig tid</h2>
+      </div>
 
       <div :id="containerId" class="gecko-container"></div>
 
@@ -29,56 +59,53 @@
       </noscript>
     </section>
 
-    <section class="after-booking" aria-labelledby="efter-title">
-      <h2 id="efter-title">Hvad sker der, når du har booket?</h2>
-      <ol class="steps">
+    <section class="sec" aria-labelledby="efter-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Forløbet</p>
+        <h2 id="efter-title">Hvad sker der, når du har booket?</h2>
+      </div>
+      <ol class="trin">
         <li>
-          <span class="step-no">1</span>
-          <div>
-            <h3>Forundersøgelse hos læge</h3>
-            <p>Vi taler om dine ønsker, gennemgår din sygehistorie og finder ud af, hvad der er realistisk. Du får en anbefaling og en pris. Den er gratis.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">01</span>
+          <h3>Forundersøgelse hos læge</h3>
+          <p>Vi taler om dine ønsker, gennemgår din sygehistorie og finder ud af, hvad der er realistisk. Du får en anbefaling og en pris. Den er gratis.</p>
         </li>
         <li>
-          <span class="step-no">2</span>
-          <div>
-            <h3>Mindst 48 timers betænkningstid</h3>
-            <p>Lovpligtig ved kosmetisk behandling. Du bestemmer selv, om du vil gå videre.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">02</span>
+          <h3>Mindst 48 timers betænkningstid</h3>
+          <p>Lovpligtig ved kosmetisk behandling. Du bestemmer selv, om du vil gå videre.</p>
         </li>
         <li>
-          <span class="step-no">3</span>
-          <div>
-            <h3>Behandlingen</h3>
-            <p>Udføres af klinikkens ansvarlige læge, Arash Bagheri. Du får besked om, hvornår resultatet kan vurderes.</p>
-          </div>
+          <span class="trin__nr" aria-hidden="true">03</span>
+          <h3>Behandlingen</h3>
+          <p>Udføres af klinikkens ansvarlige læge, Arash Bagheri. Du får besked om, hvornår resultatet kan vurderes.</p>
         </li>
       </ol>
-      <p class="muted">
-        Se <router-link to="/priser/">priserne</router-link> på alle behandlinger, inden du booker.
-      </p>
     </section>
 
-    <section class="clinics" aria-labelledby="hvor-title">
-      <h2 id="hvor-title">Hvor holder vi til?</h2>
-      <div class="clinic-grid">
-        <article class="clinic-card">
-          <h3><router-link to="/klinik/esbjerg/">Esbjerg</router-link></h3>
-          <address>Havnegade 6, 6700 Esbjerg</address>
-          <p class="hours">Mandag–fredag 17:00–20:00</p>
+    <section class="sec" aria-labelledby="hvor-title">
+      <div class="sec__head">
+        <p class="sec__eyebrow">Klinikker</p>
+        <h2 id="hvor-title">Hvor holder vi til?</h2>
+      </div>
+      <div class="klinik-kort">
+        <article class="sec--kort">
+          <h3>Esbjerg</h3>
+          <dl>
+            <div><dt>Adresse</dt><dd><address>Havnegade 6, 6700 Esbjerg</address></dd></div>
+            <div><dt>Åbent</dt><dd>Mandag–fredag 17:00–20:00</dd></div>
+          </dl>
+          <router-link to="/klinik/esbjerg/" class="klinik-kort__link">Se klinikken i Esbjerg</router-link>
         </article>
-        <article class="clinic-card">
-          <h3><router-link to="/klinik/vejle/">Vejle</router-link></h3>
-          <address>Søndergade 50, 7100 Vejle</address>
-          <p class="hours">Søndag 11:00–18:00</p>
+        <article class="sec--kort">
+          <h3>Vejle</h3>
+          <dl>
+            <div><dt>Adresse</dt><dd><address>Søndergade 50, 7100 Vejle</address></dd></div>
+            <div><dt>Åbent</dt><dd>Søndag 11:00–18:00</dd></div>
+          </dl>
+          <router-link to="/klinik/vejle/" class="klinik-kort__link">Se klinikken i Vejle</router-link>
         </article>
       </div>
-
-      <p class="contact-line">
-        Passer ingen af tiderne, eller er du i tvivl? Skriv en SMS eller ring på
-        <a :href="phoneHref">{{ phone }}</a>, eller brug
-        <router-link to="/kontaktos/">kontaktformularen</router-link>.
-      </p>
     </section>
   </section>
 </template>
@@ -93,6 +120,7 @@ import {
 
 const SITE_URL = 'https://dsklinik.dk'
 const containerId = BOOKING_EMBED_CONTAINER_ID
+const smsHref = 'sms:+4553503750?&body=Hej%20DK%20Sk%C3%B8nhedsklinik%2C%20jeg%20vil%20gerne%20booke%20en%20tid%20til%20'
 const bookingUrl = BOOKING_URL
 const phone = CLINIC_PHONE
 const phoneHref = CLINIC_PHONE_HREF
@@ -184,50 +212,87 @@ $c-dark: #153655;
 $c-blue: #2d58a1;
 
 .booking-view {
-  flex-direction: column;
-  max-width: var(--maal);
-  margin: 0 auto;
-  padding: 70px 20px 100px !important;
   color: $c-dark;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--maal);
+  padding: 56px 20px 72px !important;
 }
 
 .sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0, 0, 0, 0);
-  white-space: nowrap; border: 0;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.booking-hero {
-  margin-bottom: 34px;
+.sec { margin-bottom: 64px; }
 
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .8rem;
-    color: $c-blue;
-    margin-bottom: 10px;
-  }
+/* Kontakt-boksen i heroen */
+.kontakt-boks { padding: 32px !important; }
 
-  h1 { margin-bottom: 16px; }
-  .lead { max-width: 64ch; }
+.kontakt-boks h2 {
+  color: $c-dark;
+  font-size: 1.3rem;
+  margin: 0 0 6px;
 }
 
-.booking-embed {
-  margin-bottom: 60px;
-  border: 1px solid rgba(21, 54, 85, .14);
-  border-radius: 14px;
-  padding: 10px;
-  background: #fff;
-  min-height: 620px;
+.kontakt-boks > p { color: rgba(21, 54, 85, .8); margin: 0; }
 
-  :deep(iframe) {
-    width: 100% !important;
-    min-height: 600px;
-    border: 0;
-    display: block;
-  }
+.kontakt-boks__knapper {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 22px;
+}
+
+.kontakt-boks__tider { margin: 0; }
+
+.kontakt-boks__tider > div,
+.klinik-kort dl > div {
+  border-top: 1px solid rgba(21, 54, 85, .10);
+  display: grid;
+  gap: 4px 16px;
+  grid-template-columns: 90px minmax(0, 1fr);
+  padding: 10px 0;
+}
+
+.kontakt-boks__tider dt,
+.klinik-kort dt {
+  color: rgba(21, 54, 85, .6);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding-top: 2px;
+  text-transform: uppercase;
+}
+
+.kontakt-boks__tider dd,
+.klinik-kort dd { color: $c-dark; font-weight: 600; margin: 0; }
+
+.klinik-kort address { font-style: normal; }
+
+.kontakt-boks__note {
+  font-size: .92rem;
+  margin: 14px 0 0 !important;
+}
+
+.kontakt-boks__note a,
+.klinik-kort__link { color: $c-blue; font-weight: 700; }
+
+/* Bookingkalenderen */
+.booking-embed { min-height: 620px; }
+.booking-embed .sec__head { margin-bottom: 20px; }
+
+.booking-embed :deep(iframe) {
+  border: 0;
+  display: block;
+  min-height: 600px;
+  width: 100% !important;
 }
 
 .embed-fallback {
@@ -237,87 +302,37 @@ $c-blue: #2d58a1;
   a { color: $c-blue; }
 }
 
-.after-booking { margin-bottom: 56px; }
+@media (max-width: 600px) {
+  .booking-embed { min-height: 560px; padding: 22px 16px !important; }
+}
 
-h2 { margin-bottom: 18px; }
-
-.steps {
-  list-style: none;
-  padding: 0;
+/* Klinikkortene */
+.klinik-kort {
   display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  li {
-    display: flex;
-    gap: 14px;
-    border: 1px solid rgba(21, 54, 85, .14);
-    border-radius: 12px;
-    padding: 22px;
-  }
-
-  h3 { margin-bottom: 6px; font-size: 1.05rem; }
-  p { font-size: .95rem; }
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.step-no {
-  flex: 0 0 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: $c-blue;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
+.klinik-kort article { padding: 28px !important; }
+
+.klinik-kort h3 {
+  color: $c-dark;
+  font-size: 1.2rem;
+  margin: 0 0 12px;
 }
 
-.muted {
-  margin-top: 20px;
-  font-size: .95rem;
+.klinik-kort dl { margin: 0 0 16px; }
 
-  a { color: $c-blue; }
+.klinik-kort__link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.clinic-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+@media (max-width: 700px) {
+  .klinik-kort { grid-template-columns: minmax(0, 1fr); }
 }
 
-.clinic-card {
-  border: 1px solid rgba(21, 54, 85, .14);
-  border-radius: 12px;
-  padding: 22px;
-
-  h3 { margin-bottom: 8px; }
-
-  a {
-    color: $c-dark;
-    text-decoration: none;
-    border-bottom: 1px dotted $c-blue;
-
-    &:hover { color: $c-blue; }
-  }
-
-  address { font-style: normal; margin-bottom: 8px; }
-  .hours { font-size: .93rem; color: rgba(21, 54, 85, .72); }
-}
-
-.contact-line {
-  margin-top: 22px;
-  max-width: 70ch;
-
-  a { color: $c-blue; }
-}
-
-@media only screen and (max-width: 600px) {
-  .booking-view { padding: 110px 16px 70px !important; }
-  .booking-embed { min-height: 560px; padding: 6px; }
-}
-
-/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
-   Hver blok paa siden staar i 90 % bredde, centreret, saa alt deler samme
-   venstre- og hoejrekant og skalerer selv fra tablet til mobil. */
+/* Under 1000 px: samme opskrift som klinikssiderne - 90 % bredde */
 @media only screen and (max-width: 1000px) {
   .booking-view {
     padding-left: 0 !important;

@@ -225,7 +225,7 @@
                             <p>1</p>
                         </div>
                         <div class="step-content">
-                            <h4 class="step-title">Book en <br> Forundersøgelse</h4>
+                            <h3 class="step-title">Book en <br> Forundersøgelse</h3>
                             <p class="step-text"> Lægen guider dig fra starten. Vi gennemgår din ønsker, helbred og
                                 snakker om realistiske resultater, og laver
                                 journalføring.</p>
@@ -236,7 +236,7 @@
                             <p>2</p>
                         </div>
                         <div class="step-content">
-                            <h4 class="step-title">Behandlingsplan & betænkningstid</h4>
+                            <h3 class="step-title">Behandlingsplan & betænkningstid</h3>
                             <p class="step-text">De fleste injektionsbehandlinger kræver <b>48 timers</b>
                                 betænkningstid, så du har god mulighed for at overveje din behandlingsplan</p>
                         </div>
@@ -246,7 +246,7 @@
                             <p>3</p>
                         </div>
                         <div class="step-content">
-                            <h4 class="step-title">Behandling & opfølgning med lægen</h4>
+                            <h3 class="step-title">Behandling & opfølgning med lægen</h3>
                             <p class="step-text">Behandlingen udføres af samme læge. Efter behandlingen sørger lægen for
                                 grundig opfølgning og du får vejledning til det videre forløb</p>
                         </div>
