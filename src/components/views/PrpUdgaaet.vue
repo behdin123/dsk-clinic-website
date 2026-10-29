@@ -144,7 +144,7 @@ useHead({
 <style lang="scss" scoped>
 .prp-view {
   flex-direction: column;
-  max-width: 1100px;
+  max-width: var(--maal);
   margin: 0 auto;
   padding: 140px 20px 100px !important;
 }

@@ -1034,14 +1034,6 @@ h2 {
     .Informations {
         padding: 12px 0;
     }
-
-    .width-margin {
-        max-width: 700px;
-    }
-
-    .klinikken {
-        width: 80%;
-    }
 }
 
 
@@ -1071,15 +1063,12 @@ h2 {
         gap: 50px !important;
     }
 
-    .section-wrapper {
-        padding: 50px 0;
+    .section-wrapper{
+        padding: 0 0 44px 0;
     }
 
-    .section-text,
-    .section-media,
-    .callback-form,
-    .klinikken {
-        width: 80% !important;
+    .callback .section-text, .callback-form {
+        width: 100% !important;
     }
 }
 
@@ -1092,10 +1081,6 @@ h2 {
     .KontaktOsHeader {
         width: auto !important;
         margin-bottom: 30px;
-    }
-
-    .KontaktOsHeader h1 {
-        padding: 10vw 0 0 0 !important;
     }
 
     .KontaktInformation {
@@ -1125,12 +1110,6 @@ h2 {
             height: 30px;
             margin-right: 20px;
         }
-    }
-
-    .section-text,
-    .section-media,
-    .callback-form {
-        width: 90% !important;
     }
 
     h2 {
@@ -1582,7 +1561,7 @@ button[disabled] {
 .kontakt-kort__links a:hover { text-decoration: underline; }
 
 @media (max-width: 880px) {
-    .kontakt-klinikker { padding: 44px 20px 0; }
+    .kontakt-klinikker, .callback, .flex-row { padding: 44px 20px 0; }
     .kontakt-klinikker__grid { grid-template-columns: minmax(0, 1fr); }
     .kontakt-kort { padding: 24px 20px; }
     .kontakt-kort dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
@@ -1738,5 +1717,24 @@ button[disabled] {
     text-align: center;
     width: 100%;
   }
+}
+
+/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
+   Hver blok paa siden staar i 90 % bredde, centreret. Saa faar alt samme
+   venstre- og hoejrekant hele vejen ned, og det skalerer selv fra tablet
+   til mobil uden ekstra breakpoints. */
+@media only screen and (max-width: 1000px) {
+    main > .flex,
+    .kontakt-klinikker,
+    .callback,
+    .follow-insta-wrapper > .flex-row {
+        box-sizing: border-box;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 90% !important;
+    }
 }
 </style>

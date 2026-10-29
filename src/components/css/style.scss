@@ -376,7 +376,6 @@
 /* Callout/CTA midt i artiklen (”Læs også”/”Kontakt os…”) */
     .callout-cta {
         margin: 0 auto;
-        max-width: 1500px;
         padding: 18px 18px;
         border: 1px solid rgba(0, 0, 0, .08);
         background: #ffffff;
@@ -404,7 +403,7 @@
    opbygget helhed - ikke som tekstblokke sat efter hinanden.
    ============================================================ */
 
-.sec {
+.sec, .priser-hero {
   box-sizing: border-box;
   margin: 0 auto 64px;
   max-width: var(--maal);

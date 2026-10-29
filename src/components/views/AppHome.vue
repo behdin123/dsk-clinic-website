@@ -12,6 +12,10 @@
           </h1>
         </div>
 
+        <p class="mobile-show hero-lead">
+          Behandlingerne udføres af læge Arash Bagheri, der har mere end 20 års erfaring.
+        </p>
+
         <p class="mobile_hide" data-aos="fade-right" data-aos-duration="3000">
           Hos DK Skønhedsklinik får du sikre, lægebehandlede kosmetiske behandlinger med fokus på naturlige resultater.
           Vi tilbyder
@@ -41,16 +45,22 @@
 
         <div>
           <ul class="mobile-show hero-punkter" data-aos="fade-right" data-aos-duration="3000">
-            <li>Botox, filler og hudbehandling</li>
-            <li>Naturlige og harmoniske resultater</li>
-            <li>Udføres af erfaren læge</li>
+            <li>Gratis forundersøgelse</li>
+            <li>Uforpligtende rådgivning</li>
+            <li>Betal efter behandling</li>
           </ul>
 
           <div class="booking-button">
             <button class="general_button" type="button" @click="openBookingFromHero"
               aria-label="Book gratis forundersøgelse">
-              Book nu
+              <span class="mobile_hide">Book nu</span>
+              <span class="mobile-show">Book gratis forundersøgelse</span>
             </button>
+            <a class="mobile-show hero-ring"
+              href="sms:+4553503750?&amp;body=Hej%20DK%20Sk%C3%B8nhedsklinik%2C%20jeg%20vil%20gerne%20h%C3%B8re%20mere%20om%20"
+              aria-label="Send os en sms på 53 50 37 50">
+              Send os en sms
+            </a>
           </div>
         </div>
       </div>
@@ -301,40 +311,47 @@
     </div>
 
     <section class="why-us-section" aria-labelledby="why-us-title">
-      <div class="why-us-container">
-        <!-- COPY_SECTION -->
-        <h2 id="why-us-title" class="why-us-title">Hvorfor vælge DK Skønhedsklinik?</h2>
+      <div class="why-us-container hvorfor">
+        <div class="hvorfor__tekst">
+          <p class="sec__eyebrow">Hvorfor os</p>
+          <h2 id="why-us-title" class="hvorfor__titel">Hvorfor vælge DK Skønhedsklinik?</h2>
+          <p>
+            Alle behandlinger udføres af klinikkens ansvarlige læge, Arash Bagheri – ikke af en kosmetolog.
+            Vi går efter subtile forbedringer frem for drastiske forandringer: Du vil se friskere ud, men
+            stadig ligne dig selv.
+          </p>
+          <p>
+            Klinikken er registreret hos Styrelsen for Patientsikkerhed, og vi følger alle regler om
+            forundersøgelse og 48 timers betænkningstid.
+          </p>
+          <button class="hvorfor__knap" type="button" @click="openBookingFromWhy">
+            Book gratis forundersøgelse
+          </button>
+        </div>
 
-        <ul class="why-us-list">
-          <li>
-            <b>Erfaring & ekspertise:</b>
-            Over 20 års erfaring med kosmetiske behandlinger. Alle behandlinger udføres af klinikkens ansvarlige læge,
-            Arash Bagheri – ikke af en kosmetolog.
-          </li>
-          <li>
-            <b>Sikkerhed i top:</b>
-            Registreret hos Styrelsen for Patientsikkerhed. Vi følger alle regler om forundersøgelse og 48 timers
-            betænkningstid – din sikkerhed er vores prioritet.
-          </li>
-          <li>
-            <b>Naturlige resultater:</b>
-            Vi går efter subtile forbedringer frem for drastiske forandringer. Du vil se friskere ud, men stadig ligne
-            dig selv.
-          </li>
-          <li>
-            <b>Personlig konsultation:</b>
-            Gratis og uforpligtende konsultation tilbydes altid. Her tager vi os god tid til at lytte til dine ønsker og
-            besvare alle spørgsmål.
-          </li>
-          <li>
-            <b>To klinikker:</b>
-            Besøg os i hjertet af
-            <router-link :to="{ name: 'clinic-vejle' }" aria-label="Gå til klinikken i Vejle">Vejle</router-link>
-            eller
-            <router-link :to="{ name: 'clinic-esbjerg' }" aria-label="Gå til klinikken i Esbjerg">Esbjerg</router-link>.
-            Begge klinikker byder på hyggelige omgivelser og fleksible åbningstider – både aftener i Esbjerg og søndage i Vejle.
-          </li>
-        </ul>
+        <dl ref="hvorforRef" class="hvorfor__tal">
+          <div>
+            <dt><span data-tal="20">20</span>+</dt>
+            <dd>års erfaring med kosmetiske behandlinger.</dd>
+          </div>
+          <div>
+            <dt><span data-tal="30">30</span></dt>
+            <dd>år som læge – heraf 17 i det danske sundhedsvæsen.</dd>
+          </div>
+          <div>
+            <dt><span data-tal="2">2</span></dt>
+            <dd>
+              klinikker i
+              <router-link :to="{ name: 'clinic-vejle' }">Vejle</router-link> og
+              <router-link :to="{ name: 'clinic-esbjerg' }">Esbjerg</router-link>
+              – aftener i Esbjerg og søndage i Vejle.
+            </dd>
+          </div>
+          <div>
+            <dt>0 kr.</dt>
+            <dd>for forundersøgelsen. Gratis og uforpligtende – du betaler først efter behandlingen.</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -503,6 +520,42 @@ const openBookingFromHero = () => {
   window.gtagEvent?.('booking_click', { placement: 'home_hero', component: 'AppHome' })
 }
 
+/* Tallene i "Hvorfor vaelge" taeller op, naar sektionen kommer i syne.
+   HTML'en indeholder de rigtige tal (Google, skaermlaesere, uden JS);
+   de saettes kun til 0, hvis animationen faktisk kan koere. Én observer,
+   der slipper igen efter foerste visning, og requestAnimationFrame. */
+const hvorforRef = ref(null)
+
+onMounted(() => {
+  const el = hvorforRef.value
+  if (!el || !('IntersectionObserver' in window)) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+  const tal = [...el.querySelectorAll('[data-tal]')]
+  tal.forEach((n) => { n.textContent = '0' })
+
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting)) return
+    io.disconnect()
+    const start = performance.now()
+    const varighed = 1400
+    const trin = (nu) => {
+      const p = Math.min(1, (nu - start) / varighed)
+      const k = 1 - Math.pow(1 - p, 3)
+      tal.forEach((n) => { n.textContent = String(Math.round(Number(n.dataset.tal) * k)) })
+      if (p < 1) requestAnimationFrame(trin)
+    }
+    requestAnimationFrame(trin)
+  }, { threshold: 0.35 })
+
+  io.observe(el)
+})
+
+const openBookingFromWhy = () => {
+  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: 'home_why' } }))
+  window.gtagEvent?.('booking_click', { placement: 'home_why', component: 'AppHome' })
+}
+
 const currentIndex = ref(0); // ایندکس فعلی اسلاید
 let slides = null;
 let slide = null;
@@ -610,7 +663,7 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1500px;
+  
 
   .mobile_hide {
     width: 48%;
@@ -639,54 +692,10 @@ onMounted(() => {
 }
 
 .why-us-container {
-  max-width: 1500px;
+  max-width: var(--maal);
   margin: 0 auto;
 }
 
-.why-us-title {
-  margin: 0 0 60px 0;
-  line-height: 1.2;
-  font-size: 36px;
-  color: #fff !important;
-}
-
-.why-us-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px 150px;
-  font-size: 18px;
-}
-
-.why-us-list li {
-  position: relative;
-  padding-left: 28px;
-  line-height: 1.45;
-  color: #fff;
-}
-
-.why-us-list li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  top: 0.15em;
-  font-size: 1rem;
-  line-height: 1;
-  color: #fff;
-  /* matcher brand-blå (fx slider-arrows) */
-}
-
-.why-us-list b {
-  font-weight: 700;
-}
-
-.why-us-list a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
 
 
 /*  A. Link ser ud som tekst – men med tydelig hover/focus affordance */
@@ -1002,7 +1011,7 @@ onMounted(() => {
 /* مطمئن شو کانتینر زمینه نسبی دارد */
 .bg-img {
   position: relative;
-  background-image: url('@/assets/BannerBehandling3.webp') !important;
+  background-image: url('@/assets/BannerBehandling3.webp');
 
 }
 
@@ -1140,7 +1149,6 @@ onMounted(() => {
 }
 
 .VIKING-image {
-  width: 45%;
   position: relative;
   overflow: hidden;
 
@@ -1159,7 +1167,6 @@ onMounted(() => {
   padding: 50px 0;
 
   .container-width {
-    max-width: 1500px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1168,20 +1175,13 @@ onMounted(() => {
   }
 }
 
-.container-width {
-  max-width: 1500px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
 
 .slider {
-  max-width: 1500px;
+ 
   margin: 0 auto;
 }
 
 .Ekspertise-txt {
-  width: 45% !important;
 
   .general_button {
     max-width: 300px;
@@ -1195,7 +1195,6 @@ onMounted(() => {
 
 .Multimediedesigner {
   .txt {
-    width: 40%;
     color: var(--quaternary-color) !important;
   }
 
@@ -1231,10 +1230,6 @@ onMounted(() => {
     }
   }
 
-  .container_carts a {
-    width: 30% !important;
-  }
-
   .hero-title {
     margin-bottom: 20px !important;
   }
@@ -1253,23 +1248,8 @@ onMounted(() => {
     margin-top: 10px;
   }
 
-  .container-width {
-    max-width: 1200px !important;
 
-    .txt {
-      width: 50%;
-      padding-left: 0;
-      color: var(--quaternary-color) !important;
-    }
-  }
 
-  .VIKING-image {
-    width: 37vw;
-  }
-
-  .OmKlinik {
-    padding: 70px 11% 70px 8% !important;
-  }
 
   #Info-div {
     p {
@@ -1278,18 +1258,11 @@ onMounted(() => {
     }
   }
 
-  .why-us-section {
-    padding: 70px 8%;
-  }
 
-  .why-us-container,
   .slider {
     max-width: 1200px !important;
   }
 
-  .why-us-list {
-    gap: 30px 70px;
-  }
 
   h2 {
     font-size: 36px;
@@ -1509,12 +1482,6 @@ onMounted(() => {
   }
 }
 
-@media only screen and (max-width: 1800px) {
-
-  .margin-left {
-    padding-right: 0% !important;
-  }
-}
 
 @media only screen and (max-width: 1380px) {
   .bg-img {
@@ -1537,45 +1504,15 @@ onMounted(() => {
 
 
 
-  .txt {
-    width: 50vw;
-    font-size: 18px;
-  }
 
-  .VIKING-image {
-    position: relative;
-    overflow: hidden;
-    width: 45% !important;
-  }
 
-  .VIKING-image img {
-    min-height: 100%;
-    height: 100% !important;
-    max-height: 100% !important;
-    max-width: none;
-    width: auto !important;
-    position: relative;
-  }
 
-  .margin-left {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
   
   .Multimediedesigner {
     max-height: unset;
   }
 }
 
-@media only screen and (max-width: 1250px) {
-  .container-width, .hero-content-wrapper{
-    max-width: 1000px !important;
-  }
-
-  .container-width {
-    gap: 30px;
-  }
-}
 
 @media only screen and (max-width: 1120px) {
   .bg-img {
@@ -1588,34 +1525,18 @@ onMounted(() => {
     }
   }
 
-  .container,
-  .container-width {
+  .container {
     flex-direction: column;
   }
 
-  .why-us-title {
-    margin-bottom: 50 !important;
-  }
 
-  .why-us-list {
-    grid-template-columns: 1fr;
-    gap: 50px 0;
-  }
 
-  .Multimediedesigner {
-    .txt {
-      width: auto !important;
-    }
-  }
 
   .contain .informations {
     flex-direction: column-reverse !important;
     align-items: center;
   }
 
-  .VIKING-image {
-    width: 90vw;
-  }
 
   #Info-div {
     padding: 40px 8% 10px 8%;
@@ -1649,9 +1570,6 @@ onMounted(() => {
     }
   }
 
-  .Multimediedesigner {
-    padding: 70px 8% 50px 8%;
-  }
 
   #uix {
     flex-direction: row;
@@ -1738,16 +1656,9 @@ onMounted(() => {
     width: 45% !important;
   }
 
-  .VIKING-image {
-    width: 78vw !important;
-  }
 
-  .sliderContainer, .hero-content-wrapper {
+  .sliderContainer {
     padding: 50px 5%;
-  }
-
-  .hero-content-wrapper {
-    margin: 0 !important;
   }
 
 }
@@ -1756,10 +1667,6 @@ onMounted(() => {
 @media only screen and (max-width: 940px) {
   .image {
     width: 100% !important;
-  }
-
-  .hero-arash-image {
-    height: 90%;
   }
 
   .info[data-v-48676f02] {
@@ -1772,21 +1679,6 @@ onMounted(() => {
 }
 
 @media only screen and (max-width: 840px) {
-
-  .home {
-    .bg-img {
-      justify-content: space-between !important;
-    }
-
-    h1 {
-      font-size: 36px !important;
-    }
-  }
-
-  .hero-content-wrapper {
-    justify-content: space-between;
-    height: 80%;
-  }
 
   .bg-img {
 
@@ -1820,10 +1712,6 @@ onMounted(() => {
 }
 
 @media only screen and (max-width: 800px) {
-  .bg-img p {
-    width: 80%;
-  }
-
   .primary-color {
     padding: 50px 0;
   }
@@ -1838,24 +1726,10 @@ onMounted(() => {
 }
 
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 850px) {
   .bg-img {
-    height: 70vh !important;
-    background-image: url("/src/assets/BannerFrontPageMobile3.webp") !important;
+    background-image: url("/src/assets/BannerFrontPageMobile5.webp") !important;
     background-position: right !important;
-  }
-
-  .hero-arash-image {
-    position: absolute !important;
-    right: 5%;
-  }
-
-  .hero-content-wrapper {
-    width: 75%;
-  }
-
-  .hero-title {
-    max-width: 45vw;
   }
 
   .container_carts a {
@@ -1898,10 +1772,6 @@ onMounted(() => {
     }
   }
 
-  .Ekspertise-txt {
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-  }
 
 
   .booking-button {
@@ -1912,22 +1782,14 @@ onMounted(() => {
 }
 
 @media only screen and (max-width: 660px) {
-  .bg-img {
-    background-image: url("/src/assets/BannerFrontPageMobile4.webp") !important;
-  }
-
   .contain .informations .info {
     width: 90%;
   }
 
-  .VIKING,
   .faq {
     padding: 50px 5% !important;
   }
 
-  .VIKING-image {
-    width: 90vw !important;
-  }
 
   #Info-div {
     padding: 40px 0% 10px 0%;
@@ -1949,9 +1811,6 @@ onMounted(() => {
     padding: 50px 7% !important;
   }
 
-  .Multimediedesigner {
-    padding: 100px 5% 20px 5%;
-  }
 
   .min-concept {
     padding: 50px 5% 70px 5% !important;
@@ -2008,9 +1867,6 @@ onMounted(() => {
     margin-top: 35px;
   }
 
-  .hero-arash-image {
-    right: 0;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -2022,11 +1878,11 @@ onMounted(() => {
         width: 100% !important;
       }
     }
+    .hero-title {
+      max-width: none !important;
+    }
   }
 
-  .why-us-section {
-    padding: 50px 5%;
-  }
 
   .Behandlinger-section {
     display: flex;
@@ -2034,22 +1890,13 @@ onMounted(() => {
     align-items: center;
   }
 
-  .why-us-list {
-    font-size: 16px;
-  }
 
-  .why-us-list {
-    gap: 30px 0;
-  }
 
   .section-title {
     font-size: 30px !important;
     width: 90%;
   }
 
-  .why-us-title {
-    font-size: 32px;
-  }
 
   .card-content {
     height: 95%;
@@ -2092,9 +1939,6 @@ onMounted(() => {
     font-size: 35px;
   }
 
-  .why-us-title {
-    margin-bottom: 30px !important;
-  }
 
   .ux {
     align-items: flex-start !important;
@@ -2126,9 +1970,6 @@ onMounted(() => {
     }
   }
 
-  .txt {
-    width: 90vw !important;
-  }
 
   .txt-two {
     width: 90vw;
@@ -2187,13 +2028,6 @@ onMounted(() => {
     padding: 0 !important;
   }
 
-  .hero-content-wrapper {
-    width: 100%;
-  }
-
-  .hero-title {
-    max-width: 60vw;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -2319,85 +2153,506 @@ onMounted(() => {
   letter-spacing: -.5px;
 }
 
-/* ===== Forsidens hero paa mobil =====
-   Teksten laa oven paa laegens ansigt uden nogen form for afdaempning, og
-   punkterne var emoji - det ser hjemmelavet ud paa en laegeklinik. Her
-   lægges en moerk bund ind under teksten, saa den er laesbar uanset hvor
-   billedet lander, og punkterne faar samme chip-udseende som paa
-   kontaktsiden. */
-@media (max-width: 900px) {
-  .home .bg-img {
-    /* !important fordi den faelles regel i App.vue er mere specifik */
-    background-position: 86% center !important;
+/* ===== Maalestokken paa forsiden =====
+   Samme venstre- og hoejrekant som paa klinikssiderne, om os, kontakt og
+   priser. Baandene beholder deres fulde baggrund, men indholdet holdes inde
+   paa var(--maal) via baandets egen sideluft - aldrig mindre end gutteren.
+   De gamle 1500/1200/1000 px-graenser og %-sideluft i reglerne ovenfor
+   overstyres her samlet, i stedet for at blive rettet én for én.
+   Ligger sidst og er scoped med .home, saa intet siver ud til andre sider. */
+.home .bg-img,
+.home .Behandlinger-section,
+.home .contain.first-mode,
+.home .Multimediedesigner,
+.home .sliderContainer,
+.home .why-us-section,
+.home .faq {
+  box-sizing: border-box;
+  padding-inline: max(var(--gutter), calc((100% - var(--maal)) / 2)) !important;
+}
+
+.home .hero-content-wrapper,
+.home .container-width,
+.home .informations,
+.home .why-us-container {
+  box-sizing: border-box;
+  margin-inline: 0 !important;
+  max-width: none !important;
+  padding-inline: 0 !important;
+}
+
+/* Citat-sektionen: portraet + tekst skal kunne staa inden for maalet.
+   Teksten havde fast 42vw-bredde og 100 px venstremargen, saa den skoed
+   ud over hoejrekanten paa brede skaerme. */
+.home .contain .informations {
+  gap: 48px;
+  width: 100%;
+}
+
+@media (min-width: 801px) {
+  .home .contain .informations .info {
+    flex: 1 1 0;
+    margin-inline: 0 !important;
+    min-width: 0;
   }
 
-  /* To daempninger: én fra venstre, saa teksten har sin egen flade og ikke
-     ligger hen over ansigtet, og én fra bunden, saa knappen staar rent. */
+  .home #Info-div p {
+    max-width: 64ch;
+    width: auto;
+  }
+}
+
+/* ===== Forsidens hero under 1200 px =====
+   Over 1200 px gaelder desktop-heroen. Herunder er der to layouts med
+   faelles indhold og stil:
+     - mobil (til 500 px): budskab - laegens ansigt - handling, oppefra og ned
+     - tablet og lille laptop (501-1200 px): tekst i venstre spalte,
+       laegen til hoejre. Én regel, der skalerer selv med clamp().
+   Alt er scoped med .home - AppHome's style er global. */
+
+/* --- Faelles: indhold, typografi, chips og knapper --- */
+@media (max-width: 1200px) {
+  .home .bg-img .mobile_hide { display: none !important; }
+  .home .bg-img .mobile-show { display: block !important; }
+  .home .scroll-indicator { display: none !important; }
+
   .home .bg-img::after {
     content: '';
-    position: absolute;
+    display: block !important;
     inset: 0;
-    background:
-      linear-gradient(100deg,
-        rgba(10, 22, 36, .92) 0%,
-        rgba(10, 22, 36, .78) 38%,
-        rgba(10, 22, 36, .26) 72%,
-        rgba(10, 22, 36, .12) 100%),
-      linear-gradient(to bottom,
-        rgba(10, 22, 36, 0) 45%,
-        rgba(10, 22, 36, .55) 100%);
-    z-index: 1;
     pointer-events: none;
+    position: absolute;
+    z-index: 1;
   }
 
   .home .hero-content-wrapper {
-    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-block: 0 !important;
     position: relative;
+    width: 100%;
     z-index: 3;
   }
 
+  /* Ingen 3 sekunders indtoning paa det foerste, brugeren ser */
+  .home .bg-img [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .home .hero-title { margin: 0 !important; max-width: none; }
+
+  .home .hero-title h1,
+  .home .bg-img p.hero-lead,
+  .home .hero-eyebrow {
+    text-shadow: 0 1px 12px rgba(10, 22, 36, .45);
+  }
+
+  .home .hero-eyebrow {
+    align-items: center;
+    display: flex;
+    font-size: .72rem;
+    font-weight: 600;
+    gap: 10px;
+    letter-spacing: .13em;
+    margin: 0 0 10px;
+    opacity: .9;
+  }
+
+  .home .hero-eyebrow::before {
+    background: currentColor;
+    content: '';
+    height: 1px;
+    width: 22px;
+  }
+
   .home .hero-title h1 {
-    font-size: clamp(1.65rem, 7.4vw, 2.1rem) !important;
-    line-height: 1.2;
+    line-height: 1.18;
+    margin: 0;
     text-wrap: balance;
   }
 
-  .home .hero-punkter {
-    display: grid;
-    gap: 10px;
+  .home .bg-img p.hero-lead {
+    color: rgba(255, 255, 255, .84);
+    line-height: 1.55;
+    margin: 12px 0 0;
+    width: auto;
+  }
+
+  /* Chips under hinanden i venstre side, let moerk sloeret bund og en
+     svag skygge, saa de kan ses paa den lyse vaeg. */
+  .home .bg-img .hero-punkter {
+    align-items: flex-start;
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
     list-style: none;
-    margin: 22px 0 0;
+    margin: 0 0 18px;
     padding: 0;
   }
 
   .home .hero-punkter li {
+    -webkit-backdrop-filter: blur(6px);
     align-items: center;
+    backdrop-filter: blur(6px);
+    background: rgba(10, 22, 36, .30);
+    border: 1px solid rgba(255, 255, 255, .26);
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(10, 22, 36, .22);
     color: #fff;
     display: flex;
-    font-size: .98rem;
+    font-size: .76rem;
     font-weight: 600;
-    gap: 10px;
+    gap: 6px;
     line-height: 1.35;
+    padding: 6px 11px 6px 9px;
   }
 
   .home .hero-punkter li::before {
-    background: rgba(255, 255, 255, .14);
-    border: 1px solid rgba(255, 255, 255, .34);
+    background: #9fc0f5;
     border-radius: 50%;
     content: '';
     flex: 0 0 auto;
-    height: 9px;
-    width: 9px;
+    height: 6px;
+    width: 6px;
   }
 
-  .home .booking-button { margin-top: 26px; }
+  /* Knapper som paa kontaktsiden: hvid primaer, gennemsigtig sekundaer */
+  .home .booking-button { margin: 0 !important; }
+
+  .home .booking-button .general_button,
+  .home .hero-ring {
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: block !important;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    max-width: none;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+  }
 
   .home .booking-button .general_button {
-    box-sizing: border-box;
-    display: block;
-    max-width: 340px;
-    text-align: center;
-    width: 100%;
+    background: #fff;
+    border: 0;
+    color: #1e4078 !important;
   }
+
+  .home .hero-ring {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background: rgba(10, 22, 36, .35);
+    border: 1.5px solid rgba(255, 255, 255, .55);
+    color: #fff !important;
+  }
+}
+
+/* --- Mobil (til 500 px) ---
+   Billedet ankres i bunden i fuld bredde, saa ansigtet lander mellem
+   tekst og knapper. Heroen holdes under skaermhoejden. */
+@media (max-width: 500px) {
+  .home .bg-img {
+    background-color: #56422f;
+    background-position: 50% 100% !important;
+    background-size: 100% auto !important;
+    padding-block: 26px 24px !important;
+  }
+
+  /* Billedets overkant (bredde x 1519/1361 = 111.6vw over bunden) toner
+     blidt over i vaeggens farve, saa der ikke staar en vandret kant. */
+  .home .bg-img::before {
+    background: linear-gradient(to bottom,
+      #56422f 0%, #56422f 35%, rgba(86, 66, 47, 0) 100%);
+    bottom: calc(111.6vw - 90px);
+    content: '';
+    display: block !important;
+    height: 130px;
+    inset-inline: 0;
+    pointer-events: none;
+    position: absolute;
+    top: auto;
+    z-index: 0;
+  }
+
+  .home .bg-img::after {
+    background:
+      linear-gradient(to bottom,
+        rgba(10, 22, 36, .55) 0%,
+        rgba(10, 22, 36, .30) 24%,
+        rgba(10, 22, 36, 0) 42%),
+      linear-gradient(to top,
+        rgba(10, 22, 36, .62) 0%,
+        rgba(10, 22, 36, .32) 18%,
+        rgba(10, 22, 36, 0) 34%);
+  }
+
+  .home .hero-content-wrapper {
+    min-height: clamp(480px, calc(100svh - 300px), 580px);
+  }
+
+  .home .hero-content-wrapper > div:last-child { margin-top: auto; }
+
+  .home .hero-title h1 {
+    font-size: clamp(1.55rem, 6.9vw, 1.95rem) !important;
+  }
+
+  .home .bg-img p.hero-lead {
+    font-size: .98rem;
+    max-width: 34ch;
+  }
+
+  /* Lave telefoner (iPhone SE o.l.): manchetten ville skubbe teksten ned
+     over ansigtet. Budskabet baeres af H1 og chips. */
+  @media (max-height: 700px) {
+    .home .bg-img p.hero-lead { display: none !important; }
+  }
+
+  .home .booking-button .general_button,
+  .home .hero-ring {
+    width: 100% !important;
+  }
+
+  .home .hero-ring { margin-top: 10px; }
+
+  .home .booking-button { margin-bottom: 20px !important; }
+}
+
+/* --- Tablet og lille laptop (501-1200 px) ---
+   Det brede billede med moerk vaeg til venstre og laegen til hoejre.
+   cover + forankring til hoejre holder ansigtet fri af tekstspalten i hele
+   intervallet; spalten er max 52 % og alt skalerer med clamp(). */
+@media (min-width: 501px) and (max-width: 1200px) {
+  .home .bg-img {
+    background-color: #1b1712;
+    justify-content: flex-start;
+    background-image: url('@/assets/BannerFrontPageMobile3.webp') !important;
+    background-position: 80% 15% !important;
+    background-size: cover !important;
+    padding-block: clamp(40px, 6vw, 72px) !important;
+  }
+
+  .home .bg-img::before { display: none !important; }
+
+  .home .bg-img::after {
+    background:
+      linear-gradient(90deg,
+        rgba(10, 22, 36, .50) 0%,
+        rgba(10, 22, 36, .22) 45%,
+        rgba(10, 22, 36, 0) 70%),
+      linear-gradient(to top,
+        rgba(10, 22, 36, .35) 0%,
+        rgba(10, 22, 36, 0) 30%);
+  }
+
+  .home .hero-content-wrapper {
+    margin-inline: 0 !important;
+    max-width: min(52%, 560px) !important;
+  }
+
+  .home .hero-content-wrapper > div:last-child { margin-top: 26px; }
+
+  .home .hero-title h1 {
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem) !important;
+  }
+
+  .home .bg-img p.hero-lead {
+    font-size: clamp(.98rem, 1.4vw, 1.08rem);
+    max-width: 40ch;
+  }
+
+  .home .booking-button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .home .booking-button .general_button,
+  .home .hero-ring {
+    padding: 15px 26px;
+    width: auto !important;
+  }
+}
+
+/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
+   Baandene beholder fuld baggrund; 5 % sideluft giver indholdet de samme
+   90 % som paa alle andre sider. */
+@media only screen and (max-width: 1000px) {
+  .home .bg-img,
+  .home .Behandlinger-section,
+  .home .contain.first-mode,
+  .home .Multimediedesigner,
+  .home .sliderContainer,
+  .home .why-us-section,
+  .home .faq {
+    padding-inline: 5% !important;
+  }
+
+  /* Behandlingskortene fylder de 90 % og finder selv antallet af
+     kolonner: 1 paa mobil, 2 paa tablet, 3 ved ca. 1000 px. */
+  .home .container_carts {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .home .container_carts a { width: auto !important; }
+
+  /* Titlen foelger kortets bredde, saa "Microneedling" ikke stikker ud */
+  .home .container_carts .card h3 {
+    font-size: clamp(1.6rem, 3.2vw, 2rem) !important;
+  }
+
+  /* Citat-sektionen: portraet og tekst i hele bredden */
+  .home .contain .informations,
+  .home .contain .informations .info,
+  .home #Info-div p {
+    box-sizing: border-box;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: none;
+    width: 100% !important;
+  }
+}
+
+/* ===== "Hvorfor vaelge" - tal i stedet for en punktliste =====
+   Fire tal, der kan maales og tjekkes (fra faktabanken), med en tynd
+   streg under hvert - til venstre teksten og én handling. */
+.home .why-us-section { padding-block: clamp(56px, 8vw, 100px); }
+
+/* Som hos Cerix: tallene til venstre og teksten til hoejre paa store
+   skaerme; paa mobil teksten foerst og tallene to og to under. */
+.home .hvorfor {
+  align-items: center;
+  display: grid;
+  gap: clamp(40px, 6vw, 96px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+}
+
+.home .hvorfor__tal { order: -1; }
+
+.home .hvorfor .sec__eyebrow { color: rgba(255, 255, 255, .78) !important; }
+.home .hvorfor .sec__eyebrow::before { background: rgba(255, 255, 255, .6) !important; }
+
+.home .hvorfor__titel {
+  color: #fff !important;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  line-height: 1.18;
+  margin: 0 0 20px;
+}
+
+.home .hvorfor__tekst p:not(.sec__eyebrow) {
+  color: rgba(255, 255, 255, .82);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 14px;
+  max-width: 52ch;
+}
+
+.home .hvorfor__knap {
+  background: #fff;
+  border: 0;
+  border-radius: 12px;
+  color: #1e4078;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 14px;
+  padding: 15px 26px;
+  transition: background-color .15s ease, transform .15s ease;
+}
+
+.home .hvorfor__knap:hover,
+.home .hvorfor__knap:focus-visible { background: #eaf0fa; transform: translateY(-1px); }
+
+.home .hvorfor__tal {
+  display: grid;
+  gap: clamp(28px, 3.5vw, 48px) clamp(24px, 3.5vw, 56px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.home .hvorfor__tal dt {
+  border-bottom: 1px solid rgba(255, 255, 255, .28);
+  color: #fff;
+  font-size: clamp(2.875rem, 4.4vw, 4.125rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 300;
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 14px;
+  padding-bottom: 18px;
+}
+
+.home .hvorfor__tal dd {
+  color: rgba(255, 255, 255, .78);
+  font-size: .98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home .hvorfor__tal a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .home .hvorfor { grid-template-columns: minmax(0, 1fr); }
+  .home .hvorfor__tal { order: 0; }
+}
+
+@media (max-width: 420px) {
+  .home .hvorfor__tal { gap: 28px 20px; }
+}
+
+/* ===== Tekst + billede ("Book en gratis online forundersoegelse" og
+   "Ekspertise og kvalitet") =====
+   Én regel for alle bredder: to lige store spalter med fast mellemrum
+   over 1000 px, én spalte under. Erstatter de gamle procentbredder med
+   !important, der laa i otte media queries. */
+.home .Multimediedesigner .container-width {
+  align-items: center;
+  display: grid;
+  gap: clamp(40px, 5vw, 72px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home .Multimediedesigner .container-width > * {
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  width: auto;
+}
+
+@media (max-width: 1000px) {
+  .home .Multimediedesigner .container-width {
+    gap: 32px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ===== Laptop =====
+   Tekst og billede i to lige store spalter med fast mellemrum, i stedet
+   for procentbredder, der lagde teksten helt op ad billedet. Behandlings-
+   kortene: tre pr. raekke, centreret, lavere kort. */
+@media (min-width: 1001px) and (max-width: 1800px) {
+  .home .container_carts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .home .container_carts a {
+    flex: 0 0 calc((100% - 48px) / 3);
+    width: auto !important;
+  }
+
+  .home .container_carts .card { height: 330px; }
 }
 </style>

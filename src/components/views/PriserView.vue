@@ -285,9 +285,10 @@ $c-blue: #2d58a1;
 
 .priser-view {
   flex-direction: column;
-  max-width: 1100px;
+  max-width: var(--maal);
   margin: 0 auto;
-  padding: 70px 20px 100px !important;
+  padding-block: var(--hero-luft); 
+  padding-inline: 20px;
   color: $c-dark;
 }
 
@@ -449,10 +450,26 @@ $c-blue: #2d58a1;
 .faq { margin-bottom: 54px; }
 
 @media only screen and (max-width: 600px) {
-  .priser-view { padding: 110px 16px 70px !important; }
-
   .price-table tbody th { padding-right: 10px; }
   .price-table tbody td { font-size: 1rem; }
   .closing { padding: 24px; }
+}
+
+/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
+   Hver blok paa siden staar i 90 % bredde, centreret, saa alt deler samme
+   venstre- og hoejrekant og skalerer selv fra tablet til mobil. */
+@media only screen and (max-width: 1000px) {
+  .priser-view {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .priser-view > * {
+    box-sizing: border-box;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: none !important;
+    width: 90% !important;
+  }
 }
 </style>

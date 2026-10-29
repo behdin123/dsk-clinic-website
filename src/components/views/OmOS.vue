@@ -478,6 +478,57 @@ const openBooking = () => {
 <style lang="scss" scoped>
 
 @use '../css/style.scss';
+
+/* ===== Flyttet fra AppHome.vue =====
+   Disse regler laa globalt i forsidens stylesheet og ramte ogsaa
+   "Om DK Skønhedsklinik" her (samme klasser). Forsiden har faaet sin egen
+   layout-regel, saa reglerne er flyttet hertil, saa denne side ser ud som
+   foer. :where() holder specificiteten nede, som da de var globale. */
+:where(.VIKING-image) { width: 45%; }
+:where(.Multimediedesigner .txt) { width: 40%; }
+
+@media only screen and (max-width: 1800px) {
+  :where(.margin-left) { padding-right: 0% !important; }
+}
+
+@media only screen and (max-width: 1550px) {
+  :where(.VIKING-image) { width: 37vw; }
+  :where(.OmKlinik) { padding: 70px 11% 70px 8% !important; }
+}
+
+@media only screen and (max-width: 1380px) {
+  :where(.txt) { font-size: 18px; width: 50vw; }
+  :where(.VIKING-image) { overflow: hidden; position: relative; width: 45% !important; }
+  :where(.VIKING-image img) {
+    height: 100% !important;
+    max-height: 100% !important;
+    max-width: none;
+    min-height: 100%;
+    position: relative;
+    width: auto !important;
+  }
+  :where(.margin-left) { margin-left: 0 !important; margin-right: 0 !important; }
+}
+
+@media only screen and (max-width: 1120px) {
+  :where(.Multimediedesigner .txt) { width: auto !important; }
+  :where(.VIKING-image) { width: 90vw; }
+  :where(.Multimediedesigner) { padding: 70px 8% 50px 8%; }
+}
+
+@media only screen and (max-width: 1050px) {
+  :where(.VIKING-image) { width: 78vw !important; }
+}
+
+@media only screen and (max-width: 660px) {
+  :where(.VIKING) { padding: 50px 5% !important; }
+  :where(.VIKING-image) { width: 90vw !important; }
+  :where(.Multimediedesigner) { padding: 100px 5% 20px 5%; }
+}
+
+@media only screen and (max-width: 390px) {
+  :where(.txt) { width: 90vw !important; }
+}
 .omos-faq-baand {
     background: #f4f3f0;
     padding: 10px 0 80px;
@@ -798,7 +849,7 @@ h2 {
 
     .patientinfo {
         .pi-intro {
-            width: 60% !important;
+            max-width: 62ch;
         }
     }
 
@@ -947,12 +998,6 @@ h2 {
     .OmOsBannerDiv {
         padding: 10px 0 0;
     }
-
-    .patientinfo .pi-intro {
-        width: 100% !important;
-    }
-
-
 }
 
 @media only screen and (max-width: 670px) {
@@ -971,7 +1016,7 @@ h2 {
 
         p:first-child {
             left: 20px;
-            bottom: 60px !important;
+            bottom: 35px !important;
         }
     }
 
@@ -1329,7 +1374,6 @@ h2 {
 .pi-cta {
     align-items: center;
     justify-content: center !important;
-    max-width: 1500px;
     margin: 0 auto;
 
     .btn-primary {
@@ -1494,5 +1538,54 @@ h2 {
 
   .hero-citat { padding-left: 14px; }
   .Bannertxt h1 { font-size: clamp(1.55rem, 6.6vw, 2rem) !important; }
+}
+
+/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
+   Hver blok paa siden staar i 90 % bredde, centreret. Baand med egen
+   baggrund beholder fuld bredde - der er det indholdet indeni, der faar
+   de 90 %. Saa deler alt samme venstre- og hoejrekant hele vejen ned. */
+@media only screen and (max-width: 1000px) {
+    .OmOS .OmOsBannerDiv,
+    .OmOS .laegeprofil,
+    .OmOS > .Multimediedesigner,
+    .OmOS .clinics-mini__inner,
+    .OmOS #patientinformation,
+    .OmOS .is-steps .slice-inner,
+    .OmOS .omos-faq {
+        box-sizing: border-box;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: none !important;
+        width: 90% !important;
+    }
+
+    /* Uden egen kort-flade: ingen sideluft - de 90 % er luften */
+    .OmOS .OmOsBannerDiv,
+    .OmOS .laegeprofil,
+    .OmOS > .Multimediedesigner,
+    .OmOS .clinics-mini__inner,
+    .OmOS #patientinformation,
+    .OmOS .is-steps,
+    .OmOS .is-steps .slice-inner {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* ===== "Dit forloeb med laegen" paa laptop (901-1800 px) =====
+   Tre lige brede kort i et gitter med fast mellemrum. Den faelles regel
+   har 100 px mellemrum og justify-content: space-between, saa kortene
+   blev smalle med et tomt baelte imellem paa mindre skaerme. */
+@media (min-width: 901px) and (max-width: 1800px) {
+    .OmOS .steps-flow {
+        display: grid;
+        gap: clamp(16px, 2vw, 32px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .OmOS .step-card {
+        min-width: 0;
+        padding: clamp(26px, 2.4vw, 40px) clamp(22px, 2vw, 36px);
+    }
 }
 </style>

@@ -475,7 +475,6 @@ const openBooking = () => {
 
 .container {
   flex-direction: column;
-  max-width: 1500px;
   margin: 0 auto;
   padding: 100px 0 !important;
 }

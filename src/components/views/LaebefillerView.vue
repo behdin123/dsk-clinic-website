@@ -305,7 +305,7 @@ $c-blue: #2d58a1;
 
 .laeber-view {
   flex-direction: column;
-  max-width: 1100px;
+  max-width: var(--maal);
   margin: 0 auto;
   padding: 70px 20px 100px !important;
   color: $c-dark;

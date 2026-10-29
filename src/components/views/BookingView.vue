@@ -185,7 +185,7 @@ $c-blue: #2d58a1;
 
 .booking-view {
   flex-direction: column;
-  max-width: 1100px;
+  max-width: var(--maal);
   margin: 0 auto;
   padding: 70px 20px 100px !important;
   color: $c-dark;
@@ -313,5 +313,23 @@ h2 { margin-bottom: 18px; }
 @media only screen and (max-width: 600px) {
   .booking-view { padding: 110px 16px 70px !important; }
   .booking-embed { min-height: 560px; padding: 6px; }
+}
+
+/* ===== Under 1000 px: samme opskrift som klinikssiderne =====
+   Hver blok paa siden staar i 90 % bredde, centreret, saa alt deler samme
+   venstre- og hoejrekant og skalerer selv fra tablet til mobil. */
+@media only screen and (max-width: 1000px) {
+  .booking-view {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .booking-view > * {
+    box-sizing: border-box;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: none !important;
+    width: 90% !important;
+  }
 }
 </style>
