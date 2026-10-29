@@ -270,7 +270,7 @@
     <div class="container Multimediedesigner VIKING OmKlinik">
       <div class="container-width">
         <div class="VIKING-image">
-          <img class="first-img" :src="imgClinic" width="100%" height="auto" alt="Klinik-konsultation med erfaren læge">
+          <img class="first-img" :src="imgClinic" width="1800" height="1194" loading="lazy" decoding="async" alt="Klinik-konsultation med erfaren læge">
         </div>
         <div class="txt h1 h2 first-txt margin-left Ekspertise-txt">
           <div>
@@ -2620,6 +2620,25 @@ onMounted(() => {
   min-width: 0;
   padding: 0;
   width: auto;
+}
+
+/* Billedet: fast kvadrat med height: auto. Den gamle regel
+   (.VIKING-image .first-img { height: 100% }) gav en procent-hoejde inde i
+   et gitter uden fast hoejde. Chrome/Firefox klarer det, men Safari paa
+   iPhone beregner raekkens hoejde forkert, saa billedet blev tegnet hen
+   over teksten. */
+.home .Multimediedesigner .VIKING-image {
+  align-self: start;
+  overflow: hidden;
+}
+
+.home .Multimediedesigner .VIKING-image img {
+  aspect-ratio: 1 / 1;
+  display: block;
+  height: auto !important;
+  max-height: none;
+  min-height: 0;
+  width: 100% !important;
 }
 
 @media (max-width: 1000px) {
