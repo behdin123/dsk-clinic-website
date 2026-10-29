@@ -55,103 +55,81 @@
 
       <!-- Burger -->
       <button class="burger" type="button" :aria-expanded="isMenuOpen ? 'true' : 'false'" aria-controls="mobile-drawer"
-        @click="toggleMenu">
-        <img class="icon toggle-menu" src="../assets/toggel-menu.svg" width="23" height="23" alt="Menu" />
+        aria-label="Åbn menu" @click="toggleMenu">
+        <img class="icon toggle-menu" src="../assets/toggel-menu.svg" width="23" height="23" alt="" />
       </button>
     </div>
 
-    <!-- Overlay -->
-    <transition name="fade">
-      <div v-if="isMenuOpen" class="overlay" @click="closeMenu" aria-hidden="true" />
-    </transition>
+    <!-- Mobilmenu: fuld skaerm, alt synligt med ét blik -->
+    <transition name="mnav">
+      <aside v-if="isMenuOpen" id="mobile-drawer" class="mnav" role="dialog" aria-modal="true"
+        aria-label="Menu">
+        <div class="mnav__top">
+          <router-link to="/" class="mnav__logo" aria-label="Gå til forsiden" @click="closeMenu">
+            <img src="../assets/logo_white.svg" width="120" height="90" alt="DK Skønhedsklinik" />
+          </router-link>
+          <button class="mnav__luk" type="button" aria-label="Luk menu" @click="closeMenu">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
 
-    <!-- Mobile drawer -->
-    <transition name="slide-down">
-      <aside v-if="isMenuOpen" id="mobile-drawer" class="drawer" role="dialog" aria-modal="true">
-        <ul class="drawer-list" @click.stop>
-          <li class="group-title">Behandlinger</li>
+        <div class="mnav__krop">
+          <template v-for="kat in menuKategorier" :key="kat.id">
+            <p class="mnav__titel">{{ kat.navn }}</p>
+            <ul class="mnav__liste">
+              <li v-for="b in kat.behandlinger" :key="b.slug">
+                <router-link :to="b.path" @click="closeMenu">{{ b.navn }}</router-link>
+              </li>
+            </ul>
+          </template>
 
-          <li>
-            <button class="accordion" type="button" @click="isTreatmentsOpen = !isTreatmentsOpen"
-              :aria-expanded="isTreatmentsOpen ? 'true' : 'false'" aria-controls="treatments-sub">
-              Vælg behandling
-              <span class="chev" :class="{ open: isTreatmentsOpen }">▾</span>
-            </button>
-            <transition name="expand">
-              <ul v-show="isTreatmentsOpen" id="treatments-sub" class="sub">
-                <template v-for="kat in menuKategorier" :key="kat.id">
-                  <li class="sub-title">{{ kat.navn }}</li>
-                  <li v-for="b in kat.behandlinger" :key="b.slug">
-                    <router-link @click="closeMenu" :to="b.path">{{ b.navn }}</router-link>
-                  </li>
-                </template>
-                <li v-if="hubLive" class="sub-all">
-                  <router-link @click="closeMenu" to="/behandlinger/">Se alle behandlinger</router-link>
-                </li>
-              </ul>
-            </transition>
-          </li>
+          <p class="mnav__titel">Om klinikken</p>
+          <ul class="mnav__liste">
+            <li><router-link to="/priser/" @click="closeMenu">Priser</router-link></li>
+            <li><router-link to="/omos/" @click="closeMenu">Om os og lægen</router-link></li>
+            <li><router-link to="/kontaktos/" @click="closeMenu">Kontakt</router-link></li>
+          </ul>
 
-          <li class="priser-link"><router-link @click="closeMenu" to="/priser/">Priser</router-link></li>
-          <li class="omos-link"><router-link @click="closeMenu" to="/omos/">Om os</router-link></li>
-          <li class="kontakt-link"><router-link @click="closeMenu" to="/kontaktos/">Kontakt</router-link></li>
+          <p class="mnav__titel">Klinikker</p>
+          <div class="mnav__klinikker">
+            <router-link :to="{ name: 'clinic-esbjerg' }" class="mnav__klinik" @click="closeMenu">
+              <b>Esbjerg</b>
+              <span>Havnegade 6</span>
+              <small>Man–fre 17–20</small>
+            </router-link>
+            <router-link :to="{ name: 'clinic-vejle' }" class="mnav__klinik" @click="closeMenu">
+              <b>Vejle</b>
+              <span>Søndergade 50</span>
+              <small>Søndag 11–18</small>
+            </router-link>
+          </div>
+        </div>
 
-          <li class="group-title">Klinikker</li>
-
-          <li>
-            <button class="accordion" type="button" @click="isClinicOpen = !isClinicOpen"
-              :aria-expanded="isClinicOpen ? 'true' : 'false'" aria-controls="clinics-sub">
-              Vælg klinik
-              <span class="chev" :class="{ open: isClinicOpen }">▾</span>
-            </button>
-
-            <transition name="expand">
-              <!-- نکته: یک ریشهٔ واحد داخل transition -->
-              <ul v-show="isClinicOpen" id="clinics-sub" class="sub">
-                <li>
-                  <router-link @click="closeMenu" :to="{ name: 'clinic-vejle' }">Vejle</router-link>
-                </li>
-                <li>
-                  <router-link @click="closeMenu" :to="{ name: 'clinic-esbjerg' }">Esbjerg</router-link>
-                </li>
-              </ul>
-            </transition>
-          </li>
-
-
-
-          <!-- DISABLED: Viden universe mobile link -->
-          <!-- <li class="vidensunivers-link"><router-link @click="closeMenu" to="/viden/">Vidensunivers</router-link></li> -->
-
-
-          <li class="divider" aria-hidden="true"></li>
-
-          <li class="cta-row">
-            <button type="button" class="cta-secondary arrow" @click="openBooking"
-              aria-label="Book gratis forundersøgelse">
-              Book gratis forundersøgelse
-            </button>
-            <p class="cta-hint">Skriv til os direkte på vores sociale medier</p>
-          </li>
-
-          <li class="socials-row">
-            <a href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank" rel="noopener noreferrer"
-              aria-label="Facebook">
-              <img class="icon" src="../assets/icons/Facebook_Logo_Primary.webp" width="35" height="35" alt="" />
+        <div class="mnav__bund">
+          <button type="button" class="knap knap--primaer mnav__book" @click="openBooking">
+            Book gratis forundersøgelse
+          </button>
+          <div class="mnav__kontakt">
+            <a class="knap knap--sekundaer mnav__sms" href="sms:+4553503750?&amp;body=Hej%20DK%20Sk%C3%B8nhedsklinik%2C%20jeg%20vil%20gerne%20h%C3%B8re%20mere%20om%20">Send os en sms</a>
+            <a class="mnav__soc" href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"
+              rel="noopener noreferrer" aria-label="Facebook">
+              <img src="../assets/icons/Facebook_Logo_Primary.webp" width="26" height="26" alt="" />
             </a>
-            <a href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank" rel="noopener noreferrer"
-              aria-label="Instagram">
-              <img class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="35" height="35" alt="" />
+            <a class="mnav__soc" href="https://www.instagram.com/dk_skonhedsklinik/" target="_blank"
+              rel="noopener noreferrer" aria-label="Instagram">
+              <img src="../assets/icons/Instagram_Glyph_Gradient.webp" width="26" height="26" alt="" />
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       </aside>
     </transition>
   </nav>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount, computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { aktiveKategorier, behandlingerIKategori, HUB_LIVE } from '@/data/behandlinger'
 
@@ -169,26 +147,24 @@ defineProps({
 
 const openBooking = () => {
   closeMenu();                    // منو را ببند
-  window.dispatchEvent(new CustomEvent('open-booking')); // به روت خبر بده مودال را باز کند
+  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: 'mobilmenu' } }));
 };
 
 
 const router = useRouter()
 
 const isMenuOpen = ref(false)
-const isTreatmentsOpen = ref(false)
-const isClinicOpen = ref(false)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
   document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
+  document.body.classList.toggle('mnav-aaben', isMenuOpen.value)
 }
 
 const closeMenu = () => {
   isMenuOpen.value = false
-  isTreatmentsOpen.value = false
-  isClinicOpen.value = false
   document.body.style.overflow = ''
+  document.body.classList.remove('mnav-aaben')
 }
 
 // بعد از isMenuOpen.value = true:
@@ -212,7 +188,7 @@ const trapFocus = (e) => {
 };
 
 watch(isMenuOpen, v => {
-  if (v) { openFocus(); window.addEventListener('keydown', trapFocus); }
+  if (v) { nextTick(openFocus); window.addEventListener('keydown', trapFocus); }
   else { window.removeEventListener('keydown', trapFocus); lastFocused?.focus(); }
 });
 
@@ -393,199 +369,6 @@ watch(
   }
 }
 
-/* Overlay + Drawer */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, .45);
-  z-index: 40;
-}
-
-.drawer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 110px;
-  min-height: 548px;
-  background: #24353F;
-  color: #EAEAEA;
-  z-index: 41;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
-}
-
-.drawer-list {
-  list-style: none;
-  padding: 22px 24px 28px;
-  margin: 0;
-}
-
-.drawer-list>li {
-  margin: 14px 0;
-}
-
-.drawer a {
-  color: #EAEAEA;
-  font-size: 20px;
-  text-decoration: none;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, .7);
-}
-
-.drawer a,
-.accordion,
-.cta-secondary {
-  outline: none;
-}
-
-.drawer a:focus-visible,
-.accordion:focus-visible,
-.cta-secondary:focus-visible {
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .35) inset;
-  border-radius: 10px;
-}
-
-.sub li a {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
-.cta-row {
-  margin: 6px 0 10px;
-}
-
-.cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, .25);
-  background: transparent;
-  color: #EAEAEA;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.cta-secondary:active {
-  transform: translateY(1px);
-}
-
-.cta-secondary:hover {
-  background: rgba(255, 255, 255, .06);
-}
-
-.cta-hint {
-  margin: 8px 0 0;
-  font-size: 14px;
-  opacity: .9;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .slide-down-enter-active,
-  .slide-down-leave-active,
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: none !important;
-  }
-}
-
-.drawer {
-  padding-bottom: calc(24px + env(safe-area-inset-bottom));
-}
-
-.group-title {
-  font-size: 18px;
-  font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  margin-top: 0;
-}
-
-.accordion {
-  width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, .18);
-  padding: 12px 14px;
-  border-radius: 10px;
-  color: #EAEAEA;
-  text-align: left;
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sub {
-  list-style: none;
-  padding: 10px 12px 0 12px;
-  margin: 0;
-}
-
-.sub li a {
-  display: block;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, .15);
-  font-size: 18px;
-}
-
-.sub li:last-child a {
-  border-bottom: 0;
-}
-
-.chev {
-  transition: transform .2s ease;
-}
-
-.chev.open {
-  transform: rotate(180deg);
-}
-
-.divider {
-  height: 1px;
-  background: rgba(255, 255, 255, .15);
-  margin: 18px 0;
-}
-
-.socials-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 12px;
-}
-
-.icon {
-  display: block;
-}
-
-/* Animations */
-.slide-down-enter-active,
-.slide-down-leave-active {
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.slide-down-enter-from {
-  transform: translateY(-12px);
-  opacity: 0;
-}
-
-.slide-down-leave-to {
-  transform: translateY(-12px);
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 /* Switch (unchanged) */
 .switch {
   position: relative;
@@ -652,14 +435,177 @@ input:checked+.slider:before {
     display: none !important;
   }
 
-  .drawer p {
-    margin: 5px 0 !important;
-  }
 
-  .omos-link,
-  .kontakt-link {
-    margin: 45px 0 !important;
-  }
+}
 
+/* ===== Mobilmenu =====
+   Fuld skaerm: navy top med logo og luk-knap, hvid krop med alle sider
+   synlige (ingen fold-ud-menuer), og en fast bund med booking og sms.
+   Behandlingerne kommer fra behandlingsregistret, grupperet i kategorier. */
+.mnav {
+  background: #fff;
+  color: #153655;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  position: fixed;
+  z-index: 60;
+}
+
+.mnav__top {
+  align-items: center;
+  background: #153655;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 10px 5%;
+}
+
+.mnav__logo img { display: block; height: auto; width: 92px; }
+
+.mnav__luk {
+  align-items: center;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 46px;
+  justify-content: center;
+  width: 46px;
+}
+
+.mnav__krop {
+  -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 5% 28px;
+}
+
+.mnav__titel {
+  color: #2d58a1;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  margin: 24px 0 2px;
+  text-transform: uppercase;
+}
+
+.mnav__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mnav__liste a {
+  align-items: center;
+  border-bottom: 1px solid rgba(21, 54, 85, .09);
+  color: #153655;
+  display: flex;
+  font-size: 1.06rem;
+  font-weight: 600;
+  justify-content: space-between;
+  min-height: 52px;
+  text-decoration: none;
+}
+
+.mnav__liste a::after {
+  background-color: currentColor;
+  content: '';
+  height: 14px;
+  -webkit-mask: var(--pil) center / contain no-repeat;
+  mask: var(--pil) center / contain no-repeat;
+  opacity: .35;
+  width: 14px;
+}
+
+.mnav__liste a.router-link-exact-active { color: #2d58a1; }
+.mnav__liste a.router-link-exact-active::after { opacity: 1; }
+
+.mnav__klinikker {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.mnav .mnav__klinik {
+  background: rgba(45, 88, 161, .05);
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 14px;
+  align-items: start !important;
+  color: #153655;
+  display: grid !important;
+  gap: 2px;
+  grid-auto-flow: row;
+  justify-items: start;
+  padding: 14px 14px 12px;
+  text-decoration: none;
+}
+
+.mnav__klinik b { font-size: 1.02rem; }
+.mnav__klinik span { font-size: .9rem; }
+.mnav__klinik small { color: rgba(21, 54, 85, .65); font-size: .8rem; }
+.mnav__klinik.router-link-exact-active { border-color: #2d58a1; }
+
+.mnav__bund {
+  background: #fff;
+  border-top: 1px solid rgba(21, 54, 85, .08);
+  box-shadow: 0 -10px 24px rgba(21, 54, 85, .06);
+  display: grid;
+  flex: 0 0 auto;
+  gap: 10px;
+  padding: 14px 5% calc(14px + env(safe-area-inset-bottom));
+}
+
+.mnav__book { width: 100%; }
+
+.mnav__kontakt {
+  align-items: stretch;
+  display: flex;
+  gap: 10px;
+}
+
+.mnav__sms { flex: 1 1 auto; }
+
+.mnav__soc {
+  align-items: center;
+  border: 1.5px solid rgba(21, 54, 85, .18);
+  border-radius: 12px;
+  display: inline-flex;
+  flex: 0 0 52px;
+  justify-content: center;
+}
+
+.mnav__soc img { display: block; height: 24px; width: 24px; }
+
+.mnav a:focus-visible,
+.mnav button:focus-visible {
+  outline: 3px solid rgba(45, 88, 161, .45);
+  outline-offset: 2px;
+}
+
+/* Glider ind fra hoejre */
+.mnav-enter-active,
+.mnav-leave-active { transition: transform .28s ease, opacity .28s ease; }
+
+.mnav-enter-from,
+.mnav-leave-to { opacity: 0; transform: translateX(24px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mnav-enter-active,
+  .mnav-leave-active { transition: none; }
+}
+</style>
+
+<style>
+/* Mens mobilmenuen er aaben: skjul de svaevende knapper (cookie-indstillinger
+   og "til toppen"), saa de ikke ligger oven paa menuens knapper. */
+body.mnav-aaben .dsk-cc-reopen,
+body.mnav-aaben .scroll-to-top {
+  display: none !important;
 }
 </style>
