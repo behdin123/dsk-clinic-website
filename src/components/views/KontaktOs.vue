@@ -24,7 +24,7 @@
                 </ul>
 
                 <p class="hero-handlinger">
-                    <a class="hero-knap hero-knap--primaer" href="tel:+4553503750">Ring 53 50 37 50</a>
+                    <a class="hero-knap hero-knap--primaer" href="sms:+4553503750?&amp;body=Hej%20DK%20Sk%C3%B8nhedsklinik%2C%20jeg%20vil%20gerne%20h%C3%B8re%20mere%20om%20" aria-label="Send os en sms på 53 50 37 50">Send os en sms</a>
                     <button class="hero-knap hero-knap--sekundaer" type="button" @click="openBookingFromHero">
                         Book forundersøgelse
                     </button>

@@ -37,59 +37,77 @@
             </div>
         </div>
 
-        <!-- Lægens baggrund og autorisation -->
-        <section class="container laegeprofil" aria-labelledby="laegeprofil-title">
-            <div class="sec__head">
-                <p class="sec__eyebrow">Baggrund</p>
-                <h2 id="laegeprofil-title">Lægens baggrund</h2>
-                <p class="sec__lead">
-                    Alle behandlinger på klinikken udføres af læge – ikke af en kosmetolog. Her er
-                    baggrunden, og hvordan du selv kan kontrollere den.
+        <!-- Lægens baggrund: tal ligesom "Hvorfor vælge" paa forsiden -->
+        <section class="laegeprofil" aria-labelledby="laegeprofil-title">
+            <div class="laegeprofil__indre">
+                <div class="laegeprofil__tekst">
+                    <p class="sec__eyebrow">Baggrund</p>
+                    <h2 id="laegeprofil-title">Lægens baggrund</h2>
+                    <p>
+                        Alle behandlinger på klinikken udføres af læge – ikke af en kosmetolog. Her er
+                        baggrunden, og hvordan du selv kan kontrollere den.
+                    </p>
+                    <a class="laegeprofil__link" href="#autorisation">Se autorisation og registrering</a>
+                </div>
+
+                <dl ref="laegeTalRef" class="laegeprofil__tal">
+                    <div>
+                        <dt><span data-tal="30">30</span></dt>
+                        <dd>år som læge. Uddannet i 1996, med klinisk erfaring fra hospitalsafdelinger i både Danmark og Iran.</dd>
+                    </div>
+                    <div>
+                        <dt><span data-tal="17">17</span></dt>
+                        <dd>år i det danske sundhedsvæsen – blandt andet psykiatri, neurologi og neurorehabilitering.</dd>
+                    </div>
+                    <div>
+                        <dt><span data-tal="20">20</span>+</dt>
+                        <dd>års erfaring med kosmetiske behandlinger – fra fire år som læge og intern direktør på en kosmetisk-kirurgisk klinik i Teheran, 2001–2005.</dd>
+                    </div>
+                    <div>
+                        <dt>2005</dt>
+                        <dd>uddannelse i mesoterapi i Paris og Dubai, hos Enseignement International de Mésothérapie og ISAM.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Autorisation og registrering -->
+        <section id="autorisation" class="autorisation" aria-labelledby="autorisation-title">
+            <div class="autorisation__intro">
+                <span class="autorisation__ikon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.6-7.5 10-4.3-1.4-7.5-5.4-7.5-10v-6l7.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12.2l2.4 2.4 4.6-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <p class="sec__eyebrow">Tryghed</p>
+                <h2 id="autorisation-title">Autorisation og registrering</h2>
+                <p>
+                    Du behøver ikke tage vores ord for det. Søg på navnet Arash Bagheri eller
+                    autorisations-ID 081Q1 i Autorisationsregistret.
                 </p>
+                <a class="knap knap--sekundaer" href="https://autregweb.stps.dk/da" target="_blank"
+                    rel="noopener noreferrer">Slå autorisationen op</a>
             </div>
 
-            <div class="laegeprofil__grid">
-                <div class="laegeprofil__kort">
-                    <p class="laegeprofil__tal">30 år</p>
-                    <p class="laegeprofil__tekst">som læge. Uddannet i 1996, med klinisk erfaring fra hospitalsafdelinger i både Danmark og Iran.</p>
+            <dl class="autorisation__liste">
+                <div>
+                    <dt>Lægeautorisation</dt>
+                    <dd>Dansk lægeautorisation siden 2011 · <b>autorisations-ID 081Q1</b></dd>
                 </div>
-                <div class="laegeprofil__kort">
-                    <p class="laegeprofil__tal">17 år</p>
-                    <p class="laegeprofil__tekst">i det danske sundhedsvæsen – blandt andet psykiatri, neurologi og neurorehabilitering.</p>
+                <div>
+                    <dt>Behandlinger</dt>
+                    <dd>Registreret hos Styrelsen for Patientsikkerhed til behandling med ikke-permanente fillers (hyaluronsyre) og botulinumtoksin</dd>
                 </div>
-                <div class="laegeprofil__kort">
-                    <p class="laegeprofil__tal">2005</p>
-                    <p class="laegeprofil__tekst">uddannelse i mesoterapi i Paris og Dubai, hos Enseignement International de Mésothérapie og ISAM.</p>
+                <div>
+                    <dt>Behandlingssted</dt>
+                    <dd>Klinikken er et registreret kosmetisk behandlingssted og er dermed underlagt Styrelsen for Patientsikkerheds tilsyn</dd>
                 </div>
-                <div class="laegeprofil__kort">
-                    <p class="laegeprofil__tal">20+ år</p>
-                    <p class="laegeprofil__tekst">med kosmetiske behandlinger – fra fire år som læge og intern direktør på en kosmetisk-kirurgisk klinik i Teheran, 2001–2005.</p>
-                </div>
-            </div>
-
-            <div class="laegeprofil__autorisation sec--kort">
-                <h3>Autorisation og registrering</h3>
-                <ul>
-                    <li>Dansk lægeautorisation siden 2011 · <b>autorisations-ID 081Q1</b></li>
-                    <li>Registreret hos Styrelsen for Patientsikkerhed til behandling med
-                        ikke-permanente fillers (hyaluronsyre) og botulinumtoksin</li>
-                    <li>Klinikken er et registreret kosmetisk behandlingssted og er dermed
-                        underlagt Styrelsen for Patientsikkerheds tilsyn</li>
-                </ul>
-                <p class="laegeprofil__verificer">
-                    Du behøver ikke tage vores ord for det.
-                    <a href="https://autregweb.stps.dk/da" target="_blank" rel="noopener noreferrer">Slå autorisationen op i
-                    Autorisationsregistret</a> og søg på navnet Arash Bagheri eller
-                    autorisations-ID 081Q1.
-                </p>
-            </div>
+            </dl>
         </section>
 
         <!-- Om DK Skønhedsklinik (موجود) -->
         <div class="container Multimediedesigner VIKING OmKlinik">
             <div class="VIKING-image">
-                <img data-aos="fade-right" class="first-img" alt="Konsultation før kosmetisk behandling hos DK Skønhedsklinik" src="../../assets/Clinic_consultation_2.webp" width="100%"
-                    height="auto">
+                <img data-aos="fade-right" class="first-img" alt="Konsultation før kosmetisk behandling hos DK Skønhedsklinik" src="../../assets/Clinic_consultation_2.webp" width="3000"
+                    height="2000" loading="lazy" decoding="async">
             </div>
             <div class="txt h1 h2 first-txt margin-left">
                 <p class="sec__eyebrow" data-aos="fade-up" data-aos-duration="1000">Vores klinikker</p>
@@ -292,10 +310,36 @@
 
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import imgEsbjerg from '@/assets/klinik/esbjerg.webp'
 import imgVejle from '@/assets/klinik/vejle.webp'
+
+/* Tallene i "Lægens baggrund" taeller op, naar sektionen kommer i syne -
+   samme loesning som "Hvorfor vælge" paa forsiden. HTML'en har de rigtige
+   tal; de saettes kun til 0, hvis animationen faktisk kan koere. */
+const laegeTalRef = ref(null)
+onMounted(() => {
+    const el = laegeTalRef.value
+    if (!el || !('IntersectionObserver' in window)) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const tal = [...el.querySelectorAll('[data-tal]')]
+    tal.forEach((n) => { n.textContent = '0' })
+    const io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return
+        io.disconnect()
+        const start = performance.now()
+        const trin = (nu) => {
+            const p = Math.min(1, (nu - start) / 1400)
+            const k = 1 - Math.pow(1 - p, 3)
+            tal.forEach((n) => { n.textContent = String(Math.round(Number(n.dataset.tal) * k)) })
+            if (p < 1) requestAnimationFrame(trin)
+        }
+        requestAnimationFrame(trin)
+    }, { threshold: 0.35 })
+    io.observe(el)
+})
 
 // اگر روت‌نیم‌ها فرق دارند، فقط name را عوض کن یا به جای name، path بده.
 const clinics = [
@@ -558,9 +602,6 @@ const openBooking = () => {
     .section-title { margin: 0 !important; text-align: left; width: auto; }
 }
 
-@media (max-width: 1240px) {
-    .laegeprofil { padding-left: 20px; padding-right: 20px; }
-}
 
 @media (max-width: 880px) {
     .omos-faq-baand { padding: 6px 0 52px; }
@@ -583,75 +624,7 @@ const openBooking = () => {
     max-width: 66ch;
 }
 
-.laegeprofil {
-    box-sizing: border-box;
-    display: block;
-    max-width: var(--maal);
-    margin: 0 auto;
-    padding: 44px 0 56px;
-    color: #153655;
 
-    .sec__head { margin-bottom: 34px; }
-
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-
-    &__kort {
-        border: 1px solid rgba(21, 54, 85, .12);
-        border-radius: 14px;
-        padding: 22px 20px;
-        background: rgba(45, 88, 161, .03);
-    }
-
-    &__tal {
-        font-size: 1.6rem;
-        font-weight: 700 !important;
-        color: #2d58a1;
-        margin: 0 0 8px;
-    }
-
-    &__tekst {
-        font-size: .92rem;
-        line-height: 1.6;
-        margin: 0;
-        color: rgba(21, 54, 85, .82);
-    }
-
-    &__autorisation {
-        padding: 30px 32px;
-
-        h3 { margin: 0 0 14px; }
-
-        ul {
-            padding-left: 18px;
-            line-height: 1.7;
-            max-width: 72ch;
-            margin: 0 0 14px;
-        }
-
-        li { margin-bottom: 8px; }
-    }
-
-    &__verificer {
-        font-size: .92rem;
-        color: rgba(21, 54, 85, .72);
-        max-width: 68ch;
-        margin: 0;
-    }
-}
-
-@media (max-width: 900px) {
-    .laegeprofil__grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 560px) {
-    .laegeprofil { padding: 50px 18px; }
-    .laegeprofil__grid { grid-template-columns: 1fr; gap: 14px; }
-}
 
 :root {
     --pi-card-bg: #ffffff;
@@ -1547,6 +1520,7 @@ h2 {
 @media only screen and (max-width: 1000px) {
     .OmOS .OmOsBannerDiv,
     .OmOS .laegeprofil,
+    .OmOS .autorisation,
     .OmOS > .Multimediedesigner,
     .OmOS .clinics-mini__inner,
     .OmOS #patientinformation,
@@ -1562,6 +1536,7 @@ h2 {
     /* Uden egen kort-flade: ingen sideluft - de 90 % er luften */
     .OmOS .OmOsBannerDiv,
     .OmOS .laegeprofil,
+    .OmOS .autorisation,
     .OmOS > .Multimediedesigner,
     .OmOS .clinics-mini__inner,
     .OmOS #patientinformation,
@@ -1586,6 +1561,181 @@ h2 {
     .OmOS .step-card {
         min-width: 0;
         padding: clamp(26px, 2.4vw, 40px) clamp(22px, 2vw, 36px);
+    }
+}
+
+/* ===== Lægens baggrund - som "Hvorfor vælge" paa forsiden =====
+   Navy baand i fuld bredde (box-shadow + clip-path, ingen vandret scroll),
+   tal til venstre og tekst til hoejre paa store skaerme; paa mobil teksten
+   foerst og tallene to og to under. */
+.laegeprofil {
+    background: #153655;
+    box-shadow: 0 0 0 100vmax #153655;
+    box-sizing: border-box;
+    clip-path: inset(0 -100vmax);
+    color: #fff;
+    margin: 0 auto;
+    max-width: var(--maal);
+    padding-block: clamp(56px, 8vw, 100px);
+}
+
+.laegeprofil__indre {
+    align-items: center;
+    display: grid;
+    gap: clamp(40px, 6vw, 96px);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+}
+
+.laegeprofil__tal { margin: 0; order: -1; }
+
+.laegeprofil .sec__eyebrow { color: rgba(255, 255, 255, .78) !important; }
+.laegeprofil .sec__eyebrow::before { background: rgba(255, 255, 255, .6) !important; }
+
+.laegeprofil h2 {
+    color: #fff !important;
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    line-height: 1.18;
+    margin: 0 0 20px;
+}
+
+.laegeprofil__tekst p:not(.sec__eyebrow) {
+    color: rgba(255, 255, 255, .82);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 0 18px;
+    max-width: 52ch;
+}
+
+.laegeprofil__link {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.laegeprofil__tal {
+    display: grid;
+    gap: clamp(28px, 3.5vw, 48px) clamp(24px, 3.5vw, 56px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.laegeprofil__tal dt {
+    border-bottom: 1px solid rgba(255, 255, 255, .28);
+    color: #fff;
+    font-size: clamp(2.875rem, 4.4vw, 4.125rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 300;
+    letter-spacing: -.02em;
+    line-height: 1;
+    margin-bottom: 14px;
+    padding-bottom: 18px;
+}
+
+.laegeprofil__tal dd {
+    color: rgba(255, 255, 255, .78);
+    font-size: .95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ===== Autorisation og registrering =====
+   Hvidt kort: til venstre skjold, overskrift og knap til registret,
+   til hoejre de tre forhold som raekker med etiket og tekst. */
+.autorisation {
+    align-items: start;
+    background: #fff;
+    border: 1px solid rgba(21, 54, 85, .10);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+    box-sizing: border-box;
+    color: #153655;
+    display: grid;
+    gap: 32px 56px;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    margin: 64px auto;
+    max-width: var(--maal);
+    padding: 42px 40px;
+}
+
+.autorisation__ikon {
+    align-items: center;
+    background: rgba(45, 88, 161, .10);
+    border-radius: 14px;
+    color: #2d58a1;
+    display: inline-flex;
+    height: 52px;
+    justify-content: center;
+    margin-bottom: 18px;
+    width: 52px;
+}
+
+.autorisation h2 {
+    color: #153655 !important;
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+    margin: 0 0 12px;
+    text-align: left;
+}
+
+.autorisation__intro p:not(.sec__eyebrow) {
+    color: rgba(21, 54, 85, .82);
+    line-height: 1.65;
+    margin: 0 0 22px;
+    max-width: 46ch;
+}
+
+.autorisation__liste { margin: 0; }
+
+.autorisation__liste > div {
+    border-bottom: 1px solid rgba(21, 54, 85, .12);
+    padding: 16px 0;
+}
+
+.autorisation__liste > div:first-child { padding-top: 0; }
+.autorisation__liste > div:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.autorisation__liste dt {
+    color: #2d58a1;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.autorisation__liste dd {
+    color: #153655;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .laegeprofil__indre,
+    .autorisation { grid-template-columns: minmax(0, 1fr); }
+    .laegeprofil__tal { order: 0; }
+    .autorisation { gap: 28px; margin: 48px auto; padding: 28px 22px; }
+}
+
+@media (max-width: 420px) {
+    .laegeprofil__tal { gap: 28px 20px; }
+}
+
+/* ===== "Om DK Skønhedsklinik" paa mobil =====
+   Billedet havde height: 100% !important (gammel regel) - paa iPhone blev
+   det for langt. Fast format med height: auto. */
+@media (max-width: 1000px) {
+    .OmOS > .Multimediedesigner .VIKING-image {
+        overflow: hidden;
+        width: 100% !important;
+    }
+
+    .OmOS > .Multimediedesigner .VIKING-image img {
+        aspect-ratio: 4 / 3;
+        display: block;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        object-fit: cover;
+        width: 100% !important;
     }
 }
 </style>

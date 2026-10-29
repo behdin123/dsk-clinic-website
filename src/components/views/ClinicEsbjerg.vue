@@ -56,7 +56,8 @@
 
       <aside class="clinic-map" aria-label="Kort over DK Skønhedsklinik Esbjerg">
         <iframe :src="mapEmbedSrc" width="100%" height="100%" style="border:0;" allowfullscreen=""
-          loading="lazy"></iframe>
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Kort over klinikken"></iframe>
       </aside>
     </div>
 
@@ -331,7 +332,8 @@ useHead({
 
 // Eksporterede data som bruges i template
 const directionsLink = 'https://www.google.com/maps/dir/?api=1&destination=Havnegade+6,+Esbjerg'
-const mapEmbedSrc = 'https://www.google.com/maps?q=Havnegade+6,+Esbjerg&output=embed'
+// maps.google.com + output=embed virker uden API-noegle og ogsaa paa mobil
+const mapEmbedSrc = 'https://maps.google.com/maps?q=Havnegade%206%2C%206700%20Esbjerg&t=&z=15&ie=UTF8&iwloc=&output=embed&hl=da'
 
 // Åbner booking-modal som AppBooking lytter på
 const openBooking = () => {
@@ -920,6 +922,23 @@ strong {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
+  }
+}
+
+/* ===== Kortet paa mobil =====
+   iframe'en havde height: 100% inde i et gitter uden fast hoejde. Paa
+   mobil (Safari og Chrome) blev hoejden beregnet forkert: kortet blev ikke
+   indlaest (loading="lazy" + 0 px) og efterlod et stort hul. Fast hoejde. */
+@media (max-width: 900px) {
+  .clinic-map {
+    height: auto;
+    min-height: 0 !important;
+  }
+
+  .clinic-map iframe {
+    display: block;
+    height: 320px !important;
+    min-height: 0 !important;
   }
 }
 </style>

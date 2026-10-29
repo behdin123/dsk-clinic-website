@@ -56,7 +56,8 @@
 
       <aside class="clinic-map" aria-label="Kort over DK Skønhedsklinik Vejle">
         <iframe :src="mapEmbedSrc" width="100%" height="100%" style="border:0;" allowfullscreen=""
-          loading="lazy"></iframe>
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Kort over klinikken"></iframe>
       </aside>
     </div>
 
@@ -348,7 +349,8 @@ useHead({
 
 // Eksporterede data som bruges i template
 const directionsLink = 'https://www.google.com/maps/dir/?api=1&destination=Søndergade+50,+7100+Vejle'
-const mapEmbedSrc = 'https://www.google.com/maps?q=Søndergade+50,+7100+Vejle&output=embed'
+// maps.google.com + output=embed virker uden API-noegle og ogsaa paa mobil
+const mapEmbedSrc = 'https://maps.google.com/maps?q=S%C3%B8ndergade%2050%2C%207100%20Vejle&t=&z=15&ie=UTF8&iwloc=&output=embed&hl=da'
 
 // Åbner booking-modal som AppBooking lytter på
 const openBooking = () => {
@@ -929,5 +931,22 @@ strong {
   line-height: 1.5;
   margin: 12px 0 0;
   padding: 10px 12px;
+}
+
+/* ===== Kortet paa mobil =====
+   iframe'en havde height: 100% inde i et gitter uden fast hoejde. Paa
+   mobil (Safari og Chrome) blev hoejden beregnet forkert: kortet blev ikke
+   indlaest (loading="lazy" + 0 px) og efterlod et stort hul. Fast hoejde. */
+@media (max-width: 900px) {
+  .clinic-map {
+    height: auto;
+    min-height: 0 !important;
+  }
+
+  .clinic-map iframe {
+    display: block;
+    height: 320px !important;
+    min-height: 0 !important;
+  }
 }
 </style>

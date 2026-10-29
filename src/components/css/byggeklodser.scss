@@ -349,6 +349,7 @@
   box-sizing: border-box;
   color: #fff;
   display: grid;
+  margin-bottom: 0 !important;
   gap: 24px 40px;
   grid-template-columns: minmax(0, 1fr) auto;
   padding: clamp(30px, 4vw, 52px) clamp(24px, 4vw, 56px);
