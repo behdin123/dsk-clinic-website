@@ -9,6 +9,25 @@
   <div class="behandling-relateret container">
     <RelateredeBehandlinger v-if="registerSlug" :slug="registerSlug" />
   </div>
+
+  <div class="behandling-cta">
+    <section class="cta-kort" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Book en gratis forundersøgelse</h2>
+        <p>
+          Vi har klinikker i <router-link to="/klinik/esbjerg/">Esbjerg</router-link> og
+          <router-link to="/klinik/vejle/">Vejle</router-link>. Forundersøgelsen er gratis og
+          uforpligtende, og du bliver ikke behandlet samme dag.
+        </p>
+      </div>
+      <div class="cta-kort__handling">
+        <button class="knap knap--hvid" type="button" @click="openBooking">
+          Book gratis forundersøgelse
+        </button>
+        <p>Hellere ringe? <a :href="CLINIC_PHONE_HREF">{{ CLINIC_PHONE }}</a></p>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -16,8 +35,13 @@ import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 import RelateredeBehandlinger from '../RelateredeBehandlinger.vue'
-import { BOOKING_URL } from '@/config/booking'
+import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
 import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
+
+/* Afsluttende CTA - samme banner som paa laebefiller-siden */
+const openBooking = () => {
+  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: 'behandling_cta' } }))
+}
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
@@ -673,5 +697,17 @@ useHead(() => {
 
 @media (max-width: 1000px) {
   .behandling-relateret { max-width: none; width: 90%; }
+}
+
+/* Afsluttende "Book en gratis forundersoegelse" - paa maalet */
+.behandling-cta {
+  box-sizing: border-box;
+  margin: 0 auto 72px;
+  max-width: var(--maal);
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .behandling-cta { max-width: none; width: 90%; }
 }
 </style>
