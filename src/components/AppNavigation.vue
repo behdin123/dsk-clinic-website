@@ -60,7 +60,12 @@
       </button>
     </div>
 
-    <!-- Mobilmenu: fuld skaerm, alt synligt med ét blik -->
+    <!-- Mobilmenu: fuld skaerm, alt synligt med ét blik.
+         Teleport til <body>: den sticky navigation har en transform, og en
+         transform goer position: fixed relativ til navigationen i stedet for
+         skaermen - saa menuen sad oppe ved den oprindelige navigation, naar
+         man havde scrollet ned. -->
+    <Teleport to="body">
     <transition name="mnav">
       <aside v-if="isMenuOpen" id="mobile-drawer" class="mnav" role="dialog" aria-modal="true"
         aria-label="Menu">
@@ -125,6 +130,7 @@
         </div>
       </aside>
     </transition>
+    </Teleport>
   </nav>
 </template>
 
@@ -449,7 +455,10 @@ input:checked+.slider:before {
   flex-direction: column;
   inset: 0;
   position: fixed;
-  z-index: 60;
+  z-index: 1100;
+  /* Ligger i <body> uden for #app, saa skrifttypen arves ikke derfra */
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .mnav__top {
