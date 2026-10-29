@@ -620,7 +620,12 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 #audience .bullet li::before {
-  content: "➟";
+  content: "";
+  width: .8em;
+  height: .8em;
+  background-color: currentColor;
+  -webkit-mask: var(--pil) center / contain no-repeat;
+  mask: var(--pil) center / contain no-repeat;
   color: #153655;
   font-size: 35px;
   margin-right: 15px;
@@ -722,7 +727,12 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 #combinations .bullet li::before {
-  content: "➟";
+  content: "";
+  width: .8em;
+  height: .8em;
+  background-color: currentColor;
+  -webkit-mask: var(--pil) center / contain no-repeat;
+  mask: var(--pil) center / contain no-repeat;
   color: $c-dark;
   font-size: 35px;
   margin-right: 15px;

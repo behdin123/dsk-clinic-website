@@ -181,7 +181,12 @@ function goBack() {
 
     /* lidt luft over titlen */
     ::before {
-        content: "🠮";
+        content: "";
+        width: .8em;
+        height: .8em;
+        background-color: currentColor;
+        -webkit-mask: var(--pil) center / contain no-repeat;
+        mask: var(--pil) center / contain no-repeat;
         margin-right: 20px;
         display: inline-block;
         transform: rotate(-180deg);

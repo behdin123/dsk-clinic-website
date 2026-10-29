@@ -735,7 +735,12 @@ h2 {
     }
 
     .soc::before {
-        content: "🠮";
+        content: "";
+        width: .8em;
+        height: .8em;
+        background-color: currentColor;
+        -webkit-mask: var(--pil) center / contain no-repeat;
+        mask: var(--pil) center / contain no-repeat;
         margin-right: 20px;
         font-size: 30px;
         color: #2d58a1;

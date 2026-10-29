@@ -47,7 +47,6 @@
           <ul class="mobile-show hero-punkter" data-aos="fade-right" data-aos-duration="3000">
             <li>Gratis forundersøgelse</li>
             <li>Uforpligtende rådgivning</li>
-            <li>Betal efter behandling</li>
           </ul>
 
           <div class="booking-button">
@@ -170,7 +169,7 @@
             <br> <br>
 
             <router-link to="/omos/" class="inline-link læs-mere" aria-label="Arash Bagheri – læs mere"
-              data-tooltip="Går til: Om os"> <span>🠮</span>Læs mere om klinikkens læge</router-link>
+              data-tooltip="Går til: Om os"> <span class="pil" aria-hidden="true"></span>Læs mere om klinikkens læge</router-link>
           </p>
 
 
