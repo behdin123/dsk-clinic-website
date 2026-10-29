@@ -699,15 +699,20 @@ useHead(() => {
   .behandling-relateret { max-width: none; width: 90%; }
 }
 
-/* Afsluttende "Book en gratis forundersoegelse" - paa maalet */
+/* Afsluttende "Book en gratis forundersoegelse": hvidt baand i fuld
+   bredde, kortet indeni staar paa maalet. Kun paa de store
+   behandlingssider - undersiderne (fx laebefiller) har deres egen. */
 .behandling-cta {
+  background: #fff !important;
   box-sizing: border-box;
-  margin: 0 auto 72px;
-  max-width: var(--maal);
+  margin: 0;
+  max-width: none !important;
+  padding-block: 56px 72px;
+  padding-inline: max(var(--gutter), (100% - var(--maal)) / 2) !important;
   width: 100%;
 }
 
 @media (max-width: 1000px) {
-  .behandling-cta { max-width: none; width: 90%; }
+  .behandling-cta { padding-inline: 5% !important; }
 }
 </style>
