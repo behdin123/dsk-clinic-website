@@ -332,6 +332,11 @@ onMounted(() => {
 body {
   margin: 0;
   background: #F4F4F4;
+  /* Skrifttypen saettes ogsaa paa <body>, saa alt der ligger uden for #app
+     (mobilmenuen, booking-vinduet, cookie-banneret) faar samme skrift. */
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #app {

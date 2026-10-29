@@ -456,9 +456,18 @@ input:checked+.slider:before {
   inset: 0;
   position: fixed;
   z-index: 1100;
-  /* Ligger i <body> uden for #app, saa skrifttypen arves ikke derfra */
+  /* Ligger i <body> uden for #app - skrifttypen saettes eksplicit */
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.mnav a,
+.mnav button,
+.mnav p,
+.mnav b,
+.mnav span,
+.mnav small {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .mnav__top {
