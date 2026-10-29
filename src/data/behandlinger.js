@@ -17,6 +17,7 @@ import FillerImg       from '@/assets/Carts/Filler.webp'
 import SkinboosterImg  from '@/assets/Carts/Skinbooster.webp'
 import MesotherapyImg  from '@/assets/Carts/Mesotherapy.webp'
 import MicroneedlingImg from '@/assets/Carts/Microneedling.webp'
+import LaebefillerImg  from '@/assets/behandlinger/filler.webp'
 
 export const SITE_URL = 'https://dsklinik.dk'
 
@@ -130,7 +131,7 @@ export const BEHANDLINGER = [
     kort: 'Fylde, form og en tydeligere læbekant – lagt i små mængder ad gangen.',
     prisFra: 1350,
     prisTekst: '1.350 kr. pr. ml',
-    billede: null,
+    billede: LaebefillerImg,
     status: 'live',
     iMenu: true,
     relaterede: ['filler', 'oploesning', 'gummy-smile']
