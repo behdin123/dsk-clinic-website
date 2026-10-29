@@ -37,7 +37,7 @@
             </div>
 
             <div class="klinikken">
-                <img src="../../assets/Clinic_consultation.webp"
+                <img src="../../assets/behandlinger/consultation.webp"
                     alt="Læge Arash Bagheri under en forundersøgelse på DK Skønhedsklinik" />
             </div>
 

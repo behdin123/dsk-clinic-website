@@ -375,7 +375,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import imgOmOs from '@/assets/DSK-samtale.webp'
-import imgClinic from '@/assets/Clinic_consultation.webp'
+import imgClinic from '@/assets/behandlinger/consultation.webp'
 
 const faqs = [
   {

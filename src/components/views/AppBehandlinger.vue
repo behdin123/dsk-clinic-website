@@ -21,6 +21,16 @@ import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema } from '@/dat
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
+// Sektionsbilleder: importeres, saa Vite giver dem den rigtige sti.
+// new URL('@/...') virkede ikke - aliaset '@' oversaettes ikke dér, og
+// de forudrenderede sider fik lokale file:///-stier.
+import imgKonsultation from '@/assets/behandlinger/konsultation.webp'
+import imgBotoxResultat from '@/assets/behandlinger/botox_result.webp'
+import imgSikkerhed from '@/assets/behandlinger/sikkerhed.webp'
+import imgConsultation from '@/assets/behandlinger/consultation.webp'
+import imgFillerSektion from '@/assets/behandlinger/filler.webp'
+import imgSkinboosterSektion from '@/assets/behandlinger/skinbooster.webp'
+import imgMesotherapySektion from '@/assets/behandlinger/mesotherapy.webp'
 import SkinboosterImage from '@/assets/Carts/Skinbooster.webp'
 import MesotherapyImage from '@/assets/Carts/Mesotherapy.webp'
 import MicroneedlingImage from '@/assets/Carts/Microneedling.webp'
@@ -121,9 +131,9 @@ const behandlinger = {
       }
     },
     sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/konsultation.webp', import.meta.url).href,
-      expectations: new URL('@/assets/behandlinger/botox_result.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
+      audience: imgKonsultation,
+      expectations: imgBotoxResultat,
+      safety: imgSikkerhed,
     }
   },
   filler: {
@@ -192,9 +202,9 @@ const behandlinger = {
       }
     },
     sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/consultation.webp', import.meta.url).href,
-      expectations: new URL('@/assets/behandlinger/filler.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
+      audience: imgConsultation,
+      expectations: imgFillerSektion,
+      safety: imgSikkerhed,
     }
   },
   skinbooster: {
@@ -260,9 +270,9 @@ const behandlinger = {
       }
     },
     sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/konsultation.webp', import.meta.url).href,
-      expectations: new URL('@/assets/behandlinger/skinbooster.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
+      audience: imgKonsultation,
+      expectations: imgSkinboosterSektion,
+      safety: imgSikkerhed,
     }
   },
   mesotherapy: {
@@ -323,9 +333,9 @@ const behandlinger = {
       }
     },
     sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/konsultation.webp', import.meta.url).href,
-      expectations: new URL('@/assets/behandlinger/mesotherapy.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
+      audience: imgKonsultation,
+      expectations: imgMesotherapySektion,
+      safety: imgSikkerhed,
     }
   },
   microneedling: {
@@ -389,8 +399,8 @@ const behandlinger = {
       },
     },
     sectionsAssets: {
-      audience: new URL('@/assets/behandlinger/konsultation.webp', import.meta.url).href,
-      safety: new URL('@/assets/behandlinger/sikkerhed.webp', import.meta.url).href,
+      audience: imgKonsultation,
+      safety: imgSikkerhed,
     }
   }
 }
