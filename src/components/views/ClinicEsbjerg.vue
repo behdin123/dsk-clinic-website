@@ -6,7 +6,7 @@
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Esbjerg.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgEsbjerg" alt="Klinikken i Esbjerg" loading="eager" fetchpriority="high" decoding="async" />
+        <img :src="imgEsbjerg" alt="Klinikken i Esbjerg" width="1400" height="788" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 

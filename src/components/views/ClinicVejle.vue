@@ -6,7 +6,7 @@
         <p class="lead">Adresse, åbningstider, rute og praktisk info for vores afdeling i Vejle.</p>
       </div>
       <figure class="hero-figure">
-        <img :src="imgVejle" alt="Indgangen til DK Skønhedsklinik på Søndergade 50 i Vejle" loading="eager" fetchpriority="high" decoding="async" />
+        <img :src="imgVejle" alt="Indgangen til DK Skønhedsklinik på Søndergade 50 i Vejle" width="1200" height="675" loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </header>
 

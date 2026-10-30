@@ -32,7 +32,7 @@
                 <div class="BannerPng">
                     <p>Klinikkens ansvarlige læge</p>
                     <p>Arash Bagheri</p>
-                    <img src="../../assets/OmOsArash.webp" alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik">
+                    <img src="../../assets/OmOsArash.webp" width="900" height="1126" fetchpriority="high" decoding="async" alt="Arash Bagheri, læge og indehaver af DK Skønhedsklinik">
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
                             <div class="clinics-mini_card-hover">
                                 <h3>{{ c.city }}</h3>
                             </div>
-                            <img :src="c.img" :alt="c.alt" loading="lazy" />
+                            <img :src="c.img" :alt="c.alt" width="1400" height="788" loading="lazy" decoding="async" />
                             <figcaption class="clinics-mini__caption">
                                 <span class="clinics-mini__city">{{ c.city }}</span>
                                 <span class="clinics-mini__cta">Se klinikken</span>
@@ -343,8 +343,8 @@ onMounted(() => {
 
 // اگر روت‌نیم‌ها فرق دارند، فقط name را عوض کن یا به جای name، path بده.
 const clinics = [
-    { slug: 'vejle', city: 'Vejle', img: imgVejle, alt: '...', route: 'clinic-vejle' },
-    { slug: 'esbjerg', city: 'Esbjerg', img: imgEsbjerg, alt: '...', route: 'clinic-esbjerg' }
+    { slug: 'vejle', city: 'Vejle', img: imgVejle, alt: 'Indgangen til DK Skønhedsklinik på Søndergade 50 i Vejle', route: 'clinic-vejle' },
+    { slug: 'esbjerg', city: 'Esbjerg', img: imgEsbjerg, alt: 'Klinikken i Esbjerg på Havnegade 6', route: 'clinic-esbjerg' }
 ]
 
 /**
