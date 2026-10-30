@@ -44,6 +44,7 @@ const openBooking = () => {
 }
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
+import heroBaggrund from '@/assets/BannerBehandling.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
 // Sektionsbilleder: importeres, saa Vite giver dem den rigtige sti.
 // new URL('@/...') virkede ikke - aliaset '@' oversaettes ikke dér, og
@@ -668,6 +669,8 @@ useHead(() => {
     htmlAttrs: { lang: 'da' },
     meta,
     link: [
+      /* Heroens baggrund ligger i CSS og er sidens LCP - preload den */
+      { rel: 'preload', as: 'image', href: heroBaggrund, fetchpriority: 'high' },
       { rel: 'canonical', href: url },
       { rel: 'alternate', href: url, hreflang: 'da-DK' },
       { rel: 'preload', as: 'image', href: behandlingData.value.imageSrc }
