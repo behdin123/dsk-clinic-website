@@ -146,11 +146,11 @@
       <div class="informations h1">
 
         <div class="Arash_Bagheri_Portrait">
-          <img src="../../assets/Arash_Bagheri2.webp" alt="Arash Bagheri – erfaren læge hos DK Skønhedsklinik">
+          <img src="../../assets/Arash_Bagheri2.webp" width="800" height="1271" loading="lazy" decoding="async" alt="Arash Bagheri – erfaren læge hos DK Skønhedsklinik">
         </div>
 
         <div data-aos="fade-up" class="info" id="Info-div">
-          <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.webp" width="50px" height="auto"
+          <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.webp" width="50" height="41"
               alt="Arash Bagheri, erfaren læge hos DK Skønhedsklinik" loading="lazy" decoding="async">
           </div>
           <div>
@@ -375,6 +375,9 @@ import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import imgOmOs from '@/assets/DSK-samtale.webp'
 import imgClinic from '@/assets/behandlinger/consultation.webp'
+import heroMobil from '@/assets/BannerFrontPageMobile6.webp'
+import heroTablet from '@/assets/BannerFrontPageMobile3.webp'
+import heroDesktop from '@/assets/BannerBehandling3.webp'
 
 const faqs = [
   {
@@ -439,6 +442,11 @@ useHead({
     { name: 'twitter:image', content: 'https://dsklinik.dk/og/home.webp' }
   ],
   link: [
+    /* Heroens baggrundsbillede ligger i CSS og opdages ellers foerst sent
+       (LCP). Preload med media, saa hver skaermstoerrelse kun henter sit. */
+    { rel: 'preload', as: 'image', href: heroMobil, media: '(max-width: 500px)', fetchpriority: 'high' },
+    { rel: 'preload', as: 'image', href: heroTablet, media: '(min-width: 501px) and (max-width: 1200px)', fetchpriority: 'high' },
+    { rel: 'preload', as: 'image', href: heroDesktop, media: '(min-width: 1201px)', fetchpriority: 'high' },
     { rel: 'canonical', href: 'https://dsklinik.dk/' },
     { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/' }
   ],

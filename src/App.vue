@@ -17,7 +17,7 @@
     <div>
       <router-view :showModal="showModal" />
       <button class="scroll-to-top" :class="{ show: isButtonVisible }" @click="scrollToTop">
-        <img src="./assets/icons/arrowup.webp" alt="">
+        <img src="./assets/icons/arrowup.webp" width="50" height="50" alt="">
       </button>
     </div>
 
@@ -469,8 +469,9 @@ body {
   transition: transform 500ms cubic-bezier(.2,.7,0,1);
 }
 
+/* Ingen height-transition: den kan ikke koere paa GPU'en og gav layoutskift (CLS) */
 .nav-keeper {
-  transition: height 220ms ease;
+  transition: none;
 }
 
 /* valgfrit smooth */

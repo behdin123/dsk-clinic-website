@@ -17,10 +17,10 @@
       </div>
       <!-- Navigation Arrows -->
       <button class="nav prev" @click="prevSlide">
-        <img src="../assets/icons/arrowup.webp" width="100%" height="auto" alt="" aria-hidden="true">
+        <img src="../assets/icons/arrowup.webp" width="128" height="128" alt="" aria-hidden="true">
       </button>
       <button class="nav next" @click="nextSlide">
-        <img src="../assets/icons/arrowup.webp" width="100%" height="auto" alt="" aria-hidden="true">
+        <img src="../assets/icons/arrowup.webp" width="128" height="128" alt="" aria-hidden="true">
       </button>
     </div>
   </template>
