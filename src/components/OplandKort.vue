@@ -223,14 +223,14 @@ const byerSomTekst = computed(() =>
 .opland__by { color: #153655; font-weight: 700; font-size: .95rem; }
 
 .opland__tal {
-  color: rgba(21, 54, 85, .66);
+  color: rgba(21, 54, 85, .78);
   font-size: .88rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .opland__note {
-  color: rgba(21, 54, 85, .58);
+  color: rgba(21, 54, 85, .78);
   font-size: .82rem;
   line-height: 1.5;
   margin-top: 12px;

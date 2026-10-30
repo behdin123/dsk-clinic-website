@@ -373,7 +373,7 @@ const openBooking = () => {
 
 .laege-id {
   font-size: .9rem;
-  color: rgba(21, 54, 85, .62);
+  color: rgba(21, 54, 85, .78);
   margin-bottom: 14px !important;
 }
 
@@ -722,7 +722,7 @@ strong {
 }
 
 .kontaktliste dt {
-  color: rgba(21, 54, 85, .62);
+  color: rgba(21, 54, 85, .78);
   font-size: .82rem;
   font-weight: 700;
   letter-spacing: .04em;
@@ -741,7 +741,7 @@ strong {
 }
 
 .kontaktliste__note {
-  color: rgba(21, 54, 85, .60);
+  color: rgba(21, 54, 85, .78);
   display: block;
   font-size: .86rem;
   font-weight: 400;
@@ -798,7 +798,7 @@ strong {
 }
 
 .clinic-info__gratis {
-  color: rgba(21, 54, 85, .62);
+  color: rgba(21, 54, 85, .78);
   font-size: .88rem;
   margin: 0;
 }

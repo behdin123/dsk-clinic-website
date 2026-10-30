@@ -49,7 +49,7 @@ $c-blue: #2d58a1;
 }
 
 .crumbs__link {
-  color: rgba(21, 54, 85, .62);
+  color: rgba(21, 54, 85, .78);
   text-decoration: none;
 
   &:hover,

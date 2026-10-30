@@ -274,7 +274,7 @@
             </div>
             <div class="section-media">
                 <img src="../../assets/DK_Skønhedsklinik.webp" alt="Skinbooster behandling – frisk og ungdommelig hud"
-                    loading="lazy" decoding="async">
+                    width="1200" height="800" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -1523,7 +1523,8 @@ button[disabled] {
 }
 
 .kontakt-kort dt {
-    color: rgba(21, 54, 85, .62);
+    /* .62 gav for lav kontrast (WCAG) - .78 er stadig dæmpet, men læsbar */
+    color: rgba(21, 54, 85, .78);
     font-size: .8rem;
     font-weight: 700;
     letter-spacing: .04em;
@@ -1539,7 +1540,7 @@ button[disabled] {
 .kontakt-kort address { font-style: normal; line-height: 1.5; }
 
 .kontakt-kort__note {
-    color: rgba(21, 54, 85, .60);
+    color: rgba(21, 54, 85, .78);
     display: block;
     font-size: .85rem;
     font-weight: 400;

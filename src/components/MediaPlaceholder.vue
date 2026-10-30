@@ -89,7 +89,7 @@ $c-blue: #2d58a1;
   font-size: .82rem;
   line-height: 1.5;
   max-width: 34ch;
-  color: rgba(21, 54, 85, .55);
+  color: rgba(21, 54, 85, .78);
 }
 
 @media (max-width: 600px) {

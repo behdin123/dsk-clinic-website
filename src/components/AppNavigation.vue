@@ -566,7 +566,7 @@ input:checked+.slider:before {
 
 .mnav__klinik b { font-size: 1.02rem; }
 .mnav__klinik span { font-size: .9rem; }
-.mnav__klinik small { color: rgba(21, 54, 85, .65); font-size: .8rem; }
+.mnav__klinik small { color: rgba(21, 54, 85, .78); font-size: .8rem; }
 .mnav__klinik.router-link-exact-active { border-color: #2d58a1; }
 
 .mnav__bund {

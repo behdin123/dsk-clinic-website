@@ -84,7 +84,7 @@ svg {
 }
 
 figcaption {
-  color: rgba(21, 54, 85, .65);
+  color: rgba(21, 54, 85, .78);
   font-size: .85rem;
   margin-top: 8px;
   text-align: center;
