@@ -2690,4 +2690,11 @@ onMounted(() => {
   color: #153655 !important;
   text-align: left;
 }
+
+/* Citat-ikonet: width/height-attributterne giver formatet (ingen CLS),
+   men hoejden skal foelge bredden, ellers bliver ikonet straekt. */
+.home .icons img {
+  aspect-ratio: 120 / 98;
+  height: auto !important;
+}
 </style>
