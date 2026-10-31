@@ -54,8 +54,8 @@
         </div>
       </article>
 
-      <aside class="clinic-map" aria-label="Kort over DK Skønhedsklinik Vejle">
-        <iframe :src="mapEmbedSrc" width="100%" height="100%" style="border:0;" allowfullscreen=""
+      <aside ref="kortRef" class="clinic-map" aria-label="Kort over DK Skønhedsklinik Vejle">
+        <iframe v-if="visKort" :src="mapEmbedSrc" width="100%" height="100%" style="border:0;" allowfullscreen=""
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="Kort over klinikken"></iframe>
       </aside>
@@ -197,6 +197,20 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
+
+/* Google Maps henter ca. 480 KB JavaScript. Kortet indlaeses foerst, naar
+   det kommer ind i skaermbilledet (ikke allerede ved sideindlaesning, som
+   loading="lazy" goer paa mobil). */
+const kortRef = ref(null)
+const visKort = ref(false)
+onMounted(() => {
+  const el = kortRef.value
+  if (!el || !('IntersectionObserver' in window)) { visKort.value = true; return }
+  const io = new IntersectionObserver((e) => {
+    if (e.some((x) => x.isIntersecting)) { visKort.value = true; io.disconnect() }
+  }, { rootMargin: '150px' })
+  io.observe(el)
+})
 import FaqList from '@/components/FaqList.vue'
 import OplandKort from '@/components/OplandKort.vue'
 import imgArash from '@/assets/klinik/arash-portraet.webp'
@@ -939,5 +953,15 @@ strong {
     height: 320px !important;
     min-height: 0 !important;
   }
+}
+
+/* Pladsen til kortet er reserveret, foer kortet indlaeses (ingen CLS) */
+.clinic-map {
+  background: #e9eef5;
+  min-height: 420px !important;
+}
+
+@media (max-width: 900px) {
+  .clinic-map { min-height: 320px !important; }
 }
 </style>
