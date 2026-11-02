@@ -593,13 +593,13 @@ const behandlinger = {
         summary:
           'Sterile nåle laver kontrollerede mikrokanaler, som kickstarter <b>kollagen- og elastinproduktion</b>. Huden bliver jævnere og fastere over tid.',
         visibleAfter: 'Ofte 2 uger til første forbedring; fortsætter med at optimere i månederne efter.',
-        durability: '6–12 måneder efter kur og korrekt hjemmepleje/solbeskyttelse.',
-        sessions: '3–6 sessioner med 6 ugers interval; herefter vedligehold efter behov.'
+        durability: '6–12 måneder med korrekt hjemmepleje og solbeskyttelse.',
+        sessions: 'Antallet vurderes individuelt af lægen – der går mindst 3 måneder mellem to behandlinger.'
       },
       steps: [
         { title: 'Konsultation & bedøvende creme', text: 'Vi afklarer mål, kontraindikationer og påfører lokalbedøvende creme for komfort. Områder og intensitet planlægges.' },
         { title: 'Steril microneedling-procedure', text: 'Kontrollerede mikrokanaler stimulerer kollagen/elastin og øger optag af aktive stoffer. Behandlingen tilpasses zone for jævn og sikker dækning.' },
-        { title: 'Efterbehandling & vurdering', text: 'Solcreme med SPF 30+ dagligt og ingen AHA/BHA/retinol i 3–5 dage. Lægen fortæller dig efter behandlingen, hvornår du må gå i sauna og træne igen. Vurdering/plan for næste session efter 4–6 uger.' }
+        { title: 'Efterbehandling & vurdering', text: 'Solcreme med SPF 30+ dagligt og ingen AHA/BHA/retinol i 3–5 dage. Lægen fortæller dig efter behandlingen, hvornår du må gå i sauna og træne igen. Lægen vurderer, om du har brug for en ny behandling – tidligst efter 3 måneder.' }
       ],
       safety: {
         note: 'Sterile engangshoveder – medicinsk hygiejne.',
@@ -724,7 +724,7 @@ const FAQ_BANK = {
 
   microneedling: [
     { q: 'Hvad hjælper microneedling på?', a: '<b>Akne-ar</b>, fine linjer, porer og ujævn tekstur via kontrollerede mikrokanaler og kollagenstimulering.' },
-    { q: 'Hvor mange behandlinger behøver jeg?', a: 'Ofte <b>3–6 sessioner</b> med 4–6 uger imellem afhængigt af mål og hudtilstand.' },
+    { q: 'Hvor mange behandlinger behøver jeg?', a: 'Det vurderer lægen individuelt ud fra dine mål og din hud. Der går mindst <b>3 måneder</b> mellem to behandlinger.' },
     { q: 'Hvornår ses resultater?', a: 'Hudkvaliteten bedres gradvist; tydelig effekt ses ofte efter <b>4–6 uger</b> og forbedres videre måneder frem.' },
     { q: 'Er der nedetid?', a: 'Rødme som solskoldning i <b>1–2 dage</b>, let afskalning kan forekomme. Brug <b>solbeskyttelse</b>.' },
     { q: 'Gør microneedling ondt?', a: 'Vi anvender <b>lokalbedøvende creme</b>, så ubehaget er som regel mildt til moderat.' },

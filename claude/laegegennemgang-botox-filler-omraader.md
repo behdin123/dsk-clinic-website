@@ -37,11 +37,9 @@
 | Mesoterapi – vedligehold | Vurderes individuelt, tidligst 3 måneder efter sidste behandling |
 | Microneedling – solcreme | SPF 30+ |
 | Microneedling – sauna og træning | Lægen fortæller patienten efter behandlingen |
+| Microneedling – interval | Antallet vurderes individuelt, mindst 3 måneder mellem to behandlinger (også i et forløb) |
 
-**Skal stadig afgøres:**
-
-| Emne | Hvad står der | Spørgsmål |
-|---|---|---|
+---|---|---|
 | Microneedling – interval | "3–6 sessioner med 6 ugers interval" og "plan for næste session efter 4–6 uger" | Minimum 3 måneder mellem behandlinger er oplyst. Gælder det også mellem behandlingerne i et forløb, eller kun vedligehold bagefter? |
 
 ---|---|---|---|
