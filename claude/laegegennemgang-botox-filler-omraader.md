@@ -23,12 +23,25 @@
 6. Tindinger: må vi skrive, at blå mærker kan forekomme?
 7. Kindben: holder filler i kinderne "ofte i den lange ende af 6–12 måneder"?
 
-### Uoverensstemmelser fundet i den eksisterende tekst (ikke rettet endnu)
+### Uoverensstemmelser fundet i den eksisterende tekst
 
-Siden siger forskellige ting forskellige steder. Hvilket tal er det rigtige?
+**Afgjort 2. nov:** botox holder **3–4 måneder**, filler **6–12 måneder**. Rettet på siderne.
 
-| Side | Sted A | Sted B |
-|---|---|---|
+**Skal stadig afgøres – hvilket svar er det rigtige?**
+
+| # | Emne | Sted A | Sted B |
+|---|---|---|---|
+| 1 | Botox – makeup | Efterbehandling: "Makeup når huden er lukket (typisk efter få timer)" | FAQ: "ikke anvende make-up resten af dagen" |
+| 2 | Botox – træning og sauna | Efterbehandling: "Undgå hård træning/sauna første 24 timer" | FAQ: "Ingen hård træning og undgå sauna samme dag" |
+| 3 | Botox – liggende stilling | Står kun i FAQ: "Du må ikke lægge dig ned i de første 4 timer" | Mangler i listen over efterbehandling (der står i stedet "undgå at massere i 4 timer") |
+| 4 | Filler – behandlingstid | Øverst på filler-siden: "30–45 min" | Forløb: "ca. 15–30 min." · Læbefiller-siden: injektioner 20–30 min. + bedøvende creme 20–30 min. før |
+| 5 | Læbefiller – holdbarhed | Filler-siden: "læber ofte 6–9 mdr." | Læbefiller-siden: "Typisk 6–12 måneder" |
+| 6 | Mesoterapi – vedligehold | Resultater: "vedligehold hver 3. måned" | FAQ: "hver 2.–3. måned" |
+| 7 | Microneedling – interval | Resultater: "6 ugers interval" | FAQ og forløb: "4–6 uger" |
+| 8 | Microneedling – solcreme | Efterbehandling: "SPF 50 dagligt" | FAQ: "SPF 30+" |
+| 9 | Microneedling – sauna/træning | Efterbehandling: "24–48 timer" | FAQ: "det første døgn" |
+
+---|---|---|
 | Botox – holdbarhed | Øverst på siden: **3–6 måneder** | Resultater og FAQ: **3–4 måneder** |
 | Botox – efter behandlingen | Efterbehandling: undgå at massere i 4 timer | FAQ: du må ikke lægge dig ned i 4 timer |
 | Botox – makeup | Efterbehandling: makeup efter få timer | FAQ: ingen makeup resten af dagen |
