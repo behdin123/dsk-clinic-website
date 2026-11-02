@@ -107,9 +107,15 @@
       </div>
 
       <nav class="omr__ankre" :aria-label="omraader.ankerLabel || 'Spring til et område'">
-        <ol>
+        <p class="omr__ankre-titel" aria-hidden="true">Spring til et område</p>
+        <ol :style="{ '--kol': ankerKolonner }" :class="[`omr__ankre-liste--n${omraader.items.length}`, { 'omr__ankre-liste--ulige': omraader.items.length % 2 === 1 }]"
+          class="omr__ankre-liste">
           <li v-for="o in omraader.items" :key="'ank-' + o.id">
-            <a :href="`#${o.id}`"><span aria-hidden="true">{{ o.nr }}</span>{{ o.navn }}</a>
+            <a :href="`#${o.id}`" @click.prevent="tilOmraade(o.id)">
+              <span class="omr__ankre-nr" aria-hidden="true">{{ o.nr }}</span>
+              <span class="omr__ankre-navn">{{ o.navn }}</span>
+              <span class="omr__ankre-pil" aria-hidden="true"></span>
+            </a>
           </li>
         </ol>
       </nav>
@@ -121,8 +127,8 @@
             :punkter="omraader.items" />
         </div>
 
-        <div class="omr__liste">
-          <article v-for="o in omraader.items" :id="o.id" :key="o.id" class="omr__afsnit"
+        <div class="omr__liste" @click="interntLink">
+          <article v-for="o in omraader.items" :id="o.id" :key="o.id" class="omr__afsnit" tabindex="-1"
             :aria-labelledby="`${o.id}-titel`">
             <h3 :id="`${o.id}-titel`" :data-nr="o.nr">{{ o.h3 }}</h3>
             <p v-for="(t, i) in o.tekst" :key="o.id + '-p' + i" v-html="t"></p>
@@ -378,6 +384,66 @@ const h1Tekst = computed(() =>
   `${String(props.title || '').replace(/\s*behandling$/i, '')} i Esbjerg & Vejle – udført af læge`)
 
 /* Omraader med egne H3-afsnit (kun paa sider, der har dem i data) */
+/* Ankermenu: 5 eller faerre staar paa én raekke, ellers to lige lange
+   raekker (7 -> 4 + 3), saa der aldrig staar et enligt kort. */
+const ankerKolonner = computed(() => {
+  const n = props.sections?.omraader?.items?.length || 0
+  return n <= 5 ? n : Math.ceil(n / 2)
+})
+
+/* Blød rulning til et omraade. Afsnittet centreres i det synlige omraade
+   under den faste navigation (100 px). Er afsnittet hoejere end det
+   (typisk paa mobil), lander overskriften lige under navigationen i
+   stedet - ellers starter man midt i teksten.
+   Navigationen skifter fra at fylde i siden til at vaere fast, naar man
+   ruller, og saa rykker indholdet op. Derfor maales der igen, naar
+   rulningen er faerdig, og der rettes til, hvis afsnittet ikke sidder rigtigt. */
+const NAV_HOEJDE = 100
+const LUFT = 16
+const maalForAfsnit = (el) => {
+  const r = el.getBoundingClientRect()
+  const synlig = window.innerHeight - NAV_HOEJDE
+  const oensketTop = r.height + LUFT * 2 <= synlig
+    ? NAV_HOEJDE + (synlig - r.height) / 2
+    : NAV_HOEJDE + LUFT
+  return window.scrollY + r.top - oensketTop
+}
+
+const tilOmraade = (id) => {
+  const el = document.getElementById(id)
+  if (!el) return
+  const roligt = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const adfaerd = roligt ? 'auto' : 'smooth'
+  window.scrollTo({ top: maalForAfsnit(el), behavior: adfaerd })
+  history.replaceState(null, '', `#${id}`)
+  el.focus({ preventScroll: true })
+
+  // Ret til, naar rulningen er helt faerdig: navigationen skifter til fast
+  // undervejs, og indholdet flytter sig. Lytteren saettes foerst paa i
+  // naeste frame, saa en rulning, der allerede var i gang, ikke taeller.
+  let forsoeg = 0
+  const ret = () => {
+    const maal = maalForAfsnit(el)
+    if (Math.abs(maal - window.scrollY) <= 4 || forsoeg++ >= 2) return
+    window.scrollTo({ top: maal, behavior: adfaerd })
+    vent()
+  }
+  const vent = () => {
+    if (roligt) return requestAnimationFrame(() => requestAnimationFrame(ret))
+    if (!('onscrollend' in window)) return setTimeout(ret, 1200) // aeldre Safari
+    requestAnimationFrame(() => window.addEventListener('scrollend', ret, { once: true }))
+  }
+  vent()
+}
+
+const interntLink = (e) => {
+  const a = e.target.closest?.('a[href^="#"]')
+  if (!a) return
+  const id = a.getAttribute('href').slice(1)
+  if (!document.getElementById(id)) return
+  e.preventDefault()
+  tilOmraade(id)
+}
 const omraader = computed(() => props.sections?.omraader?.items?.length ? props.sections.omraader : null)
 
 const steps3 = computed(() => (props.sections?.steps || []).slice(0, 3))
@@ -1740,50 +1806,100 @@ button[type="submit"],
 
 .omr h2 { color: #153655 !important; text-align: left !important; }
 
-.omr__ankre ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.omr__ankre {
+  background: rgba(45, 88, 161, .045);
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-sizing: border-box;
+  margin: 8px 0 48px;
+  padding: 22px 24px 24px;
+}
+
+.omr__ankre-titel {
+  color: #2d58a1;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.omr__ankre-liste {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(var(--kol, 4), minmax(0, 1fr));
   list-style: none;
-  margin: 0 0 36px;
+  margin: 0;
   padding: 0;
 }
 
-.omr__ankre a {
+.omr__ankre-liste a {
   align-items: center;
   background: #fff;
-  border: 1px solid rgba(21, 54, 85, .14);
-  border-radius: 999px;
+  border: 1px solid rgba(21, 54, 85, .12);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(21, 54, 85, .04);
   box-sizing: border-box;
   color: #153655;
-  display: inline-flex;
-  font-size: .95rem;
-  font-weight: 600;
-  gap: 8px;
-  min-height: 42px;
-  padding: 6px 16px 6px 7px;
+  display: flex;
+  gap: 12px;
+  height: 100%;
+  min-height: 52px;
+  padding: 10px 14px 10px 12px;
   text-decoration: none;
-  transition: border-color .15s ease, background .15s ease;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 
-.omr__ankre a:hover,
-.omr__ankre a:focus-visible {
-  background: rgba(45, 88, 161, .06);
+.omr__ankre-liste a:hover {
   border-color: #2d58a1;
+  box-shadow: 0 8px 20px rgba(21, 54, 85, .08);
+  transform: translateY(-1px);
 }
 
-.omr__ankre a span {
+.omr__ankre-liste a:focus-visible {
+  outline: 3px solid rgba(45, 88, 161, .45);
+  outline-offset: 2px;
+}
+
+.omr__ankre-nr {
   align-items: center;
   background: #2d58a1;
   border-radius: 50%;
   color: #fff;
   display: inline-flex;
-  flex: 0 0 26px;
-  font-size: .78rem;
+  flex: 0 0 28px;
+  font-size: .8rem;
   font-weight: 700;
-  height: 26px;
+  height: 28px;
   justify-content: center;
 }
+
+.omr__ankre-navn {
+  flex: 1 1 auto;
+  font-size: .98rem;
+  font-weight: 600;
+  line-height: 1.3;
+  min-width: 0;
+}
+
+/* Pil nedad - SVG-masken fra byggeklodser.scss, drejet 90 grader */
+.omr__ankre-pil {
+  background-color: #2d58a1;
+  flex: 0 0 14px;
+  height: 14px;
+  -webkit-mask: var(--pil) center / contain no-repeat;
+  mask: var(--pil) center / contain no-repeat;
+  opacity: .7;
+  transform: rotate(90deg);
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.omr__ankre-liste a:hover .omr__ankre-pil {
+  opacity: 1;
+  transform: rotate(90deg) translateX(2px);
+}
+
+.omr__afsnit:focus { outline: none; }
 
 .omr__gitter {
   align-items: start;
@@ -1891,6 +2007,30 @@ button[type="submit"],
 
 .omr__pris { margin: 0; }
 
+/* Ankermenu: under 1000 px er indholdet 90 % bredt - to kolonner, og ved
+   ulige antal faar den sidste hele bredden. Paa smalle telefoner én
+   kolonne, saa lange ord som "Bekymringsrynker" aldrig klemmes. */
+/* Fem knapper paa én raekke bliver for smalle, naar maalet er 980 px
+   ("Marionetlinjer" roerte pilen) - der staar de 3 + 2. */
+@media (max-width: 1499px) {
+  .omr__ankre-liste--n5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  /* 4 kolonner (botox) paa 980 px: lidt strammere, saa "Bekymringsrynker"
+     har luft til pilen */
+  .omr__ankre { padding-left: 20px; padding-right: 20px; }
+  .omr__ankre-liste { gap: 10px; }
+  .omr__ankre-liste a { gap: 10px; padding: 10px 12px 10px 10px; }
+  .omr__ankre-navn { font-size: .95rem; }
+}
+
+@media (max-width: 1000px) {
+  .omr__ankre-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .omr__ankre-liste--ulige li:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 480px) {
+  .omr__ankre-liste { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 900px) {
   .omr__gitter { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .omr__diagram { position: static; margin: 0 auto; max-width: 340px; width: 100%; }
@@ -1899,6 +2039,9 @@ button[type="submit"],
 @media (max-width: 600px) {
   .omr__afsnit { padding: 26px 22px; }
   .omr__afsnit h3 { font-size: 1.12rem; }
-  .omr__ankre ol { margin-bottom: 28px; }
+  .omr__ankre { margin-bottom: 32px; padding: 18px 16px 18px; }
+  .omr__ankre-liste { gap: 10px; }
+  .omr__ankre-liste a { gap: 10px; min-height: 48px; padding: 10px 12px 10px 10px; }
+  .omr__ankre-navn { font-size: .92rem; }
 }
 </style>
