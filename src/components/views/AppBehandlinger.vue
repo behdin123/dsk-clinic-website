@@ -95,17 +95,134 @@ const behandlinger = {
         audience: [
           '<span class="intro">Botox hos DK Skønhedsklinik er en skånsom måde at blødgøre mimiske rynker på. Vi bruger et godkendt botulinumtoksin og doserer præcist, så din mimik bevares og udtrykket forbliver naturligt. Er du nervøs første gang? Det forstår vi. Vi tager os tid til at lytte, vejlede og lægge en plan, der passer til netop dit ansigt.</span>',
 
-          // Områder – hver som egen punkt
-          '<b>Pande</b> (vandrette linjer).',
-          '<b>Mellem bryn</b> (bekymringsrynker / glabella).',
-          '<b>Omkring øjne</b> (kragetæer).',
-          '<b>På næsen</b> (bunny lines).',
-          '<b>Overlæbe</b> (rygerynker).',
-          '<b>Mundvige</b> (nedadgående mundhjørner).',
-          '<b>Hage</b> (ujævn / dimple chin).',
-          '<b>Kæbelinje</b> (masseter / jawline slimming).',
-          '<b>Hals</b> (vandrette linjer og platysma-bånd).'
+        // Hvem behandlingen er til. Omraaderne staar nu som egne H3-afsnit
+        // i "omraader" herunder - bullets her ville gentage dem.
+        '<b>Linjer, der ses, når du bevæger ansigtet</b> – i panden, mellem brynene eller ved øjnene.',
+        'Du vil gerne <b>forebygge</b>, at linjerne bliver dybere.',
+        'Du ønsker et <b>friskere udtryk</b>, uden at det ses, at du er behandlet.',
+        'Du er fyldt 18 og er hverken gravid eller ammer.'
+      ],
+      omraader: {
+        eyebrow: 'Områder',
+        title: 'Rynkebehandling med botox – område for område',
+        lead: 'Botox virker kun dér, hvor lægen lægger det. Her er de syv områder, vi oftest behandler: hvad behandlingen kan, og hvad den ikke kan.',
+        ankerLabel: 'Spring til et område på botox-siden',
+        diagram: {
+          id: 'botox',
+          titel: 'De syv områder i ansigtet, der kan behandles med botox',
+          beskrivelse: 'Tegning af et ansigt med syv nummererede områder: 1 pandelinjer, 2 bekymringsrynker mellem brynene, 3 kragetæer ved øjenkrogene, 4 brynløft ved brynets yderste del, 5 bunny lines på næsen, 6 sure mundvige og 7 hagegrube.',
+          billedtekst: 'Numrene svarer til afsnittene.'
+        },
+        items: [
+          {
+            id: 'pandelinjer', nr: 1, navn: 'Pandelinjer',
+            h3: 'Botox mod pandelinjer',
+            x: 150, y: 52, mark: 'M114 74 Q150 66 186 74 M108 88 Q150 80 192 88 M116 102 Q150 96 184 102',
+            tekst: [
+              'De vandrette linjer i panden kommer fra den muskel, der løfter øjenbrynene, når du ser overrasket ud eller rynker panden. For mange er det grunden til, at de kommer til botox første gang.',
+              'Lægen lægger små doser fordelt over panden, så linjerne blødgøres, mens du stadig kan løfte brynene. Netop panden kræver en let hånd: får den for meget, kan brynene føles tunge, og hos nogle sænkes de en smule. Derfor behandles panden ofte sammen med området mellem brynene, så musklerne forbliver i balance.',
+              '<b>Det kan behandlingen ikke:</b> linjer, der er dybe og ses, også når ansigtet er helt i ro, bliver blødere, men forsvinder sjældent helt efter én behandling. Det får du et ærligt svar på ved forundersøgelsen.'
+            ],
+            fakta: [
+              { k: 'Muskel', v: 'Panden (frontalis)' },
+              { k: 'Ofte sammen med', v: '<a href="#bekymringsrynker">Bekymringsrynker</a>' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'bekymringsrynker', nr: 2, navn: 'Bekymringsrynker',
+            h3: 'Botox mod bekymringsrynker (glabella)',
+            x: 122, y: 120, mark: 'M145 132 L146 150 M155 132 L154 150',
+            tekst: [
+              'Bekymringsrynken – også kaldet glabella eller vredesrynken – er de lodrette linjer mellem øjenbrynene. De kan få dig til at se træt, streng eller bekymret ud, også når du ikke er det.',
+              'Området styres af små muskler, der trækker brynene sammen og nedad. Når de slapper af, glattes linjerne, og udtrykket bliver mere åbent. Glabella er et af de områder, hvor botox virker mest forudsigeligt, og det er ofte her, lægen anbefaler at starte, hvis du er i tvivl.',
+              'Ved kraftige muskler kan der være brug for en lille justering ved kontrollen efter 14 dage. Sjældent kan et øjenlåg føles tungt i en periode. Det er forbigående og går væk, når effekten aftager.'
+            ],
+            fakta: [
+              { k: 'Muskel', v: 'Mellem brynene (corrugator og procerus)' },
+              { k: 'Ofte sammen med', v: '<a href="#pandelinjer">Pandelinjer</a>' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'kragetaeer', nr: 3, navn: 'Kragetæer',
+            h3: 'Botox mod kragetæer',
+            x: 256, y: 166, mark: 'M210 158 L222 151 M212 166 L226 166 M210 174 L222 181 M90 158 L78 151 M88 166 L74 166 M90 174 L78 181',
+            tekst: [
+              'Kragetæer er de fine linjer, der stråler ud fra øjenkrogene, når du smiler. Mange kalder dem smilerynker – og de fleste vil ikke af med smilet, kun med de linjer, der bliver siddende.',
+              'Lægen lægger små doser i den yderste del af ringmusklen omkring øjet. Målet er, at linjerne blødgøres, mens øjnene stadig smiler med. Et helt glat område ved et stort smil ser sjældent naturligt ud, så første gang doserer vi hellere for lidt end for meget.',
+              '<b>Det kan behandlingen ikke:</b> botox virker på linjer, der skyldes mimik. Fine linjer i tynd eller tør hud under øjnene og mørke rande behandles ikke med botox. Her kan en <a href="/behandlinger/skinbooster/">skinbooster</a> give bedre hudkvalitet – lægen vurderer, hvad der passer til dig.'
+            ],
+            fakta: [
+              { k: 'Muskel', v: 'Ringmusklen om øjet (orbicularis oculi)' },
+              { k: 'Godt at vide', v: 'Smilet bevares' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'brynloeft', nr: 4, navn: 'Brynløft',
+            h3: 'Brynløft med botox',
+            x: 236, y: 118, mark: 'M214 138 L214 122 M208 128 L214 122 L220 128',
+            tekst: [
+              'Med alderen kan den yderste del af øjenbrynet sænke sig, så øjnene ser mere trætte eller tunge ud. Et brynløft med botox giver et lille løft af brynets yderste del – ikke et nyt bryn, men et mere åbent blik.',
+              'Nogle muskler trækker brynet op, andre trækker det ned. Lægen lægger en lille dosis i den muskel, der trækker den yderste del af brynet ned, så den løftende muskel får lidt mere at skulle have sagt. Resultatet er diskret.',
+              'Brynløft lægges ofte sammen med kragetæer eller bekymringsrynker. Er huden over øjet meget slap, eller hænger øjenlåget, er botox ikke den rigtige løsning. Det får du at vide ved forundersøgelsen, inden du bruger penge på det.'
+            ],
+            fakta: [
+              { k: 'Hvor', v: 'Brynets yderste del' },
+              { k: 'Resultat', v: 'Et diskret løft' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'bunny-lines', nr: 5, navn: 'Bunny lines',
+            h3: 'Botox mod bunny lines på næsen',
+            x: 110, y: 198, mark: 'M136 178 L142 187 M164 178 L158 187',
+            tekst: [
+              'Bunny lines er de skrå linjer på siden af næseryggen, der kommer frem, når du rynker på næsen eller griner. Navnet kommer fra kaninen, der rynker næse.',
+              'Linjerne bliver ofte tydeligere, efter man har fået behandlet området mellem brynene, fordi nogle ubevidst begynder at bruge næsemusklen mere. En meget lille dosis på hver side af næseryggen er som regel nok til at blødgøre dem.',
+              'Bunny lines behandles sjældent alene. De fleste får dem behandlet sammen med bekymringsrynker, så hele området mellem øjnene får et roligt udtryk. Effekten følger den øvrige behandling og holder typisk 3–4 måneder.'
+            ],
+            fakta: [
+              { k: 'Hvor', v: 'Siden af næseryggen' },
+              { k: 'Ofte sammen med', v: '<a href="#bekymringsrynker">Bekymringsrynker</a>' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'sure-mundvige', nr: 6, navn: 'Sure mundvige',
+            h3: 'Botox mod sure mundvige',
+            x: 96, y: 276, mark: 'M121 258 Q117 266 114 274 M179 258 Q183 266 186 274',
+            tekst: [
+              'Mundvige, der peger nedad, kan få ansigtet til at se surt eller trist ud – også når du er i godt humør. Det skyldes blandt andet en lille muskel under mundvigen, der trækker den nedad.',
+              'Når lægen lægger en lille dosis i den muskel, slipper trækket, og mundvigen kan løfte sig en smule. Området ligger tæt på de muskler, du bruger til at tale, smile og drikke. Får det for meget, kan smilet blive skævt i en periode, så her starter vi altid forsigtigt.',
+              'Er mundvigene sunket, fordi der er forsvundet volumen, er filler ofte bedre – eller en kombination af de to. Læs om <a href="/behandlinger/filler/#marionetlinjer">filler mod marionetlinjer</a>.'
+            ],
+            fakta: [
+              { k: 'Muskel', v: 'Under mundvigen (DAO)' },
+              { k: 'Godt at vide', v: 'Lille dosis – vi starter forsigtigt' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          },
+          {
+            id: 'hagegrube', nr: 7, navn: 'Hagegrube',
+            h3: 'Botox mod hagegrube og ujævn hage',
+            x: 198, y: 310, mark: 'M140 290 L140.1 290 M150 294 L150.1 294 M160 290 L160.1 290 M145 300 L145.1 300 M155 300 L155.1 300',
+            tekst: [
+              'Nogle får en ujævn, knoppet hage, når de taler eller spænder munden – det kaldes ofte appelsinhud-hage. Andre har en tydelig fure tværs over hagen. Begge dele skyldes hagemusklen, som hos nogle er meget aktiv.',
+              'En lille dosis i hagemusklen får den til at slappe af, så huden ligger glattere, og hagen ser roligere ud. Mange, der ubevidst spænder i hagen, oplever også, at det bliver lettere at slappe af omkring munden.',
+              '<b>Det kan behandlingen ikke:</b> en hage, der mangler fylde eller form, bliver ikke større med botox. Det er en behandling med <a href="/behandlinger/filler/">filler</a>. Ved forundersøgelsen ser lægen på, om det er musklen eller formen, der giver det udtryk, du gerne vil ændre.'
+            ],
+            fakta: [
+              { k: 'Muskel', v: 'Hagemusklen (mentalis)' },
+              { k: 'Hvis hagen mangler form', v: 'Filler i stedet' },
+              { k: 'Pris', v: '550 kr. pr. område' }
+            ]
+          }
         ],
+        andre: 'Vi behandler også <b>rygerrynker</b> over overlæben, <b>kæbemusklen</b> for en slankere kæbelinje og <b>halsen</b> (vandrette linjer og halsstrenge). Spørg til dem ved forundersøgelsen.',
+        prisLink: { tekst: 'Se priser på botox', to: '/priser/' }
+      },
       expectations: {
         summary:
           'Botox virker ved at få de små muskler i ansigtet til at slappe af, så <b>rynker glattes</b> uden at påvirke resten af ansigtet. Behandlingen virker kun i de ønskede områder, så resten af ansigtet bevarer sin normale mimik',
@@ -181,6 +298,95 @@ const behandlinger = {
         'Harmonisering af ansigtstræk uden kirurgi – <b>kontur og symmetri</b>.',
         'Velegnet, hvis du ønsker <b>umiddelbart synlige</b> resultater.'
       ],
+      omraader: {
+        eyebrow: 'Områder',
+        title: 'Filler i ansigtet – område for område',
+        lead: 'Filler giver volumen dér, hvor den er forsvundet. Ud over <a href="/behandlinger/filler/laeber/">læberne</a> er det de fem områder, vi oftest behandler – og hvad du kan forvente af dem.',
+        ankerLabel: 'Spring til et område på filler-siden',
+        diagram: {
+          id: 'filler',
+          titel: 'De områder i ansigtet, der kan behandles med filler',
+          beskrivelse: 'Tegning af et ansigt med fire nummererede områder: 1 kindben, 2 smilelinjer fra næse til mundvig, 3 marionetlinjer fra mundvig mod hage og 4 tindinger. Område 5, hænderne, er ikke vist på tegningen.',
+          billedtekst: 'Numrene svarer til afsnittene. Hænder (5) er ikke vist.'
+        },
+        items: [
+          {
+            id: 'kindben', nr: 1, navn: 'Kindben',
+            h3: 'Filler i kindbenene',
+            x: 254, y: 196, mark: 'M184 196 Q208 186 228 196 M116 196 Q92 186 72 196',
+            tekst: [
+              'Med årene mister kinderne fylde højt oppe. Ansigtet kan se fladere og mere træt ud, og tyngden flytter sig nedad mod smilelinjerne.',
+              'Filler i kindbenene genskaber noget af den støtte. Lægen lægger hyaluronsyren dybt, tæt på knoglen, så kinden får form og løft i stedet for at blive rund. Fordi et løft højt i ansigtet også blødgør linjerne længere nede, kan en lille mængde gøre meget.',
+              'Derfor anbefaler lægen ofte at starte med kindbenene, hvis du kommer for dine smilelinjer. Kinderne er også blandt de områder, hvor filler holder længst – ofte i den lange ende af de 6–12 måneder. Målet er dine egne kindben, ikke et nyt ansigt.'
+            ],
+            fakta: [
+              { k: 'Formål', v: 'Løft og kontur' },
+              { k: 'Holder', v: 'Ofte i den lange ende af 6–12 mdr.' },
+              { k: 'Pris', v: '1.350 kr. pr. ml' }
+            ]
+          },
+          {
+            id: 'smilelinjer', nr: 2, navn: 'Smilelinjer',
+            h3: 'Filler i smilelinjer (nasolabiale folder)',
+            x: 100, y: 230, mark: 'M136 214 Q124 232 122 250 M164 214 Q176 232 178 250',
+            tekst: [
+              'Smilelinjerne – eller de nasolabiale folder – går fra næsevingen ned mod mundvigen. Alle har dem, og de hører til et levende ansigt. Men når de bliver dybe, kan de få dig til at se ældre eller mere træt ud, end du føler dig.',
+              'Filler i smilelinjerne blødgør folden ved at fylde lidt op under den. Det vigtigste er dog at forstå, hvorfor folden er blevet dybere. Ofte skyldes det, at kinden er sunket, og så giver det mere mening at løfte <a href="#kindben">kindbenene</a> først end at fylde selve folden.',
+              '<b>Det kan behandlingen ikke:</b> en fold, der fyldes for meget, ser tung og unaturlig ud, når du smiler. Vi sigter efter blødere – ikke væk. Hævelse og ømhed i et par dage er normalt.'
+            ],
+            fakta: [
+              { k: 'Formål', v: 'Blødgøre folden' },
+              { k: 'Ofte sammen med', v: '<a href="#kindben">Kindben</a>' },
+              { k: 'Pris', v: '1.350 kr. pr. ml' }
+            ]
+          },
+          {
+            id: 'marionetlinjer', nr: 3, navn: 'Marionetlinjer',
+            h3: 'Filler mod marionetlinjer',
+            x: 204, y: 296, mark: 'M121 262 Q118 280 126 298 M179 262 Q182 280 174 298',
+            tekst: [
+              'Marionetlinjer er de linjer, der går fra mundvigene ned mod hagen. Navnet kommer fra marionetdukken, hvis mund bevæger sig op og ned langs to streger. De kan give et trist eller surt udtryk og kommer typisk, når huden mister fasthed og volumen.',
+              'Filler under linjen og i mundvigen giver støtte, så overgangen til hagen bliver blødere, og mundvigene ikke trækkes så meget ned. Hos nogle er det også en muskel under mundvigen, der trækker. Så kan <a href="/behandlinger/botox/#sure-mundvige">botox mod sure mundvige</a> være en god kombination.',
+              'Marionetlinjer forsvinder sjældent helt, især ikke hvis huden er slap. Ved forundersøgelsen får du et ærligt bud på, hvor meget der kan opnås.'
+            ],
+            fakta: [
+              { k: 'Formål', v: 'Støtte mundvig og hage' },
+              { k: 'Kan kombineres med', v: '<a href="/behandlinger/botox/#sure-mundvige">Botox mod sure mundvige</a>' },
+              { k: 'Pris', v: '1.350 kr. pr. ml' }
+            ]
+          },
+          {
+            id: 'tindinger', nr: 4, navn: 'Tindinger',
+            h3: 'Filler i tindingerne',
+            x: 38, y: 130, mark: 'M68 112 Q76 132 70 150 M232 112 Q224 132 230 150',
+            tekst: [
+              'Tindingerne er det område, færrest tænker på – men de ændrer sig tidligt. Når tindingerne bliver indsunkne, kan den yderste del af øjenbrynet se ud til at hænge, og ansigtet får en mere kantet og træt form øverst.',
+              'Filler i tindingerne genskaber en blød overgang fra pande til kind. Lægen lægger produktet dybt, og resultatet er diskret: de fleste ser det ikke som tindinger, men som et mere udhvilet ansigt.',
+              'Der løber mange blodkar i tindingerne, og det er en af grundene til, at behandlingen hører til hos en læge. Blå mærker kan forekomme, så planlæg ikke en vigtig begivenhed i dagene efter.'
+            ],
+            fakta: [
+              { k: 'Formål', v: 'Blød overgang fra pande til kind' },
+              { k: 'Godt at vide', v: 'Blå mærker kan forekomme' },
+              { k: 'Pris', v: '1.350 kr. pr. ml' }
+            ]
+          },
+          {
+            id: 'haender', nr: 5, navn: 'Hænder',
+            h3: 'Filler i hænderne',
+            tekst: [
+              'Hænderne afslører alder lige så tydeligt som ansigtet. Med årene bliver huden på håndryggen tyndere, og sener og blodårer træder tydeligere frem.',
+              'Filler på håndryggen giver fylde under huden, så hænderne ser blødere og mere ensartede ud. Lægen fordeler hyaluronsyren jævnt over håndryggen. Hænderne kan være hævede i et par dage – det er normalt og går over af sig selv.',
+              '<b>Det kan behandlingen ikke:</b> filler gør ikke noget ved pigmentpletter eller fine rynker i selve huden. Ønsker du også bedre hudkvalitet, kan <a href="/behandlinger/skinbooster/">skinbooster</a> være en god kombination – den kan også lægges på hænderne.'
+            ],
+            fakta: [
+              { k: 'Formål', v: 'Fylde på håndryggen' },
+              { k: 'Kan kombineres med', v: '<a href="/behandlinger/skinbooster/">Skinbooster</a>' },
+              { k: 'Pris', v: '1.350 kr. pr. ml' }
+            ]
+          }
+        ],
+        prisLink: { tekst: 'Se priser på filler', to: '/priser/' }
+      },
       expectations: {
         summary:
           'Moderne hyaluronsyre-filler giver fylde og genskaber <b>volumen og form</b> og giver fugt. Vi vælger produkt efter område og hudtype.',
@@ -570,7 +776,9 @@ const procedureLd = computed(() => {
     image: ogImage.value,
     provider: { '@type': 'MedicalClinic', name: 'DK Skønhedsklinik', url: SITE_URL },
     areaServed: 'Esbjerg, Vejle, Danmark',
-    bodyLocation: 'Face, Skin',
+    bodyLocation: s.omraader?.items?.length
+      ? s.omraader.items.map(o => o.navn).join(', ')
+      : 'Face, Skin',
     procedureType: 'NoninvasiveProcedure',
     howPerformed: s.steps?.map(st => `${st.title}: ${st.text}`).join(' • '),
     preparation: s.aftercare ? 'Forberedelse ud fra lægelig vurdering; se også efterbehandling.' : undefined,

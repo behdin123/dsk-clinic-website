@@ -95,6 +95,54 @@
     </div>
   </section>
 
+  <!-- 1b) Omraader: ét H3-afsnit pr. omraade med eget anker. Google kan
+       rangere det enkelte afsnit paa en snaever soegning ("botox pandelinjer"),
+       naar det har egen overskrift, eget id og noget specifikt at sige. -->
+  <section v-if="omraader" id="omraader" class="slice omr" aria-labelledby="omr-titel">
+    <div class="slice-inner">
+      <div class="sec__head">
+        <p class="sec__eyebrow">{{ omraader.eyebrow || 'Områder' }}</p>
+        <h2 id="omr-titel">{{ omraader.title }}</h2>
+        <p v-if="omraader.lead" class="sec__lead" v-html="omraader.lead"></p>
+      </div>
+
+      <nav class="omr__ankre" :aria-label="omraader.ankerLabel || 'Spring til et område'">
+        <ol>
+          <li v-for="o in omraader.items" :key="'ank-' + o.id">
+            <a :href="`#${o.id}`"><span aria-hidden="true">{{ o.nr }}</span>{{ o.navn }}</a>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="omr__gitter">
+        <div class="omr__diagram">
+          <AnsigtOmraader :id="omraader.diagram?.id || 'omraader'" :titel="omraader.diagram?.titel || omraader.title"
+            :beskrivelse="omraader.diagram?.beskrivelse || ''" :billedtekst="omraader.diagram?.billedtekst"
+            :punkter="omraader.items" />
+        </div>
+
+        <div class="omr__liste">
+          <article v-for="o in omraader.items" :id="o.id" :key="o.id" class="omr__afsnit"
+            :aria-labelledby="`${o.id}-titel`">
+            <h3 :id="`${o.id}-titel`" :data-nr="o.nr">{{ o.h3 }}</h3>
+            <p v-for="(t, i) in o.tekst" :key="o.id + '-p' + i" v-html="t"></p>
+            <dl v-if="o.fakta?.length" class="omr__fakta">
+              <div v-for="(f, i) in o.fakta" :key="o.id + '-f' + i">
+                <dt>{{ f.k }}</dt>
+                <dd v-html="f.v"></dd>
+              </div>
+            </dl>
+          </article>
+
+          <p v-if="omraader.andre" class="omr__andre" v-html="omraader.andre"></p>
+          <p v-if="omraader.prisLink" class="omr__pris">
+            <router-link :to="omraader.prisLink.to">{{ omraader.prisLink.tekst }}</router-link>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 2) Expectations -->
   <section v-if="sections.expectations" id="expectations" class="slice alt">
     <div class="slice-inner row-reverse">
@@ -279,6 +327,7 @@
 import { defineProps, computed } from 'vue';
 import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
 import FaqList from './FaqList.vue'
+import AnsigtOmraader from './AnsigtOmraader.vue'
 
 
 const props = defineProps({
@@ -327,6 +376,9 @@ const getAsset = key => props.sectionAssets?.[key] || props.imageSrc
    overskrifter ("Sådan foregår …", "Pris på …"). */
 const h1Tekst = computed(() =>
   `${String(props.title || '').replace(/\s*behandling$/i, '')} i Esbjerg & Vejle – udført af læge`)
+
+/* Omraader med egne H3-afsnit (kun paa sider, der har dem i data) */
+const omraader = computed(() => props.sections?.omraader?.items?.length ? props.sections.omraader : null)
 
 const steps3 = computed(() => (props.sections?.steps || []).slice(0, 3))
 
@@ -1676,5 +1728,177 @@ button[type="submit"],
 @media (max-width: 600px) {
   .efter__panel,
   .pris__kort { padding: 26px 22px; }
+}
+
+/* ===== Omraader (botox, filler) =====
+   Hvidt baand. Ankermenu oeverst, diagrammet til venstre (klistrer paa
+   desktop), afsnittene som hvide kort til hoejre. Hvert afsnit har eget
+   id, saa det kan linkes til og rangere selvstaendigt. */
+#omraader.omr { background: #fff; color: #153655; }
+
+.omr .slice-inner { display: block; }
+
+.omr h2 { color: #153655 !important; text-align: left !important; }
+
+.omr__ankre ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 0;
+}
+
+.omr__ankre a {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .14);
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #153655;
+  display: inline-flex;
+  font-size: .95rem;
+  font-weight: 600;
+  gap: 8px;
+  min-height: 42px;
+  padding: 6px 16px 6px 7px;
+  text-decoration: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.omr__ankre a:hover,
+.omr__ankre a:focus-visible {
+  background: rgba(45, 88, 161, .06);
+  border-color: #2d58a1;
+}
+
+.omr__ankre a span {
+  align-items: center;
+  background: #2d58a1;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 26px;
+  font-size: .78rem;
+  font-weight: 700;
+  height: 26px;
+  justify-content: center;
+}
+
+.omr__gitter {
+  align-items: start;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: minmax(260px, .8fr) minmax(0, 1.4fr);
+}
+
+/* Navigationen bliver fast (100 px) ved scroll - diagram og ankre
+   skal lande under den, ikke bag den. */
+.omr__diagram {
+  position: sticky;
+  top: 116px;
+}
+
+.omr__liste { display: grid; gap: 20px; }
+
+.omr__afsnit {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  padding: 32px 34px;
+  scroll-margin-top: 116px;
+}
+
+.omr__afsnit:target { border-color: #2d58a1; }
+
+.omr__afsnit h3 {
+  align-items: center;
+  color: #153655 !important;
+  display: flex;
+  font-size: 1.22rem;
+  gap: 12px;
+  line-height: 1.3;
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+/* Nummeret tegnes med CSS, saa det ikke bliver en del af overskriftens tekst */
+.omr__afsnit h3::before {
+  content: attr(data-nr);
+  align-items: center;
+  background: #2d58a1;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 32px;
+  font-size: .9rem;
+  font-weight: 700;
+  height: 32px;
+  justify-content: center;
+}
+
+.omr__afsnit p {
+  color: rgba(21, 54, 85, .9);
+  line-height: 1.7;
+  margin: 0 0 12px;
+  max-width: 64ch;
+}
+
+.omr__afsnit p :deep(a),
+.omr__andre :deep(a),
+.omr__pris a {
+  color: #2d58a1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.omr__fakta {
+  background: rgba(45, 88, 161, .045);
+  border-radius: 12px;
+  display: grid;
+  gap: 12px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 18px 0 0;
+  padding: 16px 20px;
+}
+
+.omr__fakta dt {
+  color: #2d58a1;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.omr__fakta dd {
+  color: #153655;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.omr__andre {
+  color: rgba(21, 54, 85, .84);
+  line-height: 1.7;
+  margin: 6px 0 0;
+  max-width: 64ch;
+}
+
+.omr__pris { margin: 0; }
+
+@media (max-width: 900px) {
+  .omr__gitter { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .omr__diagram { position: static; margin: 0 auto; max-width: 340px; width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .omr__afsnit { padding: 26px 22px; }
+  .omr__afsnit h3 { font-size: 1.12rem; }
+  .omr__ankre ol { margin-bottom: 28px; }
 }
 </style>
