@@ -111,7 +111,7 @@
         <ol :style="{ '--kol': ankerKolonner }" :class="[`omr__ankre-liste--n${omraader.items.length}`, { 'omr__ankre-liste--ulige': omraader.items.length % 2 === 1 }]"
           class="omr__ankre-liste">
           <li v-for="o in omraader.items" :key="'ank-' + o.id">
-            <a :href="`#${o.id}`" @click.prevent="tilOmraade(o.id)">
+            <a :href="`#${o.id}`" :aria-current="aktivtOmraade === o.id ? 'location' : null" @click.prevent="tilOmraade(o.id)">
               <span class="omr__ankre-nr" aria-hidden="true">{{ o.nr }}</span>
               <span class="omr__ankre-navn">{{ o.navn }}</span>
               <span class="omr__ankre-pil" aria-hidden="true"></span>
@@ -121,7 +121,7 @@
       </nav>
 
       <div class="omr__gitter">
-        <div class="omr__diagram">
+        <div ref="diagramEl" class="omr__diagram" :style="diagramHoejde ? { '--diagram-h': diagramHoejde + 'px' } : null">
           <AnsigtOmraader :id="omraader.diagram?.id || 'omraader'" :titel="omraader.diagram?.titel || omraader.title"
             :beskrivelse="omraader.diagram?.beskrivelse || ''" :billedtekst="omraader.diagram?.billedtekst"
             :punkter="omraader.items" />
@@ -129,6 +129,7 @@
 
         <div class="omr__liste" @click="interntLink">
           <article v-for="o in omraader.items" :id="o.id" :key="o.id" class="omr__afsnit" tabindex="-1"
+            :class="{ 'omr__afsnit--aktiv': aktivtOmraade === o.id }"
             :aria-labelledby="`${o.id}-titel`">
             <h3 :id="`${o.id}-titel`" :data-nr="o.nr">{{ o.h3 }}</h3>
             <p v-for="(t, i) in o.tekst" :key="o.id + '-p' + i" v-html="t"></p>
@@ -330,7 +331,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, ref, onMounted, onBeforeUnmount } from 'vue';
 import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
 import FaqList from './FaqList.vue'
 import AnsigtOmraader from './AnsigtOmraader.vue'
@@ -400,6 +401,30 @@ const ankerKolonner = computed(() => {
    rulningen er faerdig, og der rettes til, hvis afsnittet ikke sidder rigtigt. */
 const NAV_HOEJDE = 100
 const LUFT = 16
+
+/* Det valgte omraade faar blaa kant. :target kan ikke bruges, fordi
+   adressen opdateres med history.replaceState, og det flytter ikke
+   :target - saa ville den foerste valgte kant blive siddende. */
+const aktivtOmraade = ref('')
+
+/* Diagrammet klistrer midt i det synlige omraade under navigationen.
+   CSS kender ikke diagrammets hoejde, saa den maales og gives som
+   variabel (--diagram-h). */
+const diagramEl = ref(null)
+const diagramHoejde = ref(0)
+let diagramRo
+onMounted(() => {
+  const id = decodeURIComponent(window.location.hash.slice(1))
+  if (id && props.sections?.omraader?.items?.some(o => o.id === id)) aktivtOmraade.value = id
+  if (!diagramEl.value) return
+  const maal = () => { diagramHoejde.value = Math.round(diagramEl.value.getBoundingClientRect().height) }
+  maal()
+  if (window.ResizeObserver) {
+    diagramRo = new ResizeObserver(maal)
+    diagramRo.observe(diagramEl.value)
+  }
+})
+onBeforeUnmount(() => diagramRo?.disconnect())
 const maalForAfsnit = (el) => {
   const r = el.getBoundingClientRect()
   const synlig = window.innerHeight - NAV_HOEJDE
@@ -416,6 +441,7 @@ const tilOmraade = (id) => {
   const adfaerd = roligt ? 'auto' : 'smooth'
   window.scrollTo({ top: maalForAfsnit(el), behavior: adfaerd })
   history.replaceState(null, '', `#${id}`)
+  aktivtOmraade.value = id
   el.focus({ preventScroll: true })
 
   // Ret til, naar rulningen er helt faerdig: navigationen skifter til fast
@@ -1912,7 +1938,10 @@ button[type="submit"],
    skal lande under den, ikke bag den. */
 .omr__diagram {
   position: sticky;
-  top: 116px;
+  /* Midt i det synlige omraade under navigationen (100 px):
+     100 + (100vh - 100 - h) / 2 = 50vh + 50px - h/2.
+     Aldrig hoejere oppe end lige under navigationen. */
+  top: max(116px, calc(50vh + 50px - var(--diagram-h, 420px) / 2));
 }
 
 .omr__liste { display: grid; gap: 20px; }
@@ -1927,7 +1956,17 @@ button[type="submit"],
   scroll-margin-top: 116px;
 }
 
-.omr__afsnit:target { border-color: #2d58a1; }
+.omr__afsnit { transition: border-color .25s ease, box-shadow .25s ease; }
+
+.omr__afsnit--aktiv {
+  border-color: #2d58a1;
+  box-shadow: 0 0 0 1px #2d58a1, 0 10px 30px rgba(21, 54, 85, .08);
+}
+
+.omr__ankre-liste a[aria-current] {
+  border-color: #2d58a1;
+  box-shadow: inset 0 0 0 1px #2d58a1;
+}
 
 .omr__afsnit h3 {
   align-items: center;
