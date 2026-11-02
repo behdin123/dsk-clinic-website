@@ -124,7 +124,8 @@
         <div ref="diagramEl" class="omr__diagram" :style="diagramHoejde ? { '--diagram-h': diagramHoejde + 'px' } : null">
           <AnsigtOmraader :id="omraader.diagram?.id || 'omraader'" :titel="omraader.diagram?.titel || omraader.title"
             :beskrivelse="omraader.diagram?.beskrivelse || ''" :billedtekst="omraader.diagram?.billedtekst"
-            :punkter="omraader.items" />
+            :punkter="omraader.items" :foto="omraader.diagram?.foto || null" :aktiv="aktivtOmraade"
+            @vaelg="tilOmraade" />
         </div>
 
         <div class="omr__liste" @click="interntLink">

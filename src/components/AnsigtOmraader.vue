@@ -1,5 +1,44 @@
 <template>
-  <figure class="ansigt-omraader">
+  <!-- Foto med omraaderne lagt ovenpaa som SVG. Selve fotoet roeres ikke;
+       streger, numre og fremhaevning ligger i et lag over det. -->
+  <figure v-if="foto" class="ansigt-omraader ansigt-omraader--foto" :class="{ 'har-aktiv': !!aktiv }">
+    <div class="ao-foto" :style="{ aspectRatio: `${foto.w} / ${foto.h}` }">
+      <img :src="foto.src" :width="foto.w" :height="foto.h" :alt="foto.alt" loading="lazy" decoding="async" />
+      <svg class="ao-lag" :viewBox="`0 0 ${foto.w} ${foto.h}`" aria-hidden="true" focusable="false"
+        xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Spotlight: hele fotoet daempes, undtagen det valgte omraade -->
+          <mask :id="`${uid}-maske`">
+            <rect :width="foto.w" :height="foto.h" fill="#fff" />
+            <ellipse v-for="(z, i) in aktiveZoner" :key="'mz-' + i" :cx="z.cx" :cy="z.cy" :rx="z.rx * 1.15"
+              :ry="z.ry * 1.15" fill="#000" :filter="`url(#${uid}-blod)`" />
+          </mask>
+          <filter :id="`${uid}-blod`" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="10" />
+          </filter>
+        </defs>
+
+        <rect class="ao-daemp" :width="foto.w" :height="foto.h" :mask="`url(#${uid}-maske)`" />
+
+        <g v-for="p in fotoPunkter" :key="'fz-' + p.nr" class="ao-zone"
+          :class="{ 'ao-zone--aktiv': p.id === aktiv }">
+          <ellipse v-for="(z, i) in p.foto.zone" :key="'zf-' + i" class="ao-zone__flade" :cx="z.cx" :cy="z.cy"
+            :rx="z.rx" :ry="z.ry" :filter="`url(#${uid}-blod)`" />
+          <ellipse v-for="(z, i) in p.foto.zone" :key="'zk-' + i" class="ao-zone__kant" :cx="z.cx" :cy="z.cy"
+            :rx="z.rx" :ry="z.ry" />
+          <path class="ao-zone__halo" :d="p.foto.mark" />
+          <path class="ao-zone__streg" :d="p.foto.mark" />
+          <g class="ao-zone__nr" @click="$emit('vaelg', p.id)">
+            <circle :cx="p.foto.x" :cy="p.foto.y" r="31" />
+            <text :x="p.foto.x" :y="p.foto.y + 11">{{ p.nr }}</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <figcaption>{{ billedtekst }}</figcaption>
+  </figure>
+
+  <figure v-else class="ansigt-omraader">
     <svg viewBox="0 0 300 350" role="img" :aria-labelledby="`${uid}-titel ${uid}-besk`"
       xmlns="http://www.w3.org/2000/svg">
       <title :id="`${uid}-titel`">{{ titel }}</title>
@@ -29,7 +68,7 @@
       <path v-for="p in punkterMedMarkering" :key="'m-' + p.nr" class="ao-markering" :d="p.mark" />
 
       <!-- Numre -->
-      <g v-for="p in punkterMedPlacering" :key="'n-' + p.nr" class="ao-nr">
+      <g v-for="p in punkterMedPlacering" :key="'n-' + p.nr" class="ao-nr" :class="{ 'ao-nr--aktiv': p.id === aktiv }">
         <circle :cx="p.x" :cy="p.y" r="11" />
         <text :x="p.x" :y="p.y + 4.5">{{ p.nr }}</text>
       </g>
@@ -47,6 +86,9 @@
  *
  * punkter: [{ nr, x, y, mark }] - x/y er nummerets placering, mark er en
  * SVG-sti der fremhaever omraadet. Et punkt uden x/y (fx haender) vises ikke.
+ *
+ * Med foto: hvert punkt har foto: { x, y, mark, zone: [{ cx, cy, rx, ry }] }
+ * i fotoets pixelmaal. zone er det omraade, der lyser op, naar det er valgt.
  */
 import { computed } from 'vue'
 
@@ -55,10 +97,17 @@ const props = defineProps({
   titel: { type: String, required: true },
   beskrivelse: { type: String, required: true },
   billedtekst: { type: String, default: 'Numrene svarer til afsnittene.' },
-  punkter: { type: Array, default: () => [] }
+  punkter: { type: Array, default: () => [] },
+  // { src, w, h, alt } - naar den er sat, vises fotoet med omraaderne ovenpaa
+  foto: { type: Object, default: null },
+  // id paa det valgte omraade - det lyser op
+  aktiv: { type: String, default: '' }
 })
+defineEmits(['vaelg'])
 
 const uid = computed(() => `ao-${props.id}`)
+const fotoPunkter = computed(() => props.punkter.filter(p => p.foto))
+const aktiveZoner = computed(() => fotoPunkter.value.find(p => p.id === props.aktiv)?.foto.zone || [])
 const punkterMedMarkering = computed(() => props.punkter.filter(p => p.mark))
 const punkterMedPlacering = computed(() =>
   props.punkter.filter(p => Number.isFinite(p.x) && Number.isFinite(p.y)))
@@ -122,5 +171,104 @@ figcaption {
   font-size: 12.5px;
   font-weight: 700;
   text-anchor: middle;
+}
+
+.ao-nr circle { transition: fill .2s ease; }
+.ao-nr--aktiv circle { fill: #153655; }
+
+/* ===== Fotovarianten ===== */
+.ansigt-omraader--foto { padding: 12px 12px 14px; }
+
+.ao-foto {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.ao-foto img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ao-lag {
+  height: 100%;
+  inset: 0;
+  max-width: none;
+  position: absolute;
+  width: 100%;
+}
+
+.ao-daemp {
+  fill: #0d2238;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.har-aktiv .ao-daemp { opacity: .42; }
+
+.ao-zone__flade {
+  fill: #9fc0f5;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.ao-zone__kant {
+  fill: none;
+  opacity: 0;
+  stroke: #fff;
+  stroke-dasharray: 6 7;
+  stroke-width: 2.5;
+  transition: opacity .35s ease;
+}
+
+.ao-zone--aktiv .ao-zone__flade { opacity: .28; }
+.ao-zone--aktiv .ao-zone__kant { opacity: .9; }
+
+.ao-zone__halo,
+.ao-zone__streg {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ao-zone__halo { opacity: .75; stroke: #fff; stroke-width: 9; }
+.ao-zone__streg { stroke: #2d58a1; stroke-width: 4.5; transition: stroke .2s ease; }
+
+.ao-zone__nr { cursor: pointer; }
+
+.ao-zone__nr circle {
+  fill: #2d58a1;
+  stroke: #fff;
+  stroke-width: 4;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform .25s ease, fill .2s ease;
+}
+
+.ao-zone__nr text {
+  fill: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 31px;
+  font-weight: 700;
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+.ao-zone__nr:hover circle { fill: #153655; }
+
+/* Det valgte omraade: stregen bliver hvid, nummeret stoerre og moerkere */
+.ao-zone--aktiv .ao-zone__streg { stroke: #fff; }
+.ao-zone--aktiv .ao-zone__halo { stroke: #2d58a1; }
+.ao-zone--aktiv .ao-zone__nr circle { fill: #153655; transform: scale(1.18); }
+
+/* De andre omraader traeder lidt tilbage, naar ét er valgt */
+.har-aktiv .ao-zone:not(.ao-zone--aktiv) .ao-zone__streg,
+.har-aktiv .ao-zone:not(.ao-zone--aktiv) .ao-zone__halo { opacity: .45; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ao-daemp, .ao-zone__flade, .ao-zone__kant, .ao-zone__nr circle { transition: none; }
 }
 </style>
