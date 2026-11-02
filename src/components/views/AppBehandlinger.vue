@@ -347,7 +347,7 @@ const behandlinger = {
           },
           {
             id: 'smilelinjer', nr: 2, navn: 'Smilelinjer',
-            foto: { x: 108, y: 690, mark: 'M320 640 Q215 700 168 800 M585 560 Q705 640 748 790', zone: [{ cx: 240, cy: 715, rx: 70, ry: 95 }, { cx: 670, cy: 670, rx: 85, ry: 125 }] },
+            foto: { x: 108, y: 690, mark: 'M282 605 Q190 715 165 805 M585 560 Q705 640 748 790', zone: [{ cx: 215, cy: 705, rx: 62, ry: 108 }, { cx: 670, cy: 670, rx: 85, ry: 125 }] },
             h3: 'Filler i smilelinjer (nasolabiale folder)',
             x: 100, y: 230, mark: 'M136 214 Q124 232 122 250 M164 214 Q176 232 178 250',
             tekst: [
