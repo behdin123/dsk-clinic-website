@@ -332,7 +332,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, ref, onMounted, onBeforeUnmount } from 'vue';
+import { defineProps, computed, ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
 import FaqList from './FaqList.vue'
 import AnsigtOmraader from './AnsigtOmraader.vue'
@@ -426,6 +426,62 @@ onMounted(() => {
   }
 })
 onBeforeUnmount(() => diagramRo?.disconnect())
+
+/* ===== Foelg med, mens man ruller (kun desktop/tablet over 900 px) =====
+   Det afsnit, der staar midt i det synlige omraade, lyser op i diagrammet.
+   Kun en IntersectionObserver - ingen scroll-lytter, saa siden ikke bliver
+   tung. Under 900 px staar diagrammet ikke ved siden af teksten, og
+   funktionen starter slet ikke. */
+const SPY_MQ = '(min-width: 901px)'
+let spyIo = null
+let spyMq = null
+let spyPause = 0
+let spyResizeT = 0
+
+const stopSpy = () => { spyIo?.disconnect(); spyIo = null }
+
+const startSpy = () => {
+  stopSpy()
+  if (!spyMq?.matches || !omraader.value || !('IntersectionObserver' in window)) return
+  const els = omraader.value.items.map(o => document.getElementById(o.id)).filter(Boolean)
+  if (!els.length) return
+  // En vandret linje midt i det synlige omraade under navigationen
+  const linje = Math.round(NAV_HOEJDE + (window.innerHeight - NAV_HOEJDE) / 2)
+  spyIo = new IntersectionObserver((entries) => {
+    if (Date.now() < spyPause) return // et klik er ved at rulle siden
+    for (const e of entries) if (e.isIntersecting) aktivtOmraade.value = e.target.id
+    // Linjen er over det foerste eller under det sidste afsnit: intet valgt
+    if (els[0].getBoundingClientRect().top > linje || els[els.length - 1].getBoundingClientRect().bottom < linje) {
+      aktivtOmraade.value = ''
+    }
+  }, { rootMargin: `-${linje}px 0px -${Math.max(0, window.innerHeight - linje - 1)}px 0px`, threshold: 0 })
+  els.forEach(el => spyIo.observe(el))
+}
+
+const spyResize = () => {
+  clearTimeout(spyResizeT)
+  spyResizeT = setTimeout(startSpy, 200)
+}
+
+onMounted(() => {
+  spyMq = window.matchMedia(SPY_MQ)
+  spyMq.addEventListener?.('change', startSpy)
+  window.addEventListener('resize', spyResize, { passive: true })
+  startSpy()
+})
+
+onBeforeUnmount(() => {
+  stopSpy()
+  spyMq?.removeEventListener?.('change', startSpy)
+  window.removeEventListener('resize', spyResize)
+  clearTimeout(spyResizeT)
+})
+
+// Samme komponent bruges til botox og filler: skift side -> start forfra
+watch(() => (props.sections?.omraader?.items || []).map(o => o.id).join(), () => {
+  aktivtOmraade.value = ''
+  nextTick(startSpy)
+})
 const maalForAfsnit = (el) => {
   const r = el.getBoundingClientRect()
   const synlig = window.innerHeight - NAV_HOEJDE
@@ -442,6 +498,7 @@ const tilOmraade = (id) => {
   const adfaerd = roligt ? 'auto' : 'smooth'
   window.scrollTo({ top: maalForAfsnit(el), behavior: adfaerd })
   history.replaceState(null, '', `#${id}`)
+  spyPause = Date.now() + 1600 // lad ikke afsnittene undervejs lyse op
   aktivtOmraade.value = id
   el.focus({ preventScroll: true })
 

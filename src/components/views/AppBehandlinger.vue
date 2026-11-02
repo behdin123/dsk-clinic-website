@@ -321,11 +321,17 @@ const behandlinger = {
           id: 'filler',
           titel: 'De områder i ansigtet, der kan behandles med filler',
           beskrivelse: 'Tegning af et ansigt med fire nummererede områder: 1 kindben, 2 smilelinjer fra næse til mundvig, 3 marionetlinjer fra mundvig mod hage og 4 tindinger. Område 5, hænderne, er ikke vist på tegningen.',
-          billedtekst: 'Numrene svarer til afsnittene. Hænder (5) er ikke vist.'
+          billedtekst: 'Numrene svarer til afsnittene. Hænder (5) er ikke vist. Tryk på et nummer for at læse om området.',
+          // Samme foto som botox-siden, med filler-omraaderne (koordinater i 900 x 1240 px)
+          foto: {
+            src: imgBotoxOmraader, w: 900, h: 1240,
+            alt: 'Ansigt af en smilende kvinde. Numrene 1 til 4 markerer kindben, smilelinjer, marionetlinjer og tindinger, som kan behandles med filler.'
+          }
         },
         items: [
           {
             id: 'kindben', nr: 1, navn: 'Kindben',
+            foto: { x: 862, y: 560, mark: 'M80 520 Q160 470 270 490 M820 520 Q740 470 630 490', zone: [{ cx: 175, cy: 500, rx: 105, ry: 55 }, { cx: 725, cy: 500, rx: 105, ry: 55 }] },
             h3: 'Filler i kindbenene',
             x: 254, y: 196, mark: 'M184 196 Q208 186 228 196 M116 196 Q92 186 72 196',
             tekst: [
@@ -341,6 +347,7 @@ const behandlinger = {
           },
           {
             id: 'smilelinjer', nr: 2, navn: 'Smilelinjer',
+            foto: { x: 108, y: 690, mark: 'M320 640 Q215 700 168 800 M585 560 Q705 640 748 790', zone: [{ cx: 240, cy: 715, rx: 70, ry: 95 }, { cx: 670, cy: 670, rx: 85, ry: 125 }] },
             h3: 'Filler i smilelinjer (nasolabiale folder)',
             x: 100, y: 230, mark: 'M136 214 Q124 232 122 250 M164 214 Q176 232 178 250',
             tekst: [
@@ -356,6 +363,7 @@ const behandlinger = {
           },
           {
             id: 'marionetlinjer', nr: 3, navn: 'Marionetlinjer',
+            foto: { x: 762, y: 962, mark: 'M222 838 Q228 920 262 1000 M693 830 Q690 912 656 995', zone: [{ cx: 240, cy: 915, rx: 48, ry: 92 }, { cx: 676, cy: 910, rx: 48, ry: 92 }] },
             h3: 'Filler mod marionetlinjer',
             x: 204, y: 296, mark: 'M121 262 Q118 280 126 298 M179 262 Q182 280 174 298',
             tekst: [
@@ -371,6 +379,7 @@ const behandlinger = {
           },
           {
             id: 'tindinger', nr: 4, navn: 'Tindinger',
+            foto: { x: 60, y: 60, mark: 'M58 130 Q80 185 58 240 M842 130 Q820 185 842 240', zone: [{ cx: 45, cy: 185, rx: 45, ry: 75 }, { cx: 855, cy: 185, rx: 45, ry: 75 }] },
             h3: 'Filler i tindingerne',
             x: 38, y: 130, mark: 'M68 112 Q76 132 70 150 M232 112 Q224 132 230 150',
             tekst: [

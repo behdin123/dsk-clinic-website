@@ -1,7 +1,7 @@
 <template>
   <!-- Foto med omraaderne lagt ovenpaa som SVG. Selve fotoet roeres ikke;
        streger, numre og fremhaevning ligger i et lag over det. -->
-  <figure v-if="foto" class="ansigt-omraader ansigt-omraader--foto" :class="{ 'har-aktiv': !!aktiv }">
+  <figure v-if="foto" class="ansigt-omraader ansigt-omraader--foto" :class="{ 'har-aktiv': aktiveZoner.length > 0 }">
     <div class="ao-foto" :style="{ aspectRatio: `${foto.w} / ${foto.h}` }">
       <img :src="foto.src" :width="foto.w" :height="foto.h" :alt="foto.alt" loading="lazy" decoding="async" />
       <svg class="ao-lag" :viewBox="`0 0 ${foto.w} ${foto.h}`" aria-hidden="true" focusable="false"
