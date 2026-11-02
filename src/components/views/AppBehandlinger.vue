@@ -113,16 +113,17 @@ const behandlinger = {
           titel: 'De syv områder i ansigtet, der kan behandles med botox',
           beskrivelse: 'Tegning af et ansigt med syv nummererede områder: 1 pandelinjer, 2 bekymringsrynker mellem brynene, 3 kragetæer ved øjenkrogene, 4 brynløft ved brynets yderste del, 5 bunny lines på næsen, 6 sure mundvige og 7 hagegrube.',
           billedtekst: 'Numrene svarer til afsnittene. Tryk på et nummer for at læse om området.',
-          // Fotoet vises med omraaderne lagt ovenpaa (koordinater i fotoets 900 x 1125 px)
+          // Fotoet vises med omraaderne lagt ovenpaa (koordinater i fotoets 900 x 1240 px).
+          // Beskaaret, saa naesens midtlinje staar i x = 450 - det midterste omraade (1, 2, 5, 7) ligger paa den.
           foto: {
-            src: imgBotoxOmraader, w: 900, h: 1125,
+            src: imgBotoxOmraader, w: 900, h: 1240,
             alt: 'Ansigt af en smilende kvinde med synlige mimiske rynker. Numrene 1 til 7 markerer pandelinjer, bekymringsrynker, kragetæer, brynløft, bunny lines, sure mundvige og hagegrube.'
           }
         },
         items: [
           {
             id: 'pandelinjer', nr: 1, navn: 'Pandelinjer',
-            foto: { x: 450, y: 40, mark: 'M300 88 Q450 75 600 88 M285 122 Q450 108 615 122 M300 156 Q450 144 600 156', zone: [{ cx: 450, cy: 120, rx: 220, ry: 62 }] },
+            foto: { x: 450, y: 59, mark: 'M290 104 Q450 91 610 104 M275 137 Q450 123 625 137 M290 170 Q450 158 610 170', zone: [{ cx: 450, cy: 137, rx: 220, ry: 60 }] },
             h3: 'Botox mod pandelinjer',
             x: 150, y: 52, mark: 'M114 74 Q150 66 186 74 M108 88 Q150 80 192 88 M116 102 Q150 96 184 102',
             tekst: [
@@ -138,7 +139,7 @@ const behandlinger = {
           },
           {
             id: 'bekymringsrynker', nr: 2, navn: 'Bekymringsrynker',
-            foto: { x: 430, y: 205, mark: 'M413 250 L418 308 M448 250 L443 308', zone: [{ cx: 430, cy: 280, rx: 56, ry: 50 }] },
+            foto: { x: 450, y: 211, mark: 'M437 257 L441 311 M463 257 L459 311', zone: [{ cx: 450, cy: 284, rx: 52, ry: 46 }] },
             h3: 'Botox mod bekymringsrynker (glabella)',
             x: 122, y: 120, mark: 'M145 132 L146 150 M155 132 L154 150',
             tekst: [
@@ -154,7 +155,7 @@ const behandlinger = {
           },
           {
             id: 'kragetaeer', nr: 3, navn: 'Kragetæer',
-            foto: { x: 822, y: 482, mark: 'M95 380 L45 362 M95 398 L40 400 M98 415 L50 440 M728 382 L780 362 M728 398 L785 400 M725 415 L775 440', zone: [{ cx: 70, cy: 400, rx: 60, ry: 62 }, { cx: 758, cy: 400, rx: 60, ry: 62 }] },
+            foto: { x: 852, y: 489, mark: 'M105 391 L50 371 M103 409 L45 411 M106 427 L55 451 M805 394 L860 374 M807 412 L866 414 M804 430 L856 454', zone: [{ cx: 75, cy: 411, rx: 60, ry: 62 }, { cx: 835, cy: 413, rx: 58, ry: 62 }] },
             h3: 'Botox mod kragetæer',
             x: 256, y: 166, mark: 'M210 158 L222 151 M212 166 L226 166 M210 174 L222 181 M90 158 L78 151 M88 166 L74 166 M90 174 L78 181',
             tekst: [
@@ -170,7 +171,7 @@ const behandlinger = {
           },
           {
             id: 'brynloeft', nr: 4, navn: 'Brynløft',
-            foto: { x: 822, y: 168, mark: 'M745 230 L745 172 M727 190 L745 172 L763 190', zone: [{ cx: 735, cy: 228, rx: 62, ry: 42 }] },
+            foto: { x: 858, y: 179, mark: 'M800 251 L800 195 M782 213 L800 195 L818 213', zone: [{ cx: 795, cy: 241, rx: 60, ry: 42 }] },
             h3: 'Brynløft med botox',
             x: 236, y: 118, mark: 'M214 138 L214 122 M208 128 L214 122 L220 128',
             tekst: [
@@ -186,7 +187,7 @@ const behandlinger = {
           },
           {
             id: 'bunny-lines', nr: 5, navn: 'Bunny lines',
-            foto: { x: 318, y: 470, mark: 'M392 425 L405 466 M470 425 L457 466', zone: [{ cx: 431, cy: 445, rx: 62, ry: 48 }] },
+            foto: { x: 340, y: 487, mark: 'M418 439 L430 481 M482 439 L470 481', zone: [{ cx: 450, cy: 459, rx: 62, ry: 48 }] },
             h3: 'Botox mod bunny lines på næsen',
             x: 110, y: 198, mark: 'M136 178 L142 187 M164 178 L158 187',
             tekst: [
@@ -202,7 +203,7 @@ const behandlinger = {
           },
           {
             id: 'sure-mundvige', nr: 6, navn: 'Sure mundvige',
-            foto: { x: 108, y: 852, mark: 'M200 778 Q194 805 185 835 M622 770 Q630 798 640 828', zone: [{ cx: 192, cy: 810, rx: 42, ry: 52 }, { cx: 632, cy: 802, rx: 42, ry: 52 }] },
+            foto: { x: 112, y: 907, mark: 'M205 827 Q199 857 190 887 M697 819 Q705 849 712 879', zone: [{ cx: 198, cy: 859, rx: 42, ry: 52 }, { cx: 705, cy: 851, rx: 42, ry: 52 }] },
             h3: 'Botox mod sure mundvige',
             x: 96, y: 276, mark: 'M121 258 Q117 266 114 274 M179 258 Q183 266 186 274',
             tekst: [
@@ -218,7 +219,7 @@ const behandlinger = {
           },
           {
             id: 'hagegrube', nr: 7, navn: 'Hagegrube',
-            foto: { x: 604, y: 1060, mark: 'M420 1000 L420.1 1000 M450 990 L450.1 990 M480 1000 L480.1 1000 M435 1030 L435.1 1030 M465 1030 L465.1 1030 M450 1058 L450.1 1058', zone: [{ cx: 450, cy: 1025, rx: 105, ry: 62 }] },
+            foto: { x: 600, y: 1131, mark: 'M420 1069 L420.1 1069 M450 1059 L450.1 1059 M480 1069 L480.1 1069 M435 1099 L435.1 1099 M465 1099 L465.1 1099 M450 1125 L450.1 1125', zone: [{ cx: 450, cy: 1094, rx: 100, ry: 62 }] },
             h3: 'Botox mod hagegrube og ujævn hage',
             x: 198, y: 310, mark: 'M140 290 L140.1 290 M150 294 L150.1 294 M160 290 L160.1 290 M145 300 L145.1 300 M155 300 L155.1 300',
             tekst: [
