@@ -250,10 +250,10 @@ const behandlinger = {
         ]
       },
       aftercare: [
-        'Undgå at massere området i 4 timer.',
-        'Undgå hård træning/sauna første 24 timer.',
+        'Læg dig ikke ned, og undgå at massere eller trykke på området de første 4 timer.',
+        'Undgå hård træning og sauna resten af dagen.',
         'Undgå ansigtsbehandlinger første 24–48 timer.',
-        'Makeup når huden er lukket (typisk efter få timer).'
+        'Brug ikke makeup resten af dagen.'
       ],
       combinations: [
         { ref: 'filler', label: 'Filler', text: 'til volumetab eller kontur.' },
@@ -282,7 +282,7 @@ const behandlinger = {
     title: 'Filler behandling',
     imageSrc: FillerImage,
     description: 'Tilføj volumen og form til dine læber, kinder eller andre områder i ansigtet.',
-    duration: '30-45 min',
+    duration: '45–60 min',
     result: 'Øjeblikkeligt',
     anesthesia: 'Bedøvende creme',
     durability: '6–12 måneder',
@@ -317,11 +317,11 @@ const behandlinger = {
             tekst: [
               'Med årene mister kinderne fylde højt oppe. Ansigtet kan se fladere og mere træt ud, og tyngden flytter sig nedad mod smilelinjerne.',
               'Filler i kindbenene genskaber noget af den støtte. Lægen lægger hyaluronsyren dybt, tæt på knoglen, så kinden får form og løft i stedet for at blive rund. Fordi et løft højt i ansigtet også blødgør linjerne længere nede, kan en lille mængde gøre meget.',
-              'Derfor anbefaler lægen ofte at starte med kindbenene, hvis du kommer for dine smilelinjer. Kinderne er også blandt de områder, hvor filler holder længst – ofte i den lange ende af de 6–12 måneder. Målet er dine egne kindben, ikke et nyt ansigt.'
+              'Derfor anbefaler lægen ofte at starte med kindbenene, hvis du kommer for dine smilelinjer. Holdbarheden er individuel, typisk 6–12 måneder. Målet er dine egne kindben, ikke et nyt ansigt.'
             ],
             fakta: [
               { k: 'Formål', v: 'Løft og kontur' },
-              { k: 'Holder', v: 'Ofte i den lange ende af 6–12 mdr.' },
+              { k: 'Holder', v: 'Typisk 6–12 mdr. – individuelt' },
               { k: 'Pris', v: '1.350 kr. pr. ml' }
             ]
           },
@@ -391,12 +391,12 @@ const behandlinger = {
         summary:
           'Moderne hyaluronsyre-filler giver fylde og genskaber <b>volumen og form</b> og giver fugt. Vi vælger produkt efter område og hudtype.',
         visibleAfter: 'Straks – endeligt look når hævelse har lagt sig (få dage - 14 dage).',
-        durability: '6–12 måneder afhængigt af område/produkt (læber ofte 6–9 mdr., kinder kan vare længere).',
+        durability: '6–12 måneder afhængigt af område/produkt (læber ca. 12 mdr. – det er individuelt).',
         sessions: 'Som regel 1 behandling.'
       },
       steps: [
         { title: 'Konsultation & design', text: 'Ansigtsanalyse, fotodokumentation og produktvalg efter område/hudtype. Vi planlægger en naturlig harmonisering.' },
-        { title: 'Injektion & formgivning', text: 'Hyaluronsyre-filler placeres lagvist med nål/kanyle for bløde overgange, symmetri og kontur. Varighed ca. 15–30 min.' },
+        { title: 'Injektion & formgivning', text: 'Hyaluronsyre-filler placeres lagvist med nål/kanyle for bløde overgange, symmetri og kontur. Med bedøvende creme og gennemgang af designet tager hele behandlingen typisk 45–60 minutter.' },
         { title: 'Efterbehandling & kontrol', text: 'Hævelse falder typisk inden for få dage; endeligt look kan ses efter 14 dage. Vi kan vurdere resultatet efter behov, efter 2 uger og kan ved behov lave finpudsning/rettelser.' }
       ],
       safety: {
@@ -531,7 +531,7 @@ const behandlinger = {
           'Overfladiske mikroinjektioner med <b>vitaminer, antioxidanter og peptider</b> giver mere jævn, fugtmættet hud.',
         visibleAfter: '1–2 uger til synlig forbedring af glød og jævnhed.',
         durability: 'Typisk 3–12 måneder afhængigt af protokol, hudtype og pleje.',
-        sessions: '3–6 sessioner med 4 ugers interval; derefter vedligehold hver 3. måned.'
+        sessions: '3–6 sessioner med 4 ugers interval. Vedligehold vurderes individuelt – tidligst 3 måneder efter sidste behandling.'
       },
       steps: [
         { title: 'Konsultation & cocktailvalg', text: 'Valg af vitamin/antioxidant-cocktail efter hudtype og mål. Vi sætter realistiske forventninger og forklarer forløbet.' },
@@ -599,7 +599,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & bedøvende creme', text: 'Vi afklarer mål, kontraindikationer og påfører lokalbedøvende creme for komfort. Områder og intensitet planlægges.' },
         { title: 'Steril microneedling-procedure', text: 'Kontrollerede mikrokanaler stimulerer kollagen/elastin og øger optag af aktive stoffer. Behandlingen tilpasses zone for jævn og sikker dækning.' },
-        { title: 'Efterbehandling & vurdering', text: 'SPF 50 dagligt, undgå AHA/BHA/retinol i 3–5 dage og ingen sauna/hård træning første 24–48 t. Vurdering/plan for næste session efter 4–6 uger.' }
+        { title: 'Efterbehandling & vurdering', text: 'Solcreme med SPF 30+ dagligt og ingen AHA/BHA/retinol i 3–5 dage. Lægen fortæller dig efter behandlingen, hvornår du må gå i sauna og træne igen. Vurdering/plan for næste session efter 4–6 uger.' }
       ],
       safety: {
         note: 'Sterile engangshoveder – medicinsk hygiejne.',
@@ -613,9 +613,9 @@ const behandlinger = {
         ]
       },
       aftercare: [
-        '<b>SPF 50</b> dagligt.',
+        'Solcreme med <b>SPF 30+</b> dagligt.',
         'Undgå AHA/BHA/retinol i <b>3–5 dage</b>.',
-        'Ingen sauna/hård træning første <b>24–48 timer</b>.',
+        'Sauna og hård træning: lægen fortæller dig efter behandlingen, hvornår du må igen.',
         'Skånsom rens + fugt.'
       ],
       combinations: [
@@ -688,14 +688,14 @@ const FAQ_BANK = {
     { q: 'Hvornår ses effekten af botox?', a: 'Effekten begynder efter 1 dage og <b>fuld synlig effekt</b> ses indtil <b>ca. 14 dage</b>.' },
     { q: 'Gør botox ondt, og bruges bedøvelse?', a: 'De fleste oplever kun let stik. Hos os er der <b>ingen bedøvelse</b> nødvendig.' },
     { q: 'Er der nedetid efter botox?', a: 'Som udgangspunkt <b>ingen reel nedetid</b>. Lette røde prikker kan ses i <b>få timer</b>. Hævelse eller blå mærker og let hovedpine kan forekomme.' },
-    { q: 'Hvad bør jeg undgå efter behandlingen?', a: 'Undgå at <b>gnide</b> eller røre i området der er blevet behandlet og ikke anvende <b>make-up resten af dagen</b>. <b>Ingen hård træning</b> og undgå sauna samme dag. Du må ikke <b>lægge dig ned i de første 4 timer</b> du har fået din behandling med botox.' },
+    { q: 'Hvad bør jeg undgå efter behandlingen?', a: 'De første <b>4 timer</b> må du ikke lægge dig ned, og du skal undgå at massere eller trykke på det behandlede område. Resten af dagen skal du undlade <b>makeup</b>, <b>hård træning</b> og <b>sauna</b>.' },
     { q: 'Kan botox bruges forebyggende?', a: 'Ja, regelmæssige behandlinger kan <b>forebygge dybere linjer</b> ved at dæmpe muskelaktiviteten.' },
     { q: 'Hvem bør ikke få botox?', a: 'Gravide/ammande og personer med visse neuromuskulære sygdomme bør <b>undgå</b> behandlingen.' },
     { q: 'Hvornår skal jeg til opfølgning?', a: 'Vi kan vurderer effekten efter <b>14 dage</b> og kan justere dosen efter behov.' }
   ],
 
   filler: [
-    { q: 'Hvor længe holder hyaluronsyre-filler?', a: 'Typisk <b>6–12 måneder</b> afhængigt af produkt og område; læber kortere, kinder længere.' },
+    { q: 'Hvor længe holder hyaluronsyre-filler?', a: 'Typisk <b>6–12 måneder</b> afhængigt af produkt og område. I læberne holder filler ca. 12 måneder – men det er individuelt.' },
     { q: 'Ses resultatet med det samme?', a: 'Ja, resultatet er <b>øjeblikkeligt</b>, men den endelige form ses efter at hævelsen har lagt sig (få dage - 14 dage).' },
     { q: 'Gør en fillerbehandling ondt?', a: 'Vi anvender <b>bedøvende creme</b> for øget komfort - mange produkter indeholder også lidokain.' },
     { q: 'Kan filler opløses, hvis jeg fortryder?', a: 'Ja, hyaluronsyre-filler kan <b>opløses med hyaluronidase</b> af vores læge.' },
@@ -715,7 +715,7 @@ const FAQ_BANK = {
 
   mesotherapy: [
     { q: 'Hvad er mesotherapy?', a: 'Mikroinjektioner af <b>vitaminer/antioxidanter</b> til overfladisk hudlag for glød og hydrering.' },
-    { q: 'Hvor mange sessioner anbefales?', a: 'Ofte <b>3–6 behandlinger</b> med 4 ugers mellemrum, derefter vedligehold hver 2.–3. måned.' },
+    { q: 'Hvor mange sessioner anbefales?', a: 'Ofte <b>3–6 behandlinger</b> med 4 ugers mellemrum. Derefter vurderer lægen behovet for vedligehold individuelt – tidligst <b>3 måneder</b> efter sidste behandling.' },
     { q: 'Hvornår ser jeg effekt?', a: 'Let forbedring i glød kan ses hurtigt, <b>1–2 uger</b> giver mere synlig forandring.' },
     { q: 'Hvor længe holder det?', a: 'Typisk <b>3–12 måneder</b> afhængigt af protokol og hudtilstand.' },
     { q: 'Nedetid og bivirkninger?', a: 'Små prikmærker/rødme og eventuelle blå mærker i <b>2–3 dage</b>. Evt. lokalbedøvelse ved behov.' },
@@ -728,7 +728,7 @@ const FAQ_BANK = {
     { q: 'Hvornår ses resultater?', a: 'Hudkvaliteten bedres gradvist; tydelig effekt ses ofte efter <b>4–6 uger</b> og forbedres videre måneder frem.' },
     { q: 'Er der nedetid?', a: 'Rødme som solskoldning i <b>1–2 dage</b>, let afskalning kan forekomme. Brug <b>solbeskyttelse</b>.' },
     { q: 'Gør microneedling ondt?', a: 'Vi anvender <b>lokalbedøvende creme</b>, så ubehaget er som regel mildt til moderat.' },
-    { q: 'Hvad skal jeg undgå efter behandlingen?', a: 'Undgå makeup, sauna og hård træning det første døgn. Brug skånsom rens og <b>SPF 30+</b> i dagene efter.' }
+    { q: 'Hvad skal jeg undgå efter behandlingen?', a: 'Undgå makeup det første døgn, og brug skånsom rens og solcreme med <b>SPF 30+</b> i dagene efter. Hvornår du må gå i sauna og træne igen, afhænger af din hud – det fortæller lægen dig efter behandlingen.' }
   ]
 }
 const faqs = computed(() => FAQ_BANK[currentType.value] || FAQ_BANK[FALLBACK])

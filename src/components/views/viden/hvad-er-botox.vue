@@ -71,9 +71,7 @@
                 kontraindikationer gennemgås. I Danmark gælder en lovpligtig <b>48 timers</b> betænkningstid før første
                 behandling. På selve dagen desinficeres huden, og små mængder injiceres præcist med en <u>meget tynd
                     nål</u>. De
-                fleste oplever kun et kort, let stik og kan fortsætte dagen som normalt. Vi anbefaler, at du undgår hård
-                træning
-                samme dag og ikke masserer det behandlede område de første timer. Effekten begynder ofte at kunne mærkes
+                fleste oplever kun et kort, let stik og kan fortsætte dagen som normalt. De første 4 timer må du ikke lægge dig ned, og du skal undgå at massere eller trykke på området. Resten af dagen skal du undlade makeup, hård træning og sauna. Effekten begynder ofte at kunne mærkes
                 efter
                 få dage og er fuldt udviklet efter <b>10–14 dage</b>, hvor vi tilbyder kontrol og finjustering ved
                 behov.

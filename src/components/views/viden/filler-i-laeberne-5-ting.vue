@@ -53,8 +53,7 @@
         <section>
             <h2 class="section-title">2. Holdbarhed og mulighed for at fortryde</h2>
             <p>
-                I læberne holder en standard <b>læbefiller</b> typisk <b>6–9 måneder</b>. Nogle oplever effekt op til 12
-                måneder, men læber nedbryder generelt hurtigere end fx kinder, fordi de er i konstant bevægelse. Mange
+                I læberne holder en standard <b>læbefiller</b> ca. <b>12 måneder</b>, men det er individuelt. Mange
                 vælger en
                 lille <b>touch-up</b> efter cirka et halvt år for at bevare niveauet.
             </p>
@@ -71,7 +70,7 @@
             <p>
                 Læber er følsomme, men de fleste beskriver behandlingen som <b>overkommelig</b>. Vi lægger en
                 <b>bedøvende
-                    creme</b> i 15–20 minutter, og de fleste moderne læbefillere indeholder <b>lidokain</b>, der hurtigt
+                    creme</b> i 15 minutter, og de fleste moderne læbefillere indeholder <b>lidokain</b>, der hurtigt
                 dæmper
                 fornemmelsen indefra. Vi bruger ultrafine nåle og en skånsom indførselsteknik. Ved stor nervøsitet kan
                 en lokal
@@ -131,7 +130,7 @@
                 anelse
                 udad, så den røde del syner større – uden at tilføre volumen. Effekten er diskret og varer omkring tre
                 måneder.
-                <b>Læbefiller</b> giver derimod form og volumen og holder 6–9 måneder. Mange vælger en kombination for
+                <b>Læbefiller</b> giver derimod form og volumen og holder ca. 12 måneder. Mange vælger en kombination for
                 et meget
                 naturligt, “un-detectable” udtryk.
             </p>

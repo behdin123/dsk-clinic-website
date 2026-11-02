@@ -25,12 +25,26 @@
 
 ### Uoverensstemmelser fundet i den eksisterende tekst
 
-**Afgjort 2. nov:** botox holder **3–4 måneder**, filler **6–12 måneder**. Rettet på siderne.
+**Afgjort og rettet på sitet (2. nov 2026):**
 
-**Skal stadig afgøres – hvilket svar er det rigtige?**
+| Emne | Gældende formulering |
+|---|---|
+| Botox – holdbarhed | 3–4 måneder |
+| Filler – holdbarhed | 6–12 måneder |
+| Læbefiller – holdbarhed | Ca. 12 måneder – individuelt |
+| Filler – behandlingstid | 45–60 minutter i alt. Læbefiller: design ca. 10 min., bedøvende creme 15 min. før, selve behandlingen ca. 30 min. |
+| Botox – efterbehandling | De første 4 timer: ikke ligge ned, ikke massere eller trykke på området. Resten af dagen: ingen makeup, hård træning eller sauna |
+| Mesoterapi – vedligehold | Vurderes individuelt, tidligst 3 måneder efter sidste behandling |
+| Microneedling – solcreme | SPF 30+ |
+| Microneedling – sauna og træning | Lægen fortæller patienten efter behandlingen |
 
-| # | Emne | Sted A | Sted B |
-|---|---|---|---|
+**Skal stadig afgøres:**
+
+| Emne | Hvad står der | Spørgsmål |
+|---|---|---|
+| Microneedling – interval | "3–6 sessioner med 6 ugers interval" og "plan for næste session efter 4–6 uger" | Minimum 3 måneder mellem behandlinger er oplyst. Gælder det også mellem behandlingerne i et forløb, eller kun vedligehold bagefter? |
+
+---|---|---|---|
 | 1 | Botox – makeup | Efterbehandling: "Makeup når huden er lukket (typisk efter få timer)" | FAQ: "ikke anvende make-up resten af dagen" |
 | 2 | Botox – træning og sauna | Efterbehandling: "Undgå hård træning/sauna første 24 timer" | FAQ: "Ingen hård træning og undgå sauna samme dag" |
 | 3 | Botox – liggende stilling | Står kun i FAQ: "Du må ikke lægge dig ned i de første 4 timer" | Mangler i listen over efterbehandling (der står i stedet "undgå at massere i 4 timer") |

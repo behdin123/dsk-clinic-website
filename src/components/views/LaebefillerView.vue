@@ -36,8 +36,8 @@
     <dl class="fakta" aria-label="Læbefiller i tal">
       <div><dt>1.350 kr.</dt><dd>pr. ml hyaluronsyre</dd></div>
       <div><dt>0,5–1 ml</dt><dd>starter de fleste med</dd></div>
-      <div><dt>20–30 min.</dt><dd>tager selve injektionerne</dd></div>
-      <div><dt>6–12 mdr.</dt><dd>holder resultatet typisk</dd></div>
+      <div><dt>45–60 min.</dt><dd>varer behandlingen i alt</dd></div>
+      <div><dt>Ca. 12 mdr.</dt><dd>holder resultatet – individuelt</dd></div>
     </dl>
 
     <section class="sec" aria-labelledby="hvad-title">
@@ -51,7 +51,7 @@
             Læbefiller, lip filler og læbeforstørrelse dækker over det samme: en ikke-permanent
             behandling med hyaluronsyre – et stof, kroppen selv danner. Det lægges med en tynd
             kanyle i og omkring læben, hvor det binder vand og giver fylde. Resultatet er synligt
-            med det samme og nedbrydes langsomt af kroppen igen over 6–12 måneder.
+            med det samme og nedbrydes langsomt af kroppen igen over ca. 12 måneder – hvor hurtigt, er individuelt.
           </p>
           <p>
             Fordi materialet er ikke-permanent, er en læbefiller aldrig en endelig beslutning.
@@ -65,7 +65,7 @@
           <ul class="tjek">
             <li>Hyaluronsyre – et stof, kroppen selv danner</li>
             <li>Resultatet ses med det samme</li>
-            <li>Nedbrydes af kroppen over 6–12 måneder</li>
+            <li>Holder ca. 12 måneder – individuelt</li>
             <li>Kan opløses igen med hyaluronidase</li>
             <li>Lægges af klinikkens læge</li>
           </ul>
@@ -142,7 +142,7 @@
         <li>
           <span class="trin__nr" aria-hidden="true">03</span>
           <h3>Bedøvende creme</h3>
-          <p>Lægges på 20–30 minutter før, så behandlingen er til at holde ud. Selve injektionerne tager 20–30 minutter.</p>
+          <p>Først gennemgår lægen designet med dig (ca. 10 min.). Bedøvende creme lægges på 15 minutter før, og selve behandlingen tager ca. 30 minutter. Regn med 45–60 minutter i alt.</p>
         </li>
         <li>
           <span class="trin__nr" aria-hidden="true">04</span>
@@ -259,15 +259,15 @@ const faqs = [
   },
   {
     q: 'Hvor længe holder læbefiller?',
-    a: 'Typisk 6–12 måneder. Læberne er et område med meget bevægelse, så fillerren nedbrydes hurtigere her end mange andre steder i ansigtet.'
+    a: 'Ca. 12 måneder, men det er individuelt. Hvor hurtigt kroppen nedbryder filleren, afhænger blandt andet af dit stofskifte og din livsstil.'
   },
   {
     q: 'Gør det ondt?',
-    a: 'Vi lægger bedøvende creme på 20–30 minutter før behandlingen. De fleste oplever det som ubehageligt snarere end smertefuldt.'
+    a: 'Vi lægger bedøvende creme på 15 minutter før behandlingen. De fleste oplever det som ubehageligt snarere end smertefuldt.'
   },
   {
     q: 'Hvor lang tid er man hævet?',
-    a: 'Mest de første to døgn. Efter en uge ligner læberne stort set det endelige resultat, og efter to uger har fillerren sat sig helt.'
+    a: 'Mest de første to døgn. Efter en uge ligner læberne stort set det endelige resultat, og efter to uger har filleren sat sig helt.'
   },
   {
     q: 'Kan læbefiller fjernes igen?',
@@ -299,7 +299,7 @@ const procedureLd = {
   image: `${SITE_URL}/og/home.webp`,
   bodyLocation: 'Lips',
   procedureType: 'https://schema.org/NoninvasiveProcedure',
-  howPerformed: 'Bedøvende creme påføres 20–30 minutter før. Hyaluronsyre lægges med tynd kanyle i og omkring læben i små mængder. Behandlingen tager 20–30 minutter.',
+  howPerformed: 'Designet gennemgås med lægen (ca. 10 min.), og bedøvende creme påføres 15 minutter før. Hyaluronsyre lægges med tynd kanyle i og omkring læben i små mængder. Selve behandlingen tager ca. 30 minutter, i alt 45–60 minutter.',
   preparation: 'Gratis forundersøgelse hos læge og 48 timers lovpligtig betænkningstid inden behandling.',
   followup: 'Hævelse i 2–3 døgn. Endeligt resultat vurderes efter 2 uger ved kontrol.',
   areaServed: ['Esbjerg', 'Vejle', 'Danmark'],

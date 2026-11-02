@@ -50,7 +50,7 @@
                     opbygning
                     af <i>kindben</i> eller markering af <i>kæbelinje</i>. Filler kan også bruges under øjnene mod mørke
                     rande og i tindinger, der er blevet hule.</p>
-                <p>En filler-behandling kan tage 15–30 min. Resultatet ses med det samme (med forbehold for lidt
+                <p>En filler-behandling tager 45–60 minutter i alt, inklusive bedøvende creme. Resultatet ses med det samme (med forbehold for lidt
                     hævelse).
                     Holdbarheden er 6–12 måneder, nogle gange længere afhængig af område. Fordelen ved filler er, at man
                     kan forme ansigtet subtilt uden kirurgi. Ulempen er, at der kan være lidt downtime med hævelse og at
