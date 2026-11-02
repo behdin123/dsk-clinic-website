@@ -35,33 +35,9 @@
 | Filler – behandlingstid | 45–60 minutter i alt. Læbefiller: design ca. 10 min., bedøvende creme 15 min. før, selve behandlingen ca. 30 min. |
 | Botox – efterbehandling | De første 4 timer: ikke ligge ned, ikke massere eller trykke på området. Resten af dagen: ingen makeup, hård træning eller sauna |
 | Mesoterapi – vedligehold | Vurderes individuelt, tidligst 3 måneder efter sidste behandling |
+| Microneedling – interval | Antallet vurderes individuelt, mindst 3 måneder mellem to behandlinger (også i et forløb) |
 | Microneedling – solcreme | SPF 30+ |
 | Microneedling – sauna og træning | Lægen fortæller patienten efter behandlingen |
-| Microneedling – interval | Antallet vurderes individuelt, mindst 3 måneder mellem to behandlinger (også i et forløb) |
-
----|---|---|
-| Microneedling – interval | "3–6 sessioner med 6 ugers interval" og "plan for næste session efter 4–6 uger" | Minimum 3 måneder mellem behandlinger er oplyst. Gælder det også mellem behandlingerne i et forløb, eller kun vedligehold bagefter? |
-
----|---|---|---|
-| 1 | Botox – makeup | Efterbehandling: "Makeup når huden er lukket (typisk efter få timer)" | FAQ: "ikke anvende make-up resten af dagen" |
-| 2 | Botox – træning og sauna | Efterbehandling: "Undgå hård træning/sauna første 24 timer" | FAQ: "Ingen hård træning og undgå sauna samme dag" |
-| 3 | Botox – liggende stilling | Står kun i FAQ: "Du må ikke lægge dig ned i de første 4 timer" | Mangler i listen over efterbehandling (der står i stedet "undgå at massere i 4 timer") |
-| 4 | Filler – behandlingstid | Øverst på filler-siden: "30–45 min" | Forløb: "ca. 15–30 min." · Læbefiller-siden: injektioner 20–30 min. + bedøvende creme 20–30 min. før |
-| 5 | Læbefiller – holdbarhed | Filler-siden: "læber ofte 6–9 mdr." | Læbefiller-siden: "Typisk 6–12 måneder" |
-| 6 | Mesoterapi – vedligehold | Resultater: "vedligehold hver 3. måned" | FAQ: "hver 2.–3. måned" |
-| 7 | Microneedling – interval | Resultater: "6 ugers interval" | FAQ og forløb: "4–6 uger" |
-| 8 | Microneedling – solcreme | Efterbehandling: "SPF 50 dagligt" | FAQ: "SPF 30+" |
-| 9 | Microneedling – sauna/træning | Efterbehandling: "24–48 timer" | FAQ: "det første døgn" |
-
----|---|---|
-| Botox – holdbarhed | Øverst på siden: **3–6 måneder** | Resultater og FAQ: **3–4 måneder** |
-| Botox – efter behandlingen | Efterbehandling: undgå at massere i 4 timer | FAQ: du må ikke lægge dig ned i 4 timer |
-| Botox – makeup | Efterbehandling: makeup efter få timer | FAQ: ingen makeup resten af dagen |
-| Botox – vedligehold | Pris: vedligehold ca. hver 3. måned | Holdbarhed 3–4 (eller 3–6) måneder |
-| Filler – holdbarhed | Øverst på siden: **12 måneder** | Resultater og FAQ: **6–12 måneder** |
-| Filler – behandlingstid | Øverst på siden: **30–45 min.** | Forløb: **15–30 min.** · Læbefiller-siden: 20–30 min. |
-
-De nye afsnit bruger **3–4 måneder** for botox og **6–12 måneder** for filler. Hvis du vælger noget andet, retter vi det alle steder på én gang, også på prissiden.
 
 ---
 
