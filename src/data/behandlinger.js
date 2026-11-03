@@ -22,7 +22,7 @@ import LaebefillerImg  from '@/assets/behandlinger/filler.webp'
 export const SITE_URL = 'https://dsklinik.dk'
 
 /** Saettes til true, naar oversigtssiden /behandlinger/ er bygget (fase 2). */
-export const HUB_LIVE = false
+export const HUB_LIVE = true
 
 /* ------------------------------------------------------------------ *
  * Kategorier – samme fire som i informationsarkitekturen

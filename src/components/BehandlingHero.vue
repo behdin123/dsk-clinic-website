@@ -23,7 +23,7 @@
               Book gratis forundersøgelse
             </button>
             <a v-if="prisAnker" class="knap knap--sekundaer" :href="`#${prisAnker}`"
-              @click.prevent="tilSektion(prisAnker)">Se priser</a>
+              @click.prevent="tilSektion(prisAnker)">{{ prisKnapTekst }}</a>
           </div>
 
           <ul class="side-hero__chips bh-hero__chips">
@@ -67,6 +67,7 @@ const props = defineProps({
   prisFra: { type: String, default: '' },     // "550" / "1.350"
   prisEnhed: { type: String, default: '' },   // "pr. område" / "pr. ml"
   prisAnker: { type: String, default: '' },   // id paa sidens prissektion
+  prisKnapTekst: { type: String, default: 'Se priser' },
   billede: { type: Object, required: true },  // { src, w, h, alt, fokus? }
   fakta: { type: Array, default: () => [] },  // [{ v: '15 min', k: 'Behandlingstid' }]
   faktaLabel: { type: String, default: 'Kort fortalt' },

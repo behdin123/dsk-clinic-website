@@ -1,6 +1,7 @@
 // Views
 import AppHome from '@/components/views/AppHome.vue'
 const behandlinger = () => import('@/components/views/AppBehandlinger.vue')
+const behandlingerOversigt = () => import('@/components/views/BehandlingerOversigt.vue')
 const omos        = () => import('@/components/views/OmOS.vue')
 const kontaktos   = () => import('@/components/views/KontaktOs.vue')
 // DISABLED: Viden universe
@@ -52,6 +53,10 @@ const articleRoutes = [] // Empty array - viden routes disabled
 // Vi accepterer både med/uden trailing slash og canonicaliserer til MED slash
 export const routes = [
   { path: '/', name: 'home', component: AppHome },
+
+  // Oversigt over alle behandlinger
+  { path: '/behandlinger/', name: 'behandlinger-oversigt', component: behandlingerOversigt },
+  { path: '/behandlinger',  redirect: '/behandlinger/' },
 
   // Laebefiller: egen underside under filler (skal staa foer den dynamiske rute)
   { path: '/behandlinger/filler/laeber/', name: 'laebefiller', component: laebefiller },

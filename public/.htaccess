@@ -12,9 +12,9 @@ RewriteRule ^OmOs/?$ https://dsklinik.dk/omos/ [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+KontaktOs(?:[?\s]|/|$) [NC]
 RewriteRule ^KontaktOs/?$ https://dsklinik.dk/kontaktos/ [R=301,L]
 
-# Legacy /Behandlinger → Botox-siden (genaktiveret)
+# Legacy /Behandlinger → oversigtssiden
 RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
-RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+RewriteRule ^Behandlinger/?$ https://dsklinik.dk/behandlinger/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
 RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301,L]
@@ -23,7 +23,7 @@ RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301
 RewriteRule ^behandlinger/PRP/?$ https://dsklinik.dk/behandlinger/prp/ [R=301,L]
 RewriteRule ^behandlinger/Botox/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
 RewriteRule ^behandlinger/Filler/?$ https://dsklinik.dk/behandlinger/filler/ [R=301,L]
-RewriteRule ^behandlinger/Behandlinger/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
+RewriteRule ^behandlinger/Behandlinger/?$ https://dsklinik.dk/behandlinger/ [R=301,L]
 
 # 3) Mapper uden index.html (/behandlinger/, /klinik/, /assets/, /og/) skal give
 #    en AEGTE 404 - ikke et directory listing og ikke et 403.

@@ -9,6 +9,7 @@
   { "path": "/klinik/vejle/",              "priority": 0.8,  "changefreq": "weekly" },
   { "path": "/klinik/esbjerg/",            "priority": 0.8,  "changefreq": "weekly" },
 
+  { "path": "/behandlinger/",              "priority": 0.9,  "changefreq": "weekly" },
   { "path": "/behandlinger/botox/",        "priority": 0.9,  "changefreq": "weekly" },
   { "path": "/behandlinger/filler/",       "priority": 0.9,  "changefreq": "weekly" },
   { "path": "/behandlinger/filler/laeber/","priority": 0.9,  "changefreq": "weekly" },
