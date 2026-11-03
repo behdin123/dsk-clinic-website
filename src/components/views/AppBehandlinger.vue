@@ -90,9 +90,9 @@ const behandlinger = {
     price: '550',
     priceText: '1 område',
     price2: '1.100',
-    priceText2: '2 område',
+    priceText2: '2 områder',
     price3: '1.650',
-    priceText3: '3 område',
+    priceText3: '3 områder',
     sections: {
         audience: [
           '<span class="intro">Botox hos DK Skønhedsklinik er en skånsom måde at blødgøre mimiske rynker på. Vi bruger et godkendt botulinumtoksin og doserer præcist, så din mimik bevares og udtrykket forbliver naturligt. Er du nervøs første gang? Det forstår vi. Vi tager os tid til at lytte, vejlede og lægge en plan, der passer til netop dit ansigt.</span>',
