@@ -1361,7 +1361,6 @@ onMounted(() => {
 .Multimediedesigner {
   position: relative;
   background: var(--primary-color) !important;
-  padding: 70px 0;
 
   .ui {
     margin-right: 5%;

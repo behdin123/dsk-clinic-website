@@ -616,7 +616,7 @@ h2 {
     display: grid;
     gap: 64px;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    padding: 44px 0 56px;
+    padding: 50px 0;
 
     .section-text {
         width: auto;

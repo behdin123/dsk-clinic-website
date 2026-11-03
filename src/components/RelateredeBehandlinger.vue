@@ -117,6 +117,7 @@ $c-blue: #2d58a1;
 
 @media (max-width: 600px) {
   .relateret__grid { grid-template-columns: 1fr; gap: 16px; }
-  .relateret { margin-top: 44px; padding-top: 30px; }
+  .relateret { padding-top: 30px; }
+  .behandling-relateret { width: 100%; }
 }
 </style>

@@ -1586,7 +1586,7 @@ h2 {
     display: grid;
     gap: 32px 56px;
     grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-    margin: 64px auto;
+    margin: 50px auto;
     max-width: var(--maal);
     padding: 42px 40px;
 }
