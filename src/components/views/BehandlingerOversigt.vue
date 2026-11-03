@@ -5,24 +5,15 @@
       eyebrow="Behandlinger" :lead="lead" :broedkrummer="broedkrummer" pris-anker="alle"
       pris-knap-tekst="Se alle behandlinger"
       :billede="{ src: imgHero, w: 1200, h: 1200, alt: 'Lægen behandler en patient i klinikken' }"
-      :fakta="heroFakta" fakta-label="Klinikken kort fortalt" booking-kilde="oversigt" />
+      booking-kilde="oversigt" />
 
-    <!-- Alle behandlinger, grupperet efter kategori -->
+    <!-- Alle behandlinger, grupperet efter kategori. Én raekke pr.
+         behandling: billede, navn, én saetning, pris - hele raekken er linket. -->
     <section id="alle" class="sec" aria-labelledby="alle-title">
       <div class="sec__head">
         <p class="sec__eyebrow">Alle behandlinger</p>
         <h2 id="alle-title">Find den behandling, der passer til dig</h2>
-        <p class="sec__lead">
-          Vi har samlet behandlingerne i {{ kategorier.length }} grupper. Hver behandling har sin
-          egen side med forløb, bivirkninger, pris og svar på de mest stillede spørgsmål.
-        </p>
       </div>
-
-      <nav class="kat-nav" aria-label="Spring til en gruppe">
-        <a v-for="k in kategorier" :key="k.id" :href="`#${k.anker}`" @click.prevent="tilSektion(k.anker)">
-          {{ k.navn }} <span>{{ k.behandlinger.length }}</span>
-        </a>
-      </nav>
 
       <div class="kategorier">
         <section v-for="k in kategorier" :id="k.anker" :key="k.id" class="kategori"
@@ -32,21 +23,21 @@
             <p>{{ k.kort }}</p>
           </header>
 
-          <ul class="kort-gitter">
+          <ul class="beh-liste">
             <li v-for="b in k.behandlinger" :key="b.slug">
-              <router-link :to="b.path" class="beh-kort">
-                <span class="beh-kort__billede">
+              <router-link :to="b.path" class="beh-raekke">
+                <span class="beh-raekke__billede">
                   <img v-if="b.billede" :src="b.billede" width="1200" height="800" loading="lazy" decoding="async"
                     :alt="`${b.navn} hos DK Skønhedsklinik`">
                 </span>
-                <span class="beh-kort__tekst">
-                  <span v-if="b.forael" class="beh-kort__tag">{{ foraelNavn(b) }}</span>
+                <span class="beh-raekke__tekst">
+                  <span v-if="b.forael" class="beh-raekke__tag">{{ foraelNavn(b) }}</span>
                   <h3>{{ b.kortTitel || b.navn }}</h3>
-                  <span class="beh-kort__beskrivelse">{{ b.kort }}</span>
-                  <span class="beh-kort__fod">
-                    <span v-if="b.prisTekst" class="beh-kort__pris">{{ storForbogstav(b.prisTekst) }}</span>
-                    <span class="beh-kort__mere">Læs mere <span class="pil" aria-hidden="true"></span></span>
-                  </span>
+                  <span class="beh-raekke__beskrivelse">{{ b.kort }}</span>
+                </span>
+                <span class="beh-raekke__side">
+                  <span v-if="b.prisTekst" class="beh-raekke__pris">{{ storForbogstav(b.prisTekst) }}</span>
+                  <span class="beh-raekke__pil" aria-hidden="true"><span class="pil"></span></span>
                 </span>
               </router-link>
             </li>
@@ -71,31 +62,6 @@
           <router-link :to="g.path" class="guide__svar">{{ g.navn }} <span class="pil" aria-hidden="true"></span></router-link>
         </li>
       </ul>
-    </section>
-
-    <!-- Forloebet er det samme for alle behandlinger -->
-    <section class="sec" aria-labelledby="forloeb-title">
-      <div class="sec__head">
-        <p class="sec__eyebrow">Forløb</p>
-        <h2 id="forloeb-title">Sådan foregår det – uanset behandling</h2>
-      </div>
-      <ol class="trin">
-        <li>
-          <span class="trin__nr" aria-hidden="true">01</span>
-          <h3>Gratis forundersøgelse</h3>
-          <p>Lægen ser på dine ønsker og fortæller, hvad der realistisk kan opnås – og hvad der ikke kan. Du får prisen, før du beslutter dig.</p>
-        </li>
-        <li>
-          <span class="trin__nr" aria-hidden="true">02</span>
-          <h3>48 timers betænkningstid</h3>
-          <p>Lovpligtig ved kosmetisk behandling. Du bliver aldrig behandlet samme dag som forundersøgelsen.</p>
-        </li>
-        <li>
-          <span class="trin__nr" aria-hidden="true">03</span>
-          <h3>Behandling og kontrol</h3>
-          <p>Lægen udfører behandlingen, og du betaler først bagefter. Vi ser på resultatet ved en kontrol efter behov.</p>
-        </li>
-      </ol>
     </section>
 
     <section class="sec sec--panel" aria-labelledby="faq-title">
@@ -147,15 +113,8 @@ const broedkrummer = broedkrummerFor(null)
 const kategorier = aktiveKategorier().map(k => ({ ...k, behandlinger: behandlingerIKategori(k.id) }))
 const live = liveBehandlinger()
 
-const lead = 'Rynkebehandling, filler og behandlinger for bedre hudkvalitet – alle udført af læge Arash Bagheri. Her får du overblikket: hvad behandlingerne kan, hvad de koster, og hvor du kan læse mere.'
+const lead = 'Rynkebehandling, filler og behandlinger for bedre hudkvalitet – alle udført af læge Arash Bagheri i vores klinikker i Esbjerg og Vejle.'
 
-const laveste = Math.min(...live.map(b => b.prisFra).filter(Boolean))
-const heroFakta = [
-  { v: `${live.length} behandlinger`, k: 'udført af læge' },
-  { v: '20+ år', k: 'erfaring med kosmetiske behandlinger' },
-  { v: '2 klinikker', k: 'i Esbjerg og Vejle' },
-  { v: `Fra ${laveste.toLocaleString('da-DK')} kr.`, k: 'for botox i ét område' }
-]
 
 const foraelNavn = b => findBehandling(b.forael)?.navn || ''
 const storForbogstav = t => t.charAt(0).toUpperCase() + t.slice(1)
@@ -308,45 +267,13 @@ $c-blue: #2d58a1;
   .oversigt-view :deep(.bh-hero__indre) { width: 100%; }
 }
 
-/* ===== Hurtignavigation til grupperne ===== */
-.kat-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 40px;
+/* ===== Grupper ===== */
+#alle > .sec__head { margin-bottom: 40px; }
+
+@media (max-width: 600px) {
+  #alle > .sec__head { margin-bottom: 32px; }
 }
 
-.kat-nav a {
-  align-items: center;
-  border: 1px solid rgba(21, 54, 85, .14);
-  border-radius: 999px;
-  color: $c-dark;
-  display: inline-flex;
-  font-size: .95rem;
-  font-weight: 600;
-  gap: 10px;
-  min-height: 44px;
-  padding: 6px 8px 6px 18px;
-  text-decoration: none;
-  transition: border-color .15s ease, background .15s ease;
-}
-
-.kat-nav a:hover,
-.kat-nav a:focus-visible { background: rgba(45, 88, 161, .06); border-color: $c-blue; }
-
-.kat-nav a span {
-  align-items: center;
-  background: rgba(45, 88, 161, .10);
-  border-radius: 999px;
-  color: $c-blue;
-  display: inline-flex;
-  font-size: .8rem;
-  height: 28px;
-  justify-content: center;
-  min-width: 28px;
-}
-
-/* ===== Grupper med kort ===== */
 .kategorier { display: grid; gap: 56px; }
 
 .kategori { scroll-margin-top: 116px; }
@@ -374,46 +301,47 @@ $c-blue: #2d58a1;
   max-width: 60ch;
 }
 
-.kort-gitter {
+/* Én raekke pr. behandling: billede | navn og saetning | pris og pil.
+   Rolig og let at skanne - som en menu, ikke et galleri. */
+.beh-liste {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 14px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.kort-gitter > li { display: flex; }
-
-.beh-kort {
+.beh-raekke {
+  align-items: center;
   background: #fff;
   border: 1px solid rgba(21, 54, 85, .10);
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-shadow: 0 6px 22px rgba(21, 54, 85, .05);
   color: $c-dark;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 200px minmax(0, 1fr) auto;
+  padding: 12px 28px 12px 12px;
   text-decoration: none;
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
-  width: 100%;
 }
 
-.beh-kort:hover,
-.beh-kort:focus-visible {
+.beh-raekke:hover,
+.beh-raekke:focus-visible {
   border-color: rgba(45, 88, 161, .4);
   box-shadow: 0 14px 34px rgba(21, 54, 85, .10);
   transform: translateY(-2px);
 }
 
-.beh-kort__billede {
+.beh-raekke__billede {
   aspect-ratio: 3 / 2;
   background: rgba(45, 88, 161, .06);
+  border-radius: 12px;
   display: block;
   overflow: hidden;
 }
 
-.beh-kort__billede img {
+.beh-raekke__billede img {
   display: block;
   height: 100%;
   object-fit: cover;
@@ -422,68 +350,67 @@ $c-blue: #2d58a1;
   width: 100%;
 }
 
-.beh-kort:hover .beh-kort__billede img { transform: scale(1.03); }
+.beh-raekke:hover .beh-raekke__billede img { transform: scale(1.04); }
 
-.beh-kort__tekst {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 20px 22px 22px;
-}
+.beh-raekke__tekst { display: flex; flex-direction: column; min-width: 0; }
 
-.beh-kort__tag {
+.beh-raekke__tag {
   align-self: flex-start;
   background: rgba(45, 88, 161, .08);
   border-radius: 999px;
   color: $c-blue;
-  font-size: .72rem;
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .06em;
-  margin-bottom: 10px;
-  padding: 4px 10px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
   text-transform: uppercase;
 }
 
-.beh-kort h3 {
+.beh-raekke h3 {
   color: $c-dark !important;
-  font-size: 1.18rem;
+  font-size: 1.25rem;
   line-height: 1.3;
-  margin: 0 0 8px !important;
+  margin: 0 0 6px !important;
   text-align: left;
 }
 
-.beh-kort__beskrivelse {
-  color: rgba(21, 54, 85, .82);
-  font-size: .97rem;
-  line-height: 1.6;
-  margin-bottom: 18px;
+.beh-raekke__beskrivelse {
+  color: rgba(21, 54, 85, .8);
+  font-size: .98rem;
+  line-height: 1.55;
+  max-width: 58ch;
 }
 
-.beh-kort__fod {
+.beh-raekke__side {
   align-items: center;
-  border-top: 1px solid rgba(21, 54, 85, .10);
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 14px;
+  gap: 20px;
 }
 
-.beh-kort__pris { font-weight: 700; }
-
-.beh-kort__mere {
-  align-items: center;
-  color: $c-blue;
-  display: inline-flex;
-  font-weight: 600;
-  gap: 6px;
+.beh-raekke__pris {
+  color: $c-dark;
+  font-weight: 700;
   white-space: nowrap;
 }
 
-.beh-kort__mere .pil,
-.guide__svar .pil { height: .8em; transition: transform .18s ease; width: .8em; }
+.beh-raekke__pil {
+  align-items: center;
+  border: 1.5px solid rgba(45, 88, 161, .3);
+  border-radius: 50%;
+  color: $c-blue;
+  display: inline-flex;
+  flex: 0 0 44px;
+  height: 44px;
+  justify-content: center;
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
 
-.beh-kort:hover .beh-kort__mere .pil,
+.beh-raekke__pil .pil { height: 14px; width: 14px; }
+
+.beh-raekke:hover .beh-raekke__pil { background: $c-blue; border-color: $c-blue; color: #fff; }
+
+.guide__svar .pil { height: .8em; transition: transform .18s ease; width: .8em; }
 .guide__svar:hover .pil { transform: translateX(3px); }
 
 /* ===== Vejledning: problem -> behandling ===== */
@@ -520,23 +447,32 @@ $c-blue: #2d58a1;
 
 .guide__svar:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+@media (max-width: 900px) {
+  .beh-raekke { gap: 20px; grid-template-columns: 150px minmax(0, 1fr) auto; padding-right: 20px; }
+  .beh-raekke__side { align-items: flex-end; flex-direction: column; gap: 10px; }
+}
+
 @media (max-width: 700px) {
   .kategori__head { grid-template-columns: minmax(0, 1fr); }
   .kategorier { gap: 44px; }
-  .kat-nav { margin-bottom: 32px; }
 }
 
-/* Mobil: kortene som kompakte raekker (billede til venstre), saa hele
-   oversigten kan ses med faa swipes i stedet for et langt billedgalleri */
+/* Mobil: billede til venstre, tekst og pris til hoejre - pilen udgaar */
 @media (max-width: 600px) {
-  .kort-gitter { gap: 12px; }
-  .beh-kort { border-radius: 14px; flex-direction: row; }
-  .beh-kort__billede { aspect-ratio: auto; flex: 0 0 96px; }
-  .beh-kort__tekst { padding: 14px 16px 14px; }
-  .beh-kort h3 { font-size: 1.05rem; margin-bottom: 4px !important; }
-  .beh-kort__beskrivelse { font-size: .9rem; line-height: 1.5; margin-bottom: 10px; }
-  .beh-kort__fod { padding-top: 10px; }
-  .beh-kort__tag { margin-bottom: 6px; }
+  .beh-liste { gap: 12px; }
+  .beh-raekke {
+    align-items: stretch;
+    border-radius: 14px;
+    gap: 0;
+    grid-template-columns: 96px minmax(0, 1fr);
+    padding: 0;
+  }
+  .beh-raekke__billede { aspect-ratio: auto; border-radius: 0; grid-row: 1 / span 2; }
+  .beh-raekke__tekst { padding: 14px 16px 6px; }
+  .beh-raekke h3 { font-size: 1.05rem; margin-bottom: 4px !important; }
+  .beh-raekke__beskrivelse { font-size: .9rem; line-height: 1.5; }
+  .beh-raekke__side { align-items: flex-start; grid-column: 2; padding: 0 16px 14px; }
+  .beh-raekke__pil { display: none; }
 }
 
 @media (max-width: 500px) {
@@ -544,6 +480,6 @@ $c-blue: #2d58a1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .beh-kort, .beh-kort__billede img, .pil { transition: none; }
+  .beh-raekke, .beh-raekke__billede img, .beh-raekke__pil, .pil { transition: none; }
 }
 </style>
