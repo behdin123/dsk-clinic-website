@@ -8,41 +8,52 @@
       </router-link>
     </div>
 
-    <!-- Desktop links -->
+    <!-- Desktop: hovedpunkterne midt i baandet. "Behandlinger" er selv et
+         link til oversigten og aabner en menu ved hover og tastaturfokus.
+         Det aktive punkt er understreget. -->
     <div class="links-desktop">
-      <div class="dropdown">
-        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-          Behandlinger
-        </button>
+      <div class="dropdown dropdown--mega">
+        <router-link to="/behandlinger/" class="nav-punkt" :class="{ 'nav-punkt--aktiv': erBehandlinger }"
+          aria-haspopup="true">
+          Behandlinger <span class="nav-pil" aria-hidden="true"></span>
+        </router-link>
         <div class="dropdown-menu">
-          <div v-for="kat in menuKategorier" :key="kat.id" class="dropdown-group">
-            <p class="dropdown-group__title">{{ kat.navn }}</p>
-            <router-link v-for="b in kat.behandlinger" :key="b.slug" :to="b.path">{{ b.navn }}</router-link>
+          <div class="mega">
+            <div v-for="kat in menuKategorier" :key="kat.id" class="mega__gruppe">
+              <p class="mega__titel">{{ kat.navn }}</p>
+              <router-link v-for="b in kat.behandlinger" :key="b.slug" :to="b.path" class="mega__link">
+                {{ b.navn }}
+              </router-link>
+            </div>
           </div>
-          <router-link v-if="hubLive" to="/behandlinger/" class="dropdown-all">Se alle behandlinger</router-link>
+          <router-link v-if="hubLive" to="/behandlinger/" class="mega__alle">
+            Se alle behandlinger og priser <span class="pil" aria-hidden="true"></span>
+          </router-link>
         </div>
       </div>
-      <router-link to="/priser/">Priser</router-link>
-      <router-link to="/omos/">Om os</router-link>
-      <router-link to="/kontaktos/">Kontakt</router-link>
+      <router-link to="/priser/" class="nav-punkt" active-class="nav-punkt--aktiv">Priser</router-link>
+      <router-link to="/omos/" class="nav-punkt" active-class="nav-punkt--aktiv">Om os</router-link>
+      <router-link to="/kontaktos/" class="nav-punkt" active-class="nav-punkt--aktiv">Kontakt</router-link>
       <div class="dropdown">
-        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-          Klinikker
+        <button class="nav-punkt nav-punkt--knap" :class="{ 'nav-punkt--aktiv': erKlinik }" type="button"
+          aria-haspopup="true">
+          Klinikker <span class="nav-pil" aria-hidden="true"></span>
         </button>
-        <div class="dropdown-menu">
-          <router-link :to="{ name: 'clinic-vejle' }">Vejle</router-link>
-          <router-link :to="{ name: 'clinic-esbjerg' }">Esbjerg</router-link>
+        <div class="dropdown-menu dropdown-menu--klinik">
+          <router-link :to="{ name: 'clinic-esbjerg' }" class="klinik-link">
+            <b>Esbjerg</b><span>Havnegade 6 · man–fre 17–20</span>
+          </router-link>
+          <router-link :to="{ name: 'clinic-vejle' }" class="klinik-link">
+            <b>Vejle</b><span>Søndergade 50 · søndag 11–18</span>
+          </router-link>
         </div>
       </div>
       <!-- DISABLED: Viden universe link -->
       <!-- <router-link to="/viden/">Vidensunivers</router-link> -->
     </div>
 
-
-
-    <!-- Right side -->
+    <!-- Hoejre side: booking som tydelig knap, sociale ikoner og burger -->
     <div class="navbar-others">
-
       <a class="soc NavFacebook" href="https://www.facebook.com/profile.php?id=100054595142567" target="_blank"
         rel="noopener noreferrer" aria-label="Facebook">
         <img class="icon facebook" src="../assets/icons/Facebook_Logo_Primary.webp" width="23" height="23" alt="" />
@@ -52,6 +63,8 @@
         rel="noopener noreferrer" aria-label="Instagram">
         <img class="icon" src="../assets/icons/Instagram_Glyph_Gradient.webp" width="23" height="23" alt="" />
       </a>
+
+      <button class="nav-book" type="button" @click="openBooking">Book tid</button>
 
       <!-- Burger -->
       <button class="burger" type="button" :aria-expanded="isMenuOpen ? 'true' : 'false'" aria-controls="mobile-drawer"
@@ -81,6 +94,9 @@
         </div>
 
         <div class="mnav__krop">
+          <router-link v-if="hubLive" to="/behandlinger/" class="mnav__alle" @click="closeMenu">
+            Alle behandlinger <span class="pil" aria-hidden="true"></span>
+          </router-link>
           <template v-for="kat in menuKategorier" :key="kat.id">
             <p class="mnav__titel">{{ kat.navn }}</p>
             <ul class="mnav__liste">
@@ -136,7 +152,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount, computed, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { aktiveKategorier, behandlingerIKategori, HUB_LIVE } from '@/data/behandlinger'
 
 // Menuen bygges af det centrale behandlingsregister, saa en ny behandling
@@ -152,9 +168,15 @@ defineProps({
 })
 
 const openBooking = () => {
-  closeMenu();                    // منو را ببند
-  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: 'mobilmenu' } }));
-};
+  const kilde = isMenuOpen.value ? 'mobilmenu' : 'navigation'
+  closeMenu()
+  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source: kilde } }))
+}
+
+// Aktivt hovedpunkt: alle behandlingssider hoerer under "Behandlinger"
+const route = useRoute()
+const erBehandlinger = computed(() => route.path.startsWith('/behandlinger'))
+const erKlinik = computed(() => route.path.startsWith('/klinik'))
 
 
 const router = useRouter()
@@ -224,9 +246,11 @@ watch(
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   width: 100%;
   margin: 0 auto;
-  max-width: 1500px;
+  /* Samme venstre- og hoejrekant som sidens indhold */
+  max-width: var(--maal);
 }
 
 .logo {
@@ -239,7 +263,7 @@ watch(
 .navbar-others {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 18px;
 
   .line {
     width: 1px;
@@ -256,115 +280,202 @@ watch(
   }
 }
 
+/* ------- Hovedpunkter ------- */
 .links-desktop {
+  align-items: center;
   display: flex;
-  gap: 5vw;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 700;
-  }
-
-  a:hover {
-    opacity: .8;
-  }
+  gap: clamp(18px, 2.6vw, 44px);
 }
 
-/* ------- Desktop dropdown ------- */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-toggle {
+.nav-punkt {
+  align-items: center;
   background: none;
   border: 0;
-  font-weight: bold;
-  font-size: 16px !important;
+  color: #fff !important;
   cursor: pointer;
-  color: #fff;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 16px !important;
+  font-weight: 700;
+  gap: 6px;
+  padding: 10px 0;
+  position: relative;
+  text-decoration: none;
 }
+
+/* Understregning: vises ved hover og paa det aktive punkt */
+.nav-punkt::after {
+  background: #9fc0f5;
+  border-radius: 2px;
+  bottom: 2px;
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+
+.nav-punkt:hover::after,
+.nav-punkt:focus-visible::after,
+.dropdown:hover > .nav-punkt::after,
+.nav-punkt--aktiv::after { transform: scaleX(1); }
+
+.nav-punkt:focus-visible { outline: 2px solid #9fc0f5; outline-offset: 4px; border-radius: 4px; }
+
+/* Lille pil ned ved punkter med menu */
+.nav-pil {
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  height: 6px;
+  margin-top: -3px;
+  opacity: .8;
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+  width: 6px;
+}
+
+.dropdown:hover .nav-pil,
+.dropdown:focus-within .nav-pil { transform: rotate(-135deg); margin-top: 3px; }
+
+/* ------- Menuer (hover + tastaturfokus) ------- */
+.dropdown { position: relative; }
 
 .dropdown-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
-  padding: 10px 18px;
-  display: none;
-  min-width: 220px;
+  border: 1px solid rgba(21, 54, 85, .08);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(13, 34, 56, .18);
+  box-sizing: border-box;
+  left: 50%;
+  margin-top: 12px;
+  min-width: 240px;
+  opacity: 0;
+  padding: 10px;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  transform: translate(-50%, 6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s;
+  visibility: hidden;
   z-index: 50;
-
-  a {
-    display: block;
-    padding: 10px 0;
-    color: #111 !important;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
 }
 
-.dropdown:hover .dropdown-menu {
+/* Usynlig bro, saa menuen ikke lukker, naar musen flyttes ned til den */
+.dropdown-menu::before { content: ''; height: 14px; left: 0; position: absolute; right: 0; top: -14px; }
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  visibility: visible;
+}
+
+/* Behandlinger: kolonner pr. kategori + link til oversigten */
+.dropdown--mega .dropdown-menu { min-width: 560px; padding: 8px; }
+
+.mega {
+  display: grid;
+  gap: 4px 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 10px 10px 6px;
+}
+
+.mega__titel {
+  color: #2d58a1;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin: 0 0 6px;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.mega__link,
+.klinik-link {
+  border-radius: 8px;
+  color: #153655 !important;
   display: block;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 8px 10px;
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
 }
-.dropdown-group + .dropdown-group {
-  margin-top: 6px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(21, 54, 85, .1);
-}
-.dropdown-group__title {
-  margin: 0;
-  padding: 6px 0 2px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  color: rgba(21, 54, 85, .5);
-}
-.sub .sub-title {
-  padding: 10px 0 2px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  opacity: .55;
-}
-.sub .sub-all a {
-  font-weight: 700;
-}
-.dropdown-all {
-  margin-top: 8px;
-  padding-top: 10px !important;
-  border-top: 1px solid rgba(21, 54, 85, .1);
-  font-weight: 700;
+
+.mega__link:hover,
+.mega__link:focus-visible,
+.klinik-link:hover,
+.klinik-link:focus-visible { background: rgba(45, 88, 161, .07); color: #2d58a1 !important; }
+
+.mega__link.router-link-exact-active { color: #2d58a1 !important; }
+
+.mega__alle {
+  align-items: center;
+  background: rgba(45, 88, 161, .06);
+  border-radius: 10px;
   color: #2d58a1 !important;
+  display: flex;
+  font-size: 15px !important;
+  font-weight: 700;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.mega__alle:hover { background: rgba(45, 88, 161, .12); }
+.mega__alle .pil { height: 12px; width: 12px; }
+
+/* Klinikker: navn + adresse og aabningstid */
+.dropdown-menu--klinik { min-width: 260px; }
+.klinik-link { align-items: flex-start !important; display: flex !important; flex-direction: column; gap: 2px; text-align: left !important; }
+.klinik-link b, .klinik-link span { text-align: left !important; }
+.klinik-link b { display: block; font-size: 15px; }
+.klinik-link span { color: rgba(21, 54, 85, .7); display: block; font-size: 13px; font-weight: 400; margin-top: 2px; }
+
+/* ------- Booking-knap i navigationen ------- */
+.nav-book {
+  background: #fff;
+  border: 0;
+  border-radius: 10px;
+  color: #153655;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 11px 20px;
+  transition: background .15s ease, transform .15s ease;
+  white-space: nowrap;
+}
+
+.nav-book:hover,
+.nav-book:focus-visible { background: #eaf0fa; transform: translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-punkt::after, .nav-pil, .dropdown-menu, .nav-book { transition: none; }
 }
 
 @media (max-width:1550px) {
-  .navbar {
-    max-width: 1200px;
-  }
-
   .logo-img {
     width: 140px !important;
     height: auto;
   }
 }
 
-@media (max-width:1250px) {
-  .navbar {
-    max-width: 1000px;
-  }
+/* Under 1000 px er indholdet 90 % bredt - navigationen foelger med */
+@media (max-width:1000px) {
+  .navbar { width: 90%; }
 }
 
 /* ------- Mobile only ------- */
 @media (max-width:1050px) {
   .navbar {
-    padding: 0 5%;
+    padding: 0;
   }
   .links-desktop {
     display: none;
@@ -373,55 +484,8 @@ watch(
   .navbar-others .burger {
     display: inline-flex;
   }
-}
 
-/* Switch (unchanged) */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background: #24353F;
-  transition: .4s;
-}
-
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background: #fff;
-  transition: .4s;
-}
-
-input:checked+.slider {
-  background: #D9C4A9;
-}
-
-input:checked+.slider:before {
-  transform: translateX(26px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+  .nav-book { display: none; }
 }
 
 /* Small tweak */
@@ -443,6 +507,22 @@ input:checked+.slider:before {
 
 
 }
+
+.mnav__alle {
+  margin-top: 16px;
+  align-items: center;
+  background: rgba(45, 88, 161, .07);
+  border-radius: 12px;
+  color: #2d58a1;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.mnav__alle .pil { height: 12px; width: 12px; }
 
 /* ===== Mobilmenu =====
    Fuld skaerm: navy top med logo og luk-knap, hvid krop med alle sider
