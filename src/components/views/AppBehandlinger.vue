@@ -4,7 +4,8 @@
     :anesthesia="behandlingData.anesthesia" :durability="behandlingData.durability" :downtime="behandlingData.downtime"
     :consultation="behandlingData.consultation" :price="behandlingData.price" :priceText="behandlingData.priceText"
     :price2="behandlingData.price2" :priceText2="behandlingData.priceText2" :price3="behandlingData.price3"
-    :priceText3="behandlingData.priceText3" :faqs="faqs" :sections="sectionsData" :section-assets="sectionAssets" />
+    :priceText3="behandlingData.priceText3" :faqs="faqs" :sections="sectionsData" :section-assets="sectionAssets"
+    :broedkrummer="heroKruemmer" :eyebrow="heroEyebrow" />
 
   <div class="behandling-relateret container">
     <RelateredeBehandlinger v-if="registerSlug" :slug="registerSlug" />
@@ -36,7 +37,7 @@ import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 import RelateredeBehandlinger from '../RelateredeBehandlinger.vue'
 import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
-import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
+import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema, KATEGORIER } from '@/data/behandlinger'
 
 /* Afsluttende CTA - samme banner som paa laebefiller-siden */
 const openBooking = () => {
@@ -44,7 +45,6 @@ const openBooking = () => {
 }
 
 import BotoxImage from '@/assets/Carts/Botox.webp'
-import heroBaggrund from '@/assets/BannerBehandling.webp'
 import FillerImage from '@/assets/Carts/Filler.webp'
 // Sektionsbilleder: importeres, saa Vite giver dem den rigtige sti.
 // new URL('@/...') virkede ikke - aliaset '@' oversaettes ikke dér, og
@@ -841,6 +841,10 @@ const registerBehandling = computed(() =>
   findBehandlingVedPath(`/behandlinger/${currentType.value || FALLBACK}/`)
 )
 const registerSlug = computed(() => registerBehandling.value?.slug || '')
+// Heroen: synlige broedkrummer (samme kilde som schemaet) og kategorien som eyebrow
+const heroKruemmer = computed(() => registerSlug.value ? broedkrummerFor(registerSlug.value) : [])
+const heroEyebrow = computed(() =>
+  KATEGORIER.find(k => k.id === registerBehandling.value?.kategori)?.navn || '')
 
 const breadcrumbLd = computed(() =>
   registerSlug.value
@@ -904,11 +908,10 @@ useHead(() => {
     htmlAttrs: { lang: 'da' },
     meta,
     link: [
-      /* Heroens baggrund ligger i CSS og er sidens LCP - preload den */
-      { rel: 'preload', as: 'image', href: heroBaggrund, fetchpriority: 'high' },
       { rel: 'canonical', href: url },
       { rel: 'alternate', href: url, hreflang: 'da-DK' },
-      { rel: 'preload', as: 'image', href: behandlingData.value.imageSrc }
+      /* Heroens billede er sidens LCP - preload det */
+      { rel: 'preload', as: 'image', href: behandlingData.value.imageSrc, fetchpriority: 'high' }
     ],
     script: scripts
   }
