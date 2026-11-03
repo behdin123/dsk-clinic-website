@@ -1,44 +1,11 @@
 <template>
   <section class="container laeber-view" aria-labelledby="laeber-title">
-    <div class="laeber-top">
-    <AppBreadcrumbs :sti="broedkrummer" />
-
-    <header class="side-hero">
-      <div>
-        <p class="sec__eyebrow">Filler · Læber</p>
-        <h1 id="laeber-title">Læbefiller i Esbjerg &amp; Vejle – lagt af læge</h1>
-        <p class="side-hero__lead">
-          Læbefiller – eller lip filler, som mange kalder det – giver fylde, form og en
-          tydeligere læbekant med hyaluronsyre. Hos DK Skønhedsklinik lægges den af en læge, og
-          vi arbejder i små mængder ad gangen, så resultatet bliver naturligt og passer til
-          resten af dit ansigt.
-        </p>
-        <ul class="side-hero__chips">
-          <li>Gratis forundersøgelse</li>
-          <li>Udføres af læge</li>
-          <li>48 timers betænkningstid</li>
-        </ul>
-        <div class="side-hero__handling">
-          <button class="knap knap--primaer" type="button" @click="openBooking">
-            Book gratis forundersøgelse
-          </button>
-          <a class="knap knap--sekundaer" href="#pris" @click.prevent="tilSektion('pris')">Se pris</a>
-        </div>
-      </div>
-
-      <figure class="side-hero__media">
-        <img :src="imgHero" width="1800" height="2400" fetchpriority="high" decoding="async"
-          alt="Læge Arash Bagheri lægger læbefiller hos en patient i klinikken">
-      </figure>
-    </header>
-    </div>
-
-    <dl class="fakta" aria-label="Læbefiller i tal">
-      <div><dt>1.350 kr.</dt><dd>pr. ml hyaluronsyre</dd></div>
-      <div><dt>0,5–1 ml</dt><dd>starter de fleste med</dd></div>
-      <div><dt>45–60 min.</dt><dd>varer behandlingen i alt</dd></div>
-      <div><dt>Ca. 12 mdr.</dt><dd>holder resultatet – individuelt</dd></div>
-    </dl>
+    <!-- Samme hero som de andre behandlingssider (BehandlingHero.vue) -->
+    <BehandlingHero h1-id="laeber-title" titel="Læbefiller i Esbjerg & Vejle – lagt af læge" :eyebrow="eyebrow"
+      lead="Læbefiller – eller lip filler, som mange kalder det – giver fylde, form og en tydeligere læbekant med hyaluronsyre. Hos DK Skønhedsklinik lægges den af en læge, og vi arbejder i små mængder ad gangen, så resultatet bliver naturligt og passer til resten af dit ansigt."
+      :broedkrummer="broedkrummer" pris-fra="1.350" pris-enhed="pr. ml" pris-anker="pris"
+      :billede="{ src: imgHero, w: 1800, h: 2400, fokus: 'center 30%', alt: 'Læge Arash Bagheri lægger læbefiller hos en patient i klinikken' }"
+      :fakta="heroFakta" fakta-label="Læbefiller kort fortalt" booking-kilde="laebefiller" />
 
     <section class="sec" aria-labelledby="hvad-title">
       <div class="laeber-split">
@@ -227,14 +194,25 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
-import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue'
+import BehandlingHero from '@/components/BehandlingHero.vue'
 import LaebeOmraader from '@/components/LaebeOmraader.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
 import imgHero from '@/assets/behandlinger/filler.webp'
 import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
-import { broedkrummerFor, broedkrummeSchema } from '@/data/behandlinger'
+import { broedkrummerFor, broedkrummeSchema, findBehandling, KATEGORIER } from '@/data/behandlinger'
 
 const broedkrummer = broedkrummerFor('laebefiller')
+// Kategorien som eyebrow - samme kilde som de andre behandlingssider
+const eyebrow = KATEGORIER.find(k => k.id === findBehandling('laebefiller')?.kategori)?.navn || ''
+
+// Noegletal i heroen. Prisen staar allerede i heroens prislinje, saa her
+// er resultatet med i stedet. Samme fakta som resten af siden.
+const heroFakta = [
+  { v: '0,5–1 ml', k: 'Typisk mængde' },
+  { v: '45–60 min.', k: 'Behandlingstid' },
+  { v: 'Med det samme', k: 'Resultat' },
+  { v: 'Ca. 12 mdr.', k: 'Holdbarhed – individuelt' }
+]
 
 const SITE_URL = 'https://dsklinik.dk'
 const CANONICAL = `${SITE_URL}/behandlinger/filler/laeber/`
@@ -567,23 +545,22 @@ $c-blue: #2d58a1;
   }
 }
 
-/* ===== Hero i hvidt baand =====
-   Heroen skal kunne baere siden: et hvidt baand i fuld bredde, der klart
-   adskiller den fra indholdet paa den graa side. box-shadow + clip-path
-   giver fuld bredde uden vandret scroll. */
+/* ===== Hero =====
+   BehandlingHero er den samme som paa de andre behandlingssider. Her staar
+   den inde i sidens container, saa det hvide baand traekkes ud til fuld
+   bredde (box-shadow + clip-path - ingen vandret scroll). */
 .laeber-view { padding-top: 0 !important; }
 
-.laeber-top {
-  background: #fff;
+.laeber-view :deep(.bh-hero) {
   box-shadow: 0 0 0 100vmax #fff;
   clip-path: inset(0 -100vmax);
   margin-bottom: 56px;
-  padding: 28px 0 56px;
 }
 
-.laeber-top .side-hero { margin-bottom: 0; }
-.laeber-top .side-hero h1 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
-.laeber-top .side-hero__media img { max-height: 600px; }
+/* Containeren er allerede 90 % under 1000 px - heroen skal ikke krympe igen */
+@media (max-width: 1000px) {
+  .laeber-view :deep(.bh-hero__indre) { width: 100%; }
+}
 
 /* Numrene paa kortene svarer til numrene i diagrammet */
 .omraade h3 {

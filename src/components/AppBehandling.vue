@@ -1,59 +1,9 @@
 <template>
 
-  <!-- Hero: tekst og booking foerst (ogsaa paa mobil), billede ved siden af
-       paa desktop og under teksten paa mobil, noegletal i en raekke under. -->
-  <section class="bh-hero" aria-labelledby="bh-titel">
-    <div class="bh-hero__indre">
-      <AppBreadcrumbs v-if="broedkrummer.length" :sti="broedkrummer" />
-
-      <div class="bh-hero__gitter">
-        <div class="bh-hero__tekst">
-          <p v-if="eyebrow" class="sec__eyebrow">{{ eyebrow }}</p>
-          <h1 id="bh-titel">{{ h1Tekst }}</h1>
-          <p class="bh-hero__lead">{{ description }}</p>
-
-          <p v-if="prisFra" class="bh-hero__pris">
-            <span class="bh-hero__pris-fra">Fra</span>
-            <strong>{{ prisFra }} kr.</strong>
-            <span v-if="prisEnhed" class="bh-hero__pris-enhed">{{ prisEnhed }}</span>
-          </p>
-
-          <div ref="heroHandlingEl" class="bh-hero__handling">
-            <button class="knap knap--primaer bh-hero__book" type="button" @click="openBooking('behandling_hero')">
-              Book gratis forundersøgelse
-            </button>
-            <a v-if="sections.pricing" class="knap knap--sekundaer" href="#pricing"
-              @click.prevent="tilSektion('pricing')">Se priser</a>
-          </div>
-
-          <ul class="bh-hero__tillid">
-            <li>Udføres af læge</li>
-            <li>Gratis forundersøgelse</li>
-            <li>48 timers betænkningstid</li>
-          </ul>
-        </div>
-
-        <figure class="bh-hero__media">
-          <img :src="imageSrc" width="1200" height="1200" :alt="`${title} hos DK Skønhedsklinik`" decoding="async"
-            fetchpriority="high">
-        </figure>
-      </div>
-
-      <dl class="bh-hero__fakta" :aria-label="`${kortNavn} kort fortalt`">
-        <div v-for="f in heroFakta" :key="f.k">
-          <dt>{{ f.k }}</dt>
-          <dd>{{ f.v }}</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- Fast bookingknap i bunden paa mobil: vises, naar heroens knap er
-       rullet ud af syne, og skjules igen ved den afsluttende CTA. -->
-  <div class="bh-bund" :class="{ 'bh-bund--vis': visBundknap }" :aria-hidden="!visBundknap">
-    <button class="knap knap--primaer" type="button" :tabindex="visBundknap ? 0 : -1"
-      @click="openBooking('behandling_bundknap')">Book gratis forundersøgelse</button>
-  </div>
+  <BehandlingHero :titel="h1Tekst" :lead="description" :eyebrow="eyebrow" :broedkrummer="broedkrummer"
+    :pris-fra="prisFra" :pris-enhed="prisEnhed" :pris-anker="sections.pricing ? 'pricing' : ''"
+    :billede="{ src: imageSrc, w: 1200, h: 1200, alt: `${title} hos DK Skønhedsklinik` }"
+    :fakta="heroFakta" :fakta-label="`${kortNavn} kort fortalt`" booking-kilde="behandling" />
 
   <div class="Behandling-content-main">
   <!-- 1) Audience -->
@@ -319,7 +269,7 @@ import { defineProps, computed, ref, watch, nextTick, onMounted, onBeforeUnmount
 import AppBooking from '../components/AppBooking.vue'; // Importer komponenten
 import FaqList from './FaqList.vue'
 import AnsigtOmraader from './AnsigtOmraader.vue'
-import AppBreadcrumbs from './AppBreadcrumbs.vue'
+import BehandlingHero from './BehandlingHero.vue'
 
 
 const props = defineProps({
@@ -517,7 +467,7 @@ const interntLink = (e) => {
 }
 const omraader = computed(() => props.sections?.omraader?.items?.length ? props.sections.omraader : null)
 
-/* ===== Hero ===== */
+/* ===== Hero (BehandlingHero.vue) ===== */
 const kortNavn = computed(() => String(props.title || '').replace(/\s*behandling$/i, ''))
 
 // "550" / "Fra 1.350" -> "550" / "1.350"
@@ -528,52 +478,15 @@ const prisEnhed = computed(() => {
   return m ? `pr. ${m[1]}` : ''
 })
 
+/* Fire noegletal. Bedoevelse og forundersoegelse er taget ud: "Gratis
+   forundersoegelse" staar allerede i chipsene, og bedoevelse er det mindst
+   soegte - begge staar stadig i FAQ og forloeb. */
 const heroFakta = computed(() => [
-  { k: 'Behandlingstid', v: props.duration },
-  { k: 'Resultat', v: props.result },
-  { k: 'Holdbarhed', v: props.durability },
-  { k: 'Nedetid', v: props.downtime },
-  { k: 'Bedøvelse', v: props.anesthesia },
-  { k: 'Forundersøgelse', v: props.consultation }
+  { v: props.duration, k: 'Behandlingstid' },
+  { v: props.result, k: 'Resultat' },
+  { v: props.durability, k: 'Holdbarhed' },
+  { v: props.downtime, k: 'Nedetid' }
 ].filter(f => f.v))
-
-const openBooking = (source) => {
-  window.dispatchEvent(new CustomEvent('open-booking', { detail: { source } }))
-}
-
-const tilSektion = (id) => {
-  const el = document.getElementById(id)
-  if (!el) return
-  const roligt = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  window.scrollTo({ top: maalForAfsnit(el), behavior: roligt ? 'auto' : 'smooth' })
-  history.replaceState(null, '', `#${id}`)
-}
-
-/* Fast bookingknap paa mobil. To IntersectionObservere - ingen
-   scroll-lytter: knappen vises, naar heroens bookingknap er ude af syne
-   (rullet forbi), og skjules, mens den afsluttende CTA er synlig. */
-const heroHandlingEl = ref(null)
-const heroUde = ref(false)
-const ctaInde = ref(false)
-const visBundknap = computed(() => heroUde.value && !ctaInde.value)
-let bundIo = null
-onMounted(() => {
-  if (!('IntersectionObserver' in window) || !heroHandlingEl.value) return
-  const cta = document.querySelector('.behandling-cta')
-  bundIo = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.target === heroHandlingEl.value) heroUde.value = !e.isIntersecting && e.boundingClientRect.top < 0
-      else ctaInde.value = e.isIntersecting
-    }
-  })
-  bundIo.observe(heroHandlingEl.value)
-  if (cta) bundIo.observe(cta)
-})
-watch(visBundknap, (v) => document.body.classList.toggle('bh-bund-vis', v))
-onBeforeUnmount(() => {
-  bundIo?.disconnect()
-  document.body.classList.remove('bh-bund-vis')
-})
 
 const steps3 = computed(() => (props.sections?.steps || []).slice(0, 3))
 
@@ -2233,220 +2146,5 @@ button[type="submit"],
 @media (max-width: 600px) {
   #audience .bullet { gap: 10px; margin-top: 18px; }
   #audience .bullet li { font-size: .95rem; gap: 12px; padding: 14px 16px; }
-}
-
-/* ===== Hero (alle store behandlingssider) =====
-   Hvidt baand som laebefiller-siden: tekst og booking til venstre, billede
-   til hoejre, noegletal i en raekke under. Paa mobil: tekst, pris og
-   bookingknap foerst - de skal kunne ses uden at rulle. */
-.bh-hero {
-  background: #fff;
-  border-bottom: 1px solid rgba(21, 54, 85, .08);
-  box-sizing: border-box;
-  padding: 26px 0 44px;
-}
-
-.bh-hero__indre {
-  box-sizing: border-box;
-  margin: 0 auto;
-  max-width: var(--maal);
-}
-
-.bh-hero__gitter {
-  align-items: center;
-  display: grid;
-  gap: clamp(32px, 5vw, 64px);
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
-}
-
-.bh-hero__tekst { min-width: 0; }
-
-.bh-hero h1 {
-  color: #153655 !important;
-  font-size: clamp(1.75rem, 1.15rem + 2vw, 2.6rem) !important;
-  font-weight: 700;
-  letter-spacing: -.01em;
-  line-height: 1.14;
-  margin: 10px 0 16px !important;
-  padding: 0 !important;
-  text-align: left;
-}
-
-.bh-hero__lead {
-  color: rgba(21, 54, 85, .86) !important;
-  font-size: 1.06rem;
-  line-height: 1.65;
-  margin: 0 0 20px;
-  max-width: 56ch;
-}
-
-.bh-hero__pris {
-  align-items: baseline;
-  color: #153655;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 8px;
-  margin: 0 0 20px;
-}
-
-.bh-hero__pris strong {
-  font-size: 1.65rem;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.bh-hero__pris-fra,
-.bh-hero__pris-enhed {
-  color: rgba(21, 54, 85, .78);
-  font-size: .98rem;
-}
-
-.bh-hero__handling {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 0 0 20px;
-}
-
-.bh-hero__tillid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.bh-hero__tillid li {
-  align-items: center;
-  color: rgba(21, 54, 85, .82);
-  display: inline-flex;
-  font-size: .92rem;
-  gap: 8px;
-  margin: 0;
-}
-
-.bh-hero__tillid li::before {
-  background: #2d58a1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 10px no-repeat;
-  border-radius: 50%;
-  content: '';
-  flex: 0 0 18px;
-  height: 18px;
-}
-
-.bh-hero__media { margin: 0; }
-
-.bh-hero__media img {
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(21, 54, 85, .10);
-  display: block;
-  height: auto;
-  max-height: 540px;
-  object-fit: cover;
-  width: 100%;
-}
-
-/* Noegletal: én raekke med tynde skillelinjer */
-.bh-hero__fakta {
-  background: rgba(45, 88, 161, .045);
-  border: 1px solid rgba(21, 54, 85, .10);
-  border-radius: 14px;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  margin: 36px 0 0;
-  overflow: hidden;
-}
-
-.bh-hero__fakta > div {
-  border-left: 1px solid rgba(21, 54, 85, .10);
-  min-width: 0;
-  padding: 14px 16px;
-}
-
-.bh-hero__fakta > div:first-child { border-left: 0; }
-
-.bh-hero__fakta dt {
-  color: #2d58a1;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.bh-hero__fakta dd {
-  color: #153655;
-  font-size: .98rem;
-  font-weight: 600;
-  line-height: 1.35;
-  margin: 4px 0 0;
-}
-
-@media (max-width: 1100px) {
-  .bh-hero__fakta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .bh-hero__fakta > div:nth-child(3n + 1) { border-left: 0; }
-  .bh-hero__fakta > div:nth-child(n + 4) { border-top: 1px solid rgba(21, 54, 85, .10); }
-}
-
-@media (max-width: 1000px) {
-  .bh-hero__indre { width: 90%; }
-}
-
-/* Tablet og mobil: tekst og booking foerst, billedet under */
-@media (max-width: 900px) {
-  .bh-hero { padding: 16px 0 32px; }
-  .bh-hero__gitter { gap: 24px; grid-template-columns: minmax(0, 1fr); }
-  .bh-hero__media img { aspect-ratio: 16 / 10; max-height: 340px; }
-  .bh-hero__fakta { margin-top: 24px; }
-}
-
-@media (max-width: 600px) {
-  .bh-hero h1 { margin: 6px 0 12px !important; }
-  .bh-hero__lead { font-size: 1rem; line-height: 1.6; margin-bottom: 16px; }
-  .bh-hero__pris { margin-bottom: 16px; }
-  .bh-hero__pris strong { font-size: 1.5rem; }
-  .bh-hero__handling { flex-direction: column; gap: 10px; margin-bottom: 16px; }
-  .bh-hero__handling .knap { box-sizing: border-box; justify-content: center; width: 100%; }
-  .bh-hero__tillid { gap: 6px 14px; }
-  .bh-hero__tillid li { font-size: .85rem; }
-  .bh-hero__fakta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .bh-hero__fakta > div { border-left: 0; border-top: 1px solid rgba(21, 54, 85, .10); padding: 12px 14px; }
-  .bh-hero__fakta > div:nth-child(-n + 2) { border-top: 0; }
-  .bh-hero__fakta > div:nth-child(even) { border-left: 1px solid rgba(21, 54, 85, .10); }
-  .bh-hero__fakta dd { font-size: .92rem; }
-}
-
-/* ===== Fast bookingknap i bunden (kun mobil) ===== */
-.bh-bund { display: none; }
-
-@media (max-width: 700px) {
-  .bh-bund {
-    background: rgba(255, 255, 255, .97);
-    border-top: 1px solid rgba(21, 54, 85, .10);
-    bottom: 0;
-    box-shadow: 0 -6px 20px rgba(21, 54, 85, .08);
-    box-sizing: border-box;
-    display: block;
-    left: 0;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-    position: fixed;
-    right: 0;
-    transform: translateY(110%);
-    transition: transform .25s ease, visibility .25s;
-    visibility: hidden;
-    z-index: 900;
-  }
-
-  .bh-bund--vis { transform: none; visibility: visible; }
-
-  .bh-bund .knap { box-sizing: border-box; justify-content: center; width: 100%; }
-
-  /* Cookie-knappen og "til toppen" flyttes op over bundknappen */
-  :global(body.bh-bund-vis .scroll-to-top) { bottom: 96px !important; }
-  :global(body.bh-bund-vis .dsk-cc-reopen) { bottom: 88px !important; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bh-bund { transition: none; }
 }
 </style>
