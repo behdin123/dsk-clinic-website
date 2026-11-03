@@ -46,20 +46,20 @@
       </div>
     </section>
 
-    <!-- Fra problem til behandling -->
-    <section class="sec sec--panel" aria-labelledby="guide-title">
-      <div class="sec__head">
-        <p class="sec__eyebrow">Vejledning</p>
+    <!-- Fra problem til behandling. Moerkt baand med fliser, saa det ikke
+         ligner FAQ'en lige nedenunder: her vaelger man, der laeser man. -->
+    <section class="sec guide-baand" aria-labelledby="guide-title">
+      <div class="guide-baand__head">
+        <p class="sec__eyebrow sec__eyebrow--lys">Vejledning</p>
         <h2 id="guide-title">Hvilken behandling passer til dig?</h2>
-        <p class="sec__lead">
-          Start med det, du gerne vil ændre. Du behøver ikke vide det på forhånd – lægen vurderer
-          det sammen med dig ved den gratis forundersøgelse.
-        </p>
+        <p>Start med det, du gerne vil ændre. Lægen vurderer det sammen med dig ved den gratis forundersøgelse.</p>
       </div>
       <ul class="guide">
         <li v-for="g in guide" :key="g.slug">
-          <span class="guide__problem">{{ g.problem }}</span>
-          <router-link :to="g.path" class="guide__svar">{{ g.navn }} <span class="pil" aria-hidden="true"></span></router-link>
+          <router-link :to="g.path" class="guide__flise">
+            <span class="guide__problem">{{ g.problem }}</span>
+            <span class="guide__svar">{{ g.navn }} <span class="pil" aria-hidden="true"></span></span>
+          </router-link>
         </li>
       </ul>
     </section>
@@ -85,7 +85,9 @@
         <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
-        <p>Hellere ringe? <a :href="CLINIC_PHONE_HREF">{{ CLINIC_PHONE }}</a></p>
+        <a class="knap knap--lys-kant" :href="CLINIC_SMS_HREF" aria-label="Send os en sms på 53 50 37 50">
+          Send os en sms
+        </a>
       </div>
     </section>
   </section>
@@ -101,7 +103,7 @@ import { useHead } from '@unhead/vue'
 import BehandlingHero from '@/components/BehandlingHero.vue'
 import FaqList from '@/components/FaqList.vue'
 import imgHero from '@/assets/behandlinger/botox-hvem.webp'
-import { CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
+import { CLINIC_SMS_HREF } from '@/config/booking'
 import {
   SITE_URL, aktiveKategorier, behandlingerIKategori, liveBehandlinger, findBehandling,
   broedkrummerFor, broedkrummeSchema
@@ -410,46 +412,92 @@ $c-blue: #2d58a1;
 
 .beh-raekke:hover .beh-raekke__pil { background: $c-blue; border-color: $c-blue; color: #fff; }
 
-.guide__svar .pil { height: .8em; transition: transform .18s ease; width: .8em; }
-.guide__svar:hover .pil { transform: translateX(3px); }
 
-/* ===== Vejledning: problem -> behandling ===== */
+/* ===== Vejledning: navy baand med fliser =====
+   Bevidst anderledes end FAQ'en: moerk flade, fliser i et gitter, og hele
+   flisen er et link videre. FAQ'en er lys og laeses som en liste. */
+.guide-baand {
+  background: $c-dark;
+  border-radius: 18px;
+  box-sizing: border-box;
+  color: #fff;
+  padding: clamp(30px, 4vw, 52px) clamp(22px, 4vw, 56px);
+}
+
+.guide-baand__head { margin-bottom: 28px; max-width: 62ch; }
+
+.guide-baand__head h2 {
+  color: #fff !important;
+  margin: 0 0 10px !important;
+  text-align: left;
+}
+
+.guide-baand__head p:not(.sec__eyebrow) {
+  color: rgba(255, 255, 255, .8);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.guide-baand .sec__eyebrow { color: rgba(255, 255, 255, .78) !important; }
+.guide-baand .sec__eyebrow::before { background: rgba(255, 255, 255, .6) !important; }
+
 .guide {
   display: grid;
-  gap: 10px;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.guide li {
-  align-items: center;
-  background: #fff;
-  border: 1px solid rgba(21, 54, 85, .10);
+.guide > li { display: flex; }
+
+.guide__flise {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
   border-radius: 14px;
-  display: grid;
-  gap: 8px 24px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  padding: 14px 18px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: space-between;
+  padding: 20px 20px 18px;
+  text-decoration: none;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+  width: 100%;
 }
 
-.guide__problem { color: $c-dark; line-height: 1.5; }
+.guide__flise:hover,
+.guide__flise:focus-visible {
+  background: rgba(255, 255, 255, .11);
+  border-color: rgba(255, 255, 255, .32);
+  transform: translateY(-2px);
+}
+
+.guide__problem { font-size: 1.02rem; line-height: 1.5; }
 
 .guide__svar {
   align-items: center;
-  color: $c-blue;
+  color: #9fc0f5;
   display: inline-flex;
   font-weight: 700;
   gap: 8px;
-  text-decoration: none;
-  white-space: nowrap;
 }
 
-.guide__svar:hover { text-decoration: underline; text-underline-offset: 3px; }
+.guide__svar .pil { height: .8em; transition: transform .18s ease; width: .8em; }
+.guide__flise:hover .guide__svar .pil { transform: translateX(3px); }
 
 @media (max-width: 900px) {
   .beh-raekke { gap: 20px; grid-template-columns: 150px minmax(0, 1fr) auto; padding-right: 20px; }
   .beh-raekke__side { align-items: flex-end; flex-direction: column; gap: 10px; }
+}
+
+/* Mobil: kompakte fliser, saa vejledningen ikke bliver en lang stribe */
+@media (max-width: 600px) {
+  .guide { gap: 10px; }
+  .guide__flise { gap: 10px; padding: 16px 18px; }
+  .guide__problem { font-size: .98rem; }
 }
 
 @media (max-width: 700px) {
@@ -475,11 +523,8 @@ $c-blue: #2d58a1;
   .beh-raekke__pil { display: none; }
 }
 
-@media (max-width: 500px) {
-  .guide li { grid-template-columns: minmax(0, 1fr); }
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .beh-raekke, .beh-raekke__billede img, .beh-raekke__pil, .pil { transition: none; }
+  .beh-raekke, .beh-raekke__billede img, .beh-raekke__pil, .guide__flise, .pil { transition: none; }
 }
 </style>
