@@ -347,10 +347,33 @@ $c-blue: #2d58a1;
 
 .laeber-view {
   color: $c-dark;
+  display: flex;
   flex-direction: column;
   margin: 0 auto;
   max-width: var(--maal);
-  padding: 40px 20px 72px !important;
+  padding: 0 !important;
+}
+
+/* ===== Én regel for luft og baggrund - som de andre behandlingssider =====
+   Behandlingssiderne er hvide baand med 50 px luft over og under hvert
+   afsnit (40 px under 667 px). Her giver det samme resultat: hvid baggrund
+   i fuld bredde (box-shadow + clip-path, ingen vandret scroll), og hvert
+   afsnit har 50/40 px margin over og under. Margener lægges ikke sammen i
+   en flex-kolonne, saa der bliver 100/80 px mellem afsnittene - præcis som
+   to baand paa de andre sider. Heroen har sin egen luft og starter lige
+   under navigationen. */
+.laeber-view {
+  --sektion-luft: 50px;
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
+}
+
+.laeber-view > * { margin-bottom: var(--sektion-luft) !important; margin-top: var(--sektion-luft) !important; }
+.laeber-view > :deep(.bh-hero) { margin-bottom: 0 !important; margin-top: 0 !important; }
+
+@media (max-width: 666px) {
+  .laeber-view { --sektion-luft: 40px; }
 }
 
 .sr-only {
@@ -365,7 +388,6 @@ $c-blue: #2d58a1;
   width: 1px;
 }
 
-.sec { margin-bottom: 64px; }
 
 .laeber-view p { line-height: 1.7; }
 .laeber-view .sec > p,
@@ -531,11 +553,6 @@ $c-blue: #2d58a1;
 
 /* Under 1000 px: samme opskrift som klinikssiderne - 90 % bredde */
 @media only screen and (max-width: 1000px) {
-  .laeber-view {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
   .laeber-view > * {
     box-sizing: border-box;
     margin-left: auto !important;
@@ -545,19 +562,8 @@ $c-blue: #2d58a1;
   }
 }
 
-/* ===== Hero =====
-   BehandlingHero er den samme som paa de andre behandlingssider. Her staar
-   den inde i sidens container, saa det hvide baand traekkes ud til fuld
-   bredde (box-shadow + clip-path - ingen vandret scroll). */
-.laeber-view { padding-top: 0 !important; }
-
-.laeber-view :deep(.bh-hero) {
-  box-shadow: 0 0 0 100vmax #fff;
-  clip-path: inset(0 -100vmax);
-  margin-bottom: 56px;
-}
-
-/* Containeren er allerede 90 % under 1000 px - heroen skal ikke krympe igen */
+/* Heroen staar inde i containeren, som er 90 % under 1000 px - den skal
+   ikke krympe igen */
 @media (max-width: 1000px) {
   .laeber-view :deep(.bh-hero__indre) { width: 100%; }
 }
