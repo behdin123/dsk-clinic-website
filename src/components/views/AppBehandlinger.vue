@@ -934,6 +934,7 @@ useHead(() => {
   padding-right: 0;
   width: 100%;
   background: var(--primary-color) !important;
+  padding-block: var(--sektion-luft);
 }
 
 @media (max-width: 1000px) {
@@ -948,7 +949,7 @@ useHead(() => {
   box-sizing: border-box;
   margin: 0;
   max-width: none !important;
-  padding-block: 56px 72px;
+  padding-block: var(--sektion-luft);
   padding-inline: max(var(--gutter), (100% - var(--maal)) / 2) !important;
   width: 100%;
 }

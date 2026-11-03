@@ -44,12 +44,12 @@ const kort = computed(() => relateredeFor(props.slug, props.antal))
 $c-dark: #153655;
 $c-blue: #2d58a1;
 
-.relateret {
-  padding: 64px 0;
-  border-top: 1px solid rgba(21, 54, 85, .12);
-}
+/* Ingen egen luft eller skillelinje: siden, der bruger komponenten,
+   styrer afstanden (--sektion-luft), ligesom alle andre afsnit. */
+.relateret { padding: 0; }
 
 .relateret__title {
+  margin-top: 0 !important;
   margin-bottom: 22px;
   color: $c-dark;
 }
@@ -117,7 +117,6 @@ $c-blue: #2d58a1;
 
 @media (max-width: 600px) {
   .relateret__grid { grid-template-columns: 1fr; gap: 16px; }
-  .relateret { padding-top: 30px; }
   .behandling-relateret { width: 100%; }
 }
 </style>

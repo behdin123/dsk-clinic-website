@@ -605,7 +605,7 @@ $bd-muted: rgba(255, 255, 255, .12);
 .slice {
   background: $c-dark;
   color: $c-white;
-  padding: 50px 16px;
+  padding: var(--sektion-luft) 16px;
   scroll-margin-top: 90px;
   border-top: 1px solid rgba(255, 255, 255, .06);
 }
@@ -653,7 +653,7 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 
 // ===== Media image ratios =====
-.audience-media img, .expectations-media {
+.audience-media img, .expectations-media img {
   aspect-ratio: 1/1;
   display: block;
 }
@@ -854,6 +854,7 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 #safety .bullet li:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 #safety:not(.alt) .bullet li {
@@ -1534,7 +1535,7 @@ button[type="submit"],
   }
 
   .slice {
-    padding: 40px 0;
+    padding: var(--sektion-luft) 0;
   }
 }
 
@@ -1596,6 +1597,10 @@ button[type="submit"],
 .slice > .slice-inner { padding-left: 0 !important; padding-right: 0 !important; }
 
 .faq .faq-kort { margin-bottom: 0; }
+
+/* FAQ-baandet foelger samme luft som de andre afsnit (style.scss giver
+   ellers 100/70 px) */
+.faq { padding-bottom: var(--sektion-luft) !important; padding-top: var(--sektion-luft) !important; }
 .faq .faq-kort h2 { text-align: left; }
 
 @media (max-width: 1000px) {

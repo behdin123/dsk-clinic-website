@@ -141,7 +141,8 @@ onBeforeUnmount(() => {
   background: #fff;
   border-bottom: 1px solid rgba(21, 54, 85, .08);
   box-sizing: border-box;
-  padding: 26px 0 40px;
+  /* Bunden foelger --sektion-luft, saa der er 100/80 px til foerste afsnit */
+  padding: 26px 0 var(--sektion-luft);
 }
 
 .bh-hero__indre {
@@ -231,7 +232,7 @@ onBeforeUnmount(() => {
 
 /* Tablet og mobil: tekst og booking foerst, billedet under */
 @media (max-width: 900px) {
-  .bh-hero { padding: 16px 0 28px; }
+  .bh-hero { padding: 16px 0 var(--sektion-luft); }
   .bh-hero__gitter { gap: 24px; grid-template-columns: minmax(0, 1fr); }
   .bh-hero__media img { aspect-ratio: 16 / 10; max-height: 340px; }
   .bh-hero__fakta { margin-top: 24px; }

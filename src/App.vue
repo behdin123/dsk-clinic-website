@@ -269,7 +269,13 @@ onMounted(() => {
      Vaerdien foelger vindueshoejden, saa heroen holder sig inden for
      skaermen paa en lille laptop i stedet for at skubbe indholdet ned. */
   --hero-luft: clamp(24px, 4.5vh, 76px);
+
+  /* Luft over og under hvert afsnit paa behandlingssiderne. To afsnit
+     efter hinanden giver tilsammen 100 px (80 px paa mobil). */
+  --sektion-luft: 50px;
 }
+
+@media (max-width: 666px) { :root { --sektion-luft: 40px; } }
 
 @media (min-width: 1500px) { :root { --maal: 1080px; } }
 @media (min-width: 1800px) { :root { --maal: 1220px; } }

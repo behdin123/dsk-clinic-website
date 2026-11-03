@@ -362,8 +362,8 @@ $c-blue: #2d58a1;
    en flex-kolonne, saa der bliver 100/80 px mellem afsnittene - præcis som
    to baand paa de andre sider. Heroen har sin egen luft og starter lige
    under navigationen. */
+/* --sektion-luft er defineret i App.vue (50 px / 40 px under 667 px) */
 .laeber-view {
-  --sektion-luft: 50px;
   background: #fff;
   box-shadow: 0 0 0 100vmax #fff;
   clip-path: inset(0 -100vmax);
@@ -372,9 +372,6 @@ $c-blue: #2d58a1;
 .laeber-view > * { margin-bottom: var(--sektion-luft) !important; margin-top: var(--sektion-luft) !important; }
 .laeber-view > :deep(.bh-hero) { margin-bottom: 0 !important; margin-top: 0 !important; }
 
-@media (max-width: 666px) {
-  .laeber-view { --sektion-luft: 40px; }
-}
 
 .sr-only {
   border: 0;
