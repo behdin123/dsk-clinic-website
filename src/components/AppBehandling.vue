@@ -647,7 +647,7 @@ $bd-muted: rgba(255, 255, 255, .12);
 .slice {
   background: $c-dark;
   color: $c-white;
-  padding: 70px 16px;
+  padding: 50px 16px;
   scroll-margin-top: 90px;
   border-top: 1px solid rgba(255, 255, 255, .06);
 }
@@ -661,16 +661,11 @@ $bd-muted: rgba(255, 255, 255, .12);
   }
 }
 
-.slice-media {
-  width: 45%;
-}
-
 .slice-media img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 15px;
-  aspect-ratio: 16/9;
   box-shadow: 0 8px 22px rgba(0, 0, 0, .25);
 }
 
@@ -679,8 +674,6 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 .resultater-body {
-  width: 45% !important;
-
   p {
     font-size: 18px;
     line-height: 30px;
@@ -702,12 +695,12 @@ $bd-muted: rgba(255, 255, 255, .12);
 
 
 // ===== Media image ratios =====
-.audience-media img {
+.audience-media img, .expectations-media {
   aspect-ratio: 1/1;
+  display: block;
 }
 
 .expectations-media img {
-  aspect-ratio: 1/1;
   object-position: left;
 }
 
@@ -778,7 +771,8 @@ $bd-muted: rgba(255, 255, 255, .12);
 }
 
 .slice-body{
-  max-width: 800px;
+  max-width: 67ch;
+  width: 80%;
 }
 
 .slice-title {
@@ -1443,12 +1437,7 @@ button[type="submit"],
   }
 
   .slice {
-    padding: 70px 0;
     margin: 0 auto;
-  }
-
-  h2 {
-    font-size: 36px !important;
   }
 
   .audience-media img {
@@ -1587,7 +1576,7 @@ button[type="submit"],
   }
 
   .slice {
-    padding: 50px 0;
+    padding: 40px 0;
   }
 }
 
@@ -2035,7 +2024,7 @@ button[type="submit"],
   font-size: 1.22rem;
   gap: 12px;
   line-height: 1.3;
-  margin: 0 0 14px;
+  margin: 0 0 14px !important;
   text-align: left;
 }
 
@@ -2157,8 +2146,6 @@ button[type="submit"],
   margin: 22px 0 0;
   padding: 0;
 }
-
-#audience .audience-intro { border-bottom: 0; padding: 0; }
 
 #audience .bullet li {
   align-items: flex-start;
