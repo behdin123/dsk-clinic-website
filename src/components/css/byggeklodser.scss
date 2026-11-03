@@ -147,13 +147,12 @@
 
 /* --- Nøgletal i en raekke --- */
 .fakta {
-  border-bottom: 1px solid rgba(21, 54, 85, .12);
   border-top: 1px solid rgba(21, 54, 85, .12);
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0 0 64px;
-  padding: 26px 0;
+  padding: 26px 0 0 0;
 }
 
 .fakta dt {
