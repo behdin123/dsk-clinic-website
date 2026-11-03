@@ -53,6 +53,7 @@ import imgKonsultation from '@/assets/behandlinger/konsultation.webp'
 import imgBotoxResultat from '@/assets/behandlinger/botox_result.webp'
 import imgSikkerhed from '@/assets/behandlinger/sikkerhed.webp'
 import imgBotoxOmraader from '@/assets/behandlinger/botox-omraader.webp'
+import imgBotoxHvem from '@/assets/behandlinger/botox-hvem.webp'
 import imgConsultation from '@/assets/behandlinger/consultation.webp'
 import imgFillerSektion from '@/assets/behandlinger/filler.webp'
 import imgSkinboosterSektion from '@/assets/behandlinger/skinbooster.webp'
@@ -237,6 +238,9 @@ const behandlinger = {
         andre: 'Vi behandler også <b>rygerrynker</b> over overlæben, <b>kæbemusklen</b> for en slankere kæbelinje og <b>halsen</b> (vandrette linjer og halsstrenge). Spørg til dem ved forundersøgelsen.',
         prisLink: { tekst: 'Se priser på botox', to: '/priser/' }
       },
+      alts: {
+        audience: 'Lægen behandler en patient med botox i panden i klinikken'
+      },
       expectations: {
         summary:
           'Botox virker ved at få de små muskler i ansigtet til at slappe af, så <b>rynker glattes</b> uden at påvirke resten af ansigtet. Behandlingen virker kun i de ønskede områder, så resten af ansigtet bevarer sin normale mimik',
@@ -287,7 +291,7 @@ const behandlinger = {
       }
     },
     sectionsAssets: {
-      audience: imgKonsultation,
+      audience: imgBotoxHvem,
       expectations: imgBotoxResultat,
       safety: imgSikkerhed,
     }

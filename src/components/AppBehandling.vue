@@ -560,6 +560,8 @@ const audienceBullets = computed(() => {
 
 
 const sectionAlt = (key) => {
+  // Egen alt-tekst fra data, naar billedet viser noget bestemt
+  if (props.sections?.alts?.[key]) return props.sections.alts[key]
   const t = (props.title || '').trim() // مثل "Botox behandling"
   switch (key) {
     case 'audience':
@@ -2140,5 +2142,64 @@ button[type="submit"],
   .omr__ankre-liste { gap: 10px; }
   .omr__ankre-liste a { gap: 10px; min-height: 48px; padding: 10px 12px 10px 10px; }
   .omr__ankre-navn { font-size: .92rem; }
+}
+
+/* ===== "Hvem er … til?" - punkterne som rene kort =====
+   Tidligere: store pile og tekst klemt i to smalle spalter. Nu kort i
+   kortsproget (tonet flade, tynd kant, radius 14) med et blaat flueben.
+   Gitteret finder selv antallet: to kort side om side, naar der er plads
+   (mindst 250 px pr. kort), ellers ét kort pr. raekke. Aldrig mere end to. */
+#audience .bullet {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(max(250px, calc(50% - 6px)), 1fr));
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+
+#audience .audience-intro { border-bottom: 0; padding: 0; }
+
+#audience .bullet li {
+  align-items: flex-start;
+  background: rgba(45, 88, 161, .045);
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 14px;
+  box-sizing: border-box;
+  color: #153655;
+  display: flex;
+  font-size: 1rem;
+  gap: 14px;
+  line-height: 1.55;
+  margin: 0;
+  min-width: 0;
+  padding: 16px 18px;
+}
+
+#audience .bullet li::before {
+  -webkit-mask: none;
+  background: #2d58a1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+  border-radius: 50%;
+  content: "";
+  flex: 0 0 26px;
+  font-size: inherit;
+  height: 26px;
+  margin: 0;
+  mask: none;
+  width: 26px;
+}
+
+#audience .bullet li .li-text { min-width: 0; }
+#audience .bullet li b { color: #153655; font-weight: 700; }
+
+/* Naar teksten er hoejere end billedet (ét kort pr. raekke), staar
+   billedet midt ud for teksten i stedet for oeverst med tomt felt under */
+@media (min-width: 901px) {
+  #audience .slice-inner { align-items: center; }
+}
+
+@media (max-width: 600px) {
+  #audience .bullet { gap: 10px; margin-top: 18px; }
+  #audience .bullet li { font-size: .95rem; gap: 12px; padding: 14px 16px; }
 }
 </style>
