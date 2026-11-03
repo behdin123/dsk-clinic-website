@@ -2166,7 +2166,7 @@ button[type="submit"],
 
 @media (max-width: 900px) {
   .omr__gitter { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .omr__diagram { position: static; margin: 0 auto; max-width: 340px; width: 100%; }
+  .omr__diagram { position: static; margin: 0 auto; max-width: none; width: 100%; }
 }
 
 @media (max-width: 600px) {
