@@ -115,6 +115,9 @@
         <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
+        <a class="knap knap--lys-kant" :href="CLINIC_SMS_HREF" aria-label="Send os en sms på 53 50 37 50">
+          Send os en sms
+        </a>
       </div>
     </section>
   </section>
@@ -123,6 +126,7 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
+import { CLINIC_SMS_HREF } from '@/config/booking'
 
 const SITE_URL = 'https://dsklinik.dk'
 

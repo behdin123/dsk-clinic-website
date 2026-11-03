@@ -25,7 +25,9 @@
         <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
-        <p>Hellere ringe? <a :href="CLINIC_PHONE_HREF">{{ CLINIC_PHONE }}</a></p>
+        <a class="knap knap--lys-kant" :href="CLINIC_SMS_HREF" aria-label="Send os en sms på 53 50 37 50">
+          Send os en sms
+        </a>
       </div>
     </section>
   </div>
@@ -36,7 +38,7 @@ import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppBehandling from '../AppBehandling.vue'
 import RelateredeBehandlinger from '../RelateredeBehandlinger.vue'
-import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
+import { BOOKING_URL, CLINIC_SMS_HREF } from '@/config/booking'
 import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema, KATEGORIER } from '@/data/behandlinger'
 
 /* Afsluttende CTA - samme banner som paa laebefiller-siden */

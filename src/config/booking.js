@@ -13,3 +13,8 @@ export const BOOKING_EMBED_SCRIPT =
 
 export const CLINIC_PHONE = '+45 53 50 37 50'
 export const CLINIC_PHONE_HREF = 'tel:+4553503750'
+
+// Laegen svarer helst paa sms frem for opkald - sms er derfor den
+// foretrukne kontaktvej i CTA'erne. Samme forudfyldte tekst som forsiden.
+export const CLINIC_SMS_HREF =
+  'sms:+4553503750?&body=Hej%20DK%20Sk%C3%B8nhedsklinik%2C%20jeg%20vil%20gerne%20h%C3%B8re%20mere%20om%20'

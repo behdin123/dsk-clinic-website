@@ -185,7 +185,9 @@
         <button class="knap knap--hvid" type="button" @click="openBooking">
           Book gratis forundersøgelse
         </button>
-        <p>Hellere ringe? <a :href="phoneHref">{{ phone }}</a></p>
+        <a class="knap knap--lys-kant" :href="CLINIC_SMS_HREF" aria-label="Send os en sms på 53 50 37 50">
+          Send os en sms
+        </a>
       </div>
     </section>
   </section>
@@ -198,7 +200,7 @@ import BehandlingHero from '@/components/BehandlingHero.vue'
 import LaebeOmraader from '@/components/LaebeOmraader.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
 import imgHero from '@/assets/behandlinger/filler.webp'
-import { BOOKING_URL, CLINIC_PHONE, CLINIC_PHONE_HREF } from '@/config/booking'
+import { BOOKING_URL, CLINIC_SMS_HREF } from '@/config/booking'
 import { broedkrummerFor, broedkrummeSchema, findBehandling, KATEGORIER } from '@/data/behandlinger'
 
 const broedkrummer = broedkrummerFor('laebefiller')
@@ -217,8 +219,6 @@ const heroFakta = [
 const SITE_URL = 'https://dsklinik.dk'
 const CANONICAL = `${SITE_URL}/behandlinger/filler/laeber/`
 
-const phone = CLINIC_PHONE
-const phoneHref = CLINIC_PHONE_HREF
 
 
 /* Ankerlink: rul blødt hen til sektionen og laeg den midt paa skaermen */

@@ -59,6 +59,15 @@
 .knap--sekundaer:focus-visible { border-color: #153655; }
 
 .knap--hvid { background: #fff; color: #1e4078 !important; }
+
+/* Kant-knap paa blaa/moerk baggrund (fx "Send os en sms" i cta-kortet) */
+.knap--lys-kant {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, .6);
+  color: #fff !important;
+}
+.knap--lys-kant:hover,
+.knap--lys-kant:focus-visible { background: rgba(255, 255, 255, .1); border-color: #fff; }
 .knap--hvid:hover,
 .knap--hvid:focus-visible { background: #eaf0fa; }
 
@@ -375,7 +384,10 @@
   gap: 10px;
 }
 
+/* Begge knapper lige brede, saa de staar som et par */
+.cta-kort__handling .knap { box-sizing: border-box; justify-content: center; text-align: center; width: 100%; }
+
 @media (max-width: 800px) {
   .cta-kort { grid-template-columns: minmax(0, 1fr); }
-  .cta-kort__handling { align-items: flex-start; }
+  .cta-kort__handling { align-items: stretch; }
 }
