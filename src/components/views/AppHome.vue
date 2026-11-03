@@ -1206,6 +1206,7 @@ onMounted(() => {
 }
 
 .Multimediedesigner {
+  padding: 50px 0;
   .txt {
     color: var(--quaternary-color) !important;
   }
