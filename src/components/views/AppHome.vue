@@ -188,7 +188,7 @@
             <p data-aos="fade-up" data-aos-duration="1000">
               <strong>Klar til at tage første skridt?</strong> Hos DK Skønhedsklinik tilbyder vi en gratis og
               uforpligtende online
-              konsultation, hvor du sammen med vores specialuddannede læge kan gennemgå dine ønsker og muligheder for
+              konsultation, hvor du sammen med lægen kan gennemgå dine ønsker og muligheder for
               behandlingen. Vi sørger for, at du føler dig tryg ved at tale om eventuelle gener, risici og mulige
               komplikationer. Under konsultationen tager vi også hensyn til alle eventuelle behandling påvirkende
               faktorer.

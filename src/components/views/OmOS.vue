@@ -123,7 +123,7 @@
 
                 <p>
                     Uanset om du ønsker en <b>hudbehandling</b>, <b>filler</b>, <b>skinbooster</b> eller andre
-                    æstetiske forbedringer, er du i kyndige hænder hos vores specialuddannede behandlere.
+                    æstetiske forbedringer, er du i hænderne på en erfaren læge.
                     Hos DK Skønhedsklinik er vores mission at hjælpe dig med at fremhæve din naturlige skønhed på en
                     sikker og professionel måde.
                 </p>
