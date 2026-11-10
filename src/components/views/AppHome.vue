@@ -79,149 +79,116 @@
 
     </div>
 
-    <div class="primary-color Behandlinger-section">
-      <div class="container-width">
-        <h2 class="section-title">Populære kosmetiske behandlinger</h2>
-        <div class="container_carts">
+    <!-- Behandlinger: kortene laeses fra det centrale register, saa navn,
+         tekst og pris er de samme som i menuen og paa oversigtssiden. -->
+    <section class="fs-baand" aria-labelledby="fs-beh-titel">
+      <div class="fs-indre">
+        <div class="fs-hoved">
+          <div class="sec__head">
+            <p class="sec__eyebrow">Behandlinger</p>
+            <h2 id="fs-beh-titel">Find den behandling, der passer til dig</h2>
+            <p class="sec__lead">
+              Alle behandlinger udføres af klinikkens læge og begynder med en gratis forundersøgelse.
+            </p>
+          </div>
+          <router-link to="/behandlinger/" class="fs-alle">
+            Se alle behandlinger<span class="pil" aria-hidden="true"></span>
+          </router-link>
+        </div>
 
-          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'botox' } }">
-            <div class="card botox">
-              <div class="card-content">
-                <h3>Botox</h3>
-                <p>
-                  Få reduceret rynker og fine linjer med en sikker og effektiv behandling.
-                  Perfekt til et naturligt og frisk look
+        <ul class="fs-kortliste">
+          <li v-for="b in forsideBehandlinger" :key="b.slug">
+            <router-link :to="b.path" class="fs-kort" :aria-label="`${b.navn} – læs mere`">
+              <div class="fs-kort__medie">
+                <img :src="b.billede" alt="" width="700" height="525" loading="lazy" decoding="async">
+              </div>
+              <div class="fs-kort__krop">
+                <p class="fs-kort__kategori">{{ b.kategoriNavn }}</p>
+                <h3>{{ b.navn }}</h3>
+                <p class="fs-kort__tekst">{{ b.kort }}</p>
+                <p class="fs-kort__fod">
+                  <span class="fs-kort__pris">{{ b.pris }}</span>
+                  <span class="fs-kort__pil" aria-hidden="true"><span class="pil"></span></span>
                 </p>
               </div>
-            </div>
-          </router-link>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'filler' } }">
-            <div class="card filler">
-              <div class="card-content">
-                <h3>Filler</h3>
-                <p>Tilføj volumen og form til dine læber, kinder eller andre områder i ansigtet. Skab en harmonisk og
-                  naturlig skønhed</p>
-              </div>
-            </div>
-          </router-link>
+    <!-- Klinikkens laege -->
+    <section class="fs-baand fs-baand--navy fs-baand--laege" aria-labelledby="fs-laege-titel">
+      <div class="fs-indre fs-laege">
+        <figure class="fs-laege__portraet">
+          <img src="../../assets/Arash_Bagheri2.webp" width="800" height="1271" loading="lazy" decoding="async"
+            alt="Læge Arash Bagheri, indehaver af DK Skønhedsklinik">
+        </figure>
 
-          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'skinbooster' } }">
-            <div class="card skinbooster">
-              <div class="card-content">
-                <h3>Skinbooster</h3>
-                <p>Giv din hud et fugtboost indefra, så den ser frisk, og ungdommelig ud. Perfekt til tør eller træt
-                  hud,
-                  der har brug for ekstra næring og vitalitet</p>
-              </div>
-            </div>
-          </router-link>
-
-          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'mesotherapy' } }">
-            <div class="card mesotherapy">
-              <div class="card-content">
-                <h3>Mesotherapy</h3>
-                <p>Få en dybdegående næring til din hud med en cocktail af vitaminer og antioxidanter. Perfekt til glød
-                  og
-                  fornyelse</p>
-              </div>
-            </div>
-          </router-link>
-
-          <router-link :to="{ name: 'behandling-dynamic', params: { type: 'microneedling' } }">
-            <div class="card microneedling">
-              <div class="card-content">
-                <h3>Microneedling</h3>
-                <p>Stimuler hudens naturlige helingsproces og boost kollagenproduktionen. Perfekt til reducering af ar,
-                  rynker og pigmentering</p>
-              </div>
-            </div>
+        <div class="fs-laege__tekst">
+          <p class="sec__eyebrow">Klinikkens læge</p>
+          <h2 id="fs-laege-titel">Læge Arash Bagheri</h2>
+          <blockquote class="fs-laege__citat">
+            <p>
+              Mit navn er Arash Bagheri, læge og indehaver af DK Skønhedsklinik. Jeg har været læge
+              i 30 år – de seneste 17 i det danske sundhedsvæsen – og har mere end 20 års erfaring inden for
+              kosmetiske behandlinger. Jeg brænder for at hjælpe mine patienter til øget selvtillid og velvære.
+            </p>
+            <p>
+              I DK Skønhedsklinik sørger jeg for, at hver behandling lever op til vores høje standarder for
+              sikkerhed, etik og æstetik. Vi går aldrig på kompromis med din tryghed.
+            </p>
+          </blockquote>
+          <p class="fs-laege__lille">
+            Vi står altid klar til at hjælpe og rådgive dig på den bedst mulige måde. Du kan kontakte os
+            med alle de spørgsmål, du måtte have om din huds friskhed og glød.
+          </p>
+          <router-link to="/omos/" class="fs-alle fs-alle--lys">
+            Læs mere om klinikkens læge<span class="pil" aria-hidden="true"></span>
           </router-link>
         </div>
       </div>
-    </div>
+    </section>
 
-
-    <div class="contain first-mode padding">
-      <div class="informations h1">
-
-        <div class="Arash_Bagheri_Portrait">
-          <img src="../../assets/Arash_Bagheri2.webp" width="800" height="1271" loading="lazy" decoding="async" alt="Arash Bagheri – erfaren læge hos DK Skønhedsklinik">
-        </div>
-
-        <div data-aos="fade-up" class="info" id="Info-div">
-          <div id="FirstIcons" class="icons"><img src="../../assets/icons/quote.webp" width="50" height="41"
-              alt="Arash Bagheri, erfaren læge hos DK Skønhedsklinik" loading="lazy" decoding="async">
-          </div>
-          <div>
-            <h2>Arash Bagheri</h2>
+    <!-- Forundersoegelse -->
+    <section class="fs-baand" aria-labelledby="fs-forund-titel">
+      <div class="fs-indre split">
+        <div class="split__tekst">
+          <div class="sec__head">
+            <p class="sec__eyebrow">Forundersøgelse</p>
+            <h2 id="fs-forund-titel">Book en gratis online forundersøgelse</h2>
           </div>
           <p>
-            Vi står altid klar til hjælpe og rådgive dig på den bedst mulig måde.
-            Du kan komme i kontakt med os og komme alle de spørgsmål du måtte
-            have omkring din huds friskhed og glød
+            <strong>Klar til at tage første skridt?</strong> Hos DK Skønhedsklinik tilbyder vi en gratis og
+            uforpligtende online konsultation, hvor du sammen med lægen kan gennemgå dine ønsker og muligheder
+            for behandlingen. Vi sørger for, at du føler dig tryg ved at tale om eventuelle gener, risici og
+            mulige komplikationer.
           </p>
-          <p>Mit navn er <b>Arash Bagheri</b>, læge og indehaver af DK Skønhedsklinik. Jeg har været læge
-            i 30 år – de seneste 17 i det danske sundhedsvæsen – og har mere end 20 års erfaring inden for
-            kosmetiske behandlinger. Jeg brænder for at hjælpe mine patienter til øget selvtillid og velvære.
-            I DK Skønhedsklinik sørger jeg for, at hver behandling lever op til vores høje standarder for
-            sikkerhed, etik og æstetik. Vi går aldrig på kompromis med din tryghed.
-            <br> <br>
-
-            <router-link to="/omos/" class="inline-link læs-mere" aria-label="Arash Bagheri – læs mere"
-              data-tooltip="Går til: Om os"> <span class="pil" aria-hidden="true"></span>Læs mere om klinikkens læge</router-link>
-          </p>
-
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container Multimediedesigner VIKING Undersøgelse">
-      <div class="container-width">
-        <div class="txt h1 h2 first-txt">
-          <div>
-            <h3 data-aos="fade-up" data-aos-duration="1000">DK skønhedsklinik</h3>
-            <h2 data-aos="fade-up" data-aos-duration="1000">Book en gratis online forundersøgelse</h2>
-
-            <p data-aos="fade-up" data-aos-duration="1000">
-              <strong>Klar til at tage første skridt?</strong> Hos DK Skønhedsklinik tilbyder vi en gratis og
-              uforpligtende online
-              konsultation, hvor du sammen med lægen kan gennemgå dine ønsker og muligheder for
-              behandlingen. Vi sørger for, at du føler dig tryg ved at tale om eventuelle gener, risici og mulige
-              komplikationer. Under konsultationen tager vi også hensyn til alle eventuelle behandling påvirkende
-              faktorer.
-            </p>
-
-            <p>
-              Konsultationen udføres af vores erfarne læge, der står klar til at besvare alle dine spørgsmål.
-              Behandlingen kan først finde sted minimum 2 dage efter konsultationen.
-            </p>
-
-            <p><strong>Book en konsultation i dag</strong> og lad os sammen lægge en plan, der fremhæver det smukkeste
-              ved
-              dig.</p>
-          </div>
-          <div class="booking-button">
-            <button class="general_button arrow" type="button" @click="openBookingFromHero"
-              aria-label="Book gratis forundersøgelse">
+          <ul class="tjek fs-tjek">
+            <li>Konsultationen udføres af klinikkens læge</li>
+            <li>Gratis og uforpligtende</li>
+            <li>Behandling tidligst 2 dage efter konsultationen</li>
+          </ul>
+          <div class="fs-handling">
+            <button class="knap knap--primaer" type="button" @click="openBookingFromHero">
               Book gratis forundersøgelse
             </button>
           </div>
         </div>
 
-        <div class="VIKING-image">
-          <img class="first-img samtale-img" :src="imgOmOs" width="1400" height="1738" loading="lazy"
+        <div class="split__medie fs-medie fs-medie--hoej">
+          <img :src="imgOmOs" width="1100" height="1366" loading="lazy" decoding="async"
             alt="Læge Arash Bagheri under en konsultation hos DK Skønhedsklinik">
         </div>
       </div>
-    </div>
+    </section>
 
-
-
+    <!-- Sociale medier -->
     <div class="sliderContainer">
-      <h2>Sociale medier – Seneste opslag</h2>
+      <div class="fs-slider-hoved">
+        <p class="sec__eyebrow">Sociale medier</p>
+        <h2>Seneste opslag fra klinikken</h2>
+      </div>
       <div class="slider">
         <div class="slides">
 
@@ -266,48 +233,38 @@
       <div class="dots" role="tablist" aria-label="Galleri navigation"></div>
     </div>
 
-
-    <div class="container Multimediedesigner VIKING OmKlinik">
-      <div class="container-width">
-        <div class="VIKING-image">
-          <img class="first-img" :src="imgClinic" width="1800" height="1194" loading="lazy" decoding="async" alt="Klinik-konsultation med erfaren læge">
+    <!-- Om klinikkerne -->
+    <section class="fs-baand" aria-labelledby="fs-klinik-titel">
+      <div class="fs-indre split split--medie-foerst">
+        <div class="split__tekst">
+          <div class="sec__head">
+            <p class="sec__eyebrow">Om klinikkerne</p>
+            <h2 id="fs-klinik-titel">Ekspertise og kvalitet i hver behandling</h2>
+          </div>
+          <p>
+            Vores læge, som har mere end <strong>20 års erfaring</strong> inden for skønhedsbehandlinger,
+            vil sørge for, at du får en behandling, der er skræddersyet til dig. Vi specialiserer os
+            i æstetiske løsninger, der tilpasses dine individuelle behov.
+          </p>
+          <p>
+            I vores klinik kombinerer vi den <strong>nyeste teknologi</strong> med høj faglig ekspertise for at
+            sikre naturlige og harmoniske resultater. Vi prioriterer sikkerhed, kvalitet og kundetilfredshed,
+            så du kan føle dig tryg gennem hele forløbet.
+          </p>
+          <div class="fs-handling">
+            <router-link to="/omos/" class="knap knap--sekundaer">Læs mere om DK Skønhedsklinik</router-link>
+            <button class="fs-alle fs-alle--knap" type="button" @click="openBookingFromHero">
+              Book gratis forundersøgelse<span class="pil" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
-        <div class="txt h1 h2 first-txt margin-left Ekspertise-txt">
-          <div>
-            <h3 data-aos="fade-up" data-aos-duration="1000">Om vores klinikker</h3>
-            <h2 data-aos="fade-up" data-aos-duration="1000">Ekspertise og kvalitet i hver behandling</h2>
 
-            <p data-aos="fade-up" data-aos-duration="1000">
-              Vores læge, som har mere end <strong>20 års erfaring</strong> inden for skønhedsbehandlinger,
-              vil sørge for, at du får en behandling, der er skræddersyet til dig. Vi specialiserer os
-              i æstetiske løsninger, der tilpasses dine individuelle behov.
-            </p>
-
-
-            <p data-aos="fade-up" data-aos-duration="1000">
-              I vores klinik kombinerer vi den <strong>nyeste teknologi</strong> med høj faglig ekspertise for at sikre
-              naturlige og harmoniske resultater. Vi prioriterer sikkerhed, kvalitet og kundetilfredshed,
-              så du kan føle dig tryg gennem hele forløbet.
-            </p>
-
-            <p>
-              <button class="inline-button inline-link" type="button" @click="openBookingFromHero"
-                aria-label="Book gratis forundersøgelse">
-                <strong>Book en gratis</strong>
-              </button>
-              og uforpligtende konsultation, og lad os hjælpe dig med at
-              fremhæve din naturlige skønhed.
-            </p>
-          </div>
-
-          <div class="booking-button">
-            <router-link to="/omos/" class="arrow general_button"
-              aria-label="Om DK Skønhedsklinik, Ekspertise og kvalitet – læs mere" data-tooltip="Går til: Om os">
-              Læse mere om DK Skønhedsklinik</router-link>
-          </div>
+        <div class="split__medie fs-medie">
+          <img :src="imgClinic" width="1000" height="663" loading="lazy" decoding="async"
+            alt="Læge Arash Bagheri taler med en patient i klinikken">
         </div>
       </div>
-    </div>
+    </section>
 
     <section class="why-us-section" aria-labelledby="why-us-title">
       <div class="why-us-container hvorfor">
@@ -375,6 +332,18 @@ import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import imgOmOs from '@/assets/DSK-samtale.webp'
 import imgClinic from '@/assets/behandlinger/consultation.webp'
+import { findBehandling, KATEGORIER } from '@/data/behandlinger'
+
+// Forsidens seks kort. Samme kilde som menu, footer og oversigtssiden.
+const stort = t => (t ? t.charAt(0).toUpperCase() + t.slice(1) : '')
+const forsideBehandlinger = ['botox', 'filler', 'laebefiller', 'skinbooster', 'microneedling', 'mesoterapi']
+  .map(findBehandling)
+  .filter(b => b && b.status === 'live')
+  .map(b => ({
+    ...b,
+    kategoriNavn: KATEGORIER.find(k => k.id === b.kategori)?.navn || '',
+    pris: stort(b.prisTekst)
+  }))
 import heroMobil from '@/assets/BannerFrontPageMobile6.webp'
 import heroTablet from '@/assets/BannerFrontPageMobile3.webp'
 import heroDesktop from '@/assets/BannerBehandling3.webp'
@@ -2696,5 +2665,344 @@ onMounted(() => {
 .home .icons img {
   aspect-ratio: 120 / 98;
   height: auto !important;
+}
+
+/* =====================================================================
+   Forsiden - nye sektioner (nov. 2026)
+   Samme system som resten af sitet: eyebrow -> H2 -> manchet, venstre-
+   stillet, alt paa maalet (--maal), kort i det faelles kortsprog.
+   Alt er scopet med .home, fordi denne style-blok ikke er scoped.
+   ===================================================================== */
+.home .fs-baand {
+  background: #fff;
+  box-sizing: border-box;
+  color: #153655;
+  padding-block: calc(var(--sektion-luft) * 2);
+}
+
+.home .fs-baand--navy { background: #153655; color: #fff; }
+
+.home .fs-indre {
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: var(--maal);
+  width: 90%;
+}
+
+.home .fs-baand *,
+.home .fs-baand *::before,
+.home .fs-baand *::after { box-sizing: border-box; }
+
+/* Overskrifter: én stoerrelse paa hele forsiden */
+#app .home .fs-baand h2,
+#app .home .fs-slider-hoved h2 {
+  color: #153655;
+  font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+  letter-spacing: -.01em;
+  line-height: 1.16;
+  margin: 0;
+  text-align: left;
+}
+
+#app .home .fs-baand--navy h2,
+#app .home .fs-slider-hoved h2 { color: #fff !important; }
+
+.home .fs-baand .sec__head { margin-bottom: 22px; }
+.home .fs-baand .sec__lead { margin-top: 14px; }
+
+.home .fs-baand--navy .sec__eyebrow,
+.home .fs-slider-hoved .sec__eyebrow { color: rgba(255, 255, 255, .78); }
+.home .fs-baand--navy .sec__eyebrow::before,
+.home .fs-slider-hoved .sec__eyebrow::before { background: rgba(255, 255, 255, .6); }
+
+.home .fs-baand .split__tekst > p {
+  color: rgba(21, 54, 85, .86);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  max-width: 62ch;
+}
+
+.home .fs-baand .split__tekst strong { color: #153655; }
+
+/* Hoved med "se alle" til hoejre */
+.home .fs-hoved {
+  align-items: end;
+  display: flex;
+  gap: 24px 40px;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+
+.home .fs-hoved .sec__head { margin-bottom: 0; }
+
+.home .fs-alle {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: #2d58a1;
+  cursor: pointer;
+  display: inline-flex;
+  flex: none;
+  font: inherit;
+  font-weight: 700;
+  gap: 8px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.home .fs-alle .pil { transition: transform .2s ease; }
+.home .fs-alle:hover .pil,
+.home .fs-alle:focus-visible .pil { transform: translateX(4px); }
+.home .fs-alle:hover,
+.home .fs-alle:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.home .fs-alle--lys { color: #fff; }
+
+/* ----- Behandlingskort ----- */
+.home .fs-kortliste {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home .fs-kortliste > li { display: flex; }
+
+.home .fs-kort {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  color: #153655;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  width: 100%;
+}
+
+.home .fs-kort:hover,
+.home .fs-kort:focus-visible {
+  border-color: rgba(45, 88, 161, .35);
+  box-shadow: 0 18px 40px rgba(21, 54, 85, .12);
+  transform: translateY(-3px);
+}
+
+.home .fs-kort:focus-visible { outline: 2px solid #2d58a1; outline-offset: 3px; }
+
+.home .fs-kort__medie {
+  aspect-ratio: 4 / 3;
+  background: #eef1f6;
+  overflow: hidden;
+}
+
+.home .fs-kort__medie img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform .5s ease;
+  width: 100%;
+}
+
+.home .fs-kort:hover .fs-kort__medie img { transform: scale(1.04); }
+
+.home .fs-kort__krop {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 24px 20px;
+}
+
+.home .fs-kort__kategori {
+  color: #2d58a1;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+#app .home .fs-kort h3 {
+  color: #153655;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.home .fs-kort__tekst {
+  color: rgba(21, 54, 85, .82);
+  font-size: .97rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.home .fs-kort__fod {
+  align-items: center;
+  border-top: 1px solid rgba(21, 54, 85, .10);
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0 0;
+  padding-top: 14px;
+}
+
+.home .fs-kort__pris { color: #153655; font-size: .95rem; font-weight: 700; }
+
+.home .fs-kort__pil {
+  align-items: center;
+  border: 1px solid rgba(21, 54, 85, .16);
+  border-radius: 50%;
+  color: #2d58a1;
+  display: inline-flex;
+  flex: none;
+  height: 34px;
+  justify-content: center;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+  width: 34px;
+}
+
+.home .fs-kort:hover .fs-kort__pil,
+.home .fs-kort:focus-visible .fs-kort__pil { background: #2d58a1; border-color: #2d58a1; color: #fff; }
+
+/* ----- Klinikkens laege ----- */
+.home .fs-baand--laege { padding-bottom: 0; }
+
+.home .fs-laege {
+  align-items: end;
+  display: grid;
+  gap: 24px 64px;
+  grid-template-columns: clamp(240px, 26vw, 360px) minmax(0, 1fr);
+}
+
+.home .fs-laege__portraet { align-self: end; margin: 0; }
+.home .fs-laege__portraet img { display: block; height: auto; width: 100%; }
+
+.home .fs-laege__tekst { padding-bottom: calc(var(--sektion-luft) * 2); }
+
+.home .fs-laege__citat {
+  border-left: 2px solid rgba(255, 255, 255, .35);
+  margin: 22px 0 20px;
+  padding: 2px 0 2px 22px;
+}
+
+.home .fs-laege__citat p {
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 0 14px;
+  max-width: 60ch;
+}
+
+.home .fs-laege__citat p:last-child { margin-bottom: 0; }
+
+.home .fs-laege__lille {
+  color: rgba(255, 255, 255, .78);
+  font-size: .97rem;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0 0 22px;
+  max-width: 60ch;
+}
+
+/* ----- Split-sektionerne ----- */
+.home .fs-medie img {
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .10);
+  object-fit: cover;
+}
+
+.home .fs-medie--hoej img { aspect-ratio: 4 / 5; object-position: center 20%; }
+
+.home .fs-tjek { margin: 4px 0 26px; }
+.home .fs-tjek li { color: #153655; font-weight: 600; }
+
+.home .fs-handling {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 26px;
+  margin-top: 8px;
+}
+
+/* ----- Sociale medier: overskriften foelger resten ----- */
+.home .sliderContainer .fs-slider-hoved {
+  box-sizing: border-box;
+  margin: 0 0 30px 50%;
+  max-width: var(--maal);
+  text-align: left;
+  transform: translateX(-50%);
+  width: 90vw;
+}
+
+/* ----- Heroens eyebrow: samme udtryk som sektionernes ----- */
+.home .hero-eyebrow {
+  align-items: center;
+  display: flex;
+  font-size: .72rem !important; /* en aeldre mobilregel satte 18 px */
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: .13em !important;
+  opacity: 1;
+  color: rgba(255, 255, 255, .85);
+}
+
+.home .hero-eyebrow::before {
+  background: rgba(255, 255, 255, .6);
+  border-radius: 2px;
+  content: '';
+  flex: none;
+  height: 2px;
+  width: 24px;
+}
+
+@media (max-width: 1000px) {
+  .home .fs-kortliste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home .fs-laege { gap: 20px 40px; grid-template-columns: clamp(200px, 30vw, 300px) minmax(0, 1fr); }
+}
+
+@media (max-width: 880px) {
+  .home .fs-medie { max-width: 520px; }
+}
+
+@media (max-width: 700px) {
+  .home .fs-baand { padding-block: calc(var(--sektion-luft) * 1.5); }
+  .home .fs-hoved { align-items: start; flex-direction: column; margin-bottom: 26px; }
+
+  /* Paa mobil: kompakte raekker - billede til venstre, tekst til hoejre.
+     Seks hoeje billedkort under hinanden er for langt at rulle. */
+  .home .fs-kortliste { gap: 14px; grid-template-columns: minmax(0, 1fr); }
+  .home .fs-kort { border-radius: 14px; flex-direction: row; }
+  .home .fs-kort__medie { aspect-ratio: auto; flex: 0 0 108px; }
+  .home .fs-kort__krop { padding: 14px 16px 12px; }
+  #app .home .fs-kort h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .home .fs-kort__kategori { font-size: .64rem; margin-bottom: 4px; }
+  .home .fs-kort__tekst {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    font-size: .9rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .home .fs-kort__fod { padding-top: 10px; }
+  .home .fs-kort__pil { height: 28px; width: 28px; }
+  .home .fs-kort:hover { transform: none; }
+
+  /* Laegen: tekst foerst, portraet under - staar paa baandets bund */
+  .home .fs-laege { grid-template-columns: minmax(0, 1fr); }
+  .home .fs-laege__tekst { order: -1; padding-bottom: 0; }
+  .home .fs-laege__portraet { margin: 0 auto; max-width: 240px; }
+  .home .fs-laege__citat p { font-size: 1rem; }
+
+  .home .fs-handling .knap { box-sizing: border-box; justify-content: center; width: 100%; }
 }
 </style>

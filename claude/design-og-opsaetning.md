@@ -376,6 +376,14 @@ igennem, så lazy-billeder og AOS-animationer er færdige, før du måler.
 - **`/behandlinger/` (3. nov):** oversigtsside, megamenu og Book-knap i navigationen
 - **Kontakt (10. nov):** FAQ-panel med seks spørgsmål, FAQPage- og ContactPage-schema
 
+- **Forsiden (10. nov, ikke pushet):** sektionerne under heroen bygget om i det fælles system.
+  Nye klasser med præfikset `fs-` (alle under `.home`): `fs-baand` (bånd, `--navy`), `fs-indre`
+  (på målet), `fs-kort` (behandlingskort fra `behandlinger.js`: billede 4:3, kategori, navn, tekst,
+  pris, pil – på mobil en kompakt række), `fs-laege`, `fs-alle` (tekstlink med pil). Alle H2 er nu
+  én størrelse (`clamp(1.65rem, 2.5vw, 2.25rem)`), og heroens eyebrow ligner `sec__eyebrow`.
+  De gamle klasser (`.card`, `.container_carts`, `.Multimediedesigner`, `.VIKING`, `.informations`)
+  bruges ikke længere i forsidens markup, men deres CSS ligger der stadig – kan ryddes ud
+
 ### Næste skridt
 
 1. **Fase 2b:** skinbooster som vælgerside + Profhilo, Profhilo Structura og Ejal40.
