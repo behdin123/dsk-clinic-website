@@ -1,3 +1,4 @@
+import { defineComponent, h } from 'vue'
 // Views
 import AppHome from '@/components/views/AppHome.vue'
 const behandlinger = () => import('@/components/views/AppBehandlinger.vue')
@@ -12,7 +13,13 @@ const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const priser        = () => import('@/components/views/PriserView.vue')
 const booking       = () => import('@/components/views/BookingView.vue')
 const laebefiller   = () => import('@/components/views/LaebefillerView.vue')
-const skinboosterProdukt = () => import('@/components/views/SkinboosterProduktView.vue')
+// De tre skinbooster-produkter deler én skabelon. Hver rute faar sin egen
+// indpakning, saa Vue ser tre forskellige komponenter og bygger siden om,
+// naar man skifter mellem dem. Uden det genbruges den samme instans, og
+// indholdet bliver staaende.
+const skinboosterProdukt = slug => () =>
+  import('@/components/views/SkinboosterProduktView.vue').then(m =>
+    defineComponent({ name: `SkinboosterProdukt-${slug}`, render: () => h(m.default, { produkt: slug }) }))
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
 const cookiepolitik = () => import('@/components/views/CookiePolitik.vue')
@@ -65,7 +72,7 @@ export const routes = [
 
   // Skinbooster-familien: tre produktsider paa samme skabelon (skal staa foer den dynamiske rute)
   ...['ejal40', 'profhilo', 'profhilo-structura'].flatMap(slug => [
-    { path: `/behandlinger/skinbooster/${slug}/`, name: `skinbooster-${slug}`, component: skinboosterProdukt, props: { produkt: slug } },
+    { path: `/behandlinger/skinbooster/${slug}/`, name: `skinbooster-${slug}`, component: skinboosterProdukt(slug) },
     { path: `/behandlinger/skinbooster/${slug}`, redirect: `/behandlinger/skinbooster/${slug}/` }
   ]),
 
