@@ -1576,7 +1576,7 @@ h2 {
    Hvidt kort: til venstre skjold, overskrift og knap til registret,
    til hoejre de tre forhold som raekker med etiket og tekst. */
 .autorisation {
-    align-items: start;
+    align-items: center;
     background: #fff;
     border: 1px solid rgba(21, 54, 85, .10);
     border-radius: 18px;
