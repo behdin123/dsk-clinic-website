@@ -1,6 +1,8 @@
 # Til lægens gennemgang – områdeafsnit på botox- og filler-siden
 
-**Dato:** 2. november 2026 · **Status:** bygget, ikke udgivet. Går først live, når teksten er godkendt.
+**Dato:** 2. november 2026 · **Status:** ✅ godkendt af lægen 10. november 2026. Alle tolv afsnit er live.
+
+**Afgjort 10. nov:** Botox koster 550 kr. pr. område for alle områder (spørgsmål 2). Filler skrives "fra 1.350 kr. pr. ml" (spørgsmål 3 — ingen fast pris pr. område).
 
 **Hvorfor:** Botox- og filler-siden nævnte områderne som korte punkter. Folk søger på det enkelte område ("botox pandelinjer", "filler kindben"), og konkurrenter i Esbjerg rangerer med netop den slags tekst. Nu har hvert område sit eget afsnit med egen overskrift.
 

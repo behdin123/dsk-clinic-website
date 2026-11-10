@@ -15,6 +15,58 @@ opslagsværk.
 
 ## 1. Hvor vi står
 
+### Seneste måling (GSC, 12. okt – 8. nov 2026)
+
+Rådata: `F:\Pictures\Esbjerg skønhed\GSC - data\10 november - 2026\`. Perioden overlapper
+udgangspunktet med en uge, og hub-siden + områdeafsnittene (live 3. nov) har kun seks dage i
+tallene. **Det er for tidligt at dømme dem — mål dem igen i december.**
+
+| Måltal | Okt (22/9–19/10) | Nov (12/10–8/11) |
+|---|---|---|
+| Klik | 69 | **97** |
+| Eksponeringer | 4.788 | 5.607 |
+| Gns. position | 21,7 | 23,3 |
+| Mobil / computer (klik) | 74 % mobil | 86 / 11 — 89 % mobil |
+
+**Det der gik frem**
+
+- Klik +41 %. Forsiden 62 klik, `/klinik/vejle/` 11 klik (var 2 klik på alle Vejle-søgninger)
+- **Botox er nu den største klynge:** `botox esbjerg` 201 eksp., position 12,0, 5 klik ·
+  `botox vejle` 196 eksp., position 16,0, 3 klik
+- `filler esbjerg` position 7,5 → 10,0, men stadig 3 klik (138 eksp.)
+- `microneedling esbjerg` 11,0 → 8,9 — faldet er delvist rettet af sig selv
+
+**Det der står stille eller gik tilbage**
+
+- `skønhedsklinik vejle` 10,7 → **13,6** (197 eksp., 0 klik) · `filler vejle` 10,8 → 11,9
+  (165 eksp., 0 klik) · `lip filler vejle` 12,8 (86 eksp., 0 klik)
+- `lip filler esbjerg` position **3,3 og stadig 0 klik** (26 eksp.) — det er anmeldelser og
+  kortresultatet, ikke teksten
+- Computer: 2.971 eksponeringer, 11 klik (0,37 %)
+- `/behandlinger/filler/` 682 eksp., 2 klik · `/klinik/esbjerg/` 357 eksp., 1 klik
+
+**Klynger (bots filtreret fra, kun søgninger GSC viser):**
+
+| Klynge | Eksp. | Klik | Position |
+|---|---|---|---|
+| Vejle (alle søgninger med bynavnet) | 1.213 | 5 | 18,6 |
+| Esbjerg | 671 | 10 | 19,5 |
+| Botox | 486 | 8 | 16,8 |
+| Filler (uden læber) | 482 | 3 | 16,1 |
+| Læbefiller | 181 | 0 | 17,6 |
+| Microneedling | 186 | 0 | 23,1 |
+| Mesoterapi | 177 | 0 | 32,0 |
+| PRP / vampyrbehandling | 213 | 0 | 32,1 |
+| Skinbooster / Profhilo | 88 | 0 | 22,3 |
+| Opland (Varde, Fredericia m.fl.) | 95 | 0 | 26,0 |
+| Støj: "skønhedsklinik" alene | 1.165 | 0 | 44,4 |
+| Støj: kosmetolog, ansigtsbehandling, voks/laser, andre byer | ca. 640 | 0 | — |
+
+**Læsning:** Vejle har stadig næsten dobbelt så mange eksponeringer som Esbjerg og halvt så
+mange klik. Diagnosen fra oktober holder: vi bliver vist, men ikke valgt. Nye ord at holde
+øje med: `microneedling vejle` (102 eksp., position 15,2), `filler varde` (33) og
+`botox varde` (25).
+
 ### Udgangspunkt (GSC, 22. sep – 19. okt 2026)
 
 | Måltal | Værdi |
@@ -135,17 +187,17 @@ Træk det fra for reelt sideindhold.
 | `/klinik/vejle/` | 899 | ✅ **Fase 1 udført.** Fra 252 ord. Kontaktkort, parkering med navngivne p-huse og takster, behandlingsliste med priser, lægeprofil, oplandsdiagram med rigtige køretider, lokal FAQ, `areaServed` udvidet |
 | `/klinik/esbjerg/` | 832 | ✅ Samme |
 | `/omos/` | 958 | ✅ E-E-A-T udbygget. H1 ændret fra "Mød Arash" til "Om DK Skønhedsklinik og læge Arash Bagheri". Person-schema, autorisation, citat som `blockquote` med `cite` |
-| `/kontaktos/` | 408 | ⚠️ **Tyndest på sitet.** Ny hero, klinikkort med åbningstider, formular. **Mangler FAQ og ContactPage-schema** |
-| `/priser/` | 701 | Botox-priser rettet (550/1.100/1.650). "Vistabel" fjernet. Position 26 — skal linkes fra hver behandlingsside |
-| `/behandlinger/botox/` | 850 | Live. **Mangler de syv H3-afsnit** (pandelinjer, glabella, kragetæer, brynløft, bunny lines, sure mundvige, hagegrube) |
-| `/behandlinger/filler/` | 756 | Live. **Mangler H3-afsnit** (kindben, smilelinjer, marionetlinjer, tindinger, hænder) |
+| `/kontaktos/` | 714 | ✅ **Udført 10. nov.** FAQ med seks spørgsmål, FAQPage- og ContactPage-schema, klinikkernes schema-url peger på deres egne sider |
+| `/priser/` | 701 | Botox-priser rettet (550/1.100/1.650). "Vistabel" fjernet. Position 25 — skal linkes fra hver behandlingsside |
+| `/behandlinger/botox/` | — | ✅ **Syv områdeafsnit live** (pandelinjer, bekymringsrynker, kragetæer, brynløft, bunny lines, sure mundvige, hagegrube) med ankermenu og områdefoto. Godkendt af lægen 10. nov |
+| `/behandlinger/filler/` | — | ✅ **Fem områdeafsnit live** (kindben, smilelinjer, marionetlinjer, tindinger, hænder). Godkendt af lægen 10. nov. Prisen skal skrives "fra 1.350 kr. pr. ml" |
 | `/behandlinger/filler/laeber/` | 1.005 | ✅ **Bygget.** Svarer på `lip filler esbjerg` position 3,4 med nul klik |
 | `/behandlinger/skinbooster/` | 679 | Live. Skal bygges om til vælgerside med sammenligningstabel |
-| `/behandlinger/microneedling/` | 684 | Live. "Akne-ar" skal i title. **Faldt fra position 5,4 til 11,0 — uundersøgt** |
+| `/behandlinger/microneedling/` | 684 | Live. "Akne-ar" skal i title. Faldt fra position 5,4 til 11,0, nu 8,9 (nov) |
 | `/behandlinger/mesotherapy/` | 683 | Live. URL og H1 er engelsk — skal omdøbes til `/mesoterapi/` med 301 |
 | `/behandlinger/prp/` | — | "Tilbydes ikke længere"-side. Bevaret pga. 84 klik / 3.816 eksp. historisk |
 | `/booking/` | — | Gecko-embed. Position 3,8 |
-| `/behandlinger/` | — | ❌ **Findes ikke.** 404 er sat korrekt op, så den bliver 200 i samme øjeblik siden bygges |
+| `/behandlinger/` | — | ✅ **Live 3. nov.** Oversigt med alle behandlinger, megamenu og Book-knap i navigationen. 80 eksp. på position 56 efter seks dage |
 | `/viden/` + 7 artikler | — | Slået fra i routeren. Filerne findes |
 
 ### Teknisk gjort
@@ -190,7 +242,7 @@ Slugs er uden æøå med vilje — de procent-kodes og ser ødelagte ud, når fo
 
 | URL | Søgningen den skal vinde | Status |
 |---|---|---|
-| `/behandlinger/` | kosmetiske behandlinger esbjerg/vejle | **mangler** |
+| `/behandlinger/` | kosmetiske behandlinger esbjerg/vejle | ✅ live |
 | `/behandlinger/botox/` | botox esbjerg, rynkebehandling | live |
 | `/behandlinger/botox/nefertiti-loeft/` | nefertiti løft, halsstrenge | planlagt |
 | `/behandlinger/botox/gummy-smile/` | gummy smile | planlagt |
@@ -199,10 +251,10 @@ Slugs er uden æøå med vilje — de procent-kodes og ser ødelagte ud, når fo
 | `/behandlinger/filler/kaebelinje/` | kæbelinje filler, hagefiller | planlagt |
 | `/behandlinger/filler/naese/` | næsefiller, næsekorrektion uden operation | planlagt |
 | `/behandlinger/filler/oploesning/` | opløse filler, fjerne filler | planlagt |
-| `/behandlinger/skinbooster/` | skinbooster | bygges om til vælgerside |
-| `/behandlinger/skinbooster/profhilo/` | profhilo, profhilo pris | planlagt |
-| `/behandlinger/skinbooster/profhilo-structura/` | profhilo structura | planlagt |
-| `/behandlinger/skinbooster/ejal40/` | ejal40 | planlagt |
+| `/behandlinger/skinbooster/` | skinbooster | vælgersektion bygget, ikke udgivet |
+| `/behandlinger/skinbooster/profhilo/` | profhilo, profhilo pris | bygget, ikke udgivet |
+| `/behandlinger/skinbooster/profhilo-structura/` | profhilo structura | bygget, ikke udgivet |
+| `/behandlinger/skinbooster/ejal40/` | ejal40 | bygget, ikke udgivet |
 | `/behandlinger/microneedling/` | microneedling esbjerg, akne ar | live |
 | `/behandlinger/mesoterapi/` | mesoterapi | omdøbes fra `mesotherapy` |
 | `/behandlinger/haartab/` | hårtab behandling | planlagt |
@@ -258,9 +310,11 @@ der virkede. Hver fase rammer sin egen søgeordsklynge, så GSC kan adskille dem
 |---|---|---|
 | **0** | `behandlinger.js`, `MediaPlaceholder`, `AppBreadcrumbs`, `RelateredeBehandlinger`, menu bygget om | ✅ Færdig |
 | **1** | Vejle + Esbjerg til 800–900 ord | ✅ Færdig |
-| **2** | `/behandlinger/` hub · skinbooster som vælgerside · Profhilo · Profhilo Structura · Ejal40 | ⏳ **Næste.** Afventer priser |
-| **3** | `/filler/kaebelinje/` · `/filler/naese/` · `/filler/oploesning/` + filler-afsnit | Planlagt |
-| **4** | `/botox/nefertiti-loeft/` · `/botox/gummy-smile/` + botox-afsnit | Planlagt |
+| **2a** | `/behandlinger/` hub | ✅ Live 3. nov |
+| **2b** | Skinbooster som vælgerside · Profhilo · Profhilo Structura · Ejal40 | 🔶 **Bygget 10. nov, ikke udgivet.** Venter på lægens gennemgang: `claude/laegegennemgang-skinbooster-familien.md` |
+| **3** | `/filler/kaebelinje/` · `/filler/naese/` · `/filler/oploesning/` | Planlagt. Filler-afsnittene er live |
+| **4** | `/botox/nefertiti-loeft/` · `/botox/gummy-smile/` | Planlagt. Botox-afsnittene er live |
+| — | Kontaktsidens FAQ + ContactPage-schema | ✅ Live 10. nov |
 | **5** | `/haartab/` · microneedling med akne-ar i title · **mesoterapi-omdøbning med 301** | Planlagt |
 | **6** | `/svedbehandling/` · `/kaebespaendinger/` | Venter på STPS |
 
@@ -420,10 +474,23 @@ Kør den hver gang. Ingen side går live uden.
 |---|---|---|
 | 1 | **Vampyrbehandling** — 133 eksp. på position 7 for en behandling I ikke tilbyder. Enten en kort afklarende sektion på PRP-siden, eller lad den gå. I dag fanger den folk, vi skuffer | GSC |
 | 2 | **Ansigtsbehandling / hudpleje** — 140 eksp., position 25,7. Ind som overbegreb på hudsiderne, eller forkert målgruppe? | GSC |
-| 3 | **Hvorfor faldt `microneedling esbjerg` fra 5,4 til 11,0?** Vores hidtil bedste side. Undersøg før vi bygger mere | GSC |
+| 3 | **`microneedling esbjerg`** faldt fra 5,4 til 11,0 og ligger nu på 8,9 (17 eksp.). For få eksponeringer til at konkludere — følg den i december | GSC |
 | 4 | **E-mail på eget domæne.** `dr_arash_bagheri@yahoo.com` på en lægeklinik underminerer E-E-A-T. En adresse på @dsklinik.dk er det billigste tillidsløft på sitet | Vurdering |
 | 5 | **Vidensuniverset** — syv færdige artikler slået fra i routeren. Billigste trafikgevinst på listen, men de skal gennemlæses for den slukkede tear trough-artikel først | Kode |
-| 6 | **17 behandlingspriser** mangler fra lægen. Blokerer fase 2–6 | Åben |
+| 6 | **Priser for fase 3–6** mangler stadig: Nefertiti-løft, gummy smile, kæbelinje/hage, næsefiller, opløsning af filler, hårtab, svedbehandling, kæbespændinger. Fase 2 er ikke længere blokeret | Åben |
+
+### Priser modtaget fra lægen 10. nov 2026
+
+| Behandling | Pris |
+|---|---|
+| Botox | 550 kr. pr. område — **gælder alle områder**, også brynløft, bunny lines, sure mundvige og hagegrube |
+| Filler | fra 1.350 kr. pr. ml |
+| Ejal40 | 1.350 kr. |
+| Profhilo | 2.300 kr. |
+| Profhilo Structura | 3.100 kr. |
+
+Sitet skriver i dag "1.350 kr. pr. ml" om filler uden "fra". Det rettes samlet (prisside,
+filler, læbefiller, `behandlinger.js`), når fase 2b bygges.
 
 ---
 
@@ -445,17 +512,19 @@ Kør den hver gang. Ingen side går live uden.
 
 ## 11. Sådan måler vi
 
-**Næste udtræk: midten af november 2026.** Sammenlign med
-`claude/gsc-analyse-oktober-2026.md`.
+**Næste udtræk: midten af december 2026** — første måling, hvor hub, områdeafsnit og
+kontaktsidens FAQ har en hel periode. Sammenlign med tallene i §1.
 
-| Måltal | Okt 2026 | Mål om 3 mdr. |
-|---|---|---|
-| Klik fra "vejle"-søgninger | 2 / 28 dage | 25+ |
-| `skønhedsklinik vejle` position | 10,7 | top 5 |
-| `filler esbjerg` CTR | 2,42 % (pos 7,5) | 5 % |
-| Omdirigeringsfejl | 1 | 0 |
-| Sider med to versioner i resultatrapporten | 8 | 0 |
-| Google-anmeldelser pr. klinik | 1 / 0 | 20 |
+| Måltal | Okt 2026 | Nov 2026 | Mål (jan 2027) |
+|---|---|---|---|
+| Klik i alt / 28 dage | 69 | 97 | — |
+| Klik fra "vejle"-søgninger | 2 | 5 | 25+ |
+| `skønhedsklinik vejle` position | 10,7 | 13,6 | top 5 |
+| `filler esbjerg` CTR | 2,42 % (pos 7,5) | 2,17 % (pos 10,0) | 5 % |
+| `botox esbjerg` position | — | 12,0 | top 5 |
+| Omdirigeringsfejl | 1 | ikke i udtrækket | 0 |
+| Sider med to versioner i resultatrapporten | 8 | 1 (`/booking` uden skråstreg) | 0 |
+| Google-anmeldelser pr. klinik | 1 / 0 | ikke optalt | 20 |
 
 **Sådan læses rapporten rigtigt:**
 
@@ -478,14 +547,11 @@ Kør den hver gang. Ingen side går live uden.
 5. **Læs den eksisterende tekst på det område, du skal skrive om**, før du skriver et ord
 6. **Én fase ad gangen. Én commit pr. logisk ændring. Dansk commit-besked med hvorfor**
 
-**Hvis priserne er kommet:** gå i gang med fase 2 — hub-siden først, så skinbooster som
-vælgerside, så de tre produktsider.
-
-**Hvis de ikke er:** de to højeste gevinster der ikke kræver priser er
-(a) **kontaktsidens FAQ + ContactPage-schema** — sidens tyndeste side, og FAQ giver
-FAQPage-schema og rich results, og
-(b) **botox- og filler-afsnittene** fra punktopstilling til rigtige H3-afsnit med ankre.
-Begge kan laves nu.
+**Status 10. nov 2026:** hub-siden, botox- og filler-afsnittene og kontaktsidens FAQ er
+live. **Fase 2b er bygget og committet lokalt, men ikke pushet:** skinbooster-vælger,
+Ejal40, Profhilo og Profhilo Structura, og "fra" foran fillerprisen. Lægen skal svare på
+spørgsmålene i `claude/laegegennemgang-skinbooster-familien.md`, før der pushes.
+**Et push udgiver alt, der er committet** — push derfor ikke andet imens.
 
 ---
 

@@ -284,8 +284,11 @@ siden så bogstaveligt talt forskellig ud afhængigt af hvem der kiggede.
 **Priser er ens på begge klinikker.** Forundersøgelsen er **gratis og uforpligtende**, og
 der betales **efter** behandlingen.
 
-**Botox:** 1 område 550 kr. · 2 områder 1.100 kr. · 3 områder 1.650 kr.
-Ordet **"Vistabel" må ikke stå på siden.**
+**Botox:** 550 kr. pr. område — gælder alle områder (1 område 550 · 2 områder 1.100 ·
+3 områder 1.650). Ordet **"Vistabel" må ikke stå på siden.**
+
+**Øvrige priser (bekræftet af lægen 10. nov 2026):** Filler fra 1.350 kr. pr. ml ·
+Ejal40 1.350 kr. · Profhilo 2.300 kr. · Profhilo Structura 3.100 kr.
 
 **Køreafstande (ca., ad vej, uden myldretid):**
 
@@ -368,15 +371,19 @@ igennem, så lazy-billeder og AOS-animationer er færdige, før du måler.
 - **Fælles:** målestok, sektionssystem, eyebrow-mønster, kortsprog, FAQ-komponent,
   behandlingsregister, mobilversion af alle tre heroer
 
+- **Behandlingssider (3. nov):** fælles hero med booking synlig på mobil, én luft-variabel
+  mellem afsnit, områdeafsnit med ankermenu og områdefoto på botox og filler
+- **`/behandlinger/` (3. nov):** oversigtsside, megamenu og Book-knap i navigationen
+- **Kontakt (10. nov):** FAQ-panel med seks spørgsmål, FAQPage- og ContactPage-schema
+
 ### Næste skridt
 
-1. **Rul målestokken ud** på forsiden, priser og behandlingssiderne
-2. **Kontaktsiden mangler indhold:** FAQ-sektion (største SEO-gevinst — FAQPage-schema),
-   ContactPage/ContactPoint-schema, indlejret kort, bedre meta-title
-3. **E-mail på eget domæne** (@dsklinik.dk) — billigste troværdighedsløft på siden
-4. **Fase 2+:** `/behandlinger/` hub og skinbooster-familien (Profhilo, Profhilo Structura,
-   Ejal40) — afventer priser fra lægen. Derefter filler, botox-undersider, hårtab
-5. **Venter på brugeren:** 17 behandlingspriser, lægens uddannelsesdetaljer til schema,
+1. **Fase 2b:** skinbooster som vælgerside + Profhilo, Profhilo Structura og Ejal40.
+   Priserne er kommet (se faktabanken). Samtidig "fra" foran fillerprisen alle steder
+2. **Rul målestokken ud** på forsiden og priser
+3. **Kontaktsiden:** indlejret kort mangler stadig
+4. **E-mail på eget domæne** (@dsklinik.dk) — billigste troværdighedsløft på siden
+5. **Venter på brugeren:** priser til fase 3–6, lægens uddannelsesdetaljer til schema,
    STPS-mail om Vejle, rettelse af typo "DK Skønhedklinik" i STPS, Google-anmeldelser
 
 ### Slået fra (ikke slettet)
