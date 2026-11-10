@@ -18,6 +18,9 @@ import SkinboosterImg  from '@/assets/Carts/Skinbooster.webp'
 import MesotherapyImg  from '@/assets/Carts/Mesotherapy.webp'
 import MicroneedlingImg from '@/assets/Carts/Microneedling.webp'
 import LaebefillerImg  from '@/assets/behandlinger/filler.webp'
+import Ejal40Img       from '@/assets/behandlinger/ejal40.webp'
+import ProfhiloImg     from '@/assets/behandlinger/profhilo.webp'
+import StructuraImg    from '@/assets/behandlinger/profhilo-structura.webp'
 
 export const SITE_URL = 'https://dsklinik.dk'
 
@@ -204,7 +207,7 @@ export const BEHANDLINGER = [
     kort: 'Fugt og spændstighed til hud, der er blevet slap og mat – uden volumen.',
     prisFra: 2300,
     prisTekst: '2.300 kr.',
-    billede: SkinboosterImg,
+    billede: ProfhiloImg,
     status: 'live',
     iMenu: true,
     relaterede: ['profhilo-structura', 'ejal40', 'skinbooster']
@@ -219,7 +222,7 @@ export const BEHANDLINGER = [
     kort: 'Lægges under huden og giver støtte, hvor kinder og kæbeparti er begyndt at give efter.',
     prisFra: 3100,
     prisTekst: '3.100 kr.',
-    billede: SkinboosterImg,
+    billede: StructuraImg,
     status: 'live',
     iMenu: true,
     relaterede: ['profhilo', 'ejal40', 'skinbooster']
@@ -234,7 +237,7 @@ export const BEHANDLINGER = [
     kort: 'Ren hyaluronsyre, der giver tør og mat hud fugt og elasticitet.',
     prisFra: 1350,
     prisTekst: '1.350 kr.',
-    billede: SkinboosterImg,
+    billede: Ejal40Img,
     status: 'live',
     iMenu: true,
     relaterede: ['profhilo', 'skinbooster', 'mesoterapi']

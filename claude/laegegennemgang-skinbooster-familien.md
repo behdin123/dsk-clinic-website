@@ -56,7 +56,7 @@ Planen nævner også Restylane Skinbooster, polynukleotider og Sunekos. De er **
 
 ### 7. Billeder
 
-Alle tre sider bruger det samme foto som skinbooster-siden (dig, der behandler en patient). Et foto af hvert produkt eller af behandlingen ville gøre siderne mere forskellige.
+✅ Løst 10. nov: hver side har nu klinikkens eget foto af produktet (`src/assets/behandlinger/ejal40.webp`, `profhilo.webp`, `profhilo-structura.webp`). Æskerne viser samme indhold som teksten: 40 mg/2 ml, 32 + 32 mg/2 ml og 45 + 45 mg/2 ml.
 
 ---
 

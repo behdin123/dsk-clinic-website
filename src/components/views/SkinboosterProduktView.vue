@@ -4,7 +4,7 @@
     <BehandlingHero :h1-id="`${p.slug}-titel`" :titel="p.h1" :eyebrow="eyebrow" :lead="p.lead"
       :broedkrummer="broedkrummer" :pris-fra="p.pris" pris-forled="" pris-enhed="pr. behandling" pris-anker="pris"
       pris-knap-tekst="Se pris"
-      :billede="{ src: imgHero, w: 1000, h: 1000, alt: 'Klinikkens læge giver en patient en injektion i ansigtet i behandlingsstolen' }"
+      :billede="billede"
       :fakta="p.heroFakta" :fakta-label="`${p.navn} kort fortalt`" :booking-kilde="p.slug" />
 
     <section class="sec" aria-labelledby="hvad-titel">
@@ -254,7 +254,9 @@ import { useHead } from '@unhead/vue'
 import FaqList from '@/components/FaqList.vue'
 import BehandlingHero from '@/components/BehandlingHero.vue'
 import RelateredeBehandlinger from '@/components/RelateredeBehandlinger.vue'
-import imgHero from '@/assets/behandlinger/skinbooster.webp'
+import imgEjal40 from '@/assets/behandlinger/ejal40.webp'
+import imgProfhilo from '@/assets/behandlinger/profhilo.webp'
+import imgStructura from '@/assets/behandlinger/profhilo-structura.webp'
 import { BOOKING_URL, CLINIC_SMS_HREF } from '@/config/booking'
 import { broedkrummerFor, broedkrummeSchema, findBehandling, KATEGORIER } from '@/data/behandlinger'
 import { findSkinboosterProdukt, skinboosterProdukter } from '@/data/skinboosterProdukter'
@@ -266,6 +268,14 @@ const props = defineProps({
 // Ruten er fast pr. produkt (se router), saa produktet skifter ikke undervejs.
 const p = findSkinboosterProdukt(props.produkt)
 const alle = skinboosterProdukter()
+
+// Klinikkens egne fotos af produkterne. Alt-teksten beskriver, hvad man ser.
+const BILLEDER = {
+  ejal40: { src: imgEjal40, w: 1350, h: 1800, fokus: 'center 45%', alt: 'To røde æsker med Ejal40 skinbooster, 40 mg hyaluronsyre i 2 ml, på en hylde i klinikken' },
+  profhilo: { src: imgProfhilo, w: 1349, h: 1800, fokus: 'center 60%', alt: 'Hvid æske med Profhilo, 32 mg + 32 mg hyaluronsyre i 2 ml, på et bord i klinikken' },
+  'profhilo-structura': { src: imgStructura, w: 1440, h: 1800, fokus: 'center 60%', alt: 'Æsker med Profhilo Structura, 45 mg + 45 mg hyaluronsyre i 2 ml, i en vindueskarm i klinikken' }
+}
+const billede = BILLEDER[p.slug]
 
 const broedkrummer = broedkrummerFor(p.slug)
 const eyebrow = KATEGORIER.find(k => k.id === findBehandling(p.slug)?.kategori)?.navn || ''
@@ -357,7 +367,7 @@ useHead({
   link: [
     { rel: 'canonical', href: CANONICAL },
     { rel: 'alternate', hreflang: 'da-DK', href: CANONICAL },
-    { rel: 'preload', as: 'image', href: imgHero, fetchpriority: 'high' }
+    { rel: 'preload', as: 'image', href: billede.src, fetchpriority: 'high' }
   ],
   script: [
     { type: 'application/ld+json', innerHTML: JSON.stringify(procedureLd) },
