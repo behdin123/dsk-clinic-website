@@ -12,6 +12,7 @@ const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const priser        = () => import('@/components/views/PriserView.vue')
 const booking       = () => import('@/components/views/BookingView.vue')
 const laebefiller   = () => import('@/components/views/LaebefillerView.vue')
+const skinboosterProdukt = () => import('@/components/views/SkinboosterProduktView.vue')
 const clinicVejle   = () => import('@/components/views/ClinicVejle.vue')
 const clinicEsbjerg = () => import('@/components/views/ClinicEsbjerg.vue')
 const cookiepolitik = () => import('@/components/views/CookiePolitik.vue')
@@ -61,6 +62,12 @@ export const routes = [
   // Laebefiller: egen underside under filler (skal staa foer den dynamiske rute)
   { path: '/behandlinger/filler/laeber/', name: 'laebefiller', component: laebefiller },
   { path: '/behandlinger/filler/laeber',  redirect: '/behandlinger/filler/laeber/' },
+
+  // Skinbooster-familien: tre produktsider paa samme skabelon (skal staa foer den dynamiske rute)
+  ...['ejal40', 'profhilo', 'profhilo-structura'].flatMap(slug => [
+    { path: `/behandlinger/skinbooster/${slug}/`, name: `skinbooster-${slug}`, component: skinboosterProdukt, props: { produkt: slug } },
+    { path: `/behandlinger/skinbooster/${slug}`, redirect: `/behandlinger/skinbooster/${slug}/` }
+  ]),
 
   // Aktive behandlinger (Botox genaktiveret)
   {

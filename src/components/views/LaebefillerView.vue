@@ -153,7 +153,7 @@
       <dl class="prisliste">
         <div>
           <dt>Læbefiller<small>Hyaluronsyre, ikke-permanent</small></dt>
-          <dd>1.350 kr. pr. ml</dd>
+          <dd>Fra 1.350 kr. pr. ml</dd>
         </div>
         <div>
           <dt>Forundersøgelse<small>Hos læge, uforpligtende</small></dt>
@@ -233,7 +233,7 @@ const tilSektion = (id, blok = 'center') => {
 const faqs = [
   {
     q: 'Hvad koster læbefiller?',
-    a: '1.350 kr. pr. ml. De fleste starter med 0,5–1 ml. Forundersøgelsen hos lægen er gratis, og du betaler først, når du er behandlet.'
+    a: 'Fra 1.350 kr. pr. ml. De fleste starter med 0,5–1 ml. Forundersøgelsen hos lægen er gratis, og du betaler først, når du er behandlet.'
   },
   {
     q: 'Hvor længe holder læbefiller?',

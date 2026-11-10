@@ -146,7 +146,7 @@ const priceGroups = [
     title: 'Filler – volumen og kontur',
     intro: 'Hyaluronsyre til læber, kinder, kæbelinje, hage og statiske linjer. Kan opløses igen med hyaluronidase.',
     rows: [
-      { label: 'Filler – 1 ml', price: '1.350 kr.', type: 'filler', note: 'Holdbarhed 6–12 måneder afhængigt af område' }
+      { label: 'Filler – 1 ml', price: 'Fra 1.350 kr.', type: 'filler', note: 'Holdbarhed 6–12 måneder afhængigt af område' }
     ]
   },
   {
@@ -155,6 +155,9 @@ const priceGroups = [
     intro: 'Behandlinger der arbejder med hudens fugt, tekstur og kollagen frem for volumen.',
     rows: [
       { label: 'Skinbooster – per session', price: 'Fra 1.350 kr.', type: 'skinbooster', note: 'Prisen afhænger af typen af skinbooster' },
+      { label: 'Ejal40 – pr. behandling', price: '1.350 kr.', type: 'skinbooster/ejal40', note: 'Skinbooster til tør og mat hud' },
+      { label: 'Profhilo – pr. behandling', price: '2.300 kr.', type: 'skinbooster/profhilo', note: 'Til hud, der har mistet spændstighed' },
+      { label: 'Profhilo Structura – pr. behandling', price: '3.100 kr.', type: 'skinbooster/profhilo-structura', note: 'Lægges under huden i siden af ansigtet' },
       { label: 'Mesotherapy – per session', price: 'Fra 750 kr.', type: 'mesotherapy', note: 'Prisen afhænger af cocktail og område' },
       { label: 'Microneedling – ansigt, per session', price: 'Fra 1.050 kr.', type: 'microneedling', note: 'Et forløb over flere sessioner giver bedst resultat' }
     ]
@@ -192,7 +195,7 @@ const faqs = [
   },
   {
     q: 'Hvad koster 1 ml filler?',
-    a: '1.350 kr. pr. ml – også for læbefiller. Hvor meget der skal bruges, afhænger af området og af, hvad du gerne vil opnå. Det finder vi ud af ved forundersøgelsen, inden du beslutter dig.'
+    a: 'Fra 1.350 kr. pr. ml – også for læbefiller. Hvor meget der skal bruges, afhænger af området og af, hvad du gerne vil opnå. Det finder vi ud af ved forundersøgelsen, inden du beslutter dig.'
   },
   {
     q: 'Er forundersøgelsen virkelig gratis?',
@@ -231,6 +234,9 @@ const offerLd = {
     { type: 'botox', name: 'Botox – 3 områder', price: '1650' },
     { type: 'filler', name: 'Filler – 1 ml', price: '1350' },
     { type: 'skinbooster', name: 'Skinbooster – per session', price: '1350' },
+    { type: 'skinbooster/ejal40', name: 'Ejal40', price: '1350' },
+    { type: 'skinbooster/profhilo', name: 'Profhilo', price: '2300' },
+    { type: 'skinbooster/profhilo-structura', name: 'Profhilo Structura', price: '3100' },
     { type: 'mesotherapy', name: 'Mesotherapy – per session', price: '750' },
     { type: 'microneedling', name: 'Microneedling – ansigt', price: '1050' }
   ].map((o, i) => ({
@@ -272,7 +278,7 @@ const breadcrumbLd = {
 useHead({
   title: 'Priser | Botox, filler og hudbehandling | DK Skønhedsklinik',
   meta: [
-    { name: 'description', content: 'Se priser på botox fra 550 kr., filler 1.350 kr. pr. ml, skinbooster, mesotherapy og microneedling i Esbjerg og Vejle. Gratis forundersøgelse hos læge.' },
+    { name: 'description', content: 'Se priser på botox fra 550 kr., filler fra 1.350 kr. pr. ml, skinbooster, mesotherapy og microneedling i Esbjerg og Vejle. Gratis forundersøgelse hos læge.' },
     { name: 'keywords', content: 'botox pris, hvad koster botox, filler pris, læbefiller pris, skinbooster pris, microneedling pris, priser skønhedsklinik esbjerg, priser kosmetisk klinik vejle' },
     { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
     { name: 'author', content: 'DK Skønhedsklinik' },
@@ -282,12 +288,12 @@ useHead({
     { property: 'og:locale', content: 'da_DK' },
     { property: 'og:site_name', content: 'DK Skønhedsklinik' },
     { property: 'og:title', content: 'Priser – botox, filler og hudbehandlinger | DK Skønhedsklinik' },
-    { property: 'og:description', content: 'Botox fra 550 kr., filler 1.350 kr. pr. ml. Gratis forundersøgelse hos læge i Esbjerg og Vejle.' },
+    { property: 'og:description', content: 'Botox fra 550 kr., filler fra 1.350 kr. pr. ml. Gratis forundersøgelse hos læge i Esbjerg og Vejle.' },
     { property: 'og:url', content: `${SITE_URL}/priser/` },
     { property: 'og:image', content: `${SITE_URL}/og/home.webp` },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Priser | DK Skønhedsklinik' },
-    { name: 'twitter:description', content: 'Botox fra 550 kr., filler 1.350 kr. pr. ml. Gratis forundersøgelse hos læge.' },
+    { name: 'twitter:description', content: 'Botox fra 550 kr., filler fra 1.350 kr. pr. ml. Gratis forundersøgelse hos læge.' },
     { name: 'twitter:image', content: `${SITE_URL}/og/home.webp` }
   ],
   link: [

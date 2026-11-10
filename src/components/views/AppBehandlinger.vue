@@ -40,6 +40,7 @@ import AppBehandling from '../AppBehandling.vue'
 import RelateredeBehandlinger from '../RelateredeBehandlinger.vue'
 import { BOOKING_URL, CLINIC_SMS_HREF } from '@/config/booking'
 import { findBehandlingVedPath, broedkrummerFor, broedkrummeSchema, KATEGORIER } from '@/data/behandlinger'
+import { skinboosterProdukter } from '@/data/skinboosterProdukter'
 
 /* Afsluttende CTA - samme banner som paa laebefiller-siden */
 const openBooking = () => {
@@ -348,7 +349,7 @@ const behandlinger = {
             fakta: [
               { k: 'Formål', v: 'Løft og kontur' },
               { k: 'Holder', v: 'Typisk 6–12 mdr. – individuelt' },
-              { k: 'Pris', v: '1.350 kr. pr. ml' }
+              { k: 'Pris', v: 'Fra 1.350 kr. pr. ml' }
             ]
           },
           {
@@ -364,7 +365,7 @@ const behandlinger = {
             fakta: [
               { k: 'Formål', v: 'Blødgøre folden' },
               { k: 'Ofte sammen med', v: '<a href="#kindben">Kindben</a>' },
-              { k: 'Pris', v: '1.350 kr. pr. ml' }
+              { k: 'Pris', v: 'Fra 1.350 kr. pr. ml' }
             ]
           },
           {
@@ -380,7 +381,7 @@ const behandlinger = {
             fakta: [
               { k: 'Formål', v: 'Støtte mundvig og hage' },
               { k: 'Kan kombineres med', v: '<a href="/behandlinger/botox/#sure-mundvige">Botox mod sure mundvige</a>' },
-              { k: 'Pris', v: '1.350 kr. pr. ml' }
+              { k: 'Pris', v: 'Fra 1.350 kr. pr. ml' }
             ]
           },
           {
@@ -396,7 +397,7 @@ const behandlinger = {
             fakta: [
               { k: 'Formål', v: 'Blød overgang fra pande til kind' },
               { k: 'Godt at vide', v: 'Blå mærker kan forekomme' },
-              { k: 'Pris', v: '1.350 kr. pr. ml' }
+              { k: 'Pris', v: 'Fra 1.350 kr. pr. ml' }
             ]
           },
           {
@@ -410,7 +411,7 @@ const behandlinger = {
             fakta: [
               { k: 'Formål', v: 'Fylde på håndryggen' },
               { k: 'Kan kombineres med', v: '<a href="/behandlinger/skinbooster/">Skinbooster</a>' },
-              { k: 'Pris', v: '1.350 kr. pr. ml' }
+              { k: 'Pris', v: 'Fra 1.350 kr. pr. ml' }
             ]
           }
         ],
@@ -456,7 +457,7 @@ const behandlinger = {
       ],
       pricing: {
         items: [
-          { label: '1 ml', price: '1.350 kr.' }
+          { label: '1 ml', price: 'Fra 1.350 kr.' }
         ],
         notes: 'Holdbarhed og behov for vedligehold afhænger af område og livsstil.'
       }
@@ -487,6 +488,15 @@ const behandlinger = {
         'Alle hudtyper – oplagt som <b>første anti-age-trin</b> uden volumen.',
         'God før særlige begivenheder for <b>glød og fugt</b>.'
       ],
+      // Vaelger: de tre navngivne skinboostere side om side. Tallene kommer
+      // fra src/data/skinboosterProdukter.js - samme kilde som produktsiderne.
+      vaelger: {
+        eyebrow: 'Vælg skinbooster',
+        title: 'Hvilken skinbooster passer til dig?',
+        lead: 'Ejal40, Profhilo og Profhilo Structura gør ikke det samme: to arbejder i selve huden, den tredje i laget under. Lægen anbefaler én ved forundersøgelsen – her kan du se forskellen på forhånd.',
+        produkter: skinboosterProdukter(),
+        note: 'Er du i tvivl, så start med forundersøgelsen. Den er gratis, og lægen ser på din hud, før der vælges produkt.'
+      },
       expectations: {
         summary:
           'Mikroinjektioner af blød hyaluronsyre forbedrer <b>fugtbalancen</b> og hudens tekstur indefra – uden at give volumen.',
@@ -524,7 +534,9 @@ const behandlinger = {
       ],
       pricing: {
         items: [
-          { label: 'Skinbooster (per session)', price: 'Fra 1.350 kr.' }
+          { label: 'Ejal40 (pr. behandling)', price: '1.350 kr.' },
+          { label: 'Profhilo (pr. behandling)', price: '2.300 kr.' },
+          { label: 'Profhilo Structura (pr. behandling)', price: '3.100 kr.' }
         ],
         notes: 'Prisen afhænger af type/område.'
       }
@@ -739,7 +751,8 @@ const FAQ_BANK = {
     { q: 'Hvornår ses resultatet?', a: 'Forbedringer i glød og fugt ses typisk efter <b>1–2 uger</b> og tiltager over nogle uger.' },
     { q: 'Hvor længe holder effekten?', a: 'Som regel <b>6–12 måneder</b>, afhængigt af hudtilstand og produkt.' },
     { q: 'Nedetid og ubehag?', a: 'Små papler/rødme i <b>1–2 dage</b> er normalt. <b>Ingen bedøvelse</b> nødvendig for de fleste.' },
-    { q: 'Passer skinbooster til alle hudtyper?', a: 'Ja, særligt ved <b>tør/mat hud</b> eller fine linjer. Vi tilpasser produktvalg til hudtype.' }
+    { q: 'Passer skinbooster til alle hudtyper?', a: 'Ja, særligt ved <b>tør/mat hud</b> eller fine linjer. Vi tilpasser produktvalg til hudtype.' },
+    { q: 'Hvad er forskellen på Ejal40, Profhilo og Profhilo Structura?', a: '<a href="/behandlinger/skinbooster/ejal40/">Ejal40</a> giver fugt til tør og mat hud. <a href="/behandlinger/skinbooster/profhilo/">Profhilo</a> vælges, når huden også har mistet spændstighed. <a href="/behandlinger/skinbooster/profhilo-structura/">Profhilo Structura</a> lægges under huden og giver støtte til kinder og kæbeparti. Lægen anbefaler én ved forundersøgelsen.' }
   ],
 
   mesotherapy: [
@@ -828,7 +841,8 @@ const faqLd = computed(() => ({
     name: item.q,
     acceptedAnswer: {
       '@type': 'Answer',
-      text: Array.isArray(item.a) ? item.a.join('\n\n') : item.a
+      // uden HTML - svarene maa gerne indeholde links og fed paa siden
+      text: String(Array.isArray(item.a) ? item.a.join('\n\n') : item.a).replace(/<[^>]*>/g, '')
     }
   }))
 }))

@@ -28,6 +28,33 @@
     </div>
   </section>
 
+  <!-- 1a) Vaelger: produkter side om side (skinbooster). Kort frem for
+       tabel - de fleste laeser paa mobil, og kort kan staa under hinanden. -->
+  <section v-if="sections.vaelger" id="vaelg" class="slice vaelg" aria-labelledby="vaelg-titel">
+    <div class="slice-inner">
+      <div class="sec__head">
+        <p class="sec__eyebrow">{{ sections.vaelger.eyebrow }}</p>
+        <h2 id="vaelg-titel">{{ sections.vaelger.title }}</h2>
+        <p class="sec__lead">{{ sections.vaelger.lead }}</p>
+      </div>
+      <ul class="vaelg__liste">
+        <li v-for="x in sections.vaelger.produkter" :key="x.slug" class="vaelg__kort">
+          <h3><router-link :to="x.path">{{ x.navn }}</router-link></h3>
+          <p class="vaelg__bedst">{{ x.sammenlign.bedstTil }}</p>
+          <dl class="vaelg__fakta">
+            <div><dt>Arbejder i</dt><dd>{{ x.sammenlign.arbejderI }}</dd></div>
+            <div><dt>Indhold</dt><dd>{{ x.sammenlign.indhold }}</dd></div>
+            <div><dt>Lægges med</dt><dd>{{ x.sammenlign.laegges }}</dd></div>
+            <div><dt>Forløb</dt><dd>{{ x.sammenlign.forloeb }}</dd></div>
+          </dl>
+          <p class="vaelg__pris"><strong>{{ x.pris }} kr.</strong> pr. behandling</p>
+          <router-link :to="x.path" class="vaelg__link" :aria-label="`Læs mere om ${x.navn}`">Læs om {{ x.navn }}</router-link>
+        </li>
+      </ul>
+      <p v-if="sections.vaelger.note" class="vaelg__note">{{ sections.vaelger.note }}</p>
+    </div>
+  </section>
+
   <!-- 1b) Omraader: ét H3-afsnit pr. omraade med eget anker. Google kan
        rangere det enkelte afsnit paa en snaever soegning ("botox pandelinjer"),
        naar det har egen overskrift, eget id og noget specifikt at sige. -->
@@ -1832,6 +1859,92 @@ button[type="submit"],
 @media (max-width: 600px) {
   .efter__panel,
   .pris__kort { padding: 26px 22px; }
+}
+
+/* ===== Vaelger (skinbooster) =====
+   Hvidt baand som omraade-sektionen. Tre kort side om side, ét under
+   hinanden paa mobil. */
+#vaelg.vaelg { background: #fff; color: #153655; }
+.vaelg .slice-inner { display: block; }
+.vaelg h2 { color: #153655 !important; text-align: left !important; }
+
+.vaelg__liste {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.vaelg__kort {
+  background: #fff;
+  border: 1px solid rgba(21, 54, 85, .10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(21, 54, 85, .06);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 26px 26px;
+}
+
+.vaelg__kort h3 { font-size: 1.25rem; margin: 0 0 8px; text-align: left; }
+.vaelg__kort h3 a { color: #153655; text-decoration: none; }
+.vaelg__kort h3 a:hover,
+.vaelg__kort h3 a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+
+.vaelg__bedst {
+  color: #2d58a1;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0 0 16px;
+  min-height: 2.9em;
+}
+
+.vaelg__fakta { margin: 0 0 18px; }
+
+.vaelg__fakta > div {
+  border-top: 1px solid rgba(21, 54, 85, .10);
+  padding: 10px 0;
+}
+
+.vaelg__fakta dt {
+  color: rgba(21, 54, 85, .65);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.vaelg__fakta dd { color: #153655; line-height: 1.5; margin: 2px 0 0; }
+
+.vaelg__pris {
+  border-top: 1px solid rgba(21, 54, 85, .10);
+  color: rgba(21, 54, 85, .8);
+  margin: auto 0 14px;
+  padding-top: 16px;
+}
+
+.vaelg__pris strong { color: #153655; font-size: 1.3rem; margin-right: 4px; }
+
+.vaelg__link {
+  color: #2d58a1;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.vaelg__note {
+  color: rgba(21, 54, 85, .82);
+  line-height: 1.65;
+  margin: 24px 0 0;
+  max-width: 72ch;
+}
+
+@media (max-width: 900px) {
+  .vaelg__liste { grid-template-columns: minmax(0, 1fr); }
+  .vaelg__bedst { min-height: 0; }
 }
 
 /* ===== Omraader (botox, filler) =====

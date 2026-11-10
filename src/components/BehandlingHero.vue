@@ -13,7 +13,7 @@
           <p class="bh-hero__lead">{{ lead }}</p>
 
           <p v-if="prisFra" class="bh-hero__pris">
-            <span class="bh-hero__pris-fra">Fra</span>
+            <span v-if="prisForled" class="bh-hero__pris-fra">{{ prisForled }}</span>
             <strong>{{ prisFra }} kr.</strong>
             <span v-if="prisEnhed" class="bh-hero__pris-enhed">{{ prisEnhed }}</span>
           </p>
@@ -65,6 +65,7 @@ const props = defineProps({
   eyebrow: { type: String, default: '' },
   broedkrummer: { type: Array, default: () => [] },
   prisFra: { type: String, default: '' },     // "550" / "1.350"
+  prisForled: { type: String, default: 'Fra' }, // tom streng ved fast pris
   prisEnhed: { type: String, default: '' },   // "pr. område" / "pr. ml"
   prisAnker: { type: String, default: '' },   // id paa sidens prissektion
   prisKnapTekst: { type: String, default: 'Se priser' },
