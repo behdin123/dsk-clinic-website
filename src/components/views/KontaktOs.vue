@@ -193,7 +193,7 @@
 
             <!-- Feedback (tilgængelig live-region) -->
             <p v-if="status === 'success'" class="form-success" role="status" aria-live="polite">
-                Tak! Vi ringer dig op snarest.
+                Tak! Vi ringer dig op – typisk inden for én hverdag.
             </p>
             <p v-if="status === 'error'" class="form-error" role="alert" aria-live="assertive">
                 {{ errorMessage }}
@@ -203,6 +203,28 @@
                 {{ status === 'sending' ? 'Sender…' : 'Ring mig op' }}
             </button>
         </form>
+    </section>
+
+
+    <!-- FAQ: praktiske spoergsmaal om at komme i kontakt og booke. Bevidst
+         ikke de samme spoergsmaal som klinikssiderne, priser og om os -
+         her svarer vi paa det, folk er i tvivl om, LIGE FOER de skriver. -->
+    <section id="spoergsmaal" class="sec sec--panel kontakt-faq" aria-labelledby="kontakt-faq-titel">
+        <div class="sec__head">
+            <p class="sec__eyebrow">Spørgsmål</p>
+            <h2 id="kontakt-faq-titel">Spørgsmål om kontakt og booking</h2>
+            <p class="sec__lead">
+                Det, folk oftest spørger om, før de skriver til os første gang.
+            </p>
+        </div>
+
+        <FaqList :items="faqs" />
+
+        <p class="kontakt-faq__videre">
+            Fandt du ikke svaret?
+            <a :href="CLINIC_SMS_HREF">Send en sms til <span class="kontakt-faq__tlf">53 50 37 50</span></a>
+            – vi svarer typisk inden for én hverdag.
+        </p>
     </section>
 
 
@@ -252,12 +274,12 @@
                     <p class="sec__eyebrow">Sociale medier</p>
                     <h2>Følg os for nyheder og tilbud</h2>
                     <p>
-                        På vores Sociale Medier hjælper vi dig med de spørgsmål du måtte have,
-                        og samtidig kan du også se vores tilbud og nyheder som du kan få gavn af
+                        På Instagram og Facebook deler vi nyheder, tilbud og ledige tider
+                        med kort varsel.
                     </p>
                 </div>
                 <div class="follow-insta-icons-wrapper">
-                    <p>Du skriv en besked til os på Facebook eller Instagram og vi vil svar hurtigst muligt</p>
+                    <p>Du kan også skrive til os i en besked på Facebook eller Instagram.</p>
                     <div class="follow-insta-icons">
                         <a class="soc NavFacebook" href="https://www.facebook.com/profile.php?id=100054595142567"
                             target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -273,7 +295,7 @@
                 </div>
             </div>
             <div class="section-media">
-                <img src="../../assets/DK_Skønhedsklinik.webp" alt="Skinbooster behandling – frisk og ungdommelig hud"
+                <img src="../../assets/DK_Skønhedsklinik.webp" alt="Klinikkens logo foran behandlingsstolen i behandlingsrummet"
                     width="1200" height="800" loading="lazy" decoding="async">
             </div>
         </div>
@@ -286,6 +308,41 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import { reactive, ref } from 'vue'
+import FaqList from '@/components/FaqList.vue'
+import { BOOKING_URL, CLINIC_SMS_HREF } from '@/config/booking.js'
+
+/* Spoergsmaal om kontakt og booking.
+   Fakta skal stemme med resten af sitet (aabningstider, 48 timer,
+   gratis forundersoegelse, "typisk inden for én hverdag"). Svarene maa
+   gerne indeholde links - schemaet faar en version uden HTML. */
+const faqs = [
+    {
+        q: 'Hvordan booker jeg en tid?',
+        a: 'Du kan <a href="/booking/">booke online</a>, sende en sms til 53 50 37 50 eller udfylde formularen ovenfor, så ringer vi dig op. Din første tid er altid en gratis og uforpligtende forundersøgelse hos lægen.'
+    },
+    {
+        q: 'Er det bedst at ringe eller skrive?',
+        a: 'Begge dele er fint, men en sms er ofte det hurtigste. Lægen kan ikke altid tage telefonen, mens han behandler, og en sms kan vi svare på, så snart der er en pause. Vi svarer typisk inden for én hverdag.'
+    },
+    {
+        q: 'Hvilken klinik skal jeg vælge?',
+        a: 'Den, der passer dig bedst i tid og transport. Det er samme læge og samme priser begge steder. <a href="/klinik/esbjerg/">Esbjerg</a> har åbent mandag–fredag kl. 17–20, <a href="/klinik/vejle/">Vejle</a> søndag kl. 11–18. Kommer du fra Kolding, Fredericia eller Horsens, ligger Vejle tættest. Fra Varde, Bramming eller Ribe er det Esbjerg.'
+    },
+    {
+        q: 'Kan jeg få en tid uden for åbningstiderne?',
+        a: 'I Esbjerg kan andre tidspunkter aftales. I Vejle behandler vi indtil videre kun om søndagen, men tidspunktet på dagen kan i særlige tilfælde aftales. Skriv, hvornår du kan, så finder vi en løsning.'
+    },
+    {
+        q: 'Hvad skal jeg skrive, når jeg kontakter jer?',
+        a: 'Det er nok at skrive, hvilken behandling eller hvilket område du tænker på, hvilken klinik du foretrækker, og hvornår du kan. Helbred, medicin og tidligere behandlinger gennemgår lægen med dig ved forundersøgelsen – det behøver du ikke skrive i en sms eller formularen.'
+    },
+    {
+        q: 'Forpligter det mig til noget at kontakte jer?',
+        a: 'Nej. Hverken en sms, et opkald eller forundersøgelsen forpligter dig til noget. Der er mindst 48 timers betænkningstid mellem forundersøgelse og behandling, og du betaler først, når du bliver behandlet.'
+    }
+]
+
+const stripTags = s => String(s || '').replace(/<[^>]*>/g, '').trim()
 
 /* Veninde-rabatten er slaaet fra indtil videre. Saet til true for at
    vise sektionen igen - markup og styling staar uroert. */
@@ -371,24 +428,35 @@ const openBookingFromHero = () => {
 }
 
 const ORG_ID = 'https://dsklinik.dk/#organization'
-const BOOKING_URL = 'https://dsklinik.app4.geckobooking.dk/site/booking.php?show=new_booking&icCode=64c857a01938e8ee26f9d9f8fca49125b10711&bId=10711&dTpl=1&sSToken=7147f9ee6e0f4459509dbaca658244d6'
+const PAGE_URL = 'https://dsklinik.dk/kontaktos/'
+
+const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': PAGE_URL + '#faq',
+    mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) }
+    }))
+}
 
 useHead({
     title: 'Kontakt DK Skønhedsklinik | Esbjerg & Vejle',
     meta: [
-        { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Skriv en sms til os +45 53 50 37 50 eller direkte på vore sociale medier for en gratis forundersøgelse.' },
+        { name: 'description', content: 'Kontakt DK Skønhedsklinik i Vejle og Esbjerg. Send en sms til 53 50 37 50 eller bliv ringet op – vi svarer typisk inden for én hverdag.' },
         { name: 'keywords', content: 'kontakt skønhedsklinik, kosmetisk klinik Vejle, kosmetisk klinik Esbjerg, book konsultation' },
         { name: 'author', content: 'DK Skønhedsklinik' },
         { name: 'geo:region', content: 'DK-86,DK-82' },
         { name: 'geo:placename', content: 'Vejle, Esbjerg, Danmark' },
         { property: 'og:title', content: 'Kontakt DK Skønhedsklinik' },
-        { property: 'og:description', content: 'Har du spørgsmål? Kontakt os for rådgivning og gratis forundersøgelse.' },
+        { property: 'og:description', content: 'Send en sms, bliv ringet op eller book online. Gratis forundersøgelse hos lægen i Vejle og Esbjerg.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: 'https://dsklinik.dk/og/contact.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { name: 'twitter:image', content: 'https://dsklinik.dk/og/contact.webp' },
-        { name: 'twitter:title', content: 'Kontakt os' },
+        { name: 'twitter:title', content: 'Kontakt DK Skønhedsklinik' },
         { property: 'og:site_name', content: 'DK Skønhedsklinik' },
         { property: 'og:locale', content: 'da_DK' },
         { property: 'og:url', content: 'https://dsklinik.dk/kontaktos/' },
@@ -400,21 +468,6 @@ useHead({
         { rel: 'alternate', hreflang: 'da-DK', href: 'https://dsklinik.dk/kontaktos/' }
     ],
     script: [
-        {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "@id": ORG_ID,
-                "name": "DK Skønhedsklinik",
-                "url": "https://dsklinik.dk/",
-                "logo": "https://dsklinik.dk/og/home.webp",
-                "sameAs": [
-                    "https://www.facebook.com/people/DK-Sk%C3%B8nhedsklinik/100054595142567/",
-                    "https://www.instagram.com/dk_skonhedsklinik/"
-                ]
-            })
-        },
 
         // شعبه‌ی Vejle
         {
@@ -424,12 +477,12 @@ useHead({
                 "@type": "MedicalClinic",
                 "@id": "https://dsklinik.dk/#vejle",
                 "name": "DK Skønhedsklinik – Vejle",
-                "url": "https://dsklinik.dk/kontaktos/",
+                "url": "https://dsklinik.dk/klinik/vejle/",
                 "image": "https://dsklinik.dk/og/logo.webp",
                 "parentOrganization": { "@id": ORG_ID },
                 "telephone": "+45 53 50 37 50",
                 "email": "dr_arash_bagheri@yahoo.com",
-                "priceRange": "kr",
+                "priceRange": "$$",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Søndergade 50",
@@ -459,12 +512,12 @@ useHead({
                 "@type": "MedicalClinic",
                 "@id": "https://dsklinik.dk/#esbjerg",
                 "name": "DK Skønhedsklinik – Esbjerg",
-                "url": "https://dsklinik.dk/kontaktos/",
+                "url": "https://dsklinik.dk/klinik/esbjerg/",
                 "image": "https://dsklinik.dk/og/logo.webp",
                 "parentOrganization": { "@id": ORG_ID },
                 "telephone": "+45 53 50 37 50",
                 "email": "dr_arash_bagheri@yahoo.com",
-                "priceRange": "DKK",
+                "priceRange": "$$",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Havnegade 6",
@@ -490,18 +543,31 @@ useHead({
             innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "ContactPage",
-                "@id": "https://dsklinik.dk/#contact",
+                "@id": PAGE_URL + "#webpage",
+                "url": PAGE_URL,
                 "name": "Kontakt DK Skønhedsklinik",
-                "url": "https://dsklinik.dk/kontaktos/",
-                "mainEntityOfPage": { "@id": "https://dsklinik.dk/#organization" }
+                "description": "Telefon, sms, åbningstider og adresser for DK Skønhedsklinik i Vejle og Esbjerg.",
+                "inLanguage": "da-DK",
+                "about": { "@id": ORG_ID },
+                "mainEntity": {
+                    "@id": ORG_ID,
+                    "location": [{ "@id": "https://dsklinik.dk/#vejle" }, { "@id": "https://dsklinik.dk/#esbjerg" }]
+                },
+                "breadcrumb": { "@id": PAGE_URL + "#breadcrumb" },
+                "hasPart": { "@id": PAGE_URL + "#faq" }
             })
         },
-        // 👇 denne skal også have trailing slash
+        {
+            type: 'application/ld+json',
+            key: 'faq-jsonld',
+            innerHTML: JSON.stringify(faqLd)
+        },
         {
             type: 'application/ld+json',
             innerHTML: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
+                "@id": PAGE_URL + "#breadcrumb",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://dsklinik.dk/" },
                     { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://dsklinik.dk/kontaktos/" }
@@ -1462,6 +1528,39 @@ button[disabled] {
 .sec__eyebrow--lys { color: rgba(255, 255, 255, .78) !important; }
 .sec__eyebrow--lys::before { background: rgba(255, 255, 255, .6) !important; }
 
+/* ===== FAQ paa kontaktsiden =====
+   Samme panel som FAQ'en paa klinikssiderne (.sec--panel), saa de to sider
+   ser ens ud. Bredden foelger maalestokken. */
+.kontakt-faq {
+    margin-top: 24px;
+}
+
+.kontakt-faq__videre {
+    color: rgba(21, 54, 85, .82);
+    line-height: 1.65;
+    margin: 22px 0 0;
+}
+
+.kontakt-faq__videre a {
+    color: #2d58a1;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.kontakt-faq__videre a:hover { text-decoration: underline; }
+
+/* Telefonnummeret maa ikke knaekke midt i */
+.kontakt-faq__tlf { white-space: nowrap; }
+
+/* Links i svarene kommer fra v-html og rammes derfor kun med :deep */
+.kontakt-faq :deep(.faq-a a) {
+    color: #2d58a1;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
 /* ===== Klinikkort paa kontaktsiden ===== */
 .kontakt-klinikker {
     box-sizing: border-box;
@@ -1733,7 +1832,8 @@ button[disabled] {
     main > .flex,
     .kontakt-klinikker,
     .callback,
-    .follow-insta-wrapper > .flex-row {
+    .follow-insta-wrapper > .flex-row,
+    .kontakt-faq {
         box-sizing: border-box;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -1741,6 +1841,12 @@ button[disabled] {
         padding-left: 0 !important;
         padding-right: 0 !important;
         width: 90% !important;
+    }
+
+    /* FAQ'en er et panel - den skal have sin indvendige luft tilbage */
+    .kontakt-faq.sec--panel {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
     }
 }
 </style>

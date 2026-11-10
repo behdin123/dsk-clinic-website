@@ -55,11 +55,14 @@ const globalOrgSchema = {
     'https://www.facebook.com/profile.php?id=100054595142567',
     'https://www.instagram.com/dk_skonhedsklinik/'
   ],
+  // Ét kontaktpunkt for hele klinikken - kontaktsidens ContactPage peger hertil
   'contactPoint': {
     '@type': 'ContactPoint',
-    'contactType': 'Customer Service',
+    'contactType': 'customer service',
     'telephone': '+45 53 50 37 50',
-    'email': 'dr_arash_bagheri@yahoo.com'
+    'email': 'dr_arash_bagheri@yahoo.com',
+    'areaServed': 'DK',
+    'availableLanguage': 'Danish'
   },
   // De to klinikker er ligestillede lokationer (defineres fuldt ud på forsiden og klinikssiderne)
   'location': [
