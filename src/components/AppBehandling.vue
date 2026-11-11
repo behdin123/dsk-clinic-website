@@ -24,6 +24,9 @@
             <span class="li-text" v-html="item"></span>
           </li>
         </ul>
+
+        <!-- Det ene, "Hvad kan du forvente" sagde, som ikke staar i banneret eller FAQ'en -->
+        <p v-if="sections.expectations?.summary" class="audience-virker" v-html="sections.expectations.summary"></p>
       </div>
     </div>
   </section>
@@ -111,29 +114,6 @@
     </div>
   </section>
 
-  <!-- 2) Expectations -->
-  <section v-if="sections.expectations" id="expectations" class="slice alt">
-    <div class="slice-inner row-reverse">
-      <div class="slice-media expectations-media">
-        <img :src="getAsset('expectations')" :alt="sectionAlt('expectations')" loading="lazy" decoding="async" />
-      </div>
-      <div class="slice-body resultater-body">
-        <h2 class="slice-title icon-star">Hvad kan du forvente af {{ navnLille }}?</h2>
-        <p v-if="sections.expectations.summary" v-html="sections.expectations.summary" />
-        <ul class="kv">
-          <li v-if="sections.expectations.visibleAfter"><b>Synlig effekt:</b> {{ sections.expectations.visibleAfter }}
-          </li>
-          <li v-if="sections.expectations.durability"><b>Holdbarhed:</b> {{ sections.expectations.durability }}</li>
-          <li v-if="sections.expectations.sessions"><b>Antal sessioner:</b> {{ sections.expectations.sessions }}</li>
-        </ul>
-        <div class="buttons">
-          <AppBooking />
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- 3) Steps -->
   <section v-if="steps3.length" id="steps" class="slice forloeb" aria-labelledby="forloeb-titel">
     <div class="slice-inner">
@@ -211,46 +191,6 @@
     </div>
   </section>
 
-
-  <!-- 6) Combinations -->
-  <section v-if="sections.combinations?.length" id="combinations" class="slice alt">
-    <div class="slice-inner row-reverse">
-      <div class="slice-media">
-        <img :src="getAsset('combinations')" :alt="sectionAlt('combinations')" loading="lazy" decoding="async" />
-      </div>
-      <div class="slice-body">
-        <h2 class="slice-title icon-puzzle">Kombinationer med {{ navnLille }}</h2>
-
-        <ul class="bullet">
-          <li v-for="(item, i) in normalizedCombinations" :key="'k-' + i">
-            <!-- فلش/استایل شما اینجا از قبل روی li هست -->
-            <template v-if="item.refs?.length">
-              <template v-for="(r, idx) in item.refs" :key="r.ref">
-                <RouterLink :to="`/behandlinger/${r.ref}/`" class="inline-link"><b>{{ r.label || titleFor(r.ref) }}</b>
-                </RouterLink>
-                <span v-if="idx < item.refs.length - 1"> / </span>
-              </template>
-              <span v-if="item.text">&nbsp;{{ item.text }}</span>
-            </template>
-
-            <template v-else>
-              <template v-if="item.ref">
-                <RouterLink :to="`/behandlinger/${item.ref}/`" class="inline-link"><b>{{ item.label || titleFor(item.ref)
-                    }}</b></RouterLink>
-                <span v-if="item.text">&nbsp;{{ item.text }}</span>
-              </template>
-
-              <!-- سازگاری با داده‌های قدیمی رشته‌ای -->
-              <span v-else v-html="item.__raw"></span>
-            </template>
-          </li>
-        </ul>
-        <div class="buttons">
-          <AppBooking />
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- 7) Pricing -->
   <section v-if="sections.pricing" id="pricing" class="slice pris" aria-labelledby="pris-titel">
@@ -1442,12 +1382,6 @@ button[type="submit"],
     line-height: 1.8;
   }
 
-  #audience .bullet li {
-    padding: 10px 0;
-    line-height: 1.5;
-    font-size: 14px;
-  }
-
   .audience-intro {
     font-size: 16px;
   }
@@ -1870,6 +1804,9 @@ button[type="submit"],
 
 /* Link til laegens profil i sikkerhedsafsnittet: skal ligne et link */
 .slice .laege-link { color: #2d58a1 !important; }
+
+/* Saadan virker behandlingen - under punkterne i "Hvem er ... til?" */
+.audience-virker { line-height: 1.7; margin: 18px 0 0; }
 
 /* ===== Vaelger (skinbooster) =====
    Hvidt baand som omraade-sektionen. Tre kort side om side, ét under

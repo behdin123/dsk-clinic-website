@@ -12,6 +12,7 @@
             ratio="4 / 3" />
           <div class="relateret__body">
             <h3 class="relateret__navn">{{ b.navn }}</h3>
+            <p v-if="b.note" class="relateret__note">God kombination: {{ b.note }}</p>
             <p class="relateret__kort">{{ b.kort }}</p>
             <p v-if="b.prisTekst" class="relateret__pris">{{ b.prisTekst }}</p>
           </div>
@@ -24,7 +25,7 @@
 <script setup>
 import { computed } from 'vue'
 import MediaPlaceholder from './MediaPlaceholder.vue'
-import { relateredeFor } from '@/data/behandlinger'
+import { relateredeFor, findBehandling } from '@/data/behandlinger'
 
 /**
  * "Relaterede behandlinger" nederst paa en behandlingsside.
@@ -34,10 +35,20 @@ import { relateredeFor } from '@/data/behandlinger'
 const props = defineProps({
   slug: { type: String, required: true },
   titel: { type: String, default: 'Relaterede behandlinger' },
-  antal: { type: Number, default: 3 }
+  antal: { type: Number, default: 3 },
+  // { slug: 'til volumetab eller kontur' } - behandlinger, der kombineres godt med siden
+  noter: { type: Object, default: () => ({}) }
 })
 
-const kort = computed(() => relateredeFor(props.slug, props.antal))
+// Kombinationerne staar foerst; resten fyldes op fra registret.
+const kort = computed(() => {
+  const kombi = Object.keys(props.noter).map(findBehandling)
+    .filter(b => b && b.status === 'live' && b.slug !== props.slug)
+  const rest = relateredeFor(props.slug, props.antal + kombi.length)
+    .filter(b => !kombi.some(k => k.slug === b.slug))
+  return [...kombi, ...rest].slice(0, Math.max(props.antal, kombi.length))
+    .map(b => ({ ...b, note: props.noter[b.slug] || '' }))
+})
 </script>
 
 <style lang="scss" scoped>
@@ -119,4 +130,5 @@ $c-blue: #2d58a1;
   .relateret__grid { grid-template-columns: 1fr; gap: 16px; }
   .behandling-relateret { width: 100%; }
 }
+.relateret__note { color: #2d58a1; font-size: .9rem; font-weight: 700; line-height: 1.45; margin: 0 0 6px; }
 </style>

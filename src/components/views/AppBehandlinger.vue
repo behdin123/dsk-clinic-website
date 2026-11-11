@@ -8,7 +8,7 @@
     :broedkrummer="heroKruemmer" :eyebrow="heroEyebrow" />
 
   <div class="behandling-relateret container">
-    <RelateredeBehandlinger v-if="registerSlug" :slug="registerSlug" />
+    <RelateredeBehandlinger v-if="registerSlug" :slug="registerSlug" :noter="kombiNoter" />
   </div>
 
   <div class="behandling-cta">
@@ -254,7 +254,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & plan', text: 'Gennemgang af ønsker/kontraindikationer, fotodokumentation og individuel dosisplan. Vi gennemgår realistiske forventninger og sikkerhed.' },
         { title: 'Selve behandlingen', text: 'Små, præcise stik i målte muskler – typisk 10–15 min. Målet er et naturligt, afslappet udtryk uden at “fryse” mimikken.' },
-        { title: 'Efterbehandling & kontrol', text: 'Effekt kan vurderes efter 14 dage, efter behov, hvor der kan laves finjustering for optimalt resultat.' }
+        { title: 'Kontrol', text: 'Effekt kan vurderes efter 14 dage, efter behov, hvor der kan laves finjustering for optimalt resultat.' }
       ],
       safety: {
         note: 'Udføres personligt af klinikkens læge, Arash Bagheri. Klinikken er registreret hos Styrelsen for Patientsikkerhed. Resultater og behov er individuelle.',
@@ -427,7 +427,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & design', text: 'Ansigtsanalyse, fotodokumentation og produktvalg efter område/hudtype. Vi planlægger en naturlig harmonisering.' },
         { title: 'Injektion & formgivning', text: 'Hyaluronsyre-filler placeres lagvist med nål/kanyle for bløde overgange, symmetri og kontur. Med bedøvende creme og gennemgang af designet tager hele behandlingen typisk 45–60 minutter.' },
-        { title: 'Efterbehandling & kontrol', text: 'Hævelse falder typisk inden for få dage; endeligt look kan ses efter 14 dage. Vi kan vurdere resultatet efter behov, efter 2 uger og kan ved behov lave finpudsning/rettelser.' }
+        { title: 'Kontrol', text: 'Hævelse falder typisk inden for få dage; endeligt look kan ses efter 14 dage. Vi kan vurdere resultatet efter behov, efter 2 uger og kan ved behov lave finpudsning/rettelser.' }
       ],
       safety: {
         note: 'Udføres af læge; brug af <b>hyaluronidase</b> ved behov.',
@@ -507,7 +507,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation', text: 'Hudvurdering, mål og valg af skinbooster-type. Plan for antal sessioner og intervaller.' },
         { title: 'Mikroinjektioner af skinbooster', text: 'Præcise mængder af blød hyaluronsyre lægges i huden for at forbedre fugtbalance og tekstur. Små “papler” er normale i 1 - 2 dage.' },
-        { title: 'Næste session & kontrol', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn. Vurdering foretages før næste behandling efter minimum 2 måneder' }
+        { title: 'Næste session & kontrol', text: 'Vurdering foretages før næste behandling efter minimum 2 måneder.' }
       ],
       safety: {
         note: 'Mild og biokompatibel behandling.',
@@ -577,7 +577,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & cocktailvalg', text: 'Valg af vitamin/antioxidant-cocktail efter hudtype og mål. Vi sætter realistiske forventninger og forklarer forløbet.' },
         { title: 'Mikroinjektioner', text: 'Overfladiske mikroinjektioner fordeles jævnt i området for at forbedre fugt, glød og ensartethed. Let rødme/blå mærker kan opstå kortvarigt.' },
-        { title: 'Næste session & kontrol', text: 'Makeup efter 24 t., undgå sauna/hård træning første døgn og brug SPF. Vurdering og gentagelse planlægges efter 4 uger som del af en kur på 3–6 sessioner.' }
+        { title: 'Næste session & kontrol', text: 'Vurdering og gentagelse planlægges efter 4 uger som del af en kur på 3–6 sessioner.' }
       ],
       safety: {
         note: 'Udføres af læge – ingredienser tilpasses hudens behov.',
@@ -591,7 +591,8 @@ const behandlinger = {
       },
       aftercare: [
         'Undgå makeup <b>24 timer</b>.',
-        'Undgå sauna/hård træning første døgn.'
+        'Undgå sauna/hård træning første døgn.',
+        'Brug solcreme (SPF).'
       ],
       combinations: [
         { ref: 'skinbooster', label: 'Skinbooster', text: 'for ekstra fugt.' },
@@ -640,7 +641,7 @@ const behandlinger = {
       steps: [
         { title: 'Konsultation & bedøvende creme', text: 'Vi afklarer mål, kontraindikationer og påfører lokalbedøvende creme for komfort. Områder og intensitet planlægges.' },
         { title: 'Steril microneedling-procedure', text: 'Kontrollerede mikrokanaler stimulerer kollagen/elastin og øger optag af aktive stoffer. Behandlingen tilpasses zone for jævn og sikker dækning.' },
-        { title: 'Efterbehandling & vurdering', text: 'Solcreme med SPF 30+ dagligt og ingen AHA/BHA/retinol i 3–5 dage. Lægen fortæller dig efter behandlingen, hvornår du må gå i sauna og træne igen. Lægen vurderer, om du har brug for en ny behandling – tidligst efter 3 måneder.' }
+        { title: 'Vurdering', text: 'Lægen vurderer, om du har brug for en ny behandling – tidligst efter 3 måneder.' }
       ],
       safety: {
         note: 'Sterile engangshoveder – medicinsk hygiejne.',
@@ -692,6 +693,15 @@ const ogImage = computed(() => OG_IMAGES[currentType.value] || OG_IMAGES._defaul
 
 const behandlingData = computed(() => behandlinger[currentType.value] || behandlinger[FALLBACK])
 const sectionsData = computed(() => behandlingData.value.sections || {})
+// Kombinationerne vises paa kortene i "Relaterede behandlinger"
+const rensNote = t => String(t || '').replace(/^[(\s]+|[).\s]+$/g, '')
+const kombiNoter = computed(() => {
+  const ud = {}
+  for (const c of sectionsData.value.combinations || []) {
+    for (const r of c.refs ? c.refs.map(x => x.ref) : [c.ref]) if (r) ud[r] = rensNote(c.text)
+  }
+  return ud
+})
 const sectionAssets = computed(() => behandlingData.value.sectionsAssets || {})
 
 // متاهای اختصاصی هر درمان
