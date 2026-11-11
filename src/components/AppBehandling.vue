@@ -13,7 +13,7 @@
         <img :src="getAsset('audience')" :alt="sectionAlt('audience')" loading="lazy" decoding="async" />
       </div>
       <div class="slice-body audience-body">
-        <h2 class="slice-title icon-target">Hvem er {{ title }} til?</h2>
+        <h2 class="slice-title icon-target">Hvem er {{ navnLille }} til?</h2>
 
         <!-- جمله‌ی مقدمه (از span.intro) -->
         <div v-if="audienceIntro" class="audience-intro" v-html="audienceIntro"></div>
@@ -118,7 +118,7 @@
         <img :src="getAsset('expectations')" :alt="sectionAlt('expectations')" loading="lazy" decoding="async" />
       </div>
       <div class="slice-body resultater-body">
-        <h2 class="slice-title icon-star">{{ title }} <br> resultater & forventninger</h2>
+        <h2 class="slice-title icon-star">Hvad kan du forvente af {{ navnLille }}?</h2>
         <p v-if="sections.expectations.summary" v-html="sections.expectations.summary" />
         <ul class="kv">
           <li v-if="sections.expectations.visibleAfter"><b>Synlig effekt:</b> {{ sections.expectations.visibleAfter }}
@@ -139,7 +139,7 @@
     <div class="slice-inner">
       <div class="sec__head">
         <p class="sec__eyebrow">Forløb</p>
-        <h2 id="forloeb-titel">Sådan foregår {{ title }}</h2>
+        <h2 id="forloeb-titel">Sådan foregår en behandling med {{ navnLille }}</h2>
       </div>
 
       <ol class="forloeb__liste">
@@ -161,8 +161,12 @@
       <div class="slice-body section-safety-body">
         <h2 class="slice-title icon-shield section-safety">Sikkerhed & kontraindikationer</h2>
         <div class="section-safety-intro">
-          <b>{{ title }}: </b>
+          <b>{{ kortNavn }}: </b>
           <p v-if="sections.safety.note" class="muted" v-html="sections.safety.note" />
+          <!-- Link til laegens profil: det er her, laeseren spoerger "hvem er det, der behandler mig?" -->
+          <p class="muted">
+            <RouterLink to="/omos/" class="inline-link laege-link"><b>Læs om klinikkens læge, Arash Bagheri</b></RouterLink>
+          </p>
         </div>
         <div class="two-cols">
           <div v-if="sections.safety.contraindications?.length">
@@ -188,7 +192,7 @@
       <div class="efter__panel">
         <div class="sec__head">
           <p class="sec__eyebrow">Efter behandlingen</p>
-          <h2 id="efter-titel">Efterbehandling for {{ title }}</h2>
+          <h2 id="efter-titel">Efter din behandling med {{ navnLille }}</h2>
           <p class="sec__lead">Gode råd de første 24–48 timer for et pænt og trygt resultat.</p>
         </div>
 
@@ -215,7 +219,7 @@
         <img :src="getAsset('combinations')" :alt="sectionAlt('combinations')" loading="lazy" decoding="async" />
       </div>
       <div class="slice-body">
-        <h2 class="slice-title icon-puzzle">Kombinationer med <br> {{ title }}</h2>
+        <h2 class="slice-title icon-puzzle">Kombinationer med {{ navnLille }}</h2>
 
         <ul class="bullet">
           <li v-for="(item, i) in normalizedCombinations" :key="'k-' + i">
@@ -254,7 +258,7 @@
       <div class="pris__kort">
         <div class="pris__intro">
           <p class="sec__eyebrow">Pris</p>
-          <h2 id="pris-titel">Pris på {{ title }}</h2>
+          <h2 id="pris-titel">Pris på {{ navnLille }}</h2>
           <p v-if="sections.pricing.notes" class="pris__note" v-html="sections.pricing.notes" />
           <p class="pris__note">
             Forundersøgelsen er gratis og uforpligtende, og du betaler først efter behandlingen.
@@ -280,7 +284,7 @@
     <div class="sec sec--kort faq-kort">
       <div class="sec__head">
         <p class="sec__eyebrow">Spørgsmål</p>
-        <h2 id="faq-behandling">Ofte stillede spørgsmål om {{ title }}</h2>
+        <h2 id="faq-behandling">Ofte stillede spørgsmål om {{ navnLille }}</h2>
       </div>
       <FaqList :items="faqs" />
     </div>
@@ -496,6 +500,9 @@ const omraader = computed(() => props.sections?.omraader?.items?.length ? props.
 
 /* ===== Hero (BehandlingHero.vue) ===== */
 const kortNavn = computed(() => String(props.title || '').replace(/\s*behandling$/i, ''))
+// Navnet inde i en saetning: smaa bogstaver og dansk stavemaade.
+// "Hvem er Botox behandling til?" -> "Hvem er botox til?"
+const navnLille = computed(() => kortNavn.value.toLowerCase().replace('mesotherapy', 'mesoterapi'))
 
 // "550" / "Fra 1.350" -> "550" / "1.350"
 const prisFra = computed(() => String(props.price || '').replace(/^\s*fra\s*/i, '').trim())
@@ -1860,6 +1867,9 @@ button[type="submit"],
   .efter__panel,
   .pris__kort { padding: 26px 22px; }
 }
+
+/* Link til laegens profil i sikkerhedsafsnittet: skal ligne et link */
+.slice .laege-link { color: #2d58a1 !important; }
 
 /* ===== Vaelger (skinbooster) =====
    Hvidt baand som omraade-sektionen. Tre kort side om side, ét under
