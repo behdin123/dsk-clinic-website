@@ -383,6 +383,10 @@ igennem, så lazy-billeder og AOS-animationer er færdige, før du måler.
   én størrelse (`clamp(1.65rem, 2.5vw, 2.25rem)`), og heroens eyebrow ligner `sec__eyebrow`.
   De gamle klasser (`.card`, `.container_carts`, `.Multimediedesigner`, `.VIKING`, `.informations`)
   bruges ikke længere i forsidens markup, men deres CSS ligger der stadig – kan ryddes ud
+- **Forsiden, sociale medier (11. nov, ikke pushet):** slideren er erstattet af `fs-some`: fire
+  faste fliser (4 kolonner → 2 × 2 under 1000 px → vandret rul med scroll-snap under 700 px).
+  Intet script og ingen autoplay; billederne leveres i 640 px med 1000 px som `srcset`.
+  Heroens eyebrow er 15–17 px (større end sektionernes, fordi den står på et foto)
 
 ### Næste skridt
 

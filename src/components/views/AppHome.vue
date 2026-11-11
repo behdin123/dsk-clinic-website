@@ -84,7 +84,7 @@
     <section class="fs-baand" aria-labelledby="fs-beh-titel">
       <div class="fs-indre">
         <div class="fs-hoved">
-          <div class="sec__head">
+          <div class="sec__head behandlings-title">
             <p class="sec__eyebrow">Behandlinger</p>
             <h2 id="fs-beh-titel">Find den behandling, der passer til dig</h2>
             <p class="sec__lead">
@@ -183,55 +183,33 @@
       </div>
     </section>
 
-    <!-- Sociale medier -->
-    <div class="sliderContainer">
-      <div class="fs-slider-hoved">
-        <p class="sec__eyebrow">Sociale medier</p>
-        <h2>Seneste opslag fra klinikken</h2>
-      </div>
-      <div class="slider">
-        <div class="slides">
-
-          <!-- Slide 1 -->
-          <div class="slide">
-            <div class="slide-content">
-              <img src="../../assets/Instagram/din_skønhed.webp"
-                alt="Hudbehandling før-efter glød og fugt – DK Skønhedsklinik" loading="lazy" decoding="async">
-            </div>
+    <!-- Sociale medier: fire faste fliser i stedet for en slider. Ingen
+         script, ingen autoplay - paa mobil ruller raekken vandret med
+         scroll-snap. Billederne er opslag med tekst, saa de maa ikke blive smaa. -->
+    <section class="fs-baand fs-baand--navy fs-some" aria-labelledby="fs-some-titel">
+      <div class="fs-indre">
+        <div class="fs-hoved">
+          <div class="sec__head">
+            <p class="sec__eyebrow">Sociale medier</p>
+            <h2 id="fs-some-titel">Seneste opslag fra klinikken</h2>
+            <p class="sec__lead">Tilbud, nyheder og ledige tider deler vi først på Instagram.</p>
           </div>
-
-          <!-- Slide 2 -->
-          <div class="slide">
-            <div class="slide-content">
-              <img src="../../assets/Instagram/Filler_behandling.webp" alt="Filler til læber og kinder – naturlige resultater"
-                loading="lazy" decoding="async">
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="slide">
-            <div class="slide-content">
-              <img src="../../assets/Instagram/Mesotherapy_Arash.webp" alt="Mesotherapy til dyb fugt – sund hud"
-                loading="lazy" decoding="async">
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="slide">
-            <div class="slide-content">
-              <img src="../../assets/Instagram/Skinbooster_Arash12.webp"
-                alt="Skinbooster behandling – frisk og ungdommelig hud" loading="lazy" decoding="async">
-            </div>
-          </div>
-
+          <a class="fs-alle fs-alle--lys" :href="INSTAGRAM_URL" target="_blank" rel="noopener noreferrer">
+            Følg os på Instagram<span class="pil" aria-hidden="true"></span>
+          </a>
         </div>
-        <!-- Navigation Arrows -->
-        <button class="prev" aria-label="Forrige slide">‹</button>
-        <button class="next" aria-label="Næste slide">›</button>
+
+        <ul class="fs-some__liste" aria-label="Seneste opslag">
+          <li v-for="o in opslag" :key="o.alt">
+            <a class="fs-some__flise" :href="INSTAGRAM_URL" target="_blank" rel="noopener noreferrer">
+              <img :src="o.lille" :srcset="`${o.lille} 640w, ${o.stor} 1000w`"
+                sizes="(max-width: 700px) 72vw, (max-width: 1000px) 44vw, 240px" width="640" height="640"
+                loading="lazy" decoding="async" :alt="o.alt">
+            </a>
+          </li>
+        </ul>
       </div>
-      <!-- Dots Navigation -->
-      <div class="dots" role="tablist" aria-label="Galleri navigation"></div>
-    </div>
+    </section>
 
     <!-- Om klinikkerne -->
     <section class="fs-baand" aria-labelledby="fs-klinik-titel">
@@ -333,6 +311,24 @@ import FaqList from '@/components/FaqList.vue'
 import imgOmOs from '@/assets/DSK-samtale.webp'
 import imgClinic from '@/assets/behandlinger/consultation.webp'
 import { findBehandling, KATEGORIER } from '@/data/behandlinger'
+import insta1 from '@/assets/Instagram/din_skønhed.webp'
+import insta1Lille from '@/assets/Instagram/din_skønhed-640.webp'
+import insta2 from '@/assets/Instagram/Filler_behandling.webp'
+import insta2Lille from '@/assets/Instagram/Filler_behandling-640.webp'
+import insta3 from '@/assets/Instagram/Mesotherapy_Arash.webp'
+import insta3Lille from '@/assets/Instagram/Mesotherapy_Arash-640.webp'
+import insta4 from '@/assets/Instagram/Skinbooster_Arash12.webp'
+import insta4Lille from '@/assets/Instagram/Skinbooster_Arash12-640.webp'
+
+const INSTAGRAM_URL = 'https://www.instagram.com/dk_skonhedsklinik/'
+
+// Fire opslag fra klinikkens Instagram. Alt-teksten gengiver opslagets tekst.
+const opslag = [
+  { stor: insta1, lille: insta1Lille, alt: 'Opslag: Din skønhed – din beslutning. Lægen behandler en patient i klinikken' },
+  { stor: insta2, lille: insta2Lille, alt: 'Opslag: Filler behandling fra 1.350 kr. Lægen lægger filler hos en patient' },
+  { stor: insta3, lille: insta3Lille, alt: 'Opslag: Mesoterapi fra 750 kr. i Vejle og Esbjerg. Lægen behandler en patient' },
+  { stor: insta4, lille: insta4Lille, alt: 'Opslag: Skinbooster fra 1.350 kr. Lægen giver en patient en skinbooster' }
+]
 
 // Forsidens seks kort. Samme kilde som menu, footer og oversigtssiden.
 const stort = t => (t ? t.charAt(0).toUpperCase() + t.slice(1) : '')
@@ -537,101 +533,6 @@ const openBookingFromWhy = () => {
   window.gtagEvent?.('booking_click', { placement: 'home_why', component: 'AppHome' })
 }
 
-const currentIndex = ref(0); // ایندکس فعلی اسلاید
-let slides = null;
-let slide = null;
-let next = null;
-let prev = null;
-let dotsContainer = null;
-
-function goToSlide(index) {
-  currentIndex.value = index;
-  if (!slides) return;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-  updateDots();
-}
-
-// Update dots (synchronize active state with slides)
-function updateDots() {
-  const allDots = document.querySelectorAll(".dot");
-  allDots.forEach((dot, index) => {
-    const isActive = index === currentIndex.value;
-    dot.classList.toggle("active", isActive);
-    dot.setAttribute("aria-selected", isActive ? "true" : "false");
-    dot.setAttribute("tabindex", isActive ? "0" : "-1");
-  });
-}
-
-// Create dots dynamically
-function createDots() {
-  dotsContainer.innerHTML = ""; // Clear previous dots
-  slide.forEach((_, index) => {
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    if (index === 0) dot.classList.add("active");
-
-    // دسترس‌پذیری
-    dot.setAttribute("role", "tab");
-    dot.setAttribute("aria-label", `Slide ${index + 1}`);
-    dot.setAttribute("aria-selected", index === 0 ? "true" : "false");
-    dot.setAttribute("tabindex", index === 0 ? "0" : "-1");
-
-    dot.addEventListener("click", () => goToSlide(index));
-    dotsContainer.appendChild(dot);
-  });
-
-  // خود کانتینر هم نقش داشته باشد
-  dotsContainer.setAttribute("role", "tablist");
-  dotsContainer.setAttribute("aria-label", "Galleri navigation");
-}
-
-// Add navigation listeners
-function addNavigationListeners() {
-  if (!next || !prev) return; // Ensure buttons are initialized
-
-  // Next button
-  next.addEventListener("click", () => {
-    if (!slide) return;
-    currentIndex.value = (currentIndex.value + 1) % slide.length; // Loop back to first slide
-    goToSlide(currentIndex.value);
-  });
-
-  // Previous button
-  prev.addEventListener("click", () => {
-    if (!slide) return;
-    currentIndex.value =
-      (currentIndex.value - 1 + slide.length) % slide.length; // Loop back to last slide
-    goToSlide(currentIndex.value);
-  });
-}
-
-// Auto-play slides
-function autoPlaySlides() {
-  if (!slide) return;
-  setInterval(() => {
-    currentIndex.value = (currentIndex.value + 1) % slide.length;
-    goToSlide(currentIndex.value);
-  }, 5000); // Change every 5 seconds
-}
-
-// Initialize slider
-onMounted(() => {
-  slides = document.querySelector(".slides");
-  slide = document.querySelectorAll(".slide");
-  next = document.querySelector(".next");
-  prev = document.querySelector(".prev");
-  dotsContainer = document.querySelector(".dots");
-
-  if (!slides || !slide || !next || !prev || !dotsContainer) {
-    console.error("یکی از المان‌های ضروری یافت نشد. لطفاً HTML را بررسی کنید.");
-    return;
-  }
-
-  createDots();
-  addNavigationListeners();
-  autoPlaySlides();
-});
-
 </script>
 
 
@@ -818,6 +719,11 @@ onMounted(() => {
 .sliderContainer {
   background: #153655;
   padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 
   h2 {
     color: #fff !important;
@@ -849,7 +755,7 @@ onMounted(() => {
 }
 
 .slide img {
-  width: 30vw;
+  width: 20vw;
   border-radius: 15px;
   aspect-ratio: 1 / 1;
   height: auto;
@@ -1158,8 +1064,7 @@ onMounted(() => {
 
 
 .slider {
- 
-  margin: 0 auto;
+  max-width: var(--maal);
 }
 
 .Ekspertise-txt {
@@ -1216,6 +1121,10 @@ onMounted(() => {
     margin-bottom: 20px !important;
   }
 
+  .home .fs-medie img {
+  aspect-ratio: 1 / 1 !important; 
+  }
+
   .bg-img {
     p {
       font-size: 18px !important;
@@ -1230,7 +1139,9 @@ onMounted(() => {
     margin-top: 10px;
   }
 
-
+  .slide img {
+  width: 25vw;
+ }
 
 
   #Info-div {
@@ -2709,6 +2620,9 @@ onMounted(() => {
 
 .home .fs-baand .sec__head { margin-bottom: 22px; }
 .home .fs-baand .sec__lead { margin-top: 14px; }
+.behandlings-title{
+  max-width: 75ch;
+}
 
 .home .fs-baand--navy .sec__eyebrow,
 .home .fs-slider-hoved .sec__eyebrow { color: rgba(255, 255, 255, .78); }
@@ -2883,7 +2797,7 @@ onMounted(() => {
 .home .fs-laege__portraet { align-self: end; margin: 0; }
 .home .fs-laege__portraet img { display: block; height: auto; width: 100%; }
 
-.home .fs-laege__tekst { padding-bottom: calc(var(--sektion-luft) * 2); }
+.home .fs-laege__tekst { padding-bottom: calc(var(--sektion-luft) * 2); margin-left: 40px; }
 
 .home .fs-laege__citat {
   border-left: 2px solid rgba(255, 255, 255, .35);
@@ -2919,7 +2833,7 @@ onMounted(() => {
   object-fit: cover;
 }
 
-.home .fs-medie--hoej img { aspect-ratio: 4 / 5; object-position: center 20%; }
+.home .fs-medie--hoej img { aspect-ratio: 1 / 1; object-position: center 20%; }
 
 .home .fs-tjek { margin: 4px 0 26px; }
 .home .fs-tjek li { color: #153655; font-weight: 600; }
@@ -2935,21 +2849,21 @@ onMounted(() => {
 /* ----- Sociale medier: overskriften foelger resten ----- */
 .home .sliderContainer .fs-slider-hoved {
   box-sizing: border-box;
-  margin: 0 0 30px 50%;
   max-width: var(--maal);
   text-align: left;
-  transform: translateX(-50%);
-  width: 90vw;
+  margin-bottom: 30px;
 }
 
 /* ----- Heroens eyebrow: samme udtryk som sektionernes ----- */
 .home .hero-eyebrow {
   align-items: center;
   display: flex;
-  font-size: .72rem !important; /* en aeldre mobilregel satte 18 px */
+  /* Stoerre end sektionernes eyebrow: den staar oven paa et foto og
+     skal baere klinikkens navn. 15-17 px. */
+  font-size: clamp(.94rem, .3vw + .86rem, 1.06rem) !important;
   font-weight: 700;
-  gap: 10px;
-  letter-spacing: .13em !important;
+  gap: 12px;
+  letter-spacing: .14em !important;
   opacity: 1;
   color: rgba(255, 255, 255, .85);
 }
@@ -2960,7 +2874,69 @@ onMounted(() => {
   content: '';
   flex: none;
   height: 2px;
-  width: 24px;
+  width: 30px;
+}
+
+/* ----- Sociale medier ----- */
+.home .fs-some .sec__lead { color: rgba(255, 255, 255, .78); }
+
+.home .fs-some__liste {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home .fs-some__flise {
+  aspect-ratio: 1 / 1;
+  background: rgba(255, 255, 255, .06);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(6, 18, 32, .28);
+  display: block;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.home .fs-some__flise img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.home .fs-some__flise:hover,
+.home .fs-some__flise:focus-visible {
+  box-shadow: 0 18px 40px rgba(6, 18, 32, .4);
+  transform: translateY(-3px);
+}
+
+.home .fs-some__flise:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+@media (max-width: 1000px) {
+  /* Tablet: 2 x 2, saa teksten i opslagene kan laeses */
+  .home .fs-some__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: auto; max-width: 640px; }
+}
+
+@media (max-width: 700px) {
+  /* Mobil: én raekke, der rulles vandret. Naeste flise stikker frem,
+     saa man kan se, at der er mere. Raekken gaar helt ud til skaermkanten. */
+  .home .fs-some__liste {
+    display: flex;
+    gap: 14px;
+    margin-inline: -5.6%;
+    max-width: none;
+    overflow-x: auto;
+    padding: 4px 5.6% 14px;
+    scroll-padding-inline: 5.6%;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home .fs-some__liste::-webkit-scrollbar { display: none; }
+  .home .fs-some__liste > li { flex: 0 0 72%; scroll-snap-align: start; }
+  .home .fs-some__flise:hover { transform: none; }
 }
 
 @media (max-width: 1000px) {
@@ -2973,7 +2949,6 @@ onMounted(() => {
 }
 
 @media (max-width: 700px) {
-  .home .fs-baand { padding-block: calc(var(--sektion-luft) * 1.5); }
   .home .fs-hoved { align-items: start; flex-direction: column; margin-bottom: 26px; }
 
   /* Paa mobil: kompakte raekker - billede til venstre, tekst til hoejre.
