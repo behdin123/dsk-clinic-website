@@ -2,7 +2,7 @@
   <!-- Faelles hero for alle behandlingssider (botox, filler, skinbooster,
        mesoterapi, microneedling og undersider som laebefiller).
        Tekst, pris og booking foerst - ogsaa paa mobil. -->
-  <section class="bh-hero" :aria-labelledby="h1Id">
+  <section class="bh-hero" :class="{ 'bh-hero--fakta': fakta.length }" :aria-labelledby="h1Id">
     <div class="bh-hero__indre">
       <AppBreadcrumbs v-if="broedkrummer.length" :sti="broedkrummer" />
 
@@ -226,7 +226,28 @@ onBeforeUnmount(() => {
 
 /* Noegletal: .fakta fra byggeklodser (stort tal, kort label), her inde i
    heroens baand i stedet for under det */
-.bh-hero__fakta { margin: 36px 0 0; }
+/* Fakta som banner: navy i fuld skaermbredde, hvid tekst. Baandet lukker
+   heroen. Fuld bredde laves med box-shadow + clip-path, saa det ogsaa
+   virker paa undersiderne, hvor heroen staar inde i en smal container -
+   og uden at give vandret scroll. */
+.bh-hero--fakta { border-bottom: 0; padding-bottom: 0; }
+
+.bh-hero__fakta {
+  background: #153655;
+  border-top: 0;
+  box-shadow: 0 0 0 100vmax #153655;
+  clip-path: inset(0 -100vmax);
+  gap: 0;
+  margin: 44px 0 0;
+  padding: 30px 0;
+}
+
+.bh-hero__fakta > div { padding: 2px 24px; }
+.bh-hero__fakta > div:first-child { padding-left: 0; }
+.bh-hero__fakta > div + div { border-left: 1px solid rgba(255, 255, 255, .16); }
+
+.bh-hero__fakta dt { color: #fff; }
+.bh-hero__fakta dd { color: rgba(255, 255, 255, .78); }
 
 @media (max-width: 1000px) {
   .bh-hero__indre { width: 90%; }
@@ -235,9 +256,16 @@ onBeforeUnmount(() => {
 /* Tablet og mobil: tekst og booking foerst, billedet under */
 @media (max-width: 900px) {
   .bh-hero { padding: 16px 0 var(--sektion-luft); }
+  .bh-hero--fakta { padding-bottom: 0; }
   .bh-hero__gitter { gap: 24px; grid-template-columns: minmax(0, 1fr); }
   .bh-hero__media img { aspect-ratio: 16 / 10; max-height: 340px; }
-  .bh-hero__fakta { margin-top: 24px; }
+  .bh-hero__fakta { margin-top: 28px; }
+}
+
+/* To kolonner (byggeklodser skifter ved 700 px): ingen lodrette streger */
+@media (max-width: 700px) {
+  .bh-hero__fakta { gap: 22px 16px; padding: 26px 0; }
+  .bh-hero__fakta > div { border-left: 0 !important; padding: 0; }
 }
 
 @media (max-width: 600px) {
