@@ -22,6 +22,7 @@
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { BOOKING_URL } from '@/config/booking'
 import { trackEvent } from '@/consent/consent'
+import { registerBookingIntent } from '@/tracking/attribution'
 
 const props = defineProps({
   showButton: { type: Boolean, default: true }
@@ -40,6 +41,9 @@ function openBooking(source) {
     { component: 'AppBooking', source },
     { custom: 'BookingOpened' }
   )
+  // Anonym reference til booking-trackeren, så en booking i Gecko kan
+  // kobles til den annonce, besøget kom fra (kun ved marketing-samtykke).
+  registerBookingIntent(source)
 }
 
 function handleBookingClick() {
