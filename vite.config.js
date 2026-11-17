@@ -18,7 +18,7 @@ const normalize = (p='/', root='/') => {
 const BASE_ROUTES = ['/', '/behandlinger', '/omos', '/kontaktos', '/klinik/esbjerg', '/klinik/vejle', '/behandlinger/prp', '/behandlinger/filler/laeber', '/priser', '/booking']
 const BEHANDLING_ROUTES = CANONICAL.map(t => `/behandlinger/${t}`)
 const INCLUDED_ROUTES = Array.from(new Set(
-  [...BASE_ROUTES.map(normalize), ...BEHANDLING_ROUTES.map(normalize)]
+  [...BASE_ROUTES.map(normalize), ...BEHANDLING_ROUTES.map(normalize), normalize('/cookies')] // cookiepolitik: ellers 404 ved direkte besoeg
 ))
 
 export default defineConfig({
