@@ -117,6 +117,7 @@ import {
   BOOKING_URL, BOOKING_EMBED_SCRIPT, BOOKING_EMBED_CONTAINER_ID,
   CLINIC_PHONE, CLINIC_PHONE_HREF
 } from '@/config/booking'
+import { registerBookingIntent } from '@/tracking/attribution'
 
 const SITE_URL = 'https://dsklinik.dk'
 const containerId = BOOKING_EMBED_CONTAINER_ID
@@ -140,6 +141,7 @@ onMounted(() => {
   document.body.appendChild(s)
 
   window.gtagEvent?.('booking_page_view', { component: 'BookingView' })
+  registerBookingIntent('booking_page')
 })
 
 const bookingLd = {
