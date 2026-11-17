@@ -69,6 +69,13 @@
         (Facebook og Instagram). Begge selskaber behandler også oplysninger uden for EU/EØS.
         Siger du nej, sendes der ingenting.
       </p>
+      <p>
+        Har du sagt ja til markedsføring og booker en forundersøgelse, sender vores server
+        desuden en besked til Meta om, at der er booket en tid. Beskeden indeholder Metas eget
+        klik-id og browser-id og din browsertype. Den indeholder ikke dit navn, din e-mail,
+        dit telefonnummer eller hvilken behandling, du er interesseret i. Vi bruger det til at
+        se, hvilke annoncer der fører til bookinger, og sletter oplysningerne hos os efter 28 dage.
+      </p>
 
       <h2>Dine rettigheder</h2>
       <p>
@@ -94,7 +101,7 @@ useHead({
   ],
 })
 
-const updated = '24. oktober 2026'
+const updated = '17. november 2026'
 
 const categories = [
   {
@@ -115,7 +122,7 @@ const categories = [
     id: 'marketing',
     label: 'Markedsføring',
     description:
-      'Lader os se, om et besøg er kommet fra en annonce på Facebook eller Instagram.',
+      'Lader os se, om et besøg eller en booking er kommet fra en annonce på Facebook eller Instagram.',
     cookies: COOKIE_TABLE.marketing,
   },
 ]
