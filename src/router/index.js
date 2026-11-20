@@ -9,7 +9,6 @@ const kontaktos   = () => import('@/components/views/KontaktOs.vue')
 // const viden   = () => import('@/components/views/vidensunivers.vue')
 
 // NEW: clinic routes (lazy-loaded)
-const prpUdgaaet    = () => import('@/components/views/PrpUdgaaet.vue')
 const priser        = () => import('@/components/views/PriserView.vue')
 const booking       = () => import('@/components/views/BookingView.vue')
 const laebefiller   = () => import('@/components/views/LaebefillerView.vue')
@@ -88,9 +87,10 @@ export const routes = [
     redirect: to => `/behandlinger/${String(to.params.type).toLowerCase()}/`,
   },
 
-  // PRP udgaaet: siden bevares, da den stadig rangerer paa PRP-soegninger
-  { path: '/behandlinger/prp/', name: 'prp-udgaaet', component: prpUdgaaet },
-  { path: '/behandlinger/prp',  redirect: '/behandlinger/prp/' },
+  // PRP tilbydes ikke laengere: serveren giver 301 til oversigten (.htaccess).
+  // Disse redirects daekker klientside-navigation.
+  { path: '/behandlinger/prp/', redirect: '/behandlinger/' },
+  { path: '/behandlinger/prp',  redirect: '/behandlinger/' },
 
   { path: '/booking/', name: 'booking', component: booking },
   { path: '/booking',  redirect: '/booking/' },

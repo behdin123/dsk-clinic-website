@@ -310,21 +310,6 @@ export const BEHANDLINGER = [
     status: 'planlagt',
     iMenu: true,
     relaterede: ['nefertiti-loeft', 'botox', 'svedbehandling']
-  },
-
-  /* ---------- Udgaaet, men siden bevares ---------- */
-  {
-    slug: 'prp',
-    path: '/behandlinger/prp/',
-    navn: 'PRP',
-    kortTitel: 'PRP (vampyrbehandling)',
-    kategori: 'hudkvalitet',
-    kort: 'Tilbydes ikke længere. Se hvad vi anbefaler i stedet.',
-    prisFra: null,
-    billede: null,
-    status: 'udgaaet',
-    iMenu: false,
-    relaterede: ['mesoterapi', 'skinbooster', 'microneedling']
   }
 ]
 

@@ -20,7 +20,9 @@ RewriteCond %{THE_REQUEST} \s/+Behandlinger/ [NC]
 RewriteRule ^Behandlinger/([^/]+)/?$ https://dsklinik.dk/behandlinger/$1/ [R=301,L]
 
 # 2b) Kendte URL'er med store bogstaver fra Googles indeks -> kanonisk version
-RewriteRule ^behandlinger/PRP/?$ https://dsklinik.dk/behandlinger/prp/ [R=301,L]
+# PRP tilbydes ikke laengere (nov. 2026). Siden var en soft-404 (status 200 + "tilbydes
+# ikke"). Nu en aegte 301 til oversigten, i alle stavemaader (NC).
+RewriteRule ^behandlinger/prp/?$ https://dsklinik.dk/behandlinger/ [R=301,L,NC]
 RewriteRule ^behandlinger/Botox/?$ https://dsklinik.dk/behandlinger/botox/ [R=301,L]
 RewriteRule ^behandlinger/Filler/?$ https://dsklinik.dk/behandlinger/filler/ [R=301,L]
 RewriteRule ^behandlinger/Behandlinger/?$ https://dsklinik.dk/behandlinger/ [R=301,L]

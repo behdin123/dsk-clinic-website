@@ -18,6 +18,5 @@
   { "path": "/behandlinger/skinbooster/profhilo/", "priority": 0.8, "changefreq": "weekly" },
   { "path": "/behandlinger/skinbooster/profhilo-structura/", "priority": 0.8, "changefreq": "weekly" },
   { "path": "/behandlinger/mesotherapy/",  "priority": 0.7,  "changefreq": "monthly" },
-  { "path": "/behandlinger/microneedling/","priority": 0.7,  "changefreq": "monthly" },
-  { "path": "/behandlinger/prp/",          "priority": 0.3,  "changefreq": "yearly" }
+  { "path": "/behandlinger/microneedling/","priority": 0.7,  "changefreq": "monthly" }
 ]
