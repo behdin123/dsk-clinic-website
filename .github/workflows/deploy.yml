@@ -68,7 +68,11 @@ jobs:
           fi
           echo "Uploader til: $TARGET"
 
-          printf 'cd %s\nlcd dist\nput -r .\nls -la\n' "$TARGET" > put.txt
+          # To faser i én batch: assets foer HTML, deploy-version.txt sidst.
+          # Ellers ligger en ny index.html live, foer dens assets findes (404 og
+          # side uden styling i nogle minutter, live-tjek 20. nov.).
+          bash scripts/sftp-batch.sh dist "$TARGET" > put.txt
+          echo "Batch: $(grep -c '^put ' put.txt) filer, $(grep -c '^-mkdir ' put.txt) mapper"
           sftp_run put.txt
 
       # Fejl hvis live-sitet ikke viser den nye version
