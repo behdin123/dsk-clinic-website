@@ -735,31 +735,6 @@ const openBookingFromWhy = () => {
   }
 }
 
-.slider {
-  position: relative;
-  overflow: hidden;
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-  min-width: 100%;
-  position: relative;
-  /* برای موقعیت‌دهی متن */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slide img {
-  width: 20vw;
-  border-radius: 15px;
-  aspect-ratio: 1 / 1;
-  height: auto;
-}
 
 .text-overlay {
   position: absolute;
@@ -1138,10 +1113,6 @@ const openBookingFromWhy = () => {
   .booking-button {
     margin-top: 10px;
   }
-
-  .slide img {
-  width: 25vw;
- }
 
 
   #Info-div {
@@ -1886,19 +1857,11 @@ const openBookingFromWhy = () => {
   .card {
     flex-grow: .5;
   }
-
-  .slide img {
-    width: 50vw;
-  }
 }
 
 @media only screen and (max-width: 900px) {
   .slider-container {
     padding: 50px 2%;
-  }
-
-  .slide img {
-    width: 100%;
   }
 
   .container h2 {

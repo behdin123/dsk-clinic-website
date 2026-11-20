@@ -91,20 +91,6 @@
     transition: transform 0.6s ease;
   }
   
-  .slide {
-    min-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
   /* Pagination Dots */
   .pagination {
     display: flex;
