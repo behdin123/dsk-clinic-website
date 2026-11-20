@@ -86,3 +86,18 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>
+
+# 9) Sikkerheds-headers (SEO-audit 11. nov., punkt 9). "always", saa de ogsaa
+#    sendes paa redirects og 404.
+#    - HSTS uden includeSubDomains/preload: subdomaener hos one.com (mail m.m.)
+#      skal ikke tvinges paa HTTPS. Browsere ignorerer HSTS over HTTP.
+#    - X-Frame-Options styrer kun, om ANDRE maa indramme dsklinik.dk. Vores egen
+#      Gecko-booking-iframe paavirkes ikke.
+#    - strict-origin-when-cross-origin er browsernes standard: GA og Meta faar
+#      stadig domaenet som referrer, men ikke den fulde sti med parametre.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
